@@ -1,0 +1,100 @@
+﻿@model IEnumerable<DatosPersonaViewModel>
+@using SYGESTMunicipal.Areas.OFIM.Models.ViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <h3 class="text-light" style="text-align:center;
+              background-color:darkslategray;">
+            Lista de Personas
+        </h3>
+    </div>
+</div>
+<br />
+<form asp-controller="PersonaOFIM" asp-action="Index" method="post">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 text-right">
+            <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
+               style="width:100%; height:90%;padding:6px;">
+                Agregar Persona
+            </a>
+        </div>
+        @*<div class="col-md-2 col-lg-2 text-right">
+                <a asp-controller="" asp-action="Index"
+                   class="btn btn-info fa fa-arrow-circle-left"
+                   style="width:100%; height:90%;padding:6px;">
+                    Regresar al menú
+                </a>
+            </div>*@
+    </div>
+    <div class="col-md-12" style="color:black;"><hr /></div>
+</form>
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-hover .table-responsive" id="TbPersonas">
+        <thead class="thead-dark">
+            <tr class="table-secondary" style="text-align:left;">
+                <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
+                <th>@Html.DisplayNameFor(m => m.PersonName)</th>
+
+                <th>@Html.DisplayNameFor(m => m.Address)</th>
+
+                <th>@Html.DisplayNameFor(m => m.District)</th>
+                <th>@Html.DisplayNameFor(m => m.MobilePhoneNumber)</th>
+                <th>@Html.DisplayNameFor(m => m.Email)</th>
+
+
+
+                <th>Operaciones</th>
+            </tr>
+        </thead>
+        <tbody style="text-align:left;">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.PersonaOFIMId)</td>
+                    <td>@Html.DisplayFor(m => item.PersonName)</td>
+
+                    <td>@Html.DisplayFor(m => item.Address)</td>
+                    <td>@Html.DisplayFor(m => item.District)</td>
+                    <td>@Html.DisplayFor(m => item.MobilePhoneNumber)</td>
+                    <td>@Html.DisplayFor(m => item.Email)</td>
+
+                    @*<td>@Html.DisplayFor(model => item.FechaCita, "{0:dd/MM/yyyy}")*@
+                    <td>
+
+
+                        <a class="fa fa-info-circle btn btn-primary" aria-hidden="true"
+                           asp-controller="PersonaOFIM" asp-action="Details"
+                           asp-route-id="@item.PersonaOFIMId"></a>
+
+                        <a class="fa fa-pencil btn btn-info" aria-hidden="true"
+                           asp-controller="PersonaOFIM" asp-action="Edit"
+                           asp-route-id="@item.PersonaOFIMId"></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h5 style="color:red;">No se encontraron personas!...</h5>
+}
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#TbPersonas').DataTable(
+            {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+    })
+</script>

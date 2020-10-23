@@ -1,0 +1,98 @@
+﻿@model SYGESTMunicipal.Areas.OFGA.Models.Complaint
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+    List<SelectListItem> Lista = ViewBag.listaPersonOFGA;
+    String Fecha = @ViewBag.EntryDate;
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Editar Registro</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="Materials" asp-action="Index">Materiales</a></li>
+                <li>Editar Registro</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+                Editar
+            </h3>
+        </div>
+    </div>
+    <br />
+
+    <!-- ======= About Section ======= -->
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="contact-wrap w-100 p-md-5 p-4">
+                <form method="post" asp-action="Edit">
+                    <div class="backgroundWhite">
+                        <div class="form-group row">
+                            <div class="col-md-2 col-lg-2">
+                                <h5><label asp-for="Description" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <textarea asp-for="Description" rows="4" cols="50"
+                                          class="form-control"> </textarea>
+                            </div>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <h5><label asp-for="Date" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-8">
+                                <input asp-for="Date" type="text" id="datepicker" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-2 col-lg-2">
+                                <h5><label asp-for="PersonOFGAId" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-8 col-lg-8">
+                                <select asp-for="PersonOFGAId" class="form-control"
+                                        asp-items="@Lista"></select>
+                            </div>
+                            <span asp-validation-for="PersonOFGAId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-grouprow">
+                            <div class="col-5 offset-2">
+                                <partial name="_EditAndBackToListButton" model="Model.Id" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script src="~/js/DPickerSpanish.js"></script>
+<script>
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+        });</script>
+}

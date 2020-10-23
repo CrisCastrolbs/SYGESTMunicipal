@@ -1,0 +1,264 @@
+﻿@model EstablishmentViewModel
+@using SYGESTMunicipal.Areas.PATENTES.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaCIIU;
+    List<SelectListItem> Lista1 = ViewBag.ListaApplicant;
+    List<SelectListItem> Lista2 = ViewBag.ListaEstablishmentType;
+    List<SelectListItem> Lista3 = ViewBag.ListaActivityType;
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-th"></i>Establecimiento</h3>
+                <ol class="breadcrumb">
+                    <li class="nav-item">
+                        <i class="fa fa-th"></i>
+                        <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Index">Formulario de Establecimiento</a>
+                    </li>
+                    <li><i class="icon_document_alt"></i>Formulario</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Form validations -->
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Formulario
+                    </header>
+                    <div class="panel-body">
+                        <div class="form">
+
+                            <!-- Crear profile form (not working)-->
+                            <div class="row">
+                                <h2 class="text-info" Insgresar un nuevo Establecimiento></h2>
+                                <form class="form-validate form-horizontal" method="post" asp-action="Create">
+                                    <div class="border backgroundWhite">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                        @*Id*@
+                                        @*<div class=" form-group row">
+                                                <div class=" col-2">
+                                                    <label asp-for="Id" class="col-form-label"></label>
+                                                </div>
+                                                <div class="col-5">
+                                                    <input asp-for="Id" class="form-control" />
+                                                </div>
+                                                <span asp-validation-for="Id" class=" text-danger"></span>
+                                            </div>*@
+                                        @*Name*@
+                                        <div class=" form-group">
+                                            <label asp-for="Name" class="control-label col-lg-2">Nombre <span class="required">*</span></label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="Name" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="Name" class=" text-danger"></span>
+                                        </div>
+
+                                        @*CIIU*@
+
+                                        <div class="form-group row">
+
+                                            <label asp-for="CIIUId" class="control-label col-lg-2">CIIUID <span class="required">*</span></label>
+                                            <div class="col-md-6 col-lg-6">
+                                                <select asp-for="CIIUId" class="form-control"
+                                                        asp-items="@Lista"></select>
+                                            </div>
+                                            <span asp-validation-for="CIIUId" class="text-danger"></span>
+                                        </div>
+
+
+
+
+                                        @*Description*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="Description" class="control-label col-lg-2">Descripción de Actividad<span class="required">*</span></label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="Description" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="Description" class=" text-danger"></span>
+                                        </div>
+
+
+
+
+                                        @*OtherActivities*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="OtherActivities" class="control-label col-lg-2">Otras Actividades (si poseé)</label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="OtherActivities" class="form-control" minlength="5" type="text" />
+                                            </div>
+                                            <span asp-validation-for="OtherActivities" class=" text-danger"></span>
+                                        </div>
+
+
+
+                                        @*NºFinca*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="NFarm" class="control-label col-lg-2">N° de Finca<span class="required">*</span></label>
+
+                                            <div class="col-lg-9">
+                                                <input asp-for="NFarm" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="NFarm" class=" text-danger"></span>
+                                        </div>
+
+                                        @*DesingNumber*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="DesignNum" class="control-label col-lg-2">N° de Plano<span class="required">*</span></label>
+
+                                            <div class="col-lg-9">
+                                                <input asp-for="DesignNum" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="DesignNum" class=" text-danger"></span>
+                                        </div>
+
+                                        @*Workings Hours*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="WorkingHours" class="control-label col-lg-2">Horario de Trabajo<span class="required">*</span></label>
+
+                                            <div class="col-lg-9">
+                                                <input asp-for="WorkingHours" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="WorkingHours" class=" text-danger"></span>
+                                        </div>
+
+
+
+                                        @*Wmen*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="WMen" class="control-label col-lg-2">Cantidad de Hombres Trabajando<span class="required">*</span></label>
+
+                                            <div class="col-lg-9">
+                                                <input asp-for="WMen" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="WMen" class=" text-danger"></span>
+                                        </div>
+
+
+                                        @*WWOmen*@
+
+                                        <div class=" form-group row">
+                                            <label asp-for="WWomen" class="control-label col-lg-2">Cantidades de Mujeres Trabajando<span class="required">*</span></label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="WWomen" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="WWomen" class=" text-danger"></span>
+                                        </div>
+
+                                        @*Applicant*@
+
+                                        <div class="form-group row">
+                                            <label asp-for="ApplicantId" class="control-label col-md-2 col-lg-2">Id Solicitante<span class="required">*</span></label>
+                                            <div class="col-md-6 col-lg-6">
+                                                <select asp-for="ApplicantId" class="form-control"
+                                                        asp-items="@Lista1"></select>
+                                            </div>
+                                            <span asp-validation-for="ApplicantId" class="text-danger"></span>
+                                        </div>
+
+
+
+                                        @*WebPage*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="WebPage" class="control-label col-lg-2">Direccipon de Página Web<span class="required">*</span></label>
+
+                                            <div class="col-lg-9">
+                                                <input asp-for="WebPage" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="WebPage" class=" text-danger"></span>
+                                        </div>
+
+
+
+                                        @*Skilled workers*@
+
+                                        <div class=" form-group row">
+                                            <label asp-for="SkilledWorkers" class="control-label col-lg-2">Cantidad de Trabajadores Calificados<span class="required">*</span></label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="SkilledWorkers" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="SkilledWorkers" class=" text-danger"></span>
+                                        </div>
+
+
+
+                                        @*Unskilled workers*@
+
+                                        <div class=" form-group row">
+
+                                            <label asp-for="UnskilledWorkers" class="control-label col-lg-2">Cantidad de Trabajadores No Calificados<span class="required">*</span></label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="UnskilledWorkers" class="form-control" minlength="5" type="text" required />
+                                            </div>
+                                            <span asp-validation-for="UnskilledWorkers" class=" text-danger"></span>
+                                        </div>
+
+
+
+
+                                        @*EstablishmentType*@
+
+                                        <div class="form-group row">
+
+                                            <label asp-for="EstablishmentTypeId" class="control-label col-lg-2">Tipo de Establecimiento<span class="required">*</span></label>
+
+                                            <div class="col-md-6 col-lg-6">
+                                                <select asp-for="EstablishmentTypeId" class="form-control"
+                                                        asp-items="@Lista2"></select>
+                                            </div>
+                                            <span asp-validation-for="EstablishmentTypeId" class="text-danger"></span>
+                                        </div>
+
+                                        @*Applicant*@
+
+                                        <div class="form-group row">
+
+                                            <label asp-for="ActivityTypeId" class="control-label col-lg-2">Tipo de Actividad<span class="required">*</span></label>
+
+                                            <div class="col-md-6 col-lg-6">
+                                                <select asp-for="ActivityTypeId" class="form-control"
+                                                        asp-items="@Lista3"></select>
+                                            </div>
+                                            <span asp-validation-for="ActivityTypeId" class="text-danger"></span>
+                                        </div>
+
+                                        @*End Create Register Date Field*@
+                                        <br />
+                                        <div class=" form-group row">
+                                            <div class="col-lg-offset-3 col-lg-6">
+                                                <partial name="_CreateAndBackToListButton" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page end-->
+    </section>
+</section>
+<!--main content end-->

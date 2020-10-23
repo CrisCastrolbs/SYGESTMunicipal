@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SYGESTMunicipal.Areas.OFGA.Models.Talks>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Lista de charlas</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="Home" asp-action="Index">Gestión Ambiental</a></li>
+                <li>Charlas</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="col-lg-offset-11 text-right">
+        <partial name="_CreateButtonPartial" />
+    </div>
+
+    @*//Vista del filtro*@
+    <div class="row">
+        <div class="col-12 text-right">
+            <partial name="_Filter" />
+        </div>
+    </div>
+    <div>
+       
+
+        @if (Model.Count() > 0)
+        {
+
+            <table class="table table-striped border">
+
+                <tr class="table-secondary" style="text-align:center;">
+                    <th>@Html.DisplayNameFor(m => m.Name)</th>
+                    <th>@Html.DisplayNameFor(m => m.Description)</th>
+                    <th>@Html.DisplayNameFor(m => m.Date)</th>
+                    <th>@Html.DisplayNameFor(m => m.IsActive)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tbody style="text-align:center;">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Name)</td>
+                            <td>@Html.DisplayFor(m => item.Description)</td>
+                            <td>@Html.DisplayFor(m => item.Date)</td>
+                            <td>@Html.DisplayFor(m => item.IsActive)</td>
+                            <td>
+                                <partial name="_TableButtonPartial" model="item.Id" />
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h3>No Existen charlas registradas</h3>
+        }
+    </div>
+
+</main><!-- End #main -->

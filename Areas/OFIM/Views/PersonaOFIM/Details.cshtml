@@ -1,0 +1,244 @@
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.PersonaOFIM
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaEstadoCivil;
+    List<SelectListItem> Lista1 = ViewBag.ListaOcupacion;
+    List<SelectListItem> Lista2 = ViewBag.ListaNacionalidad;
+    List<SelectListItem> Lista3 = ViewBag.ListaNivelAcademico;
+    List<SelectListItem> Lista4 = ViewBag.ListaSeguro;
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <h3 class="text-light"
+            style="text-align:center;background-color:darkslategray;">
+            Detalles de la persona
+        </h3>
+    </div>
+</div>
+<br />
+<form asp-action="Details" asp-controller="Establishment" method="post">
+    <div class="container-fluid">
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="PersonaOFIMId" readonly="readonly" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PersonaOFIMId" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+        @*Name*@
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nombre:</label>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <input asp-for="PersonName" readonly="readonly" class="form-control" />
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Primer Apellido:</label>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <input asp-for="LatName1" readonly="readonly" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Segundo Apellido:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="LatName2" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Dirección:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <textarea asp-for="Address" rows="4" cols="50"
+                          class="form-control" readonly="readonly"> </textarea>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Provincia:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Province" readonly="readonly" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Cantón:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Canton" readonly="readonly" class="form-control" />
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Distrito:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="District" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Teléfono Fijo:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="TelephoneNumber" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Teléfono Móvil:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="MobilePhoneNumber" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Email:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Email" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Sexo:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Sex" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Fecha Nacimiento:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <input type="date" asp-for="DateBirth" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nombre Cónyuge:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="CoupleName" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Cantidad Hijos:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="ChildNumber" readonly="readonly" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Discapacidades:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <textarea asp-for="Disability" rows="4" cols="50"
+                          class="form-control" readonly="readonly"> </textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Padecimientos:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <textarea asp-for="MedicalCondition" rows="4" cols="50"
+                          class="form-control" readonly="readonly"> </textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Estado Civil:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="EstadoCivilId" class="form-control"
+                        asp-items="@Lista"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Ocupación:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="OcupacionId" class="form-control" readonly="readonly"
+                        asp-items="@Lista1"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nacionalidad:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="NacionalidadId" class="form-control" readonly="readonly"
+                        asp-items="@Lista2"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nivel Académico:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="NivelAcademicoId" class="form-control" readonly="readonly"
+                        asp-items="@Lista3"></select>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Seguro:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="SeguroId" class="form-control" readonly="readonly"
+                        asp-items="@Lista4"></select>
+            </div>
+
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-8 colo-lg-4 text-right">
+                <a asp-action="Index" class="btn btn-info"
+                   style="width: 50%;">
+                    Regresar
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

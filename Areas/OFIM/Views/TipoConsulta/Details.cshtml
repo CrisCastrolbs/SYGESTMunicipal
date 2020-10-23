@@ -1,0 +1,39 @@
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.TipoConsultaAndPersonaViewModel
+@using SYGESTMunicipal.Extensions
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+<br />
+<h2 class="text-info">TipoConsulta Details</h2>
+<br />
+<form asp-action="Details">
+    <div class="border backgroundWhite">
+        <input type="hidden" asp-for="TipoConsulta.PersonaOFIMId" />
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="TipoConsulta.PersonaOFIM.PersonName" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <select manifest="ddlPersonaOFIM" asp-for="TipoConsulta.PersonaOFIMId" disabled
+                        asp-items="Model.PersonaOFIMList.ToSelectListItem(Model.TipoConsulta.PersonaOFIMId)"
+                        class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="co-2">
+                <label asp-for="TipoConsulta.NombreTipoConsulta" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="TipoConsulta.NombreTipoConsulta" readonly class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DetailsAndBackToListButton" model="Model.TipoConsulta.TipoConsultaId" />
+            </div>
+        </div>
+    </div>
+</form>

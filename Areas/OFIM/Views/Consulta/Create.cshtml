@@ -1,0 +1,170 @@
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.ConsultaViewModel
+@using SYGESTMunicipal.Extensions
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+<br />
+<h2 class="text-info">Crear Consulta</h2>
+<br />
+<form method="post" enctype="multipart/form-data">
+    <div class="border backgroundWhite">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Consulta.HoraInicio" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Consulta.HoraInicio" type="datetime" id="timeOnlyExample" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Consulta.Fecha" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Consulta.Fecha" type="date" id="datepicker" class="form-control" />
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Consulta.PersonaOFIMId" class="col-form-label"></label>
+            </div>
+            <div class="col-8">
+                <select asp-for="@Model.Consulta.PersonaOFIMId" id="PersonaOFIMId"
+                        asp-items="Model.PersonaOFIM.ToSelectListItem(Model.Consulta.PersonaOFIMId)"
+                        class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Consulta.TipoConsultaId" class="col-form-label"></label>
+            </div>
+            <div class="col-8">
+                <select asp-for="@Model.Consulta.TipoConsultaId" id="TipoConsultaId"
+                        asp-items="Model.TipoConsulta.ToSelectListItem(Model.Consulta.TipoConsultaId)"
+                        class="form-control"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Consulta.Motivo" class="col-form-label"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Consulta.Motivo" class="form-control" />
+            </div>
+            <span asp-validation-for="Consulta.Motivo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Consulta.Descripcion" class="col-form-label"></label>
+            </div>
+            <div class="col-8">
+                @Html.TextAreaFor(m => m.Consulta.Descripcion, new { rows = "3", cols = "51", @class = "text-area" })
+            </div>
+            <span asp-validation-for="Consulta.Descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Consulta.RespuestaOfrecida" class="col-form-label"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Consulta.RespuestaOfrecida" class="form-control" />
+            </div>
+            <span asp-validation-for="Consulta.RespuestaOfrecida" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Consulta.HoraFin" class="col-form-label"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Consulta.HoraFin" type="datetime" id="timeOnlyExample" class="form-control" />
+            </div>
+        </div>
+   
+
+    <br />
+    <div class="form-group row">
+        <div class="col-5 offset-2">
+            <partial name="_CreateAndBackToListButton" />
+        </div>
+    </div>
+    </div>
+</form>
+@section Scripts{
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+     $(document).ready(function () {
+         GetTipoConsultas();
+         $('#ConsultaId').change(function () {
+             GetTipoConsultas();
+         });
+     });
+    function GetTipoConsultas() {
+         var url = '@Url.Content("~/")' + "OFIM/TipoConsulta/GetTipoConsultas/";
+        var ddlsource = '#ConsultaId';
+         $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
+             var items = '';
+             $('#TipoConsultaId').empty();
+             $.each(data, function (i, product) {
+                 items += "<option value='" + product.value + "'>" + product.text +
+                     "</option>";
+             });
+             $('#TipoConsultaId').html(items);
+         })
+     }
+    </script>
+
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="~/js/Datepair.js"></script>
+    <script src="~/js/datepair.min.js"></script>
+    <script src="~/js/jquery.datepair.js"></script>
+    <script src="~/js/jquery.datepair.min.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/jquery.timepicker.js"></script>
+    <script src="~/js/jquery.timepicker.min.js"></script>
+
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+            $('#timeOnlyExample .time').timepicker({
+                'showDuration': true,
+                'timeFormat': 'g:ia'
+            });
+            $('#timeOnlyExample .time').timepicker({
+                'minTime': '7:30 AM',
+                'maxTime': '5:00 PM',
+                'step': '30'
+            });
+
+            var timeOnlyExampleEl = document.getElementById('timeOnlyExample');
+            var timeOnlyDatepair = new Datepair(timeOnlyExampleEl);
+
+        });
+    </script>
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

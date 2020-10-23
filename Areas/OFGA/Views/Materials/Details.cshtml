@@ -1,0 +1,120 @@
+﻿@model SYGESTMunicipal.Areas.OFGA.Models.Materials
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaTMaterial;
+}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Detalles del Material</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="Materials" asp-action="Index">Materiales</a></li>
+                <li>Materiales</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+                Detalles
+            </h3>
+        </div>
+    </div>
+    <br />
+
+    <form asp-action="Details" asp-controller="Establishment" method="post">
+        <div class="container-fluid">
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <h5><label asp-for="Id" class="col-form-label"></label></h5>
+                </div>
+                <div class="col-md-9">
+                    <input asp-for="Id" readonly="readonly"
+                           class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <h5><label asp-for="Name" class="col-form-label"></label></h5>
+                </div>
+                <div class="col-md-9">
+                    <input asp-for="Name" readonly="readonly"
+                           class="form-control" />
+                </div>
+            </div>
+            @*4*@
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <h5><label asp-for="MaterialTypeId" class="col-form-label"></label></h5>
+                </div>
+                <div class="col-md-8">
+                    <select asp-for="MaterialTypeId" readonly="readonly"
+                            class="form-control"
+                            asp-items="@Lista"></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <h5><label asp-for="Date" class="col-form-label"></label></h5>
+                </div>
+                <div class="col-md-8">
+                    <input asp-for="Date" readonly type="datetime" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <h5><label asp-for="Weight" class="col-form-label"></label></h5>
+                </div>
+                <div class="col-md-9">
+                    <textarea asp-for="Weight" rows="4" cols="50"
+                              class="form-control" readonly="readonly"> </textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <h5><label asp-for="Color" class="col-form-label"></label></h5>
+                </div>
+                <div class="col-md-9">
+                    <textarea asp-for="Color" rows="4" cols="50"
+                              class="form-control" readonly="readonly"> </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-8 colo-lg-4 text-right">
+                    <a asp-action="Index" class="btn btn-info"
+                       style="width: 50%;">
+                        Regresar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+  </main>
+
+    @section Scripts{
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+
+
+
+        <script src="~/js/DPickerSpanish.js"></script>
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+                $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+                //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+            });</script>
+    }

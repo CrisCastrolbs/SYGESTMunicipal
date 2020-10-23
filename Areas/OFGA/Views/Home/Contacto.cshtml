@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "Contacto";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Contacto</h2>
+                    <h5>Para contactarse con nosotros puede hacerlo por medio del correo electronico, llamarnos a nuestro número de teléfono con la extensión brindada o si gusta puede hacerlo en nuestra oficina cuya dirección exacta está indicada en esta sección. </h5>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="Home" asp-action="Index">Gestión Ambiental</a></li>
+                <li>Contacto</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d125711.73084623035!2d-85.417878!3d10.058746!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb2000651b89c1e5b!2sMunicipalidad%20de%20Hojancha!5e0!3m2!1ses!2sbg!4v1602986960202!5m2!1ses!2sbg" width="1100" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+
+             <div class="row mt-5">
+
+                <div class="col-lg-4" data-aos="fade-right">
+                    <div class="info">
+                        <div class="address">
+                            <i class="icofont-google-map"></i>
+                            <h4>Location:</h4>
+                            <p>Costado Norte del Parque</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="icofont-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>gestionambiental@munihojancha.com</p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="icofont-phone"></i>
+                            <h4>Call:</h4>
+                            <p>+506 2659 9116 Ext: 223</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
+
+                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <div class="form-row">
+                            <div class="col-md-6 form-group">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Nombre Completo" data-rule="minlen:4" data-msg="Ingrese al menos 4 caracteres" />
+                                <div class="validate"></div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Correo Electrónico" data-rule="email" data-msg="Por favor introduzca una dirección de correo electrónico válida" />
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Ingrese al menos 8 caracteres de asunto" />
+                            <div class="validate"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Por favor escribe algo para nosotras" placeholder="Mensaje"></textarea>
+                            <div class="validate"></div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="loading">Cargando</div>
+                            <div class="error-message">Error al enviar mensaje</div>
+                            <div class="sent-message">Tu mensaje ha sido enviado. ¡Gracias!</div>
+                        </div>
+                        <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->

@@ -1,0 +1,165 @@
+﻿@model SYGESTMunicipal.Areas.OFGA.Models.PersonOFGA
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+}
+
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Editar Registro de Persona</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="PersonOFGA" asp-action="Index">Registro de Persona</a></li>
+                <li>Editar</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+                Editar
+            </h3>
+        </div>
+    </div>
+    <br />
+    <!-- ======= About Section ======= -->
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="contact-wrap w-100 p-md-5 p-4">
+                <form method="post" asp-action="Edit">
+                    <div class="backgroundWhite">
+                         <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="PersonOFGAId" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="PersonOFGAId" class="form-control" />
+                            </div>
+                            <span asp-validation-for="PersonOFGAId" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="Name" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="Name" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Name" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="LastName1" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="LastName1" class="form-control" />
+                            </div>
+                            <span asp-validation-for="LastName1" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="LastName2" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="LastName2" class="form-control" />
+                            </div>
+                            <span asp-validation-for="LastName2" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="Address" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-md-9 col-lg-9">
+                                <textarea asp-for="Address" rows="4" cols="50"
+                                          class="form-control"> </textarea>
+                            </div>
+                            <span asp-validation-for="Address" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="Province" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="Province" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Province" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="Canton" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="Canton" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Canton" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="District" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="District" class="form-control" />
+                            </div>
+                            <span asp-validation-for="District" class=" text-danger"></span>
+                        </div>
+
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="TelephoneNumber" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="TelephoneNumber" class="form-control" />
+                            </div>
+                            <span asp-validation-for="TelephoneNumber" class=" text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="CellphoneNumber" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="CellphoneNumber" class="form-control" />
+                            </div>
+                            <span asp-validation-for="CellphoneNumber" class=" text-danger"></span>
+                        </div>
+
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="Email" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="Email" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Email" class=" text-danger"></span>
+                        </div>
+                        <div class="form-grouprow">
+                            <div class="col-5 offset-2">
+                                <partial name="_EditAndBackToListButtonString" model="Model.PersonOFGAId" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+                
+            </div>
+        </div>
+        </div>
+</main>

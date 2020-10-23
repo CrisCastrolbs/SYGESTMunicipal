@@ -1,0 +1,189 @@
+﻿@model SYGESTMunicipal.Areas.PATENTES.Models.Establishment
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaCIIU;
+    List<SelectListItem> Lista1 = ViewBag.ListaApplicant;
+    List<SelectListItem> Lista2 = ViewBag.ListaEstablishmentType;
+    List<SelectListItem> Lista3 = ViewBag.ListaActivityType;
+}
+<br />
+<h2 class="text-info" Editar un Establecimiento></h2>
+<br />
+<form asp-action="Edit" asp-controller="Establishment" method="post" id="viewEditar">
+    <div class="container-fluid">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @*@<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        @*Id*@
+        @*<div class=" form-group row">
+                <div class=" col-2">
+                    <label asp-for="Id" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Id" class="form-control" />
+                </div>
+                <span asp-validation-for="Id" class=" text-danger"></span>
+            </div>*@
+        @*Name*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class=" text-danger"></span>
+        </div>
+        @*CIIU*@
+        <div class="form-group row">
+            <div class="col-md-2 col-lg-2">
+                <label asp-for="CIIUId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <select asp-for="CIIUId" class="form-control"
+                        asp-items="@Lista"></select>
+            </div>
+            <span asp-validation-for="CIIUId" class="text-danger"></span>
+        </div>
+        @*Description*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="Description" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Description" class="form-control" />
+            </div>
+            <span asp-validation-for="Description" class=" text-danger"></span>
+        </div>
+        @*OtherActivities*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="OtherActivities" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="OtherActivities" class="form-control" />
+            </div>
+            <span asp-validation-for="OtherActivities" class=" text-danger"></span>
+        </div>
+        @*NºFinca*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="NFarm" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="NFarm" class="form-control" />
+            </div>
+            <span asp-validation-for="NFarm" class=" text-danger"></span>
+        </div>
+        @*DesingNumber*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="DesignNum" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="DesignNum" class="form-control" />
+            </div>
+            <span asp-validation-for="DesignNum" class=" text-danger"></span>
+        </div>
+        @*Workings Hours*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="WorkingHours" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="WorkingHours" class="form-control" />
+            </div>
+            <span asp-validation-for="WorkingHours" class=" text-danger"></span>
+        </div>
+        @*Wmen*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="WMen" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="WMen" class="form-control" />
+            </div>
+            <span asp-validation-for="WMen" class=" text-danger"></span>
+        </div>
+        @*WWOmen*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="WWomen" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="WWomen" class="form-control" />
+            </div>
+            <span asp-validation-for="WWomen" class=" text-danger"></span>
+        </div>
+
+        @*Applicant*@
+        <div class="form-group row">
+            <div class="col-md-2 col-lg-2">
+                <label asp-for="ApplicantId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <select asp-for="ApplicantId" class="form-control"
+                        asp-items="@Lista1"></select>
+            </div>
+            <span asp-validation-for="ApplicantId" class="text-danger"></span>
+        </div>
+        @*WebPage*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="WebPage" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="WebPage" class="form-control" />
+            </div>
+            <span asp-validation-for="WebPage" class=" text-danger"></span>
+        </div>
+        @*Skilled workers*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="SkilledWorkers" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="SkilledWorkers" class="form-control" />
+            </div>
+            <span asp-validation-for="SkilledWorkers" class=" text-danger"></span>
+        </div>
+        @*Unskilled workers*@
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="UnskilledWorkers" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="UnskilledWorkers" class="form-control" />
+            </div>
+            <span asp-validation-for="UnskilledWorkers" class=" text-danger"></span>
+        </div>
+        @*EstablishmentType*@
+        <div class="form-group row">
+            <div class="col-md-2 col-lg-2">
+                <label asp-for="EstablishmentTypeId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <select asp-for="EstablishmentTypeId" class="form-control"
+                        asp-items="@Lista2"></select>
+            </div>
+            <span asp-validation-for="EstablishmentTypeId" class="text-danger"></span>
+        </div>
+        @*Applicant*@
+        <div class="form-group row">
+            <div class="col-md-2 col-lg-2">
+                <label asp-for="ActivityTypeId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <select asp-for="ActivityTypeId" class="form-control"
+                        asp-items="@Lista3"></select>
+            </div>
+            <span asp-validation-for="ActivityTypeId" class="text-danger"></span>
+        </div>
+        @*End Create Register Date Field*@
+        <div class=" form-group row">
+            <div class=" col-5 offset-2">
+                <partial name="_EditAndBackToListButton" model="Model.Id" />
+            </div>
+        </div>
+    </div>
+</form>

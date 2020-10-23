@@ -1,0 +1,213 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-SYGESTMunicipal-FBE551EF-F089-42A3-AD68-C9262574FB67</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20201012205716_AddPersonaOFIMToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201012205716_AddPersonaOFIMToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201012205845_AddPersonaOFIMToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201012205845_AddPersonaOFIMToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201012210409_AddPersonaOFIMToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201012210409_AddPersonaOFIMToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201012210919_AddPersonaOFIMToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201012210919_AddPersonaOFIMToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201012221436_AddConsultaToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201012221436_AddConsultaToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201014213228_AddConsultaToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20201014213228_AddConsultaToDatabase.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="5.3.2" />
+    <PackageReference Include="itext7" Version="7.1.12" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Home\Data\" />
+    <Folder Include="Areas\Home\Models\" />
+    <Folder Include="Areas\OFGA\Data\" />
+    <Folder Include="Areas\OFIM\Data\" />
+    <Folder Include="Areas\PATENTES\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\OFGA\Views\Complaint\Create.cshtml" />
+    <None Include="Areas\OFGA\Views\Complaint\Delete.cshtml" />
+    <None Include="Areas\OFGA\Views\Complaint\Details.cshtml" />
+    <None Include="Areas\OFGA\Views\Complaint\Edit.cshtml" />
+    <None Include="Areas\OFGA\Views\Complaint\Index.cshtml" />
+    <None Include="Areas\OFGA\Views\Materials\Create.cshtml" />
+    <None Include="Areas\OFGA\Views\Materials\Delete.cshtml" />
+    <None Include="Areas\OFGA\Views\Materials\Details.cshtml" />
+    <None Include="Areas\OFGA\Views\Materials\Edit.cshtml" />
+    <None Include="Areas\OFGA\Views\Materials\Index.cshtml" />
+    <None Include="Areas\OFGA\Views\MaterialType\Create.cshtml" />
+    <None Include="Areas\OFGA\Views\MaterialType\Delete.cshtml" />
+    <None Include="Areas\OFGA\Views\MaterialType\Details.cshtml" />
+    <None Include="Areas\OFGA\Views\MaterialType\Edit.cshtml" />
+    <None Include="Areas\OFGA\Views\MaterialType\Index.cshtml" />
+    <None Include="Areas\OFGA\Views\PersonOFGA\Create.cshtml" />
+    <None Include="Areas\OFGA\Views\PersonOFGA\Details.cshtml" />
+    <None Include="Areas\OFGA\Views\PersonOFGA\Edit.cshtml" />
+    <None Include="Areas\OFGA\Views\PersonOFGA\Index.cshtml" />
+    <None Include="Areas\OFGA\Views\RecoverableMaterialRecovery\Create.cshtml" />
+    <None Include="Areas\OFGA\Views\RecoverableMaterialRecovery\Delete.cshtml" />
+    <None Include="Areas\OFGA\Views\RecoverableMaterialRecovery\Details.cshtml" />
+    <None Include="Areas\OFGA\Views\RecoverableMaterialRecovery\Edit.cshtml" />
+    <None Include="Areas\OFGA\Views\RecoverableMaterialRecovery\Index.cshtml" />
+    <None Include="Areas\OFGA\Views\SolidWaste\Create.cshtml" />
+    <None Include="Areas\OFGA\Views\SolidWaste\Delete.cshtml" />
+    <None Include="Areas\OFGA\Views\SolidWaste\Details.cshtml" />
+    <None Include="Areas\OFGA\Views\SolidWaste\Edit.cshtml" />
+    <None Include="Areas\OFGA\Views\SolidWaste\Index.cshtml" />
+    <None Include="Areas\OFGA\Views\Talks\Create.cshtml" />
+    <None Include="Areas\OFGA\Views\Talks\Delete.cshtml" />
+    <None Include="Areas\OFGA\Views\Talks\Details.cshtml" />
+    <None Include="Areas\OFGA\Views\Talks\Edit.cshtml" />
+    <None Include="Areas\OFGA\Views\Talks\Index.cshtml" />
+    <None Include="wwwroot\fonts\.DS_Store" />
+    <None Include="wwwroot\fonts\flaticon\.DS_Store" />
+    <None Include="wwwroot\fonts\flaticon\font\.DS_Store" />
+    <None Include="wwwroot\fonts\flaticon\font\Flaticon.svg" />
+    <None Include="wwwroot\fonts\flaticon\font\Flaticon.woff2" />
+    <None Include="wwwroot\fonts\flaticon\font\_flaticon.scss" />
+    <None Include="wwwroot\fonts\flaticon\license\.DS_Store" />
+    <None Include="wwwroot\fonts\flaticon\license\license.pdf" />
+    <None Include="wwwroot\fonts\icomoon\icomoon.svg" />
+    <None Include="wwwroot\fonts\ionicons\.DS_Store" />
+    <None Include="wwwroot\fonts\ionicons\css\_ionicons.scss" />
+    <None Include="wwwroot\fonts\ionicons\fonts\.DS_Store" />
+    <None Include="wwwroot\fonts\ionicons\fonts\ionicons.svg" />
+    <None Include="wwwroot\fonts\ionicons\fonts\ionicons.woff2" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\scss\.DS_Store" />
+    <None Include="wwwroot\scss\boostrap\.DS_Store" />
+    <None Include="wwwroot\scss\boostrap\bootstrap-grid.scss" />
+    <None Include="wwwroot\scss\boostrap\bootstrap-reboot.scss" />
+    <None Include="wwwroot\scss\boostrap\bootstrap.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_alert.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_background-variant.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_badge.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_border-radius.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_box-shadow.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_breakpoints.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_buttons.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_caret.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_clearfix.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_float.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_forms.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_gradients.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_grid-framework.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_grid.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_hover.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_image.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_list-group.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_lists.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_nav-divider.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_pagination.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_reset-text.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_resize.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_screen-reader.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_size.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_table-row.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_text-emphasis.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_text-hide.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_text-truncate.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_transition.scss" />
+    <None Include="wwwroot\scss\boostrap\mixins\_visibility.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_align.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_background.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_borders.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_clearfix.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_display.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_embed.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_flex.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_float.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_overflow.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_position.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_screenreaders.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_shadows.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_sizing.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_spacing.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_text.scss" />
+    <None Include="wwwroot\scss\boostrap\utilities\_visibility.scss" />
+    <None Include="wwwroot\scss\boostrap\_alert.scss" />
+    <None Include="wwwroot\scss\boostrap\_badge.scss" />
+    <None Include="wwwroot\scss\boostrap\_breadcrumb.scss" />
+    <None Include="wwwroot\scss\boostrap\_button-group.scss" />
+    <None Include="wwwroot\scss\boostrap\_buttons.scss" />
+    <None Include="wwwroot\scss\boostrap\_card.scss" />
+    <None Include="wwwroot\scss\boostrap\_carousel.scss" />
+    <None Include="wwwroot\scss\boostrap\_close.scss" />
+    <None Include="wwwroot\scss\boostrap\_code.scss" />
+    <None Include="wwwroot\scss\boostrap\_custom-forms.scss" />
+    <None Include="wwwroot\scss\boostrap\_dropdown.scss" />
+    <None Include="wwwroot\scss\boostrap\_forms.scss" />
+    <None Include="wwwroot\scss\boostrap\_functions.scss" />
+    <None Include="wwwroot\scss\boostrap\_grid.scss" />
+    <None Include="wwwroot\scss\boostrap\_images.scss" />
+    <None Include="wwwroot\scss\boostrap\_input-group.scss" />
+    <None Include="wwwroot\scss\boostrap\_jumbotron.scss" />
+    <None Include="wwwroot\scss\boostrap\_list-group.scss" />
+    <None Include="wwwroot\scss\boostrap\_media.scss" />
+    <None Include="wwwroot\scss\boostrap\_mixins.scss" />
+    <None Include="wwwroot\scss\boostrap\_modal.scss" />
+    <None Include="wwwroot\scss\boostrap\_nav.scss" />
+    <None Include="wwwroot\scss\boostrap\_navbar.scss" />
+    <None Include="wwwroot\scss\boostrap\_pagination.scss" />
+    <None Include="wwwroot\scss\boostrap\_popover.scss" />
+    <None Include="wwwroot\scss\boostrap\_print.scss" />
+    <None Include="wwwroot\scss\boostrap\_progress.scss" />
+    <None Include="wwwroot\scss\boostrap\_reboot.scss" />
+    <None Include="wwwroot\scss\boostrap\_root.scss" />
+    <None Include="wwwroot\scss\boostrap\_spinners.scss" />
+    <None Include="wwwroot\scss\boostrap\_tables.scss" />
+    <None Include="wwwroot\scss\boostrap\_toasts.scss" />
+    <None Include="wwwroot\scss\boostrap\_tooltip.scss" />
+    <None Include="wwwroot\scss\boostrap\_transitions.scss" />
+    <None Include="wwwroot\scss\boostrap\_type.scss" />
+    <None Include="wwwroot\scss\boostrap\_utilities.scss" />
+    <None Include="wwwroot\scss\boostrap\_variables.scss" />
+    <None Include="wwwroot\scss\style.scss" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://batect.dev/configSchema.json" /></VisualStudio></ProjectExtensions>
+
+</Project>

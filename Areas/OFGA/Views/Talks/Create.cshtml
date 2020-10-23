@@ -1,0 +1,117 @@
+﻿@model SYGESTMunicipal.Areas.OFGA.Models.Talks
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+}
+
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Crear charla</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="Talks" asp-action="Index">Lista de Charlas</a></li>
+                <li>Charlas</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+               Agregar
+            </h3>
+        </div>
+    </div>
+  <!-- ======= About Section ======= -->
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="contact-wrap w-100 p-md-5 p-4">
+                <h2 class="text-info">Nuevo Registro</h2>
+                <br>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="backgroundWhite">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="Name" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="Name" class="form-control" /> @*agregar datos*@
+                            </div>
+                            <span asp-validation-for="Name" class=" text-danger"></span>
+                        </div>
+
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for="Description" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="Description" class="form-control" /> @*agregar datos*@
+                            </div>
+                            <span asp-validation-for="Description" class=" text-danger"></span>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class=" col-2">
+                                <h5><label>Fecha:</label></h5>
+</div>
+                            <div class="col-8">
+                                <input type="date" asp-for="Date" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+
+                        <div class=" form-group row">
+                            <div class=" col-2">
+                                <h5><label asp-for=" Picture" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-8">
+                                <input type="file" id="projectImage" name="files"
+                                       multiple class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <h5><label asp-for="IsActive" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input type="checkbox" asp-for="IsActive" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-5 offset-4">
+                                <partial name="_CreateAndBackToListButton" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+</main>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+
+
+
+    <script src="~/js/DPickerSpanish.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+        });</script>
+}

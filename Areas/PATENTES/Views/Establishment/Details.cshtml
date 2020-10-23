@@ -1,0 +1,192 @@
+﻿@model SYGESTMunicipal.Areas.PATENTES.Models.Establishment
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaCIIU;
+    List<SelectListItem> Lista1 = ViewBag.ListaApplicant;
+    List<SelectListItem> Lista2 = ViewBag.ListaEstablishmentType;
+    List<SelectListItem> Lista3 = ViewBag.ListaActivityType;
+}
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <h3 class="text-light"
+            style="text-align:center;background-color:darkslategray;">
+            Detalles del establecimiento
+        </h3>
+    </div>
+</div>
+<br />
+<form asp-action="Details" asp-controller="Establishment" method="post">
+    <div class="container-fluid">
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Id" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="Id" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="Name" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        @*4*@
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="CIIU" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <select asp-for="CIIUId" readonly="readonly"
+                        class="form-control"
+                        asp-items="@Lista"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="Description" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="Description" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="OtherActivities" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <textarea asp-for="OtherActivities" rows="4" cols="50"
+                          class="form-control" readonly="readonly"> </textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="NFarm" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="NFarm" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="DesignNum" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="DesignNum" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="WorkingHours" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="WorkingHours" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="WMen" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="WMen" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="WWomen" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="WWomen" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        @*3*@
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="ApplicantId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <select asp-for="ApplicantId" readonly="readonly"
+                        class="form-control"
+                        asp-items="@Lista1"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="WebPage" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="WebPage" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="SkilledWorkers" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="SkilledWorkers" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="UnskilledWorkers" readonly="readonly"
+                       class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <input asp-for="UnskilledWorkers" readonly="readonly"
+                       class="form-control" />
+            </div>
+        </div>
+        @*1*@
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="EstablishmentTypeId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <select asp-for="EstablishmentTypeId" readonly="readonly"
+                        class="form-control"
+                        asp-items="@Lista2"></select>
+            </div>
+        </div>
+        @*2*@
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="ActivityTypeId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6">
+                <select asp-for="ActivityTypeId" readonly="readonly"
+                        class="form-control"
+                        asp-items="@Lista3"></select>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-8 colo-lg-4 text-right">
+                <a asp-action="Index" class="btn btn-info"
+                   style="width: 50%;">
+                    Regresar
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

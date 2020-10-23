@@ -1,0 +1,33 @@
+﻿@model SYGESTMunicipal.Areas.PATENTES.Models.Establishment
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
+}
+<br />
+<h2 class="text-info">Eliminar a este establecimiento?</h2>
+<br />
+<form method="post" asp-action="Delete">
+    <div class="border backgroundWhite">
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Id" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Id" class=" form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class=" form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackToListButton2" model="Model.Id" />
+            </div>
+        </div>
+    </div>
+</form>

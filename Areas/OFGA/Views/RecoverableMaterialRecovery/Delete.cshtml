@@ -1,0 +1,57 @@
+﻿@model SYGESTMunicipal.Areas.OFGA.Models.RecoverableMaterialRecovery
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+}
+
+
+
+<br />
+<h2 class="text-info">Eliminar Registro</h2>
+<br />
+<form method="post" asp-action="Delete">
+    <div class="border backgroundWhite">
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Id" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Id" class=" form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Weight" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Weight" class=" form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="PlaceName" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PlaceName" class=" form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="EntryDate" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="EntryDate" readonly type="datetime" class=" form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackToListButton" model="Model.Id" />
+            </div>
+        </div>
+    </div>
+</form>
+
+

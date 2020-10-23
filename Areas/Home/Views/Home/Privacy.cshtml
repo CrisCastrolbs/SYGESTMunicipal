@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Privacy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ESCRIBIR INFORMACIÓN DE POLÍTICA DE PRIVACIDAD DE LOS DATOS</h1>
+
+<div class="hero-wrap js-fullheight" style="background-image: url('~/images/Principal-1.jpg');" data-stellar-background-ratio="0.5">
+
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+            <div class="col-md-6 ftco-animate">
+                <h2 class="subheading" style="color:#8c552e;text-shadow: 2px 2px 2px #000">Bienvenido a SyGest Municipal</h2>
+                <h1 style="text-shadow: 2px 2px 2px #333">Sistema de Gestión de Servicios Municipales</h1>
+
+                <p class="mb-8" style="color:white;text-shadow: 2px 2px 5px #000">
+                    Gestión de Servicios de Patentes, Oficina de Gestión Ambiental, Oficina de La Mujer...
+                </p>
+
+                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Leer Más<span class="ion-ios-arrow-forward"></span></a></p>
+            </div>
+        </div>
+    </div>
+</div>
+@*  *@
+@* Sección 1 *@
+<section class="ftco-section ftco-no-pt bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 py-5 order-md-last">
+                <div class="heading-section ftco-animate">
+                    <span class="subheading">Servicios</span>
+                    <h2 class="mb-4">Servicios Municipales</h2>
+                    <p>SYGEST Municipal es una plataforma en desarrollo, que tiene por objetivo el manejo de los servicios municipales de forma virtual</p>
+                    <p><a href="services.html" class="btn btn-primary py-3 px-4">Get a Quote</a></p>
+                </div>
+            </div>
+            <div class="col-lg-9 services-wrap px-4 pt-5">
+                <div class="row pt-md-3">
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="services text-center">
+                            <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="flaticon-fence"></span>
+                            </div>
+                            <div class="text">
+                                <h3>Oficina de Patentes</h3>
+                                <p>
+                                    A este departamento le corresponde la regularización de la actividad económica del Cantón de Hojancha según las
+                                    diferentes Licencias de Funcionamiento y de Impuesto de Patentes conforme la normativa vigente..
+                                </p>
+                            </div>
+                            <a class="btn-custom d-flex align-items-center justify-content-center" asp-area="PATENTES" asp-controller="Home" asp-action="Index"><span class="ion-ios-arrow-round-forward"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="services text-center">
+                            <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="flaticon-lawn-mower"></span>
+                            </div>
+                            <div class="text">
+                                <h3>Oficina de Gestión Ambiental</h3>
+                                <p>
+                                    Supervisar el eficiente funcionamiento de los servicios públicos que están relacionados con el ambiente, como lo son,
+                                    la recolección de basura, limpieza de vías, calidad del agua y una adecuada administración del tratamiento de los desechos sólidos...
+                                </p>
+                            </div>
+                            <a class="btn-custom d-flex align-items-center justify-content-center" asp-area="OFGA" asp-controller="Home" asp-action="Index"><span class="ion-ios-arrow-round-forward"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="services text-center">
+                            <div class="icon d-flex justify-content-center align-items-center">
+                                <span class="flaticon-natural-resources"></span>
+                            </div>
+                            <div class="text">
+                                <h3>Oficina de La Mujer</h3>
+                                <p>
+                                    Promocionar los derechos de las mujeres, Coordinación interinstitucional y comunitaria para la atención y la promoción
+                                    de derechos Ofrecer una atención especializada individualmente y grupal a las mujeres afectadas por violencia intrafamiliar...
+                                </p>
+                            </div>
+                            <a class="btn-custom d-flex align-items-center justify-content-center" asp-area="OFIM" asp-controller="Home" asp-action="Index"><span class="ion-ios-arrow-round-forward"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

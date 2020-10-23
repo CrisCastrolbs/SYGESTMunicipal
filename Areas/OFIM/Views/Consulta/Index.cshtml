@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Consulta>
+@using SYGESTMunicipal.Areas.OFIM.Models
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">TipoConsulta Item List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <partial name="_CreateButtonPartial" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-right">
+            <partial name="_Filter" />
+        </div>
+    </div>
+    <br />
+
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table id="Tabla" class="table table-responsive-sm">
+                <tr class="table-secondary">
+                    <th>@Html.DisplayNameFor(m => m.Motivo)</th>
+                    <th>@Html.DisplayNameFor(m => m.Fecha)</th>
+                    <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
+                    <th>@Html.DisplayNameFor(m => m.TipoConsultaId)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.Motivo)</td>
+                        <td>@Html.DisplayFor(m => item.Fecha)</td>
+                        <td>@Html.DisplayFor(m => item.PersonaOFIM.PersonName)</td>
+                        <td>@Html.DisplayFor(m => item.TipoConsulta.NombreTipoConsulta)</td>
+                        <td>
+                            <partial name="_TableButtonPartial" model="item.ConsultaId" />
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <h3>No existen consultas...</h3>
+        }
+    </div>
+</div>

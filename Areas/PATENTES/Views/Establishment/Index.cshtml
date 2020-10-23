@@ -1,0 +1,84 @@
+﻿@model IEnumerable<EstablishmentViewModel>
+@using SYGESTMunicipal.Areas.PATENTES.Models.ViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-th"></i>Establacimiento</h3>
+                <ol class="breadcrumb">
+
+                    <li class="nav-item">
+                        <i class="fa fa-home"></i>
+                        <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">Inicio</a>
+                    </li>
+                    <li class="nav-item active"><i class="fa fa-th"></i>Establecimiento</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="border backgroundWhite">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h2 class="text-info">Lista de Establecimientos</h2>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <partial name="_CreateButtonPartial" />
+                                </div>
+                            </div>
+                            @*//Vista del filtro*@
+                            <div class="row">
+                                <div class="col-12 text-right">
+                                    <partial name="_Filter" />
+                                </div>
+                            </div>
+                            <div>
+                                @if (Model.Count() > 0)
+                                {
+                                    <table class="table table-striped border">
+                                        <tr class="table-secondary">
+                                            <th>@Html.DisplayNameFor(m => m.Id)</th>
+                                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                            <th>@Html.DisplayNameFor(m => m.CIIUName)</th>
+                                            <th>@Html.DisplayNameFor(m => m.Description)</th>
+                                            <th>@Html.DisplayNameFor(m => m.WorkingHours)</th>
+                                            <th>@Html.DisplayNameFor(m => m.EstablishmentTypeName)</th>
+                                        </tr>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(m => item.Id)</td>
+                                                <td>@Html.DisplayFor(m => item.Name)</td>
+                                                <td>@Html.DisplayFor(m => item.CIIUName)</td>
+                                                <td>@Html.DisplayFor(m => item.Description)</td>
+                                                <td>@Html.DisplayFor(m => item.WorkingHours)</td>
+                                                <td>@Html.DisplayFor(m => item.EstablishmentTypeName)</td>
+                                                <td>
+                                                    <partial name="_TableButtonPartial2" model="item.Id" />
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                                else
+                                {
+                                    <h3 style="color:red;">No existen establecimientos registrados...</h3>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page end-->
+    </section>
+</section>
+<!--main content end-->

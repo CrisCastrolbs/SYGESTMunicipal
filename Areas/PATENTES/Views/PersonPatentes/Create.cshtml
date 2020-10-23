@@ -1,0 +1,225 @@
+﻿@model SYGESTMunicipal.Areas.PATENTES.Models.PersonPatentes
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
+}
+
+
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header"><i class="fa fa-files-o"></i> Formulario de Persona Patente</h3>
+                <ol class="breadcrumb">
+
+                    <li class="nav-item">
+                        <i class="fa fa-th"></i>
+                        <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Index">Persona Patentes</a>
+                    </li>
+                    <li><i class="fa fa-files-o"></i>Formulario</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Form validations -->
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Formulario
+                    </header>
+                    <div class="panel-body">
+                        <div class="form">
+
+                            <h2 class="text-info">Crear una nueva persona patentes</h2>
+                            <br />
+                            <form method="post" asp-action="Create">
+                                <div class="border backgroundWhite">
+                                    <div asp-validation.summary="ModelOnly" class="text-danger"></div>
+
+                                    @*Cedula*@
+                                    <div class=" form-group row">
+                                        <label asp-for="PersonId" class="col-form-label col-lg-2">Cédula o Pasaporte<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="PersonId" class="form-control" minlength="5" type="text" required />
+                                        </div>
+                                        <span asp-validation-for="PersonId" class=" text-danger"></span>
+                                    </div>
+
+                                    @*Nombre*@
+                                    <div class=" form-group row">
+                                        <label asp-for="Name" class="col-form-label col-lg-2">Nombre<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="Name" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="Name" class=" text-danger"></span>
+                                    </div>
+                                    @*LastName1*@
+                                    <div class=" form-group row">
+                                        <label asp-for="LastName1" class="col-form-label col-lg-2">Primer Apellido<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="LastName1" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="LastName1" class=" text-danger"></span>
+                                    </div>
+                                    @*LastName2*@
+                                    <div class=" form-group row">
+                                        <label asp-for="LastName2" class="col-form-label col-lg-2">Segundo Apellido<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="LastName2" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="LastName2" class=" text-danger"></span>
+                                    </div>
+                                    @*Address*@
+                                    <div class=" form-group row">
+                                        <label asp-for="Address" class="col-form-label col-lg-2">Dirección<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="Address" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="Address" class=" text-danger"></span>
+                                    </div>
+                                    @*Province*@
+                                    <div class=" form-group row">
+                                        <label asp-for="Province" class="col-form-label col-lg-2">Provincia<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="Province" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="Province" class=" text-danger"></span>
+                                    </div>
+                                    @*Canton*@
+                                    <div class=" form-group row">
+                                        <label asp-for="Canton" class="col-form-label col-lg-2">Cantón<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="Canton" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="Canton" class=" text-danger"></span>
+                                    </div>
+                                    @*Distric*@
+                                    <div class=" form-group row">
+                                        <label asp-for="District" class="col-form-label col-lg-2">Distrito<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="District" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="District" class=" text-danger"></span>
+                                    </div>
+                                    @*Neighborhood*@
+                                    <div class=" form-group row">
+                                        <label asp-for="Neighborhood" class="col-form-label col-lg-2">Barrio<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="Neighborhood" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="Neighborhood" class=" text-danger"></span>
+                                    </div>
+                                    @*TelephoneNumber*@
+                                    <div class=" form-group row">
+                                        <label asp-for="TelephoneNumber" class="col-form-label col-lg-2">Número de Teléfono<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="TelephoneNumber" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="TelephoneNumber" class=" text-danger"></span>
+                                    </div>
+                                    @*CellphoneNumber*@
+                                    <div class=" form-group row">
+                                        <label asp-for="CellphoneNumber" class="col-form-label col-lg-2">Número de Celular<span class="required">*</span></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="CellphoneNumber" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="CellphoneNumber" class=" text-danger"></span>
+                                    </div>
+                                    @*Fax*@
+                                    <div class=" form-group row">
+                                        <label asp-for="Fax" class="col-form-label col-lg-2">Número de Fax</label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="Fax" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="Fax" class=" text-danger"></span>
+                                    </div>
+                                    @*Email*@
+                                    <div class=" form-group row">
+                                        <label asp-for="Email" class="col-form-label col-lg-2">Correo</label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="Email" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="Email" class=" text-danger"></span>
+                                    </div>
+
+
+                                    <br>
+                                    <h5 class="text-black-50">Persona Fisica</h5>
+                                    <br>
+                                    @*Name fisic*@
+                                    <div class=" form-group row">
+                                        <label asp-for="NameF" class="col-form-label col-lg-2"></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="NameF" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="NameF" class=" text-danger"></span>
+                                    </div>
+                                    @*LastName1f*@
+                                    <div class=" form-group row">
+                                        <label asp-for="LastName1F" class="col-form-label col-lg-2"></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="LastName1F" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="LastName1F" class=" text-danger"></span>
+                                    </div>
+                                    @*LastName2f*@
+                                    <div class=" form-group row">
+                                        <label asp-for="LastName2F" class="col-form-label col-lg-2"></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="LastName2F" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="LastName2F" class=" text-danger"></span>
+                                    </div>
+                                    @*FisicId*@
+                                    <div class=" form-group row">
+                                        <label asp-for="FisicID" class="col-form-label col-lg-2"></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="FisicID" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="FisicID" class=" text-danger"></span>
+                                    </div>
+                                    <br>
+                                    <h5 class="text-black-50">Persona Juridica</h5>
+                                    <br>
+                                    @*NameJ*@
+                                    <div class=" form-group row">
+                                        <label asp-for="NameJ" class="col-form-label col-lg-2"></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="NameJ" class="form-control" minlength="5" type="text" />
+                                        </div>
+                                        <span asp-validation-for="NameJ" class=" text-danger"></span>
+                                    </div>
+                                    @*NameJs*@
+                                    @*<div class=" form-group row">
+                                            <label asp-for="NameJS" class="control-label col-lg-2"></label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="NameJS" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="NameJS" class=" text-danger"></span>
+                                        </div>*@
+                                    @*IdJuridic*@
+                                    <div class=" form-group row">
+                                        <label asp-for="JuridicId" class="col-form-label col-lg-2"></label>
+                                        <div class="col-lg-9">
+                                            <input asp-for="JuridicId" class="form-control" />
+                                        </div>
+                                        <span asp-validation-for="JuridicId" class=" text-danger"></span>
+                                    </div>
+                                    <div class=" form-group row">
+                                        <div class="col-lg-offset-3 col-lg-6">
+                                            <partial name="_CreateAndBackToListButton" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page end-->
+    </section>
+</section>
+<!--main content end-->

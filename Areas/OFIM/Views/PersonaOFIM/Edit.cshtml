@@ -1,0 +1,255 @@
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.PersonaOFIM
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaEstadoCivil;
+    List<SelectListItem> Lista1 = ViewBag.ListaOcupacion;
+    List<SelectListItem> Lista2 = ViewBag.ListaNacionalidad;
+    List<SelectListItem> Lista3 = ViewBag.ListaNivelAcademico;
+    List<SelectListItem> Lista4 = ViewBag.ListaSeguro;
+}
+<br />
+<h2 class="text-info" Editar una Persona></h2>
+<br />
+<form asp-action="Edit" asp-controller="PersonaOFIM" method="post" id="viewEditar">
+    <div class="container-fluid">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class=" form-group row">
+            <div class=" col-2">
+                <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="PersonaOFIMId" class="form-control" />
+            </div>
+            <span asp-validation-for="PersonaOFIMId" class=" text-danger"></span>
+        </div>
+        @*Name*@
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nombre:</label>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <input asp-for="PersonName" class="form-control" />
+            </div>
+            <span asp-validation-for="PersonName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Primer Apellido:</label>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <input asp-for="LatName1" class="form-control" />
+            </div>
+            <span asp-validation-for="LatName1" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Segundo Apellido:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="LatName2" class="form-control" />
+            </div>
+            <span asp-validation-for="LatName2" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Dirección:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <textarea asp-for="Address" rows="4" cols="50"
+                          class="form-control" placeholder="Digite la dirección exacta aquí"> </textarea>
+            </div>
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Provincia:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Province" class="form-control" />
+            </div>
+            <span asp-validation-for="Province" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Cantón:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Canton" class="form-control" />
+            </div>
+            <span asp-validation-for="Canton" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Distrito:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="District" class="form-control" />
+            </div>
+            <span asp-validation-for="District" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Teléfono Fijo:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="TelephoneNumber" class="form-control" />
+            </div>
+            <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Teléfono Móvil:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="MobilePhoneNumber" class="form-control" />
+            </div>
+            <span asp-validation-for="MobilePhoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Email:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Sexo:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="Sex" class="form-control" />
+            </div>
+            <span asp-validation-for="Sex" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Fecha Nacimiento:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <input type="date" asp-for="DateBirth" class="form-control" />
+            </div>
+            <span asp-validation-for="DateBirth" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nombre Cónyuge:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="CoupleName" class="form-control" />
+            </div>
+            <span asp-validation-for="CoupleName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Cantidad Hijos:</label>
+            </div>
+            <div class="col-md-4  col-lg-4">
+                <input asp-for="ChildNumber" class="form-control" />
+            </div>
+            <span asp-validation-for="ChildNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Discapacidades:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <textarea asp-for="Disability" rows="4" cols="50"
+                          class="form-control" placeholder="Describa las discapacidades"> </textarea>
+            </div>
+            <span asp-validation-for="Disability" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Padecimientos:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <textarea asp-for="MedicalCondition" rows="4" cols="50"
+                          class="form-control" placeholder="Digite la dirección exacta aquí"> </textarea>
+            </div>
+            <span asp-validation-for="MedicalCondition" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Estado Civil:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="EstadoCivilId" class="form-control"
+                        asp-items="@Lista"></select>
+            </div>
+            <span asp-validation-for="EstadoCivilId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Ocupación:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="OcupacionId" class="form-control"
+                        asp-items="@Lista1"></select>
+            </div>
+            <span asp-validation-for="OcupacionId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nacionalidad:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="NacionalidadId" class="form-control"
+                        asp-items="@Lista2"></select>
+            </div>
+            <span asp-validation-for="NacionalidadId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Nivel Académico:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="NivelAcademicoId" class="form-control"
+                        asp-items="@Lista3"></select>
+            </div>
+            <span asp-validation-for="NivelAcademicoId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-4 col-lg-4 text-right">
+                <label>Seguro:</label>
+            </div>
+            <div class="col-md-4 col-lg-4 text-right">
+                <select asp-for="SeguroId" class="form-control"
+                        asp-items="@Lista4"></select>
+            </div>
+            <span asp-validation-for="SeguroId" class="text-danger"></span>
+        </div>
+
+        <br />
+        <br />
+
+        @*End Create Register Date Field*@
+        <div class=" form-group row">
+            <div class=" col-5 offset-2">
+                <partial name="_EditAndBackToListButtonString" model="Model.PersonaOFIMId" />
+            </div>
+        </div>
+    </div>
+</form>

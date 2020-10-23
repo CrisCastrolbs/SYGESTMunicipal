@@ -1,0 +1,75 @@
+﻿@model SYGESTMunicipal.Areas.OFGA.Models.MaterialType
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Detalles del Tipo de Material</h2>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="MaterialType" asp-action="Index">Lista de tipo de materiales</a></li>
+                <li>Detalles del Tipo de Material</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+                Detalles
+            </h3>
+        </div>
+    </div>
+    <br />
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="contact-wrap w-100 p-md-5 p-4">
+                <form method="post" asp-action="Details">
+                    <div class="backgroundWhite">
+                        @*La validación en esta accion no es necesaria, solo en editar o en nuevo*@
+                        @* <div asp-validation-summary="Mode1Only" class="text-danger"></div>*@
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <h5><label asp-for="MaterialTypeName" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="MaterialTypeName" readonly class="form-control" />
+
+                            </div>
+                            @* La validacion no es necesaria*@
+                            @*<span asp-validation-for="Name" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-2">
+                                <h5><label asp-for="Description" class="col-form-label"></label></h5>
+</div>
+                            <div class="col-9">
+                                <input asp-for="Description" readonly class="form-control" />
+
+                            </div>
+                            @* La validacion no es necesaria*@
+                            @*<span asp-validation-for="Name" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-5 offset-2">
+                                <partial name="_DetailsAndBackToListButton" model="Model.MaterialTypeId" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
