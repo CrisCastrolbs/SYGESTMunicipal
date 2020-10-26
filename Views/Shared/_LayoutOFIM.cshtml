@@ -37,17 +37,11 @@
                 <div class="row justify-content-between">
                     <div class="col-md-8 order-md-last">
                         <div class="row">
-
-
-
-                           
                                 <div class="col-md-6 text-center">
                                     <a class="navbar-brand" style="color:#8c552e" asp-area="" asp-controller="Home" asp-action="Index">
                                         SYGEST<span>Municipal</span>
                                     </a>
                                 </div>
-
-                            
                             <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
                                 <form action="#" class="searchform order-lg-last">
                                     <div class="form-group d-flex">
@@ -102,21 +96,13 @@
                 <div class="collapse navbar-collapse" id="ftco-nav">
 
                     <ul class="navbar-nav m-auto">
-
-                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
-                        {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                             </li>
-                        }
-
-                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
-                        {
+                       
                             <li class="nav-item active">
                                 <a class="nav-link" asp-area="OFIM" asp-controller="Home" asp-action="Index">OFIM</a>
                             </li>
-
-                        }
 
 
                         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
