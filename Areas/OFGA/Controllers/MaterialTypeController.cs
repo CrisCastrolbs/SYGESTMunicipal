@@ -69,7 +69,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int id)
         {
             MaterialType oMaterialType = _db.MaterialType
                 .Where(e => e.MaterialTypeId == id).First();
@@ -83,6 +83,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             {
                 if (!ModelState.IsValid)
                 {
+                   
                     return View(materialType);
                 }
                 else
@@ -95,6 +96,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             {
                 error = ex.Message;
             }
+
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Delete(int? id)
