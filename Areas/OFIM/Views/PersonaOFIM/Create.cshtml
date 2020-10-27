@@ -266,40 +266,9 @@
 
 
         <div class="form-group row">
-            <div class="col-md-4">
-                <input type="button" value="Agregar" id="btnAgregar"
-                       class="btn btn-success" style="width: 80%;"
-                       onclick="abrirModal()" />
-            </div>
-            <div class="col-md-4">
-                <a asp-action="Index" class="btn btn-success form-control"
-                   style="width: 100%;">Regresar a la lista</a>
+            <div class="col-5 offset-3">
+                <partial name="_CreateAndBackToListButton" />
             </div>
         </div>
     </div>
 </form>
-<script src="~/js/sweetalert2.js"></script>
-<script src="~/js/Utilitarios.js"></script>
-<script>
-    function abrirModal() {
-        verModal('Agregar persona', '¿Desea guardar la persona?').then((result) => {
-            if (result.value) {
-                var viewAgregar = document.getElementById("viewAgregar");
-                viewAgregar.submit();
-                Swal.fire(
-                    'Agregado!',
-                    'La persona fue agregada!.',
-                    'success'
-                )
-            }
-            else if (result.dismiss === Swal.DismissReason.cancel) {
-                Swal.fire(
-                    'Cancelado',
-                    'La persona no fue agregada!!!:)',
-                    'error'
-                )
-            }
-        })
-    }
-</script>
-
