@@ -13,7 +13,7 @@ using SYGESTMunicipal.Utility;
 namespace SYGESTMunicipal.Areas.OFGA.Controllers
 {
     [Area("OFGA")]
-    [Authorize(Roles = SD.ManagerUser)]
+    //[Authorize(Roles = SD.ManagerUser)]
  
     public class MaterialsController : Controller
     {
