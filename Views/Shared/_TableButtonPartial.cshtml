@@ -1,14 +1,19 @@
 ﻿@model int
+@using SYGESTMunicipal.Utility
 <td style="width:300px">
+
     <div class="btn-group" role="group">
-        <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model">
-            <i class="fas fa-edit"></i>
-        </a>
+        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA) || User.IsInRole(SD.CollManager) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.AdminOFIM))
+        {
+            <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model">
+                <i class="fas fa-edit"></i>
+            </a>
+        }
         <a class="btn btn-success text-white" asp-action="Details" asp-route-Id="@Model">
             <i class="fas fa-list-alt"></i>
         </a>
         @*<a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model">
-            <i class="fas fa-trash-alt"></i>
-        </a>*@
+                <i class="fas fa-trash-alt"></i>
+            </a>*@
     </div>
 </td>
