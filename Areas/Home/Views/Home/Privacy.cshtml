@@ -4,88 +4,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ESCRIBIR INFORMACIÓN DE POLÍTICA DE PRIVACIDAD DE LOS DATOS</h1>
 
-<div class="hero-wrap js-fullheight" style="background-image: url('~/images/Principal-1.jpg');" data-stellar-background-ratio="0.5">
-
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-            <div class="col-md-6 ftco-animate">
-                <h2 class="subheading" style="color:#8c552e;text-shadow: 2px 2px 2px #000">Bienvenido a SyGest Municipal</h2>
-                <h1 style="text-shadow: 2px 2px 2px #333">Sistema de Gestión de Servicios Municipales</h1>
-
-                <p class="mb-8" style="color:white;text-shadow: 2px 2px 5px #000">
-                    Gestión de Servicios de Patentes, Oficina de Gestión Ambiental, Oficina de La Mujer...
-                </p>
-
-                <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Leer Más<span class="ion-ios-arrow-forward"></span></a></p>
-            </div>
-        </div>
-    </div>
-</div>
-@*  *@
-@* Sección 1 *@
-<section class="ftco-section ftco-no-pt bg-white">
+<section class="ftco-section ftco-degree-bg">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 py-5 order-md-last">
-                <div class="heading-section ftco-animate">
-                    <span class="subheading">Servicios</span>
-                    <h2 class="mb-4">Servicios Municipales</h2>
-                    <p>SYGEST Municipal es una plataforma en desarrollo, que tiene por objetivo el manejo de los servicios municipales de forma virtual</p>
-                    <p><a href="services.html" class="btn btn-primary py-3 px-4">Get a Quote</a></p>
-                </div>
-            </div>
-            <div class="col-lg-9 services-wrap px-4 pt-5">
-                <div class="row pt-md-3">
-                    <div class="col-md-4 d-flex align-items-stretch">
-                        <div class="services text-center">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="flaticon-fence"></span>
-                            </div>
-                            <div class="text">
-                                <h3>Oficina de Patentes</h3>
-                                <p>
-                                    A este departamento le corresponde la regularización de la actividad económica del Cantón de Hojancha según las
-                                    diferentes Licencias de Funcionamiento y de Impuesto de Patentes conforme la normativa vigente..
-                                </p>
-                            </div>
-                            <a class="btn-custom d-flex align-items-center justify-content-center" asp-area="PATENTES" asp-controller="Home" asp-action="Index"><span class="ion-ios-arrow-round-forward"></span></a>
-                        </div>
+            <div class="col-lg-9">
+                <div class="wrapper">
+                    <div class="row mb-5">
+                        <br>
+                        <h2 class="mb-3">Política de Privacidad</h2>
+                        <h5>¿Cómo registrarse en el sitio web de la Municipalidad?</h5>
+                        <p>
+                            Cada usuario puede registrarse en nuestro sitio web a través de la página de
+                            <a class="item" asp-action="Register" asp-controller="Account" asp-area="Identity">
+                                Registrarse.
+                            </a>
+                            La información ofrecida por cada contribuyente o usuario, será utilizada para:
+                        </p>
+                        <p>
+                            Poder actualizar los datos del contribuyente o usuario. Este se deberá presentarse a la Municipalidad debidamente identificado para entregarle una clave
+                            o contraseña de acceso a los servicios virtuales que ofrece la página, esta clave o contraseña que se le entregará en la Municipalidad, al ingresar al sitio por primera vez, se le solicitará que la modifique para mayor seguridad.
+                        </p>
+                        <p>Esto anterior, ayudará a la funcionalidad de olvidé mi contraseña ya que, a través de esta funcionalidad, se le enviará una nueva clave o contraseña a su cuenta de correo electrónico registrada en la Municipalidad. Si este es su caso, dicha contraseña deberá ser modificada al ingresar nuevamente a la página web de la Municipalidad.</p>
+                        <p>Si el contribuyente o usuario no cuenta con un correo eletrónico para utilizar nuestros servicios virtuales, deberá presentarse a la Municipalidad identificado debidamente de forma presencial para entregarle una nueva clave o contraseña de acceso.</p>
+
+                        <h2 class="mb-3 mt-5">Recopilación de información personal</h2>
+                        <p>La información personal de cada contribuyente que sea incluida por medio de nuestra página web será tomada como información correcta y veraz, cualquier dato que no sea correcto será responsabilidad total del contribuyente.</p>
+                      
                     </div>
-                    <div class="col-md-4 d-flex align-items-stretch">
-                        <div class="services text-center">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="flaticon-lawn-mower"></span>
-                            </div>
-                            <div class="text">
-                                <h3>Oficina de Gestión Ambiental</h3>
-                                <p>
-                                    Supervisar el eficiente funcionamiento de los servicios públicos que están relacionados con el ambiente, como lo son,
-                                    la recolección de basura, limpieza de vías, calidad del agua y una adecuada administración del tratamiento de los desechos sólidos...
-                                </p>
-                            </div>
-                            <a class="btn-custom d-flex align-items-center justify-content-center" asp-area="OFGA" asp-controller="Home" asp-action="Index"><span class="ion-ios-arrow-round-forward"></span></a>
-                        </div>
+
+                    <div class="row mb-5">
+                        <h2 class="mb-3 mt-5">Uso de la información</h2>
+                        <p>La información recopilada por la Municipalidad en nuestra página web podrá ser utilizada para: Registrarlo como contribuyente, Actualizar sus datos ya existentes y Responder sus preguntas o sugerencias.</p>
+                    
                     </div>
-                    <div class="col-md-4 d-flex align-items-stretch">
-                        <div class="services text-center">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="flaticon-natural-resources"></span>
-                            </div>
-                            <div class="text">
-                                <h3>Oficina de La Mujer</h3>
-                                <p>
-                                    Promocionar los derechos de las mujeres, Coordinación interinstitucional y comunitaria para la atención y la promoción
-                                    de derechos Ofrecer una atención especializada individualmente y grupal a las mujeres afectadas por violencia intrafamiliar...
-                                </p>
-                            </div>
-                            <a class="btn-custom d-flex align-items-center justify-content-center" asp-area="OFIM" asp-controller="Home" asp-action="Index"><span class="ion-ios-arrow-round-forward"></span></a>
-                        </div>
+
+                    <div class="row mb-5">
+                        <h2 class="mb-3 mt-5">Información compartida</h2>
+                        <p>La Municipalidad no vende ni renta su información personal a nadie.</p>
+
+                    </div>
+
+                    <div class="row mb-5">
+                        <h2 class="mb-3 mt-5">Nuestras obligaciones</h2>
+                        <p>La Municipalidad está obligada por ley a salva guardar toda la información del contribuyente y solo podrá entregar la misma si las autoridades judiciales lo solicitan.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+   </div>
+</section> <!-- .section -->
