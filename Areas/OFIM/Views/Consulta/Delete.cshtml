@@ -1,101 +1,50 @@
-﻿@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.ConsultaViewModel
-@using SYGESTMunicipal.Extensions
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.Consulta
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
 }
 
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+            Eliminar una Consulta
+        </h3>
+    </div>
+</div>
 <br />
-<h2 class="text-info">Eliminar Consulta</h2>
-<br />
-<form method="post" enctype="multipart/form-data">
-    <div class="border backgroundWhite row">
-        <input type="hidden" asp-for="Consulta.ConsultaId" />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-        <div class="col-8">
-
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Consulta.HoraInicio" class="col-form-label"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Consulta.HoraInicio" readonly class="form-control" />
-                </div>
+<form method="post" asp-action="Delete">
+    <div class="border backgroundWhite">
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="ConsultaId" class="col-form-label"></label>
             </div>
-
-            <div class="form-group row">
-                <div class="col-2">
-                    <label asp-for="Consulta.Fecha" class="col-form-label"></label>
-                </div>
-                <div class="col-5">
-                    <input asp-for="Consulta.Fecha" readonly type="datetime" class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Consulta.PersonaOFIMId" class="col-form-label"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Consulta.PersonaOFIM.PersonName" readonly class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Consulta.TipoConsultaId" class="col-form-label"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Consulta.TipoConsulta.NombreTipoConsulta" readonly class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Consulta.Motivo" class="col-form-label"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Consulta.Motivo" readonly class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Consulta.Descripcion" class="col-form-label"></label>
-                </div>
-                <div class="col-8">
-                    @Html.TextAreaFor(model => model.Consulta.Descripcion,
-                    new { disabled = "disabled", cols = "46" })
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Consulta.RespuestaOfrecida" class="col-form-label"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Consulta.RespuestaOfrecida" readonly class="form-control" />
-                </div>
-
-            </div>
-
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Consulta.HoraFin" class="col-form-label"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Consulta.HoraFin" readonly class="form-control" />
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-8">
-            <div class="col-8 offset-4">
-                <partial name="_DeleteAndBackToListButton" model="Model.Consulta.ConsultaId" />
+            <div class="col-md-5">
+                <input asp-for="ConsultaId" class=" form-control" />
             </div>
         </div>
-        <br />
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="TipoConsultaId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="TipoConsultaId" class=" form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="PersonaOFIMId" class=" form-control" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <partial name="_DeleteAndBackToListButton" model="Model.ConsultaId" />
+            </div>
+        </div>
     </div>
 </form>

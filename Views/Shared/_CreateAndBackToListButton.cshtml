@@ -1,9 +1,40 @@
-﻿<div class="row">
-    <div class="col-6">
-        <input type="submit" class="btn btn-info form-control" value="Crear" />
+﻿<div class="form-group row">
+    <div class="col-md-5 colo-lg-4 text-right">
+        <input type="button" value="Agregar" id="btnAgregar"
+               class="btn btn-success" style="width: 80%;"
+               onclick="abrirModal()" />
     </div>
     <br />
-    <div class="col-6">
-        <a asp-action="Index" class="btn btn-success form-control">Regresar </a>
+    <div class="col-md-5">
+        <a asp-action="Index" type="button"
+           class="btn btn-success"
+           style="width: 80%;">Regresar </a>
     </div>
 </div>
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Agregar', '¿Realmente Desea agregar?').then((result) => {
+            if (result.value) {
+                var viewAgregar = document.getElementById("viewAgregar");
+                viewAgregar.submit();
+                Swal.fire(
+                    'Agregado!',
+                    'Operación con éxito!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'Operación Fracasada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>
+
+

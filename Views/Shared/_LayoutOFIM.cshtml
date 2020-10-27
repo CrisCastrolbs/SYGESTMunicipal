@@ -28,8 +28,29 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/lib/ej.responsive.css" rel="stylesheet" />
+    <script src="~/js/ej.web.all.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossorigin="anonymous" />
 
+    <script src="~/js/jquery.timepicker.js"></script>
+    <link href="~/css/jquery.timepicker.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css" />
+    <script src="~/js/Datepair.js"></script>
+    <script src="~/js/jquery.datepair.js"></script>
+    
 </head>
+
 <body>
     <header>
         <div class="container pt-3 pb-2">
@@ -37,11 +58,11 @@
                 <div class="row justify-content-between">
                     <div class="col-md-8 order-md-last">
                         <div class="row">
-                                <div class="col-md-6 text-center">
-                                    <a class="navbar-brand" style="color:#8c552e" asp-area="" asp-controller="Home" asp-action="Index">
-                                        SYGEST<span>Municipal</span>
-                                    </a>
-                                </div>
+                            <div class="col-md-6 text-center">
+                                <a class="navbar-brand" style="color:#8c552e" asp-area="" asp-controller="Home" asp-action="Index">
+                                    SYGEST<span>Municipal</span>
+                                </a>
+                            </div>
                             <div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
                                 <form action="#" class="searchform order-lg-last">
                                     <div class="form-group d-flex">
@@ -96,14 +117,16 @@
                 <div class="collapse navbar-collapse" id="ftco-nav">
 
                     <ul class="navbar-nav m-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                            </li>
-                       
-                            <li class="nav-item active">
-                                <a class="nav-link" asp-area="OFIM" asp-controller="Home" asp-action="Index">OFIM</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
 
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-area="OFIM" asp-controller="Home" asp-action="Index">OFIM</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-area="OFIM" asp-controller="Consulta" asp-action="Index">Registro Atención</a>
+                        </li>
 
                         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
                         {
@@ -116,16 +139,16 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
                                     <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="#" asp-area="OFIM">Registrar Personas</a>
+                                       asp-controller="PersonaOFIM" asp-area="OFIM">Registrar Personas</a>
 
                                     <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="#" asp-area="OFIM">Tipo Consulta</a>
+                                       asp-controller="TipoConsulta" asp-area="OFIM">Tipo Consulta</a>
 
                                     <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="#" asp-area="OFIM">Registrar Consulta</a>
+                                       asp-controller="Consulta" asp-area="OFIM">Registrar Consulta</a>
 
                                     @*<a class="dropdown-item" asp-action="Index"
-                    asp-controller="Home" asp-area="OFIM">Dar un Seguimiento</a>*@
+                                        asp-controller="Home" asp-area="OFIM">Dar un Seguimiento</a>*@
 
                                 </div>
                             </li>
@@ -228,8 +251,8 @@
                                 </div>
                             </li>
                         }
-                            <partial name="_LoginPartial" />
-                        </ul>
+                        <partial name="_LoginPartial" />
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -274,8 +297,8 @@
                         <h2 class="ftco-heading-2">Servicios</h2>
                         <ul class="list-unstyled">
 
-                            <li><a asp-area="PATENTES" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Patentes</a></li>
-                            <li><a asp-area="OFGA" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Gestión Ambiental</a></li>
+                            <li><a asp-area="PATENTES" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de OFIM</a></li>
+                            <li><a asp-area="OFGA" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de Gestión Ambiental</a></li>
                             <li><a asp-area="OFIM" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de La Mujer</a></li>
 
                         </ul>
@@ -392,6 +415,10 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/jquery.timepicker.js"></script>
+    <script src="~/js/jquery.datepair.js"></script>
+    <script src="~/js/Datepair.js"></script>
+
     @RenderSection("Scripts", required: false);
 
 </body>

@@ -1,38 +1,49 @@
-﻿@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.TipoConsultaAndPersonaViewModel
-@using SYGESTMunicipal.Extensions
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
 }
 
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+            Eliminar un Tipo de Consulta
+        </h3>
+    </div>
+</div>
 <br />
-<h2 class="text-info">Delete TipoConsulta</h2>
-<br />
-<form asp-action="Delete">
+<form method="post" asp-action="Delete">
     <div class="border backgroundWhite">
-        <input type="hidden" asp-for="TipoConsulta.PersonaOFIMId" />
         <div class="form-group row">
-            <div class="col-2">
-                <label asp-for="TipoConsulta.PersonaOFIM.PersonName" class="col-form-label"></label>
+            <div class="col-md-2">
+                <label asp-for="TipoConsultaId" class="col-form-label"></label>
             </div>
-            <div class="col-5">
-                <select manifest="ddlPersonaOFIM" asp-for="TipoConsulta.PersonaOFIMId" disabled
-                        asp-items="Model.PersonaOFIMList.ToSelectListItem(Model.TipoConsulta.PersonaOFIMId)"
-                        class="form-control"></select>
+            <div class="col-md-5">
+                <input asp-for="TipoConsultaId" readonly class=" form-control" />
             </div>
         </div>
+
         <div class="form-group row">
-            <div class="col-2">
-                <label asp-for="TipoConsulta.NombreTipoConsulta" class="col-form-label"></label>
+            <div class="col-md-2">
+                <label asp-for="NombreTipoConsulta" class="col-form-label"></label>
             </div>
-            <div class="col-5">
-                <input asp-for="TipoConsulta.NombreTipoConsulta" readonly class="form-control" />
+            <div class="col-md-5">
+                <input asp-for="NombreTipoConsulta" readonly class=" form-control" />
             </div>
-            <span asp-validation-for="TipoConsulta.NombreTipoConsulta" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-2">
+                <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-5">
+                <input asp-for="PersonaOFIMId" readonly class=" form-control" />
+            </div>
         </div>
         <div class="form-group row">
             <div class="col-5 offset-2">
-                <partial name="_DeleteAndBackToListButton" model="Model.TipoConsulta.TipoConsultaId" />
+                <partial name="_DeleteAndBackToListButton" model="Model.TipoConsultaId" />
             </div>
         </div>
     </div>

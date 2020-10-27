@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SYGESTMunicipal.Areas.OFGA.Models.ViewModel.PersonOFGAComplaintViewModel>
+﻿@using SYGESTMunicipal.Utility
+@model IEnumerable<SYGESTMunicipal.Areas.OFGA.Models.ViewModel.PersonOFGAComplaintViewModel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
@@ -24,43 +25,44 @@
         </div>
     </section><!-- End Breadcrumbs -->
 
- 
-            <form asp-controller="Complaint" asp-action="Index" method="post">
-                <div class="row">
-                    <div class="col-lg-3 col-lg-3 text-left">
-                        <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
-                           style="width:100%; height:100%;padding:11px;">
-                            Añadir Denuncia
-                        </a>
-                    </div>
-                    @*<div class="col-md-2 col-lg-2 text-right">
-                            <a asp-controller="" asp-action="Index"
-                               class="btn btn-info fa fa-arrow-circle-left"
-                               style="width:100%; height:90%;padding:6px;">
-                                Regresar al menú
-                            </a>
-                        </div>*@
+    @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
+    {
+        <form asp-controller="Complaint" asp-action="Index" method="post">
+            <div class="row">
+                <div class="col-lg-3 col-lg-3 text-left">
+                    <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
+                       style="width:100%; height:100%;padding:11px;">
+                        Añadir Denuncia
+                    </a>
                 </div>
-                <div class="col-md-12" style="color:black;"><hr /></div>
-            </form>
+                @*<div class="col-md-2 col-lg-2 text-right">
+                        <a asp-controller="" asp-action="Index"
+                           class="btn btn-info fa fa-arrow-circle-left"
+                           style="width:100%; height:90%;padding:6px;">
+                            Regresar al menú
+                        </a>
+                    </div>*@
+            </div>
+            <div class="col-md-12" style="color:black;"><hr /></div>
+        </form>
 
-            @if (Model.Count() > 0)
-            {
-                <table class="table table-hover .table-responsive" id="TbComplaint">
-                    <thead class="thead-dark">
-                        <tr class="table-secondary" style="text-align:center;">
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-hover .table-responsive" id="TbComplaint">
+                <thead class="thead-dark">
+                    <tr class="table-secondary" style="text-align:center;">
 
-                            <th>@Html.DisplayNameFor(m => m.Id)</th>
-                            <th>@Html.DisplayNameFor(m => m.Description)</th>
-                            <th>@Html.DisplayNameFor(m => m.Date)</th>
-                            <th>@Html.DisplayNameFor(m => m.PersonOFGAId)</th>
+                        <th>@Html.DisplayNameFor(m => m.Id)</th>
+                        <th>@Html.DisplayNameFor(m => m.Description)</th>
+                        <th>@Html.DisplayNameFor(m => m.Date)</th>
+                        <th>@Html.DisplayNameFor(m => m.PersonOFGAId)</th>
 
-                            <th>Operaciones</th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align:center;">
-                        @foreach (var item in Model)
-                        {
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center;">
+                    @foreach (var item in Model)
+                    {
                         <tr>
                             <td>@Html.DisplayFor(m => item.Id)</td>
                             <td>@Html.DisplayFor(m => item.Description)</td>
@@ -72,15 +74,25 @@
 
                             </div>
                         </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <h5 style="color:red;">No se encontraron registros!...</h5>
-            }
-       
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h5 style="color:red;">No se encontraron registros!...</h5>
+        }
+    }
+
+    else
+    {
+
+        <a class="dropdown-item" asp-action="Index"
+           asp-controller="Home" asp-area="OFGA">Oficina de Gestión Ambiental</a>
+        <h5 style="color:red;">Gracias por hacernos saber su denuncia!...</h5>
+        <a class="nav-link" asp-area="OFGA" asp-controller="Home" asp-action="Index">           Volver a la Página Principal</a>
+    }
+
 </main>
 
 <script src="~/js/sweetalert2.js"></script>
