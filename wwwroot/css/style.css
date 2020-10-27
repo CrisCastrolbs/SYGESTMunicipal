@@ -5309,7 +5309,8 @@ button.bg-dark:focus {
   background-color: transparent !important; }
 
 .border {
-  border: 1px solid #dee2e6 !important; }
+    border: 2px solid #214557 !important;
+}
 
 .border-top {
   border-top: 1px solid #dee2e6 !important; }
@@ -8002,12 +8003,13 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Poppins", Arial, sans-serif;
-  background: #fff;
-  font-size: 16px;
-  line-height: 1.8;
-  font-weight: 400;
-  color: gray; }
+    font-family: "Poppins", Arial, sans-serif;
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: #8a8a8a;
+}
   body.menu-show {
     overflow: hidden;
     position: fixed;
@@ -8388,7 +8390,7 @@ h1, h2, h3, h4, h5,
     display: inline-block; }
 
 .bg-light {
-    background: #cdd0ce !important;
+    background: #fff !important;
 }
 
 .bg-secondary {
