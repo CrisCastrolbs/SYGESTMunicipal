@@ -14,8 +14,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
 {
     [Area("OFGA")]
     [Authorize(Roles = SD.ManagerUser)]
-    [Authorize(Roles = SD.AdminOFGA)]
-    [Authorize(Roles = SD.CollManager)]
+ 
     public class MaterialsController : Controller
     {
         private readonly ApplicationDbContext _db;

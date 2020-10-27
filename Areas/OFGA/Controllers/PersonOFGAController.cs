@@ -13,7 +13,6 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
 
     [Area("OFGA")]
     [Authorize(Roles = SD.ManagerUser)]
-    [Authorize(Roles = SD.AdminOFGA)]
     public class PersonOFGAController : Controller
     {
 
