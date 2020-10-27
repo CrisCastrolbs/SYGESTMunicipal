@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SYGESTMunicipal.Areas.OFGA.Models.Talks>
+@using SYGESTMunicipal.Utility
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
@@ -24,19 +25,20 @@
             </ol>
         </div>
     </section><!-- End Breadcrumbs -->
-
-    <div class="col-lg-offset-11 text-right">
-        <partial name="_CreateButtonPartial" />
-    </div>
-
+    @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
+    {
+        <div class="col-lg-offset-11 text-right">
+            <partial name="_CreateButtonPartial" />
+        </div>
+    }
     @*//Vista del filtro*@
-    <div class="row">
+    @*<div class="row">
         <div class="col-12 text-right">
             <partial name="_Filter" />
         </div>
-    </div>
+    </div>*@
     <div>
-       
+
 
         @if (Model.Count() > 0)
         {

@@ -26,6 +26,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Models
         [Display(Name = "Fecha ")]
         public DateTime? Date { get; set; }
         public byte[] Picture { get; set; }
+        [Display(Name = "Vigente")]
         public bool IsActive { get; set; }
     }
 }

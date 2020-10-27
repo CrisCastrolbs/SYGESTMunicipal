@@ -9,7 +9,7 @@
     <div class="hero-container" data-aos="fade-up">
         <h1>Oficina de Gestión Ambiental</h1>
         <h2>Municipalidad de Hojancha</h2>
-        <a href="#about" class="btn-get-started scrollto">Inicio de Sesión</a>
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn-get-started scrollto">Inicio de Sesión</a>
 
     </div>
 </section><!-- End Hero -->
@@ -26,7 +26,7 @@
             <div class="row">
 
                 <div class="col-lg-6 video-box align-self-baseline">
-                    <img src="~/Ambiental/assets/img/hojancha.jpg" class="img-fluid" alt="">
+                    <img src="~/Ambiental/assets/img/parque.jpg" class="img-fluid" alt="">
                     <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
                 </div>
 
@@ -93,7 +93,7 @@
                 <div class="col-md-6">
                     <div class="icon-box" data-aos="fade-up">
                         <div class="icon"><i class="las la-book" style="color: #e9bf06;"></i></div>
-                        <h4 class="title"><a asp-area="OFGA" asp-controller="Talks" asp-action="Details">Charlas</a></h4>
+                        <h4 class="title"><a asp-area="OFGA" asp-controller="Talks" asp-action="Index">Charlas</a></h4>
                         <p class="description">Charlas con temas diversos sobre gestión ambiental</p>
                     </div>
                 </div>
