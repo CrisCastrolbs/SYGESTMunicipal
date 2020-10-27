@@ -6,7 +6,7 @@
 }
 
 
-<div class="hero-wrap js-fullheight" style=" background-image: url('images/Fondo.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight" style=" background:#fff" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
@@ -57,17 +57,16 @@
                 </div>
                 @*<div class="col-md-6 col-md-offset-2">
                     <section>
-                        <h4 style="color:white">Utilice otro servicio para iniciar sesión.</h4>
-                        <hr />
+                    
                         @{
                             if ((Model.ExternalLogins?.Count ?? 0) == 0)
                             {
-                                <div>
+                                @*<div>
                                      <p style="color:white">
                                          No hay servicios de autenticación externos configurados. Ver <a href="https://go.microsoft.com/fwlink/?LinkID=532715">Este artículo</a>
                                          para obtener detalles sobre cómo configurar esta aplicación ASP.NET para admitir el inicio de sesión a través de servicios externos.
                                      </p>
-                                </div>
+                                </div>*@
                             }
                             else
                             {

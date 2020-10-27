@@ -7,6 +7,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    @*inicio*@
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/lib/ej.responsive.css" rel="stylesheet" />
+    <script src="~/js/ej.web.all.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossorigin="anonymous" />"
+    @*fin*@
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="~/js/jquery-ui.js"></script>
     <link href="~/css/jquery-ui.css" rel="stylesheet" />
@@ -84,7 +93,7 @@
         @* LOGO EN EL NAV *@
         <div class="logo-img">
             <a asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/images/logopequeño.png" alt="">
+                <img src="~/images/LogoMunicipal.png" alt="">
             </a>
         </div>
         @* FIN LOGO EN EL NAV *@
@@ -136,10 +145,10 @@
                            asp-controller="PersonPatentes" asp-area="PATENTES">Solicitar una Patente</a>
 
                         <a class="dropdown-item" asp-action="Create"
-                           asp-controller="Complaint" asp-area="OFGA" >Denuncia Ambiental</a>
+                           asp-controller="Complaint" asp-area="OFGA">Denuncia Ambiental</a>
 
-                        <a class="dropdown-item" asp-action="Index"
-                           asp-controller="Home" asp-area="OFIM">Empresariedad</a>
+                        @*<a class="dropdown-item" asp-action="Index"
+                           asp-controller="Home" asp-area="OFIM">Empresariedad</a>*@
 
                     </div>
 

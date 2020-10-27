@@ -6,179 +6,200 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SYGESTMunicipal.Areas.OFIM.Models;
 using SYGESTMunicipal.Areas.OFIM.Models.ViewModel;
 using SYGESTMunicipal.Data;
 
 namespace SYGESTMunicipal.Areas.OFIM.Controllers
 {
-    [Area("Admin")]
+    [Area("OFIM")]
 //    [Authorize(Roles = SD.ManagerUser)]
     public class ConsultaController : Controller
     {
         private readonly ApplicationDbContext _db;
-        private readonly IWebHostEnvironment _hostEnvironment;
-        [BindProperty]
-        public ConsultaViewModel ConsultaVM { get; set; }
-        public ConsultaController(ApplicationDbContext db,
-            IWebHostEnvironment hostEnvironment)
+        List<ConsultaViewModel> listaConsulta = new List<ConsultaViewModel>();
+        static List<ConsultaViewModel> lista = new List<ConsultaViewModel>();
+
+        public ConsultaController(ApplicationDbContext db)
         {
             _db = db;
-            _hostEnvironment = hostEnvironment;
-            ConsultaVM = new ConsultaViewModel()
-            {
-                PersonaOFIM = _db.PersonaOFIM,
-                Consulta = new Models.Consulta()
-            };
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var Consulta =
-                await _db.Consulta.Include(m => m.PersonaOFIM).Include(m => m.TipoConsulta).ToListAsync();
-            return View(Consulta);
-        }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(string dato)
-        {
-            if (dato == null)
-            {
-                var Consulta =
-                await _db.Consulta.Include(m => m.PersonaOFIM).Include(m => m.TipoConsulta).ToListAsync();
-                return View(Consulta);
-            }
-            else
-            {
-                var consult =
-                     await _db.Consulta.Where(p => p.PersonaOFIM.PersonName == dato)
-                     .Include(p => p.TipoConsulta).Include(c => c.PersonaOFIM).ToListAsync();
+            listaConsulta = (from consulta in _db.Consulta
 
-                return View(consult);
-            }
+                                  join personaOFIM in _db.PersonaOFIM
+                                  on consulta.PersonaOFIMId equals
+                                  personaOFIM.PersonaOFIMId
+
+                                  join tipoConsulta in _db.TipoConsulta
+                                  on consulta.TipoConsultaId equals
+                                  tipoConsulta.TipoConsultaId
+
+                                  select new ConsultaViewModel
+                                  {
+                                      ConsultaId = consulta.ConsultaId,
+                                      Motivo = consulta.Motivo,
+                                      PersonaOFIMId = personaOFIM.PersonaOFIMId,
+                                      PersonName = personaOFIM.PersonName, 
+                                      TipoConsultaId = consulta.TipoConsultaId,
+                                      NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
+                                      Fecha = consulta.Fecha,
+                                      HoraInicio = consulta.HoraInicio.Value,
+                                      HoraFin = consulta.HoraFin.Value,
+                                      Descripcion = consulta.Descripcion,
+                                      RespuestaOfrecida = consulta.RespuestaOfrecida
+                                  }).ToList();
+            ViewBag.Controlador = "Consulta";
+            ViewBag.Accion = "Index";
+            return View(listaConsulta);
         }
 
-        //GET - CREATE
+        private void cargarPersonaOFIM()
+        {
+            List<SelectListItem> listaPersonaOFIM = new List<SelectListItem>();
+            listaPersonaOFIM = (from personaOFIM in _db.PersonaOFIM
+                         orderby personaOFIM.PersonName
+                         select new SelectListItem
+                         {
+                             Text = personaOFIM.PersonName,
+                             Value = personaOFIM.PersonaOFIMId.ToString()
+                         }
+                                   ).ToList();
+            ViewBag.ListaPersonaOFIM = listaPersonaOFIM;
+        }
+
+        private void cargarTipoConsulta()
+        {
+            List<SelectListItem> listaTipoConsulta = new List<SelectListItem>();
+            listaTipoConsulta = (from tipoConsulta in _db.TipoConsulta
+                         orderby tipoConsulta.NombreTipoConsulta
+                         select new SelectListItem
+                         {
+                             Text = tipoConsulta.NombreTipoConsulta,
+                             Value = tipoConsulta.TipoConsultaId.ToString()
+                         }
+                                   ).ToList();
+            ViewBag.ListaTipoConsulta = listaTipoConsulta;
+        }
         public IActionResult Create()
         {
-            return View(ConsultaVM);
+            cargarPersonaOFIM();
+            cargarTipoConsulta();
+            return View();
         }
-        [HttpPost, ActionName("Create")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreatePOST()
+        [HttpPost]
+        public IActionResult Create(Consulta consulta)
         {
-            ConsultaVM.Consulta.TipoConsultaId = Convert.ToInt32(Request.Form["TipoConsultaId"].ToString());
-            if (!ModelState.IsValid)
-            {
-                return View(ConsultaVM);
-            }
-            _db.Consulta.Add(ConsultaVM.Consulta);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        //GET - EDIT
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            ConsultaVM.Consulta = await _db.Consulta.Include(m => m.PersonaOFIM).Include(m => m.TipoConsulta).SingleOrDefaultAsync(m => m.ConsultaId == id);
-            ConsultaVM.TipoConsulta = await _db.TipoConsulta.Where(p => p.PersonaOFIMId == ConsultaVM.Consulta.PersonaOFIMId).ToListAsync();
-            if (ConsultaVM.Consulta == null)
-            {
-                return NotFound();
-            }
-            return View(ConsultaVM);
-        }
+            int nVeces = 0;
 
-        //POST - EDIT
-        [HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPOST(int? id)
-        {
-            if (id == null)
+            try
             {
-                return NotFound();
+                nVeces = _db.Consulta.Where(m => m.ConsultaId == consulta.ConsultaId).Count();
+                if (!ModelState.IsValid || nVeces >= 1)
+                {
+                    if (nVeces >= 1) ViewBag.Error = "Este id ya existe!";
+                    cargarPersonaOFIM();
+                    cargarTipoConsulta();
+                    return View(consulta);
+                }
+                else
+                {
+                    Consulta _consulta = new Consulta();
+                    // _consulta.Id = consulta.Id;
+                    _consulta.Motivo = consulta.Motivo;
+                    _consulta.PersonaOFIMId = consulta.PersonaOFIMId;
+                    _consulta.TipoConsultaId = consulta.TipoConsultaId;
+                    _consulta.Fecha = consulta.Fecha;
+                    _consulta.HoraInicio = consulta.HoraInicio;
+                    _consulta.HoraFin = consulta.HoraFin;
+                    _consulta.Descripcion = consulta.Descripcion;
+                    _consulta.RespuestaOfrecida = consulta.RespuestaOfrecida;
+                    _db.Consulta.Add(_consulta);
+                    _db.SaveChanges();
+                }
             }
-            ConsultaVM.Consulta.TipoConsultaId = Convert.ToInt32(Request.Form["TipoConsultaId"].ToString());
-            if (!ModelState.IsValid)
+            catch (Exception ex)
             {
-                ConsultaVM.TipoConsulta = await _db.TipoConsulta.Where(p => p.PersonaOFIMId == ConsultaVM.Consulta.PersonaOFIMId).ToListAsync();
-                return View(ConsultaVM);
+                ViewBag.Error = ex.Message;
             }
-            var consultaFromDb = await _db.Consulta.FindAsync(ConsultaVM.Consulta.ConsultaId);
-
-            consultaFromDb.HoraInicio= ConsultaVM.Consulta.HoraInicio;
-            consultaFromDb.Fecha = ConsultaVM.Consulta.Fecha;
-            consultaFromDb.PersonaOFIMId = ConsultaVM.Consulta.PersonaOFIMId;
-            consultaFromDb.TipoConsultaId = ConsultaVM.Consulta.TipoConsultaId;
-            consultaFromDb.Motivo = ConsultaVM.Consulta.Motivo;
-            consultaFromDb.Descripcion = ConsultaVM.Consulta.Descripcion;
-            consultaFromDb.RespuestaOfrecida = ConsultaVM.Consulta.RespuestaOfrecida;
-            consultaFromDb.HoraFin = ConsultaVM.Consulta.HoraFin;
-            
-          
-            await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        //GET - DETAILS
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null)
+            cargarPersonaOFIM();
+            cargarTipoConsulta();
+            int recCount = _db.Consulta.Count(e => e.ConsultaId == id);
+            Consulta _consulta = (from p in _db.Consulta
+                                            where p.ConsultaId == id
+                                            select p).DefaultIfEmpty().Single();
+            return View(_consulta);
+        }
+        [HttpPost]
+        public IActionResult Edit(Consulta consulta)
+        {
+            string error = "";
+            try
             {
-                return NotFound();
+                if (!ModelState.IsValid)
+                {
+                    cargarPersonaOFIM();
+                    cargarTipoConsulta();
+                    return View(consulta);
+                }
+                else
+                {
+                    _db.Consulta.Update(consulta);
+                    _db.SaveChanges();
+                }
             }
-            ConsultaVM.Consulta = await _db.Consulta.Include(m => m.PersonaOFIM).Include(m => m.TipoConsulta).SingleOrDefaultAsync(m => m.ConsultaId == id);
-            ConsultaVM.TipoConsulta = await _db.TipoConsulta.Where(s => s.PersonaOFIMId == ConsultaVM.Consulta.PersonaOFIMId).ToListAsync();
-            if (ConsultaVM.Consulta == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                error = ex.Message;
             }
-            return View(ConsultaVM);
+            return RedirectToAction(nameof(Index));
         }
 
-        //GET - DELETE
+        public IActionResult Details(int id)
+        {
+            cargarPersonaOFIM();
+            cargarTipoConsulta();
+            Consulta oConsulta = _db.Consulta
+                       .Where(e => e.ConsultaId == id).First();
+            return View(oConsulta);
+        }
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
+
             }
-            ConsultaVM.Consulta = await _db.Consulta.Include(m => m.PersonaOFIM).Include(m => m.TipoConsulta).SingleOrDefaultAsync(m => m.ConsultaId == id);
-            ConsultaVM.TipoConsulta = await _db.TipoConsulta.Where(s => s.PersonaOFIMId == ConsultaVM.Consulta.PersonaOFIMId).ToListAsync();
-            if (ConsultaVM.Consulta == null)
+            var consulta = await _db.Consulta.FindAsync(id);
+            if (consulta == null)
             {
                 return NotFound();
+
             }
-            return View(ConsultaVM);
+            return View(consulta);
         }
+        //POST - DELETE    //si se realiza una operacion es un POST
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeletePOST(int? id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            var productDelete = await _db.Consulta.FindAsync(id);
-            if (productDelete == null)
+            var consulta = await _db.Consulta.FindAsync(id);
+            if (consulta == null)
             {
                 return View();
             }
-            _db.Consulta.Remove(productDelete);
+            _db.Consulta.Remove(consulta);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-
-        public async Task<IActionResult> OnGetAsync(string searchString)
-        {
-            var p = from m in _db.Consulta
-                    select m;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                p = p.Where(s => s.PersonaOFIM.PersonName.Contains(searchString));
-            }
-            var P = await p.ToListAsync();
-            return View("Index", P);
-        }
     }
 }

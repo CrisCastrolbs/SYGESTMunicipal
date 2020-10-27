@@ -1,50 +1,59 @@
-﻿@model IEnumerable<TipoConsulta>
-@using SYGESTMunicipal.Areas.OFIM.Models
+﻿@model IEnumerable<TipoConsultaAndPersonaViewModel>
+@using SYGESTMunicipal.Areas.OFIM.Models.ViewModel
+   
+    @{
+        ViewData["Title"] = "Index";
+     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+    }
 
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
-}
-
-<br />
-<br />
-<div class="<border backgroundWhite">
-    <div class="row">
-        <div class="col-6">
-            <h2 class="text-info">Lista de Tipo Consulta</h2>
-        </div>
-        <div class="col-6 text-right">
-            <partial name="_CreateButtonPartial" />
-        </div>
-    </div>
     <br />
-    <div>
-        @if (Model.Count() > 0)
-        {
-            <table class="table table-striped border">
-                <tr class="table-secondary">
-                    <th>@Html.DisplayNameFor(m => m.NombreTipoConsulta)</th>
-                    <th>@Html.DisplayNameFor(m => m.PersonaOFIM.PersonName)</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
-                        <td>@Html.DisplayFor(m => item.PersonaOFIM.PersonName)</td>
-                        <td>
-                            <partial name="_TableButtonPartial" model="item.PersonaOFIMId" />
-                        </td>
-                    </tr>
-                }
+    <br />
+    <div class="<border backgroundWhite">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-info">Lista de Tipo Consulta</h2>
+            </div>
+            <div class="col-6 text-right">
+                <partial name="_CreateButtonPartial" />
+            </div>
+        </div>
+        <br />
+        <div>
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-hover .table-responsive" id="TbTipoConsultaa">
+                    <thead class="thead-dark">
+                        <tr class="table-secondary" style="text-align:center;">
 
-            </table>
-        }
-        else
-        {
-            <h3 style="color:red;">No existen tipos de Consultas registradas!...</h3>
-        }
+                            <th>@Html.DisplayNameFor(m => m.NombreTipoConsulta)</th>
+                            <th>@Html.DisplayNameFor(m => m.PersonaOFIM)</th>
+
+
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center;">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
+                                <td>@Html.DisplayFor(m => item.PersonaOFIM)</td>
+
+
+                                <a>
+                                    <partial name="_TableButtonPartialDelete" model="item.TipoConsultaId" />
+                                </a>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h3 style="color:red;">No existen tipos de Consultas registradas!...</h3>
+            }
+        </div>
     </div>
-</div>
 

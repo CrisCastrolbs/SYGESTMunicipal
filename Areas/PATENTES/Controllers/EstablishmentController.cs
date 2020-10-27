@@ -83,8 +83,8 @@ namespace SYGESTMunicipal.Areas.PATENTES.Controllers
 
         private void cargarApplicant()
         {
-            List<SelectListItem> listaCIIU = new List<SelectListItem>();
-            listaCIIU = (from applicant in _db.Applicant
+            List<SelectListItem> listaApplicant = new List<SelectListItem>();
+            listaApplicant = (from applicant in _db.Applicant
                          orderby applicant.Name
                          select new SelectListItem
                          {
@@ -92,13 +92,13 @@ namespace SYGESTMunicipal.Areas.PATENTES.Controllers
                              Value = applicant.ApplicantId.ToString()
                          }
                                    ).ToList();
-            ViewBag.ListaApplicant = listaCIIU;
+            ViewBag.ListaApplicant = listaApplicant;
         }
 
         private void cargarEstablishmentType()
         {
-            List<SelectListItem> listaCIIU = new List<SelectListItem>();
-            listaCIIU = (from establishmenttype in _db.EstablishmentType
+            List<SelectListItem> listaEstablishmentType = new List<SelectListItem>();
+            listaEstablishmentType = (from establishmenttype in _db.EstablishmentType
                          orderby establishmenttype.Name
                          select new SelectListItem
                          {
@@ -106,13 +106,13 @@ namespace SYGESTMunicipal.Areas.PATENTES.Controllers
                              Value = establishmenttype.EstablishmentTypeId.ToString()
                          }
                                    ).ToList();
-            ViewBag.ListaEstablishmentType = listaCIIU;
+            ViewBag.ListaEstablishmentType = listaEstablishmentType;
         }
 
         private void cargarActivityTipe()
         {
-            List<SelectListItem> listaCIIU = new List<SelectListItem>();
-            listaCIIU = (from activitytipe in _db.ActivityType
+            List<SelectListItem> listaActivityTipe = new List<SelectListItem>();
+            listaActivityTipe = (from activitytipe in _db.ActivityType
                          orderby activitytipe.Name
                          select new SelectListItem
                          {
@@ -120,7 +120,7 @@ namespace SYGESTMunicipal.Areas.PATENTES.Controllers
                              Value = activitytipe.ActivityTypeId.ToString()
                          }
                                    ).ToList();
-            ViewBag.ListaActivityType = listaCIIU;
+            ViewBag.ListaActivityType = listaActivityTipe;
         }
         public IActionResult Create()
         {

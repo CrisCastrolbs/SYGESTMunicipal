@@ -26,18 +26,18 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha")]
-        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy h:mm tt}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Fecha { get; set; }
 
-        [DataType(DataType.Time)]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Hora Inicio")]
         [DisplayFormat(DataFormatString = "{0:h:mm tt}", ApplyFormatInEditMode = true)]
-        public DateTime HoraInicio { get; set; }
+        public DateTime? HoraInicio { get; set; }
 
-        [DataType(DataType.Time)]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Hora Fin")]
         [DisplayFormat(DataFormatString = "{0:h:mm tt}", ApplyFormatInEditMode = true)]
-        public DateTime HoraFin { get; set; }
+        public DateTime? HoraFin { get; set; }
 
         [DisplayName("Descripción")]
         public string Descripcion { get; set; }

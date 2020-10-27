@@ -1,82 +1,50 @@
-﻿@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.TipoConsultaAndPersonaViewModel
-@using SYGESTMunicipal.Extensions
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaConsulta;
 }
 
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+            Agregar un Tipo Consulta
+        </h3>
+    </div>
+</div>
 <br />
-<br />
-<h2 class="text-info">Create TipoConsulta</h2>
-<br />
-<partial name="_StatusMessage" model="Model.StatusMessage" />
-<div class="border backgroundWhite row">
-    <div class="col-8 border-right">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group row">
-                <div class="col-3">
-                    <label asp-for="TipoConsulta.PersonaOFIMId" class="col-form-label"></label>
-                </div>
-                <div class="col-5">
-                    <select id="ddlPersonaOFIMlist" asp-for="TipoConsulta.PersonaOFIMId" asp-items="Model.PersonaOFIMList.ToSelectListItem(Model.TipoConsulta.PersonaOFIMId)" class="form-control"></select>
-                </div>
+
+<form asp-action="Create" asp-controller="TipoConsulta" method="post" id="viewAgregar">
+    <div class="container-fluid">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row">
+            <div class="col-md-2 col-lg-2">
+                <label asp-for="NombreTipoConsulta" class="col-form-label"></label>
             </div>
-            <div class="form-group row">
-                <div class="col-3">
-                    <label asp-for="TipoConsulta.NombreTipoConsulta" class="col-form-label"></label>
-                </div>
-                <div class="col-5">
-                    <input asp-for="TipoConsulta.NombreTipoConsulta" class="form-control" />
-                </div>
-                <span asp-validation-for="TipoConsulta.NombreTipoConsulta" class="text-danger"></span>
+            <div class="col-md-6 col-lg-6">
+                <input asp-for="NombreTipoConsulta" class="form-control" />
             </div>
+            <span asp-validation-for="NombreTipoConsulta" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-2 col-lg-2">
+                <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <select asp-for="PersonaOFIMId" class="form-control"
+                        asp-items="@Lista"></select>
+            </div>
+            <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
+        </div>
+
             <div class="form-group row">
                 <div class="col-5 offset-3">
                     <partial name="_CreateAndBackToListButton" />
                 </div>
             </div>
-        </form>
-    </div>
-    <div class="col-3 offset-1">
-        @if (Model.TipoConsultaList.Count() > 0)
-        {
-            <p> Ya existe este Tipo Consulta para esta Persona: </p>
-            <div id="TipoConsultaList">
-                <ul class="list-group"></ul>
-            </div>
-        }
-    </div>
-</div>
-
-@section Scripts{
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script>
-        function updateTipoConsultaList() {
-            var tipoConsultaSelected = document.getElementById("ddlPersonaOFIMlist").value;
-            $list = $('#TipoConsultaList');
-            $.ajax({
-                url: '/OFIM/TipoConsulta/GetTipoConsultas/' + tipoConsultaSelected,
-                type: 'GET',
-                dataType: 'text',
-                success: function (data) {
-                    results = JSON.parse(data);
-                    $list.html('');
-                    $list.append(' <ul class="list-group"> ');
-                    for (i in results) {
-                        $list.append('<li class="list-group-item">' + results[i].text + '</li>');
-                    }
-                    $list.append('</ul>');
-                }
-            });
-        }
-        $(document).ready(function () {
-            updateTipoConsultaList();
-        });
-        $("#ddlPersonaOFIMlist").on("change", function () {
-            updateTipoConsultaList();
-        });
-    </script>
-}
-
+        </div>
+</form>
