@@ -1,53 +1,57 @@
-﻿@model IEnumerable<Consulta>
-@using SYGESTMunicipal.Areas.OFIM.Models
+﻿@model IEnumerable<ConsultaViewModel>
+@using SYGESTMunicipal.Areas.OFIM.Models.ViewModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
 }
 <br />
 <br />
 <div class="border backgroundWhite">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-info">TipoConsulta Item List</h2>
+            <h2 class="text-info">Consulta</h2>
         </div>
         <div class="col-6 text-right">
             <partial name="_CreateButtonPartial" />
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 text-right">
-            <partial name="_Filter" />
-        </div>
-    </div>
+   
     <br />
 
     <div>
         @if (Model.Count() > 0)
         {
-            <table id="Tabla" class="table table-responsive-sm">
-                <tr class="table-secondary">
+        <table class="table table-hover .table-responsive" id="TbConsulta">
+            <thead class="thead-dark">
+                <tr class="table-secondary" style="text-align:center;">
+
                     <th>@Html.DisplayNameFor(m => m.Motivo)</th>
                     <th>@Html.DisplayNameFor(m => m.Fecha)</th>
                     <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
                     <th>@Html.DisplayNameFor(m => m.TipoConsultaId)</th>
+
+
+
+                    <th>Operaciones</th>
                     <th></th>
                     <th></th>
                 </tr>
+            </thead>
+            <tbody style="text-align:center;">
                 @foreach (var item in Model)
                 {
                     <tr>
                         <td>@Html.DisplayFor(m => item.Motivo)</td>
                         <td>@Html.DisplayFor(m => item.Fecha)</td>
-                        <td>@Html.DisplayFor(m => item.PersonaOFIM.PersonName)</td>
-                        <td>@Html.DisplayFor(m => item.TipoConsulta.NombreTipoConsulta)</td>
+                        <td>@Html.DisplayFor(m => item.PersonName)</td>
+                        <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
                         <td>
-                            <partial name="_TableButtonPartial" model="item.ConsultaId" />
+                            <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
                         </td>
 
                     </tr>
                 }
-            </table>
+        </table>
         }
         else
         {

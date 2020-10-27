@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SYGESTMunicipal.Areas.OFGA.Models;
 using SYGESTMunicipal.Data;
+using SYGESTMunicipal.Utility;
 
 namespace SYGESTMunicipal.Areas.OFGA.Controllers
 {
     [Area("OFGA")]
+    [Authorize(Roles = SD.ManagerUser)]
+    [Authorize(Roles = SD.AdminOFGA)]
     public class TalksController : Controller
     {
         private readonly ApplicationDbContext _db;
