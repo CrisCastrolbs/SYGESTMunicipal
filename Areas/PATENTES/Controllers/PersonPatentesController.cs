@@ -127,13 +127,13 @@ namespace SYGESTMunicipal.Areas.PATENTES.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var personPatentes = await _db.Talks.FirstOrDefaultAsync(m => m.Id == id);
+            var personPatentes = await _db.PersonPatentes.FirstOrDefaultAsync(m => m.PersonId == id);
             if (personPatentes == null)
             {
                 return NotFound();

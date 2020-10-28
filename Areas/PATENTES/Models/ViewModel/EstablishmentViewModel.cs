@@ -57,7 +57,7 @@ namespace SYGESTMunicipal.Areas.PATENTES.Models.ViewModel
         [Display(Name = "Se incluye solicitante")]
         public string ApplicantName { get; set; }
 
-        [Display(Name = "Direccion de pagina Web")]
+        [Display(Name = "Dirección de pagina Web")]
         public string WebPage { get; set; }
 
         [Display(Name = "Cantidad de trabajadores calificados")]
