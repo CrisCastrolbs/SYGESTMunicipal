@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EstablishmentViewModel>
+﻿@using SYGESTMunicipal.Utility
+@model IEnumerable<EstablishmentViewModel>
 @using SYGESTMunicipal.Areas.PATENTES.Models.ViewModel
 @{
     ViewData["Title"] = "Create";
@@ -20,65 +21,82 @@
                 </ol>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <section class="panel">
-                    <div class="panel-body">
-                        <div class="border backgroundWhite">
-                            <div class="row">
-                                <div class="col-6">
-                                    <h2 class="text-info">Lista de Establecimientos</h2>
+        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.Guest) || User.IsInRole(SD.FrontDeskUser))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="border backgroundWhite">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h2 class="text-info">Lista de Establecimientos</h2>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <partial name="_CreateButtonPartial" />
+                                    </div>
                                 </div>
-                                <div class="col-6 text-right">
-                                    <partial name="_CreateButtonPartial" />
+                                @*//Vista del filtro*@
+                                <div class="row">
+                                    <div class="col-12 text-right">
+                                        <partial name="_Filter" />
+                                    </div>
                                 </div>
-                            </div>
-                            @*//Vista del filtro*@
-                            <div class="row">
-                                <div class="col-12 text-right">
-                                    <partial name="_Filter" />
-                                </div>
-                            </div>
-                            <div>
-                                @if (Model.Count() > 0)
-                                {
-                                    <table class="table table-striped border">
-                                        <tr class="table-secondary">
-                                            <th>@Html.DisplayNameFor(m => m.Id)</th>
-                                            <th>@Html.DisplayNameFor(m => m.Name)</th>
-                                            <th>@Html.DisplayNameFor(m => m.CIIUName)</th>
-                                            <th>@Html.DisplayNameFor(m => m.Description)</th>
-                                            <th>@Html.DisplayNameFor(m => m.WorkingHours)</th>
-                                            <th>@Html.DisplayNameFor(m => m.EstablishmentTypeName)</th>
-                                        </tr>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>@Html.DisplayFor(m => item.Id)</td>
-                                                <td>@Html.DisplayFor(m => item.Name)</td>
-                                                <td>@Html.DisplayFor(m => item.CIIUName)</td>
-                                                <td>@Html.DisplayFor(m => item.Description)</td>
-                                                <td>@Html.DisplayFor(m => item.WorkingHours)</td>
-                                                <td>@Html.DisplayFor(m => item.EstablishmentTypeName)</td>
-                                                <td>
-                                                    <partial name="_TableButtonPartial2" model="item.Id" />
-                                                </td>
+                                <div>
+                                    @if (Model.Count() > 0)
+                                    {
+                                        <table class="table table-hover .table-responsive">
+                                            <tr class="table-secondary">
+                                                <th>@Html.DisplayNameFor(m => m.Id)</th>
+                                                <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                                <th>@Html.DisplayNameFor(m => m.CIIUName)</th>
+                                                <th>@Html.DisplayNameFor(m => m.Description)</th>
+                                                <th>@Html.DisplayNameFor(m => m.WorkingHours)</th>
+                                                <th>@Html.DisplayNameFor(m => m.EstablishmentTypeName)</th>
                                             </tr>
-                                        }
-                                    </table>
-                                }
-                                else
-                                {
-                                    <h3 style="color:red;">No existen establecimientos registrados...</h3>
-                                }
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@Html.DisplayFor(m => item.Id)</td>
+                                                    <td>@Html.DisplayFor(m => item.Name)</td>
+                                                    <td>@Html.DisplayFor(m => item.CIIUName)</td>
+                                                    <td>@Html.DisplayFor(m => item.Description)</td>
+                                                    <td>@Html.DisplayFor(m => item.WorkingHours)</td>
+                                                    <td>@Html.DisplayFor(m => item.EstablishmentTypeName)</td>
+                                                    <td>
+                                                        <partial name="_TableButtonPartial" model="item.Id" />
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <h3 style="color:red;">No existen establecimientos registrados...</h3>
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
-        </div>
-        <!-- page end-->
+            <!-- page end-->
+        }
+        else
+        {
+            @*@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.Guest) || User.IsInRole(SD.FrontDeskUser))
+            {
+                <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Create"> Agregar Registro de Persona</a>
+            }
+            else
+            {*@
+
+                <a class="dropdown-item" asp-action="Index"
+                   asp-controller="Home" asp-area="Patentes">Oficina de Patentes</a>
+                <h5 style="color:red;">Gracias por hacer uso de Nuestros Servicios Virtuales!...</h5>
+                <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">           Volver a la Página Principal</a>
+            @*}*@
+        }
     </section>
 </section>
 <!--main content end-->

@@ -1,4 +1,5 @@
-﻿@model SYGESTMunicipal.Areas.PATENTES.Models.Establishment
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.PATENTES.Models.Establishment
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
@@ -7,186 +8,264 @@
     List<SelectListItem> Lista2 = ViewBag.ListaEstablishmentType;
     List<SelectListItem> Lista3 = ViewBag.ListaActivityType;
 }
-<div class="row">
-    <div class="col-md-12 col-lg-12">
-        <h3 class="text-light"
-            style="text-align:center;background-color:darkslategray;">
-            Detalles del establecimiento
-        </h3>
-    </div>
-</div>
-<br />
-<form asp-action="Details" asp-controller="Establishment" method="post">
-    <div class="container-fluid">
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="Id" class="col-form-label"></label>
+<section id="main-content">
+    <section class="wrapper">
+        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA))
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa-th"></i>Establecimiento</h3>
+                    <ol class="breadcrumb">
+                        <li class="nav-item">
+                            <i class="fa fa-th"></i>
+                            <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Index">Formulario de Establecimiento</a>
+                        </li>
+                        <li><i class="icon_document_alt"></i>Formulario</li>
+                    </ol>
+                </div>
             </div>
-            <div class="col-md-6">
-                <input asp-for="Id" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="Name" class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="Name" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        @*4*@
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="CIIU" class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="CIIUId" readonly="readonly"
-                        class="form-control"
-                        asp-items="@Lista"></select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="Description" class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="Description" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="OtherActivities" class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <textarea asp-for="OtherActivities" rows="4" cols="50"
-                          class="form-control" readonly="readonly"> </textarea>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="NFarm" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="NFarm" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="DesignNum" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="DesignNum" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="WorkingHours" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="WorkingHours" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="WMen" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="WMen" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="WWomen" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="WWomen" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        @*3*@
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="ApplicantId" class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="ApplicantId" readonly="readonly"
-                        class="form-control"
-                        asp-items="@Lista1"></select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="WebPage" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="WebPage" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="SkilledWorkers" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="SkilledWorkers" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="UnskilledWorkers" readonly="readonly"
-                       class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="UnskilledWorkers" readonly="readonly"
-                       class="form-control" />
-            </div>
-        </div>
-        @*1*@
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="EstablishmentTypeId" class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="EstablishmentTypeId" readonly="readonly"
-                        class="form-control"
-                        asp-items="@Lista2"></select>
-            </div>
-        </div>
-        @*2*@
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="ActivityTypeId" class="col-form-label"></label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="ActivityTypeId" readonly="readonly"
-                        class="form-control"
-                        asp-items="@Lista3"></select>
-            </div>
-        </div>
+            <!-- Form validations -->
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Formulario
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+
+                                <!-- Crear profile form (not working)-->
+                                <div class="row">
+                                    <br />
+                                    <h2 class="text-info" Detalles de Establecimiento></h2>
+                                    <br />
+                                    <form class="form-validate form-horizontal" method="post" asp-action="Details" id="viewDetalles">
+                                        <div class="border backgroundWhite">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                            @*Id*@
+                                            @*<div class=" form-group row">
+                    <div class=" col-2">
+                        <label asp-for="Id" class="col-form-label"></label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="Id" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Id" class=" text-danger"></span>
+                </div>*@
+                                            @*Name*@
+                                            <div class=" form-group">
+                                                <label asp-for="Name" class="control-label col-lg-2">Nombre </label>
+                                                <div class="col-lg-9">
+                                                    <input asp-for="Name" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                               
+                                            </div>
+
+                                            @*CIIU*@
+
+                                            <div class="form-group row">
+
+                                                <label asp-for="CIIUId" class="control-label col-lg-2">CIIUID </label>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <select asp-for="CIIUId" class="form-control" readonly
+                                                            asp-items="@Lista"></select>
+                                                </div>
+                                             
+                                            </div>
 
 
-        <div class="form-group row">
-            <div class="col-md-8 colo-lg-4 text-right">
-                <a asp-action="Index" class="btn btn-info"
-                   style="width: 50%;">
-                    Regresar
-                </a>
+
+
+                                            @*Description*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="Description" class="control-label col-lg-2">Descripción de Actividad</label>
+                                                <div class="col-lg-9">
+                                                    <input asp-for="Description" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                               
+                                            </div>
+
+
+
+
+                                            @*OtherActivities*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="OtherActivities" class="control-label col-lg-2">Otras Actividades (si poseé)</label>
+                                                <div class="col-lg-9">
+                                                    <input asp-for="OtherActivities" class="form-control" readonly minlength="5" type="text" />
+                                                </div>
+                                                
+                                            </div>
+
+
+
+                                            @*NºFinca*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="NFarm" class="control-label col-lg-2">N° de Finca</label>
+
+                                                <div class="col-lg-9">
+                                                    <input asp-for="NFarm" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                           
+                                            </div>
+
+                                            @*DesingNumber*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="DesignNum" class="control-label col-lg-2">N° de Plano</label>
+
+                                                <div class="col-lg-9">
+                                                    <input asp-for="DesignNum" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                           
+                                            </div>
+
+                                            @*Workings Hours*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="WorkingHours" class="control-label col-lg-2">Horario de Trabajo</label>
+
+                                                <div class="col-lg-9">
+                                                    <input asp-for="WorkingHours" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                           
+                                            </div>
+
+
+
+                                            @*Wmen*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="WMen" class="control-label col-lg-2">Cantidad de Hombres Trabajando</label>
+
+                                                <div class="col-lg-9">
+                                                    <input asp-for="WMen" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                                
+                                            </div>
+
+
+                                            @*WWOmen*@
+
+                                            <div class=" form-group row">
+                                                <label asp-for="WWomen" class="control-label col-lg-2">Cantidades de Mujeres Trabajando</label>
+                                                <div class="col-lg-9">
+                                                    <input asp-for="WWomen" class="form-control" readonly minlength="5" type="text" />
+                                                </div>
+                                                
+                                            </div>
+
+                                            @*Applicant*@
+
+                                            <div class="form-group row">
+                                                <label asp-for="ApplicantId" class="control-label col-md-2 col-lg-2">Se Incluye Solicitante</label>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <select asp-for="ApplicantId" class="form-control" readonly
+                                                            asp-items="@Lista1"></select>
+                                                </div>
+                                               
+                                            </div>
+
+
+
+                                            @*WebPage*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="WebPage" class="control-label col-lg-2">Dirección de Página Web</label>
+
+                                                <div class="col-lg-9">
+                                                    <input asp-for="WebPage" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                    
+                                            </div>
+
+
+
+                                            @*Skilled workers*@
+
+                                            <div class=" form-group row">
+                                                <label asp-for="SkilledWorkers" class="control-label col-lg-2">Cantidad de Trabajadores Calificados</label>
+                                                <div class="col-lg-9">
+                                                    <input asp-for="SkilledWorkers" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                                
+                                            </div>
+
+
+
+                                            @*Unskilled workers*@
+
+                                            <div class=" form-group row">
+
+                                                <label asp-for="UnskilledWorkers" class="control-label col-lg-2">Cantidad de Trabajadores No Calificados</label>
+                                                <div class="col-lg-9">
+                                                    <input asp-for="UnskilledWorkers" class="form-control" readonly minlength="5" type="text"  />
+                                                </div>
+                                                
+                                            </div>
+
+
+
+
+                                            @*EstablishmentType*@
+
+                                            <div class="form-group row">
+
+                                                <label asp-for="EstablishmentTypeId" class="control-label col-lg-2">Tipo de Establecimiento</label>
+
+                                                <div class="col-md-6 col-lg-6">
+                                                    <select asp-for="EstablishmentTypeId" class="form-control" readonly
+                                                            asp-items="@Lista2"></select>
+                                                </div>
+                                              
+                                            </div>
+
+                                            @*Applicant*@
+
+                                            <div class="form-group row">
+
+                                                <label asp-for="ActivityTypeId" class="control-label col-lg-2">Tipo de Actividad</label>
+
+                                                <div class="col-md-6 col-lg-6">
+                                                    <select asp-for="ActivityTypeId" class="form-control" readonly
+                                                            asp-items="@Lista3"></select>
+                                                </div>
+                                            
+                                            </div>
+
+                                            @*End Create Register Date Field*@
+                                            <br />
+                                            <div class=" form-group row">
+                                                <div class="col-lg-offset-3 col-lg-6">
+                                                    <a asp-action="Index" class="btn btn-info"
+                                                       style="width: 50%;">
+                                                        Regresar
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
-        </div>
-    </div>
-</form>
+            <!-- page end-->
+        }
+
+    </section>
+</section>
+<!--main content end-->

@@ -107,17 +107,28 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
+                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Index">Establecimiento</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Index">Persona</a>
+                                    <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Index"> Persona</a>
                                 </li>
                             }
 
+                            @if (User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Create">Establecimiento</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Create"> Persona</a>
+                                </li>
+                            }
                         </ul>
+
+                        
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
