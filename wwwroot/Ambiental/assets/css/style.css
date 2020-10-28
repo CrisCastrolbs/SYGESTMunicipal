@@ -2234,3 +2234,34 @@ section {
   font-size: 13px;
   color: #fff;
 }
+
+.ftco-navbar-light {
+    background: #252525;
+    background: #263182 !important;
+    z-index: 3;
+    padding: 0;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item.active > a {
+    color: #95C93D;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
+  color: #95C93D;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item > .nav-link:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #95C93D;
+   -moz-transition: all 0.3s ease;
+   -o-transition: all 0.3s ease;
+   -webkit-transition: all 0.3s ease;
+   -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    }

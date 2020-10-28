@@ -87,8 +87,21 @@
                             <a class="nav-link" asp-area="OFGA" asp-controller="Home" asp-action="Index">Gestión Ambiental</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#Servicios">Servicios</a>
+                        <li class="nav-item dropdown text-white-50">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
+                               role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                               Servicios
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
+                                <a class="dropdown-item" asp-action="Charlas"
+                                   asp-controller="Home" asp-area="OFGA">Charlas</a>
+
+                                <a class="dropdown-item" asp-action="Create"
+                                   asp-controller="Complaint" asp-area="OFGA">Denuncias</a>
+
+                            </div>
                         </li>
 
                         <li class="nav-item dropdown text-white-50">
@@ -135,40 +148,40 @@
 
                         @if (User.IsInRole(SD.CollManager) || User.IsInRole(SD.AdminOFGA) || User.IsInRole(SD.ManagerUser))
                         {
-                            <li class ="nav-item dropdown text-white-50">
+                            <li class="nav-item dropdown text-white-50">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
                                    role="button" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
                                     Centro de Acopio
                                 </a>
-                                    <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                                            <a class="dropdown-item" asp-area="OFGA" 
-                                               asp-controller="MaterialType" asp-action="Index">Categoría de Materiales</a>
-                                       
-                                            <a class="dropdown-item" asp-area="OFGA" 
-                                               asp-controller="Materials" asp-action="Index">Materiales</a>
-                                       
-                                            <a class="dropdown-item" 
-                                               asp-area="OFGA" asp-controller="RecoverableMaterialRecovery" asp-action="Index">Punto de Recuperación</a>
-                                    </div>
-                                
-                                </li>
-                            }
+                                <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
+                                    <a class="dropdown-item" asp-area="OFGA"
+                                       asp-controller="MaterialType" asp-action="Index">Categoría de Materiales</a>
+
+                                    <a class="dropdown-item" asp-area="OFGA"
+                                       asp-controller="Materials" asp-action="Index">Materiales</a>
+
+                                    <a class="dropdown-item"
+                                       asp-area="OFGA" asp-controller="RecoverableMaterialRecovery" asp-action="Index">Punto de Recuperación</a>
+                                </div>
+
+                            </li>
+                        }
 
                         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
                         {
-                    <li class="nav-item dropdown text-white-50">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
-                           role="button" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">
-                            Recolección de Basura
-                        </a>
-                        <div  class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                           
-                                <a class="dropdown-item" asp-area="OFGA" 
-                                   asp-controller="SolidWaste" asp-action="Index">Residuos Ordinarios</a>
-                        </div>
-                    </li>
+                            <li class="nav-item dropdown text-white-50">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Recolección de Basura
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
+
+                                    <a class="dropdown-item" asp-area="OFGA"
+                                       asp-controller="SolidWaste" asp-action="Index">Residuos Ordinarios</a>
+                                </div>
+                            </li>
                         }
 
                         @*<partial name="_LoginPartial" />*@
