@@ -39,50 +39,50 @@
                 <form method="post" asp-action="Edit" id="viewEditar">
                     <div class="backgroundWhite">
                          <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="PersonOFGAId" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="PersonOFGAId" class="form-control" />
                             </div>
                             <span asp-validation-for="PersonOFGAId" class=" text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="Name" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="Name" class="form-control" />
                             </div>
                             <span asp-validation-for="Name" class=" text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="LastName1" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="LastName1" class="form-control" />
                             </div>
                             <span asp-validation-for="LastName1" class=" text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="LastName2" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="LastName2" class="form-control" />
                             </div>
                             <span asp-validation-for="LastName2" class=" text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="Address" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-md-9 col-lg-9">
+                            <div class="col-md-9">
                                 <textarea asp-for="Address" rows="4" cols="50"
                                           class="form-control"> </textarea>
                             </div>
@@ -90,30 +90,30 @@
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="Province" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="Province" class="form-control" />
                             </div>
                             <span asp-validation-for="Province" class=" text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="Canton" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="Canton" class="form-control" />
                             </div>
                             <span asp-validation-for="Canton" class=" text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="District" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="District" class="form-control" />
                             </div>
                             <span asp-validation-for="District" class=" text-danger"></span>
@@ -121,20 +121,20 @@
 
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="TelephoneNumber" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="TelephoneNumber" class="form-control" />
                             </div>
                             <span asp-validation-for="TelephoneNumber" class=" text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="CellphoneNumber" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="CellphoneNumber" class="form-control" />
                             </div>
                             <span asp-validation-for="CellphoneNumber" class=" text-danger"></span>
@@ -142,16 +142,16 @@
 
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="Email" class="col-form-label"></label></h5>
 </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="Email" class="form-control" />
                             </div>
                             <span asp-validation-for="Email" class=" text-danger"></span>
                         </div>
                         <div class="form-grouprow">
-                            <div class="col-5 offset-2">
+                            <div class="col-md-5 offset-2">
                                 <partial name="_EditAndBackToListButtonString" model="Model.PersonOFGAId" />
                             </div>
                         </div>
