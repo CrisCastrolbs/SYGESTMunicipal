@@ -49,10 +49,10 @@
                         <div class="backgroundWhite">
                             <div asp-validation.summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group row">
-                                <div class="col-md-2 col-lg-2">
+                                <div class="col-md-2">
                                     <h5><label asp-for="Description" class="col-form-label">Descripción</label></h5>
                                 </div>
-                                <div class="col-md-9 col-lg-9">
+                                <div class="col-md-9">
                                     <textarea asp-for="Description" rows="4" cols="50"
                                               class="form-control"> </textarea>
                                 </div>
@@ -60,10 +60,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <div class=" col-2">
+                                <div class=" col-md-2">
                                     <h5><label>Fecha:</label></h5>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-md-8">
                                     <input type="date" asp-for="Date" class="form-control" />
                                 </div>
                                 <span asp-validation-for="Date" class="text-danger"></span>
@@ -71,10 +71,10 @@
                             @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
                             {
                                 <div class="form-group row">
-                                    <div class="col-md-2 col-lg-2">
+                                    <div class="col-md-2">
                                         <h5><label asp-for="PersonOFGAId" class="col-form-label">Persona Denunciante</label></h5>
                                     </div>
-                                    <div class="col-md-8 col-lg-8">
+                                    <div class="col-md-8">
                                         <select asp-for="PersonOFGAId" class="form-control"
                                                 asp-items="@Lista"></select>
                                     </div>
@@ -82,7 +82,7 @@
                                 </div>
                             }
                             <div class=" form-group row">
-                                <div class=" col-5 offset-2">
+                                <div class=" col-md-5">
 
                                     <partial name="_CreateAndBackToListButton" />
 

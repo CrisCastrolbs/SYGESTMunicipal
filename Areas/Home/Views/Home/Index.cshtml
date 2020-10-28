@@ -129,7 +129,8 @@
                         <h2 class="mb-4" style="color:white">Bienvenido a SyGest Municipal</h2>
                         <p>Servicios al Alcance de tus Manos</p>
                         <div class="services-wrap">
-                            <a href="#" class="services-list">
+
+                            <a class="services-list" asp-action="Create" asp-controller="PersonPatentes" asp-area="PATENTES">
                                 Solicitud de Patentes
                                 <div class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></div>
                             </a>
@@ -143,12 +144,12 @@
                                 Registrarse Para Solicitud de Patentes
                                 <div class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></div>
                             </a>
-                            <a class="services-list" asp-area="OFGA" asp-controller="Home" asp-action="Charlas">
+                            <a class="services-list" asp-area="OFGA" asp-controller="Talks" asp-action="Index">
                                 Charlas de Gestión Ambiental
                                 <div class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></div>
                             </a>
-                            <a href="#" class="services-list">
-                                Talleres
+                            <a class="services-list" asp-area="OFIM" asp-controller="Consulta" asp-action="Index">
+                                Consultas a la Oficina de la Mujer
                                 <div class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></div>
                             </a>
                         </div>
