@@ -3,90 +3,68 @@
 
 @{
     ViewData["Title"] = "Log in";
+    Layout = "~/Views/Shared/_Login.cshtml";
+
 }
 
+<div class="page-header header-filter">
 
-<div class="hero-wrap js-fullheight" style=" background:#fff" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+    @*<img class="page-header header-filter" src="~/login/assets/img/bg7.jpg" style="background-size: cover; background-position:bottom;" />*@
     <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-        </div>
-            <h1 style="color:white">@ViewData["Title"]</h1>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-2">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <br />
+                    <form class="form" id="account" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
 
+                        <div class="card-header card-header-primary text-center">
+                            <h4 class="card-title">Login</h4>
+                        </div>
+                        <p class="description text-center">¡Primero debes Registrarte!</p>
+                        <div class="card-body">
 
-                    <section>
-                        <form id="account" method="post">
-                            <h4 style="color:white">Utilice una cuenta ya registrada para iniciar sesión.</h4>
-                            <hr />
-                            <div asp-validation-summary="All" class="text-danger"></div>
-                            <div style="color: #8c552e" class="form-group">
-                                <label asp-for="Input.Email">Correo</label>
-                                <input asp-for="Input.Email" class="form-control" />
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="material-icons">mail</i>
+                                    </span>
+                                </div>
+                                <input asp-for="Input.Email" class="form-control" placeholder="Email..." />
                                 <span asp-validation-for="Input.Email" class="text-danger"></span>
+
                             </div>
-                            <div style="color: #8c552e" class="form-group">
-                                <label asp-for="Input.Password">Contraseña</label>
-                                <input asp-for="Input.Password" class="form-control" />
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="material-icons">lock_outline</i>
+                                    </span>
+                                </div>
+                                <input asp-for="Input.Password" class="form-control" placeholder="Contraseña...">
                                 <span asp-validation-for="Input.Password" class="text-danger"></span>
                             </div>
-                            @*<div style="color: #8c552e" class="form-group">
-                                <div class="checkbox">
-                                    <label asp-for="Input.RememberMe">
-                                        <input asp-for="Input.RememberMe" /> 
-                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                    </label>
-                                </div>
-                            </div>*@
+
+                        </div>
+                        <div class="footer text-center">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                             </div>
+
                             <div class="form-group">
-                                @*<p>
-                                    <a id="forgot-password" asp-page="./ForgotPassword">
-                                        ¿Olvidaste tu contraseña?
-                                    </a>
-                                </p>*@
-                                <p>
+                                <h5>
                                     <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrarse</a>
-                                </p>
+                                </h5>
                             </div>
-                        </form>
-                    </section>
-                </div>
-                @*<div class="col-md-6 col-md-offset-2">
-                    <section>
-                    
-                        @{
-                            if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                            {
-                                @*<div>
-                                     <p style="color:white">
-                                         No hay servicios de autenticación externos configurados. Ver <a href="https://go.microsoft.com/fwlink/?LinkID=532715">Este artículo</a>
-                                         para obtener detalles sobre cómo configurar esta aplicación ASP.NET para admitir el inicio de sesión a través de servicios externos.
-                                     </p>
-                                </div>*@
-                            @*}
-                            else
-                            {*@
-                                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                    <div>
-                                        <p>
-                                            @foreach (var provider in Model.ExternalLogins)
-                                            {
-                                                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                            }
-                                        </p>
-                                    </div>
-                                </form>
-                            @*}
-                        }*@
-                    
+                        </div>
+                        <br />
+                        <br />
+                    </form>
+
                 </div>
             </div>
         </div>
-    
-    @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
-    }
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
