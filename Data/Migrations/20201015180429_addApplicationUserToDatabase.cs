@@ -11,16 +11,11 @@ namespace SYGESTMunicipal.Data.Migrations
                 table: "AspNetUsers",
                 nullable: false,
                 defaultValue: "");
-
+            
             migrationBuilder.AddColumn<string>(
-                name: "City",
-                table: "AspNetUsers",
-                nullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "Country",
-                table: "AspNetUsers",
-                nullable: true);
+               name: "IdPassport",
+               table: "AspNetUsers",
+               nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "Name",
@@ -28,9 +23,36 @@ namespace SYGESTMunicipal.Data.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "StreetAddress",
+                name: "LastName1",
                 table: "AspNetUsers",
                 nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "LastName2",
+                table: "AspNetUsers",
+                nullable: true);
+            
+            migrationBuilder.AddColumn<string>(
+                name: "Address",
+                table: "AspNetUsers",
+                nullable: true);
+            
+            migrationBuilder.AddColumn<string>(
+                name: "District",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Canton",
+                table: "AspNetUsers",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Province",
+                table: "AspNetUsers",
+                nullable: true);
+
+           
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -40,20 +62,38 @@ namespace SYGESTMunicipal.Data.Migrations
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
-                name: "City",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "Country",
-                table: "AspNetUsers");
+               name: "IdPassport",
+               table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
                 name: "Name",
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
+               name: "LastName1",
+               table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+               name: "LastName2",
+               table: "AspNetUsers");
+            
+            migrationBuilder.DropColumn(
                 name: "StreetAddress",
                 table: "AspNetUsers");
+            
+            migrationBuilder.DropColumn(
+                name: "District",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Canton",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Province",
+                table: "AspNetUsers");
+
+            
         }
     }
 }
