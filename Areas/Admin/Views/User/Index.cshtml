@@ -22,6 +22,9 @@
                 <table class="table table-hover .table-responsive">
                     <tr class="table-secondary">
                         <th>
+                            @Html.DisplayNameFor(m => m.IdPassport)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(m => m.Name)
                         </th>
                         <th>
@@ -37,39 +40,42 @@
                     </tr>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(m => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => item.PhoneNumber)
-                            </td>
-                            <td>
-                                @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
-                                {
-                                    <a class="btn btn-success text-white" asp-action="Lock" asp-route-id="@item.Id">
-                                        <i class="fas fa-lock-open"></i>
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a class="btn btn-danger text-white" asp-action="UnLock" asp-route-id="@item.Id">
-                                        <i class="fas fa-lock"></i>
-                                    </a>
-                                }
-                            </td>
-                           
-                           
-                            <td>
-                                <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
-                            </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.IdPassport)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+                        {
+                            <a class="btn btn-success text-white" asp-action="Lock" asp-route-id="@item.Id">
+                                <i class="fas fa-lock-open"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-danger text-white" asp-action="UnLock" asp-route-id="@item.Id">
+                                <i class="fas fa-lock"></i>
+                            </a>
+                        }
+                    </td>
 
-                        </tr>
+
+                    <td>
+                        <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+
+                </tr>
                     }
                 </table>
             }

@@ -66,16 +66,32 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             [Required]
+            [Display(Name = "Cédula")]
+            public string IdPassport { get; set; }
+
             [Display(Name = "Nombre")]
             public string Name { get; set; }
+
+            [Display(Name = "Primer Apellido")]
+            public string LastName1 { get; set; }
+            
+            [Display(Name = "Segundo Apellido")]
+            public string LastName2 { get; set; }
+            
             [Display(Name = "Dirección Exacta")]
-            public string StreetAddress { get; set; }
-            [Display(Name = "Número de Telefono")]
-            public string PhoneNumber { get; set; }
+            public string Address { get; set; }
+
+            [Display(Name = "Distrito")]
+            public string District { get; set; }
+
             [Display(Name = "Cantón")]
-            public string City { get; set; }
+            public string Canton { get; set; }
+
             [Display(Name = "Provincia")]
-            public string Country { get; set; }
+            public string Province { get; set; }
+
+            [Display(Name = "N° Teléfono")]
+            public string PhoneNumber { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -96,10 +112,14 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
                 {
                     UserName = Input.Email,
                     Email = Input.Email,
+                    IdPassport = Input.IdPassport,
                     Name = Input.Name,
-                    City = Input.City,
-                    StreetAddress = Input.StreetAddress,
-                    Country = Input.Country,
+                    LastName1 = Input.LastName1,
+                    LastName2 = Input.LastName2,
+                    Address = Input.Address,
+                    District = Input.District,
+                    Canton = Input.Canton,
+                    Province = Input.Province,
                     PhoneNumber = Input.PhoneNumber
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
