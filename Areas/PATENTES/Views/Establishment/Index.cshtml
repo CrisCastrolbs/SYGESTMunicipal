@@ -21,7 +21,7 @@
                 </ol>
             </div>
         </div>
-        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA))
+        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.Guest) || User.IsInRole(SD.FrontDeskUser))
         {
             <div class="row">
                 <div class="col-md-12">
@@ -84,11 +84,18 @@
         }
         else
         {
+            @*@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.Guest) || User.IsInRole(SD.FrontDeskUser))
+            {
+                <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Create"> Agregar Registro de Persona</a>
+            }
+            else
+            {*@
 
-            <a class="dropdown-item" asp-action="Index"
-               asp-controller="Home" asp-area="Patentes">Oficina de Patentes</a>
-            <h5 style="color:red;">Gracias por hacer uso de Nuestros Servicios Virtuales!...</h5>
-            <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">           Volver a la Página Principal</a>
+                <a class="dropdown-item" asp-action="Index"
+                   asp-controller="Home" asp-area="Patentes">Oficina de Patentes</a>
+                <h5 style="color:red;">Gracias por hacer uso de Nuestros Servicios Virtuales!...</h5>
+                <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">           Volver a la Página Principal</a>
+            @*}*@
         }
     </section>
 </section>

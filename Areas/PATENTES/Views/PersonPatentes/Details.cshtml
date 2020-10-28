@@ -40,7 +40,9 @@
                                 <form method="post" asp-action="Deatails">
                                     <div class="border backgroundWhite">
                                         <div asp-validation.summary="ModelOnly" class="text-danger"></div>
-
+                                        <br>
+                                        <h5 class="text-black-50">Datos Generales</h5>
+                                        <br>
                                         @*Cedula*@
                                         <div class=" form-group row">
                                             <label asp-for="PersonId" class="col-form-label col-lg-2">Cédula o Pasaporte<span class="required">*</span></label>
@@ -184,7 +186,7 @@
 
                                         </div>
                                         <br>
-                                        <h5 class="text-black-50">Persona Juridica</h5>
+                                        <h5 class="text-black-50">Persona Jurídica</h5>
                                         <br>
                                         @*NameJ*@
                                         <div class=" form-group row">
@@ -196,12 +198,12 @@
                                         </div>
                                         @*NameJs*@
                                         @*<div class=" form-group row">
-                                                <label asp-for="NameJS" class="control-label col-lg-2"></label>
-                                                <div class="col-lg-9">
-                                                    <input asp-for="NameJS" class="form-control" />
-                                                </div>
-                                                <span asp-validation-for="NameJS" class=" text-danger"></span>
-                                            </div>*@
+            <label asp-for="NameJS" class="control-label col-lg-2"></label>
+            <div class="col-lg-9">
+                <input asp-for="NameJS" class="form-control" />
+            </div>
+            <span asp-validation-for="NameJS" class=" text-danger"></span>
+        </div>*@
                                         @*IdJuridic*@
                                         <div class=" form-group row">
                                             <label asp-for="JuridicId" class="col-form-label col-lg-2"></label>
