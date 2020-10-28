@@ -25,14 +25,9 @@
     <header>
         <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
             <div class="container">
-                <div>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" rel="tooltip" data-original-title="Regresar a la Página Principal">
-                        <img src="~/images/logo.png" alt="">
-                    </a>
-                </div>
-
+              
                 <div class="navbar-translate">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <a class="navbar-brand" asp-area="Home" asp-controller="Home" asp-action="Index" rel="tooltip" data-original-title="Regresar a Sygest">
                         Bienvenido
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,6 +41,25 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+
+                            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" target="_blank" data-original-title="Iniciar Sesión" rel="nofollow">
+                                <i class="fa fa-sign-in"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="http://www.munihojancha.com/" target="_blank" data-original-title="Nuestro Sitio web" rel="nofollow">
+                                <i class="fa fa-link"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="mailto:%69%6efo%40muniho%6aan%63%68a.%63om" target="_blank" data-original-title="Contáctanos" rel="nofollow">
+                                <i class="fa fa-mail-reply"></i>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/MUNICIPALIDAD-DE-HOJANCHA-218380324851885/" target="_blank" data-original-title="Síguenos en Facebook" rel="nofollow">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
@@ -53,6 +67,12 @@
                         <li class="nav-item">
                             <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" target="_blank" data-original-title="Síguenos en Instagram" rel="nofollow">
                                 <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.google.com/maps/place/Municipalidad+de+Hojancha/10.0585518,-85.4189673,18z/data=!4m5!3m4!1s0x8f9fbab7c3d45245:0xb2000651b89c1e5b!8m2!3d10.0587462!4d-85.4178777?hl=es" target="_blank" data-original-title="Ubícanos" rel="nofollow">
+                                <i class="fa fa-location-arrow"></i>
                             </a>
                         </li>
                     </ul>
@@ -68,46 +88,6 @@
     </div>
  
 
-    <footer class="footer">
-        <div class="container">
-            <nav class="float-left">
-
-                <ul>
-                    <li>
-                        <a href="http://www.munihojancha.com/">
-                            Sitio web: Muni Hojancha
-                        </a>
-                    </li>
-                    <li>
-                        <i class="material-icons">
-                            mail
-                            <a href="mailto:%69%6efo%40muniho%6aan%63%68a.%63om">
-                                Email: info@munihojancha.com
-                            </a>
-                        </i>
-                    </li>
-                    <li>
-                        <a href="tel:+506 2659 9116">
-                            Llámanos: 2659 9116
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/place/Municipalidad+de+Hojancha/10.0585518,-85.4189673,18z/data=!4m5!3m4!1s0x8f9fbab7c3d45245:0xb2000651b89c1e5b!8m2!3d10.0587462!4d-85.4178777?hl=es">
-                            Úbicanos: Costado Norte del Parque
-                        </a> 
-                     </li>
-                   
-                </ul>
-                @RenderBody()
-            </nav>
-            <div class="copyright float-right">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>, Municipalidad Hojancha<i class="material-icons">favorite</i> Todos los derechos Reservados
-            </div>
-        </div>
-    </footer>
 
     <!--   Core JS Files   -->
     <script src="~/login/assets/js/core/jquery.min.js" type="text/javascript"></script>

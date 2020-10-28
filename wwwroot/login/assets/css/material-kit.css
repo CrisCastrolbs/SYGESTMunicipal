@@ -419,9 +419,12 @@ template {
     min-width: 992px !important;
   }
 
-  .container {
-    min-width: 592px !important;
-  }
+    .container {
+        min-width: 592px !important;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
 
   .navbar {
     display: none;
@@ -1045,6 +1048,12 @@ pre code {
   margin-left: -15px;
 }
 
+.row:after {
+        content: "";
+        display: table;
+        clear: both;
+}
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -1106,6 +1115,7 @@ pre code {
 .col-lg-6,
 .col-lg-7,
 .col-lg-8,
+
 .col-lg-9,
 .col-lg-10,
 .col-lg-11,
@@ -1184,7 +1194,11 @@ pre code {
   flex: 0 0 66.666667%;
   max-width: 66.666667%;
 }
-
+.col-lg-8 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
 .col-9 {
   flex: 0 0 75%;
   max-width: 75%;
@@ -3914,17 +3928,23 @@ tbody.collapse.show {
   z-index: 3;
 }
 
-.input-group>.form-control+.form-control,
-.input-group>.form-control+.custom-select,
-.input-group>.form-control+.custom-file,
-.input-group>.custom-select+.form-control,
-.input-group>.custom-select+.custom-select,
-.input-group>.custom-select+.custom-file,
-.input-group>.custom-file+.form-control,
-.input-group>.custom-file+.custom-select,
-.input-group>.custom-file+.custom-file {
-  margin-left: -1px;
+.input-group {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
 }
+
+    .input-group > .form-control + .form-control,
+    .input-group > .form-control + .custom-select,
+    .input-group > .form-control + .custom-file,
+    .input-group > .custom-select + .form-control,
+    .input-group > .custom-select + .custom-select,
+    .input-group > .custom-select + .custom-file,
+    .input-group > .custom-file + .form-control,
+    .input-group > .custom-file + .custom-select,
+    .input-group > .custom-file + .custom-file {
+        margin-left: -1px;
+    }
 
 .input-group>.form-control:not(:last-child),
 .input-group>.custom-select:not(:last-child) {
@@ -16836,13 +16856,26 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     background-position: top center;
 }
 
+.main {
+    column-count: 2;
+    column-span: all;
+    column-rule: 1px solid #bbb;
+    column-width: 140px;
+}
+.main2 {
+    column-count: 2;
+    column-span: all;
+    text-align:center;
+    column-width: 140px;
+}
+
 .page-header .page-header-image {
-  position: absolute;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .page-header .content-center {
@@ -16919,12 +16952,12 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 footer {
-  padding: 0.9375rem 0;
-  text-align: center;
-  display: -webkit-flex;
-  /* Safari */
-  /* Safari 6.1+ */
-  display: flex;
+    padding: 5em 0 3em 0;
+    text-align: center;
+    display: -webkit-flex;
+    /* Safari */
+    /* Safari 6.1+ */
+    display: flex;
 }
 
 footer ul {
