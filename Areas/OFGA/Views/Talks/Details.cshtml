@@ -35,7 +35,7 @@
     <br />
 
     <div class="backgroundWhite row">
-        <div class="col-4 border align-self-baseline">
+        <div class="col-md-4 border align-self-baseline">
 
             @{
                 var base64 = Convert.ToBase64String(Model.Picture);
@@ -55,35 +55,35 @@
             <br />
             <fieldset disabled>
                 <div class="form-group row">
-                    <div class="col-3 text-right">
+                    <div class="col-md-3">
                         <h5><label asp-for="Name" class="custom-label">Nombre: </label></h5>
 </div>
-                    <div class="col-7 text-right">
+                    <div class="col-md-7">
                         <input asp-for="Name" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-3 text-right">
+                    <div class="col-md-3">
                         <h5><label asp-for="Description" class="custom-label">Descripción: </label></h5>
                     </div>
-                    <div class="col-md-9 col-lg-9">
+                    <div class="col-md-9">
                         <textarea asp-for="Description" readonly rows="4" cols="50"
                                   class="form-control"> </textarea>
                     </div>
                     
                 </div>
                 <div class="form-group row">
-                    <div class="col-3 text-right">
+                    <div class="col-md-3">
                         <h5><label asp-for="Date" class="col-form-label">Fecha: </label></h5>
 </div>
-                    <div class="col-7 text-right">
+                    <div class="col-md-7">
                         <input asp-for="Date" readonly type="datetime" class="form-control" />
                     </div>
                 </div>
             </fieldset>
             <br />
             <div class="form-group row">
-                <div class="col-6 offset-5">
+                <div class="col-md-6 offset-5">
                     <partial name="_DetailsAndBackToListButton" model="@Model.Id" />
                 </div>
             </div>

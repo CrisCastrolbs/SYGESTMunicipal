@@ -1,12 +1,14 @@
 ﻿@model string
 <div class="form-group row">
-    <div class="col-md-5 colo-lg-4 text-right">
+    <div class="col-md-5 col-lg-5 text-right">
         <input onclick="abrirModal()" type="submit" value="Delete" id="btnEliminar"
                class="btn btn-danger" style="width: 80%;"
                asp-route-id="@Model" />
     </div>
     <br />
-    <div class="col-md-5">
+    <br />
+    <br />
+    <div class="col-md-5 text-center">
         <a asp-action="Index" type="button"
            class="btn btn-success"
            style="width: 80%;">Regresar </a>
