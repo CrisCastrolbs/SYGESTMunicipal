@@ -25,7 +25,7 @@
 
      <form asp-controller="SolidWaste" asp-action="Index" method="post">
                     <div class="row">
-                        <div class="col-lg-3 col-lg-3 text-left">
+                        <div class="col-md-3">
                             <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
                                style="width:100%; height:100%;padding:11px;">
                                 Agregar Desecho Ordinario
@@ -63,7 +63,7 @@
                                 <td>@Html.DisplayFor(m => item.Weight)</td>
                                 <td>@Html.DisplayFor(m => item.EntryDate)</td>
 
-                                <div class="col-lg-6 text-right">
+                                <div class="col-md-6">
                                     <a><partial name="_TableButtonPartial" model="item.SolidWasteId" /></a>
                                 </div>
 

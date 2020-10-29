@@ -9508,3 +9508,13 @@ background: #3c312e; }
     top: 0;
     left: 0;
 }
+
+.imagen.derecha {
+    float: right;
+    margin: 1em 0 1em 1em;
+}
+
+.imagen.derecha p {
+    margin: .5em 0;
+    text-align: right;
+}
