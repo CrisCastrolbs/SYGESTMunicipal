@@ -61,7 +61,7 @@
 
 <body>
 
-    
+
     <!-- container section start -->
     <section id="container" class="">
         <header class="header dark-bg">
@@ -72,21 +72,19 @@
             <!--logo start-->
             <a href="#" class="logo"><span class="lite">OFICINA DE PATENTES</span></a>
             <!--logo end-->
-
             <!--<div class="nav search-row" id="top_menu">-->
-                <!--  search form start -->
-                <!--<ul class="nav top-menu">
-                    <li>
-                        <form class="navbar-form">
-                            <input class="form-control" placeholder="Search" type="text">
-                        </form>
-                    </li>
-                </ul>-->
-                <!--  search form end -->
+            <!--  search form start -->
+            <!--<ul class="nav top-menu">
+                <li>
+                    <form class="navbar-form">
+                        <input class="form-control" placeholder="Search" type="text">
+                    </form>
+                </li>
+            </ul>-->
+            <!--  search form end -->
             <!--</div>-->
         </header>
         <!--header end-->
-       
         <!--sidebar start-->
         <aside>
             <div id="sidebar" class="nav-collapse ">
@@ -98,39 +96,46 @@
                     <li class="sidebar-menu active">
                         <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">Oficina de Patentes</a>
                     </li>
+                  
+                        <li class="sub-menu">
+                            <a href="javascript:;" class="">
+                                <i class="icon_documents_alt"></i>
 
-                    <li class="sub-menu">
-                        <a href="javascript:;" class="">
-                            <i class="icon_documents_alt"></i>
+                                <span>Formulario Único</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
 
-                            <span>Formularios</span>
-                            <span class="menu-arrow arrow_carrot-right"></span>
-                        </a>
-                        <ul class="sub">
-                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Index">Establecimiento</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Index"> Persona</a>
-                                </li>
-                            }
 
-                            @if (User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Create">Establecimiento</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Create"> Persona</a>
-                                </li>
-                            }
-                        </ul>
 
-                        
-                    </li>
-                    <li class="sub-menu">
+
+
+                                @if (User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Create">Establecimiento</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Create"> Persona</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Index"> Persona</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Index">Establecimiento</a>
+                                    </li>
+                                }
+                            </ul>
+
+
+                        </li>
+                    
+                 
+
+                    @*<li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_globe"></i>
                             <span>Servicios</span>
@@ -145,13 +150,15 @@
                             }
 
                         </ul>
+                    </li>*@
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Register">Registrarse</a>
                     </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Register">Registrarse</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
-                            </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
+                    </li>
                 </ul>
 
                 <!-- sidebar menu end-->
@@ -166,8 +173,86 @@
             @RenderBody()
         </main>
     </div>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" style="background-color:black">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row2" style="color:white;text-shadow: 1px 1px 4px #000">
+                    <br />
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <h3>Municipalidad de Hojancha</h3>
+                        <p>Siempre pensando en la comodidad para usted, ofrece sus servicios en línea y al alcalce de sus manos.</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-links">
+
+                        <h4>Servicios</h4>
+                        <ul>
+
+                            <li><a asp-area="PATENTES" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de Patentes</a></li>
+                            <li><a asp-area="OFGA" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de Gestión Ambiental</a></li>
+                            <li><a asp-area="OFIM" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de La Mujer</a></li>
+                        </ul>
+                    </div>
 
 
+
+
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>Información del contacto</h4>
+                        <p>
+                            <strong>Ubicación: </strong> Costado Norte del Parque<br>
+                            Hojancha, Guanacaste, Costa Rica <br><br>
+                            <strong>Teléfono:</strong> 26599116 Ext.223<br>
+                            <strong>Email:</strong> info@munihojancha.com<br>
+                        </p>
+
+                        <div class="social-links">
+
+
+                            <a href="https://www.facebook.com/MUNICIPALIDAD-DE-HOJANCHA-218380324851885/" class="facebook"><i class="icofont-facebook"></i></a>
+                            <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="instagram"><i class="icofont-instagram"></i></a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-newsletter">
+                        <h4>Horario de Atención</h4>
+                        <div class="opening-hours">
+                            <h4>Abierto los Días:</h4>
+                            <p class="ftco-footer-widget mb-4">
+                                <span>Lunes – Viernes: 7:30 am a 3:30 pm</span>
+
+                            </p>
+                        </div>
+                        @RenderBody()
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @*sdfghjklkjhgfdsa*@
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Municipalidad</span><span> Hojancha</span></strong>. Todo los Derechos Reservados
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/serenity-bootstrap-corporate-template/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
     <!-- javascripts -->
     <script src="~/Patentes/js/jquery.js"></script>
     <script src="~/Patentes/js/jquery-ui-1.10.4.min.js"></script>
@@ -184,7 +269,6 @@
     <script src="~/Patentes/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
     <script src="~/Patentes/js/owl.carousel.js"></script>
     <!-- jQuery full calendar -->
-   
     @*<script src="~/Patentes/js/fullcalendar.min.js"></script>*@
     <!-- Full Google Calendar - Calendar -->
     @*<script src="~/Patentes/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>*@

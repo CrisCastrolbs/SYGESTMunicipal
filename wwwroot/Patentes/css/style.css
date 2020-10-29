@@ -636,6 +636,8 @@ ul.sidebar-menu li.active a i {
 
 #main-content {
     margin-left: 180px;
+    background: url('../img/bg_2.jpg');
+    background-size: cover;
 }
 
 
@@ -3148,14 +3150,14 @@ ul.ft-link {
 .profile-widget {
     color: #fff;
     text-align: center;
+   
 }
 
 
 
 /*profile-widget image bg*/
-
 .profile-widget-img {
-    background: url('../img/backgrounds/bg-11-small.jpg') no-repeat !important;
+    background: url('../img/bg_2.jpg') no-repeat !important;
 }
 
 .profile-nav .profile-widget-img .bg-layer {
@@ -6412,7 +6414,7 @@ table.sliders tr td {
 }
 
 .act-time .attribution {
-    font-size: 11px;
+    font-size: 20px;
     margin: 0px 0 5px;
 }
 

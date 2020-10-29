@@ -202,12 +202,12 @@
                                             </div>
                                             @*NameJs*@
                                             @*<div class=" form-group row">
-            <label asp-for="NameJS" class="control-label col-lg-2"></label>
-            <div class="col-lg-9">
-                <input asp-for="NameJS" class="form-control" />
-            </div>
-            <span asp-validation-for="NameJS" class=" text-danger"></span>
-        </div>*@
+                                            <label asp-for="NameJS" class="control-label col-lg-2"></label>
+                                            <div class="col-lg-9">
+                                                <input asp-for="NameJS" class="form-control" />
+                                            </div>
+                                            <span asp-validation-for="NameJS" class=" text-danger"></span>
+                                        </div>*@
                                             @*IdJuridic*@
                                             <div class=" form-group row">
                                                 <label asp-for="JuridicId" class="col-form-label col-lg-2"></label>
@@ -234,11 +234,13 @@
             else
             {
 
-
-                <h3> Para realizar la solicitud de una Patente, debe registrarse o iniciar sesión primeramente.</h3>
-                <h3> Inicie Sesión aquí  <a asp-area="Identity" asp-page="/Account/Login" class="btn-get-started scrollto">Inicio de Sesión</a></h3>
-
+                <a class="dropdown-item" asp-action="Index"
+                   asp-controller="Home" asp-area="Patentes" style="color:white;text-shadow: 2px 2px 5px #000">Oficina de Patentes</a>
+                <h3 style="color:white;text-shadow: 2px 2px 5px #000"> Gracias por utilizar nuestro servicio.</h3>
+                
+                <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index" style="color:white;text-shadow: 2px 2px 5px #000">           Volver a la Página Principal</a>
             }
+            
         </section>
     </section>
     <!--main content end-->
