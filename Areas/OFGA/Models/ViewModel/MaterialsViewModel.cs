@@ -19,7 +19,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Models.ViewModel
         [Display(Name = "Fecha de entrada ")]
         public DateTime? Date { get; set; }
 
-        [Display(Name = "Peso")]
+        [Display(Name = "Peso (Kg)")]
         public float Weight { get; set; }
 
         [Display(Name = "Color")]

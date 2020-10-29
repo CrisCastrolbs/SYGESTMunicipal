@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
 {
-    public static class ManageNavPages
+    public static class ManageNavPages 
     {
         public static string Index => "Index";
 
