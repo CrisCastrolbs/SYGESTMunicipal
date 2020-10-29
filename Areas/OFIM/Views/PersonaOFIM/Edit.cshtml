@@ -1,4 +1,5 @@
-﻿@model SYGESTMunicipal.Areas.OFIM.Models.PersonaOFIM
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.OFIM.Models.PersonaOFIM
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
@@ -8,267 +9,269 @@
     List<SelectListItem> Lista3 = ViewBag.ListaNivelAcademico;
     List<SelectListItem> Lista4 = ViewBag.ListaSeguro;
 }
-<br />
-<h2 class="text-info" Editar una Persona></h2>
-<br />
-<form asp-action="Edit" asp-controller="PersonaOFIM" method="post" id="viewEditar">
-    <div class="container-fluid">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <br />
+    <h2 class="text-info" Editar una Persona></h2>
+    <br />
+    <form asp-action="Edit" asp-controller="PersonaOFIM" method="post" id="viewEditar">
+        <div class="container-fluid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <div class=" form-group row">
-            <div class=" col-md-2">
-                <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+            <div class=" form-group row">
+                <div class=" col-md-2">
+                    <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="PersonaOFIMId" class="form-control" />
+                </div>
+                <span asp-validation-for="PersonaOFIMId" class=" text-danger"></span>
             </div>
-            <div class="col-md-6">
-                <input asp-for="PersonaOFIMId" class="form-control" />
+            @*Name*@
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Nombre:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="PersonName" class="form-control" />
+                </div>
+                <span asp-validation-for="PersonName" class="text-danger"></span>
             </div>
-            <span asp-validation-for="PersonaOFIMId" class=" text-danger"></span>
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Primer Apellido:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="LatName1" class="form-control" />
+                </div>
+                <span asp-validation-for="LatName1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Segundo Apellido:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="LatName2" class="form-control" />
+                </div>
+                <span asp-validation-for="LatName2" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Dirección:</label>
+                </div>
+                <div class="col-md-6">
+                    <textarea asp-for="Address" rows="4" cols="50"
+                              class="form-control" placeholder="Digite la dirección exacta aquí"> </textarea>
+                </div>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Provincia:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Province" class="form-control" />
+                </div>
+                <span asp-validation-for="Province" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Cantón:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Canton" class="form-control" />
+                </div>
+                <span asp-validation-for="Canton" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Distrito:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="District" class="form-control" />
+                </div>
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Teléfono Fijo:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="TelephoneNumber" class="form-control" />
+                </div>
+                <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Teléfono Móvil:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="MobilePhoneNumber" class="form-control" />
+                </div>
+                <span asp-validation-for="MobilePhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Email:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Email" class="form-control" />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Sexo:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Sex" class="form-control" />
+                </div>
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label>Fecha Nacimiento:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" asp-for="DateBirth" class="form-control" id="datepicker" />
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Nombre Cónyuge:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="CoupleName" class="form-control" />
+                </div>
+                <span asp-validation-for="CoupleName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Cantidad Hijos:</label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="ChildNumber" class="form-control" />
+                </div>
+                <span asp-validation-for="ChildNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Discapacidades:</label>
+                </div>
+                <div class="col-md-6">
+                    <textarea asp-for="Disability" rows="4" cols="50"
+                              class="form-control" placeholder="Describa las discapacidades"> </textarea>
+                </div>
+                <span asp-validation-for="Disability" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Padecimientos:</label>
+                </div>
+                <div class="col-md-6">
+                    <textarea asp-for="MedicalCondition" rows="4" cols="50"
+                              class="form-control" placeholder="Digite la dirección exacta aquí"> </textarea>
+                </div>
+                <span asp-validation-for="MedicalCondition" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Estado Civil:</label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="EstadoCivilId" class="form-control"
+                            asp-items="@Lista"></select>
+                </div>
+                <span asp-validation-for="EstadoCivilId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Ocupación:</label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="OcupacionId" class="form-control"
+                            asp-items="@Lista1"></select>
+                </div>
+                <span asp-validation-for="OcupacionId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Nacionalidad:</label>
+                </div>
+                <div class="col-md-4 col-lg-4 text-right">
+                    <select asp-for="NacionalidadId" class="form-control"
+                            asp-items="@Lista2"></select>
+                </div>
+                <span asp-validation-for="NacionalidadId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Nivel Académico:</label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="NivelAcademicoId" class="form-control"
+                            asp-items="@Lista3"></select>
+                </div>
+                <span asp-validation-for="NivelAcademicoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class=" col-md-2">
+                    <label>Seguro:</label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="SeguroId" class="form-control"
+                            asp-items="@Lista4"></select>
+                </div>
+                <span asp-validation-for="SeguroId" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+            @*End Create Register Date Field*@
+            <div class=" form-group row">
+                <div class=" col-5 offset-2">
+                    <partial name="_EditAndBackToListButtonString" model="Model.PersonaOFIMId" />
+                </div>
+            </div>
         </div>
-        @*Name*@
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Nombre:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="PersonName" class="form-control" />
-            </div>
-            <span asp-validation-for="PersonName" class="text-danger"></span>
-        </div>
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Primer Apellido:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="LatName1" class="form-control" />
-            </div>
-            <span asp-validation-for="LatName1" class="text-danger"></span>
-        </div>
+    </form>
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Segundo Apellido:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="LatName2" class="form-control" />
-            </div>
-            <span asp-validation-for="LatName2" class="text-danger"></span>
-        </div>
+    <script src="~/js/jquery.datepair.js"></script>
+    <script src="~/js/jquery.datepair.min.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/jquery.timepicker.js"></script>
+    <script src="~/js/jquery.timepicker.min.js"></script>
 
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Dirección:</label>
-            </div>
-            <div class="col-md-6">
-                <textarea asp-for="Address" rows="4" cols="50"
-                          class="form-control" placeholder="Digite la dirección exacta aquí"> </textarea>
-            </div>
-            <span asp-validation-for="Address" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Provincia:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="Province" class="form-control" />
-            </div>
-            <span asp-validation-for="Province" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Cantón:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="Canton" class="form-control" />
-            </div>
-            <span asp-validation-for="Canton" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Distrito:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="District" class="form-control" />
-            </div>
-            <span asp-validation-for="District" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Teléfono Fijo:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="TelephoneNumber" class="form-control" />
-            </div>
-            <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Teléfono Móvil:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="MobilePhoneNumber" class="form-control" />
-            </div>
-            <span asp-validation-for="MobilePhoneNumber" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Email:</label>
-            </div>
-            <<div class="col-md-6">
-                <input asp-for="Email" class="form-control" />
-            </div>
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Sexo:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="Sex" class="form-control" />
-            </div>
-            <span asp-validation-for="Sex" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label>Fecha Nacimiento:</label>
-            </div>
-            <div class="col-md-6">
-                <input type="text" asp-for="DateBirth" class="form-control" id="datepicker" />
-            </div>
-
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Nombre Cónyuge:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="CoupleName" class="form-control" />
-            </div>
-            <span asp-validation-for="CoupleName" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Cantidad Hijos:</label>
-            </div>
-            <div class="col-md-6">
-                <input asp-for="ChildNumber" class="form-control" />
-            </div>
-            <span asp-validation-for="ChildNumber" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Discapacidades:</label>
-            </div>
-            <div class="col-md-6">
-                <textarea asp-for="Disability" rows="4" cols="50"
-                          class="form-control" placeholder="Describa las discapacidades"> </textarea>
-            </div>
-            <span asp-validation-for="Disability" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Padecimientos:</label>
-            </div>
-            <div class="col-md-6">
-                <textarea asp-for="MedicalCondition" rows="4" cols="50"
-                          class="form-control" placeholder="Digite la dirección exacta aquí"> </textarea>
-            </div>
-            <span asp-validation-for="MedicalCondition" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Estado Civil:</label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="EstadoCivilId" class="form-control"
-                        asp-items="@Lista"></select>
-            </div>
-            <span asp-validation-for="EstadoCivilId" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Ocupación:</label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="OcupacionId" class="form-control"
-                        asp-items="@Lista1"></select>
-            </div>
-            <span asp-validation-for="OcupacionId" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Nacionalidad:</label>
-            </div>
-            <div class="col-md-4 col-lg-4 text-right">
-                <select asp-for="NacionalidadId" class="form-control"
-                        asp-items="@Lista2"></select>
-            </div>
-            <span asp-validation-for="NacionalidadId" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Nivel Académico:</label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="NivelAcademicoId" class="form-control"
-                        asp-items="@Lista3"></select>
-            </div>
-            <span asp-validation-for="NivelAcademicoId" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class=" col-md-2">
-                <label>Seguro:</label>
-            </div>
-            <div class="col-md-6">
-                <select asp-for="SeguroId" class="form-control"
-                        asp-items="@Lista4"></select>
-            </div>
-            <span asp-validation-for="SeguroId" class="text-danger"></span>
-        </div>
-
-        <br />
-        <br />
-
-        @*End Create Register Date Field*@
-        <div class=" form-group row">
-            <div class=" col-5 offset-2">
-                <partial name="_EditAndBackToListButtonString" model="Model.PersonaOFIMId" />
-            </div>
-        </div>
-    </div>
-</form>
-<script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
-<script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-<script src="~/js/jquery.datepair.js"></script>
-<script src="~/js/jquery.datepair.min.js"></script>
-<script src="~/js/moment.min.js"></script>
-<script src="~/js/jquery.timepicker.js"></script>
-<script src="~/js/jquery.timepicker.min.js"></script>
-
-<script src="~/js/jquery-ui.js"></script>
-<script src="~/js/jquery-ui.min.js"></script>
-<script>
-    $(function () {
-        $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
-        $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
-        //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
-    });</script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+        });</script>
 }

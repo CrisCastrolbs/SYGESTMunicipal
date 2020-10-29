@@ -27,7 +27,7 @@
     
             <form asp-controller="RecoverableMaterialRecovery" asp-action="Index" method="post">
                 <div class="row">
-                    <div class="col-md-2 col-lg-2 text-right">
+                    <div class="col-md-2">
                         <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
                            style="width:100%; height:90%;padding:6px;">
                             Agregar
@@ -49,7 +49,7 @@
             {
                 <table class="table table-hover .table-responsive" id="TbSolidWaste">
                     <thead class="thead-dark">
-                        <tr class="table-secondary" style="text-align:left;">
+                        <tr class="table-secondary" style="text-align:center;">
                             <th>@Html.DisplayNameFor(m => m.Id)</th>
                             <th>@Html.DisplayNameFor(m => m.Weight)</th>
                             <th>@Html.DisplayNameFor(m => m.PlaceName)</th>
@@ -58,14 +58,14 @@
                             <th>Operaciones</th>
                         </tr>
                     </thead>
-                    <tbody style="text-align:left;">
+                    <tbody style="text-align:center;">
                         @foreach (var item in Model)
                         {
                             <tr>
                                 <td>@Html.DisplayFor(m => item.Id)</td>
                                 <td>@Html.DisplayFor(m => item.Weight)</td>
                                 <td>@Html.DisplayFor(m => item.PlaceName)</td>
-                                <td>@Html.DisplayFor(m => item.EntryDate, "{0:dd/MM/yyyy}")</td>
+                                <td>@Html.DisplayFor(m => item.EntryDate)</td>
 
                                 <a>
                                     <partial name="_TableButtonPartial" model="item.Id" />

@@ -13,6 +13,10 @@ a.navbar-brand {
 a {
     color: black;
 }
+.col {
+    column-count: 2;
+    column-width: 140px;
+}
 
 .btn-primary {
     color: #fff;

@@ -26,10 +26,10 @@
     
     <div class="border backgroundWhite">
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <h2 class="text-info">Lista de tipo de materiales</h2>
             </div>
-            <div class="col-lg-6 text-right">
+            <div class="col-md-6">
                 @*//CREAR UNA VISTA PARCIAL DEL BOTON CREAR*@
                 <partial name="_CreateButtonPartial" />
             </div>
@@ -64,7 +64,7 @@
                         <td>@Html.DisplayFor(m => item.MaterialTypeName)</td>
                         <td>@Html.DisplayFor(m => item.Description)</td>
 
-                        <div class="col-lg-6 text-right">
+                        <div class="col-md-6 text-right">
                             <a><partial name="_TableButtonPartial" model="item.MaterialTypeId" /></a>
                         </div>
 

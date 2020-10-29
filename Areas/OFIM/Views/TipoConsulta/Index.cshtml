@@ -1,11 +1,14 @@
-﻿@model IEnumerable<TipoConsultaAndPersonaViewModel>
+﻿@using SYGESTMunicipal.Utility
+@model IEnumerable<TipoConsultaAndPersonaViewModel>
 @using SYGESTMunicipal.Areas.OFIM.Models.ViewModel
-   
-    @{
-        ViewData["Title"] = "Index";
-     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
-    }
 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
     <br />
     <br />
     <div class="<border backgroundWhite">
@@ -57,3 +60,4 @@
         </div>
     </div>
 
+}
