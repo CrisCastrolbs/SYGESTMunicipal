@@ -4,20 +4,28 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
 }
-
 <section id="main-content">
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-th"></i>Persona Patente</h3>
+                <h3 class="page-header" style="color:white;text-shadow: 2px 2px 5px #000"><i class="fa fa-th"></i>Persona Patente</h3>
                 <ol class="breadcrumb">
 
                     <li class="nav-item">
                         <i class="fa fa-home"></i>
                         <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">Inicio</a>
                     </li>
-                    <li><i class="fa fa-th"></i>Persona Patente</li>
+                    <li style="color:black"><i class="fa fa-th"></i>Persona Patente</li>
                 </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3 style="color:white;text-shadow: 2px 2px 5px #000" class="text-info">Lista de Personas</h3>
+
+            </div>
+            <div class="col-md-6 text-right">
+                <partial name="_CreateButtonPartial" />
             </div>
         </div>
         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA))
@@ -27,14 +35,9 @@
                     <section class="panel">
                         <div class="panel-body">
                             <div class="border backgroundWhite">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <h2 class="text-info">Lista de Personas</h2>
-                                    </div>
-                                    <br />
-                                    <br />
-                                   
-                                </div>
+
+
+
                                 @*//Vista del filtro*@
                                 @*<div class="row">
                                     <div class="col-12 text-right">
@@ -46,52 +49,50 @@
                                 <div>
                                     @if (Model.Count() > 0)
                                     {
-                                    <table class="table table-hover .table-responsive">
-                                        <div class="col-1 text-right">
-                                            <partial name="_CreateButtonPartial" />
-                                        </div>
+                                        <table class="table table-hover .table-responsive">
 
-                                        <tr class="table.secondary">
-                                            <th>
-                                                @*//header*@
-                                                @Html.DisplayNameFor(m => m.PersonId)
-                                            </th>
-                                            <th>
-                                                @*//header*@
-                                                @Html.DisplayNameFor(m => m.Name)
-                                            </th>
-                                            <th>
-                                                @*//header*@
-                                                @Html.DisplayNameFor(m => m.LastName1)
-                                            </th>
-                                            <th>
-                                                Operaciones
-                                            </th>
-                                            <th>
 
-                                            </th>
-                                        </tr>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @*//detail*@
-                                                    @Html.DisplayFor(m => item.PersonId)
-                                                </td>
-                                                <td>
-                                                    @*//detail*@
-                                                    @Html.DisplayFor(m => item.Name)
-                                                </td>
-                                                <td>
-                                                    @*//detail*@
-                                                    @Html.DisplayFor(m => item.LastName1)
-                                                </td>
-                                                <a>
-                                                    <partial name="_TableButtonPartialString" model="item.PersonId" />
-                                                </a>
+                                            <tr class="table.secondary">
+                                                <th>
+                                                    @*//header*@
+                                                    @Html.DisplayNameFor(m => m.PersonId)
+                                                </th>
+                                                <th>
+                                                    @*//header*@
+                                                    @Html.DisplayNameFor(m => m.Name)
+                                                </th>
+                                                <th>
+                                                    @*//header*@
+                                                    @Html.DisplayNameFor(m => m.LastName1)
+                                                </th>
+                                                <th>
+                                                    Operaciones
+                                                </th>
+                                                <th>
+
+                                                </th>
                                             </tr>
-                                        }
-                                    </table>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @*//detail*@
+                                                        @Html.DisplayFor(m => item.PersonId)
+                                                    </td>
+                                                    <td>
+                                                        @*//detail*@
+                                                        @Html.DisplayFor(m => item.Name)
+                                                    </td>
+                                                    <td>
+                                                        @*//detail*@
+                                                        @Html.DisplayFor(m => item.LastName1)
+                                                    </td>
+                                                    <a>
+                                                        <partial name="_TableButtonPartialString" model="item.PersonId" />
+                                                    </a>
+                                                </tr>
+                                            }
+                                        </table>
                                     }
                                     else
                                     {
@@ -110,9 +111,11 @@
         {
 
             <a class="dropdown-item" asp-action="Index"
-               asp-controller="Home" asp-area="Patentes">Oficina de Patentes</a>
-            <h5 style="color:red;">Gracias por hacer uso de Nuestros Servicios Virtuales!...</h5>
-            <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">           Volver a la Página Principal</a>
+               asp-controller="Home" asp-area="Patentes" style="color:white;text-shadow: 2px 2px 5px #000">Oficina de Patentes</a>
+            <h3 style="color:white;text-shadow: 2px 2px 5px #000"> Para realizar la solicitud de una Patente, debe registrarse o iniciar sesión primeramente.</h3>
+            <h3 style="color:white;text-shadow: 2px 2px 5px #000"> Inicie Sesión <a asp-area="Identity" asp-page="/Account/Login" class="btn-get-started scrollto">Aquí</a></h3>
+
+            <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index" style="color:white;text-shadow: 2px 2px 5px #000">           Volver a la Página Principal</a>
         }
     </section>
 </section>
