@@ -1,4 +1,5 @@
-﻿@model SYGESTMunicipal.Areas.OFIM.Models.Consulta
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.OFIM.Models.Consulta
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
@@ -6,94 +7,95 @@
     List<SelectListItem> Lista2 = ViewBag.ListaPersonaOFIM;
 }
 
-
-<div class="row">
-    <div class="col-md-12 col-lg-12">
-        <h3 class="text-light" style="text-align:center;
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light" style="text-align:center;
                               background-color:darkslategray;width:100%;">
-            Agregar una Consulta
-        </h3>
+                Agregar una Consulta
+            </h3>
+        </div>
     </div>
-</div>
-<br />
+    <br />
 
-<form asp-action="Create" asp-controller="Consulta" method="post" id="viewAgregar">
-    <div class="container-fluid">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form asp-action="Create" asp-controller="Consulta" method="post" id="viewAgregar">
+        <div class="container-fluid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label>Hora Atención:</label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label>Hora Atención:</label>
+                </div>
+                <div class="col-md-6">
+                    <p id="timepicker">
+                        <input asp-for="HoraInicio" type="text" class="time start" /> to
+                        <input asp-for="HoraFin" type="text" class="time end" />
+                    </p>
+                </div>
             </div>
-            <div class="col-md-6">
-                <p id="timepicker">
-                    <input asp-for="HoraInicio" type="text" class="time start" /> to
-                    <input asp-for="HoraFin" type="text" class="time end" />
-                </p>
-            </div>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="Motivo" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Motivo" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Motivo" class="form-control" />
+                </div>
+                <span asp-validation-for="Motivo" class="text-danger"></span>
             </div>
-            <div class="col-md-6">
-                <input asp-for="Motivo" class="form-control" />
-            </div>
-            <span asp-validation-for="Motivo" class="text-danger"></span>
-        </div>
 
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="PersonaOFIMId" class="form-control"
+                            asp-items="@Lista2"></select>
+                </div>
+                <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
             </div>
-            <div class="col-md-6">
-                <select asp-for="PersonaOFIMId" class="form-control"
-                        asp-items="@Lista2"></select>
-            </div>
-            <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="TipoConsultaId" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="TipoConsultaId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="TipoConsultaId" class="form-control"
+                            asp-items="@Lista"></select>
+                </div>
+                <span asp-validation-for="TipoConsultaId" class="text-danger"></span>
             </div>
-            <div class="col-md-6">
-                <select asp-for="TipoConsultaId" class="form-control"
-                        asp-items="@Lista"></select>
-            </div>
-            <span asp-validation-for="TipoConsultaId" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="Fecha" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Fecha" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input type="date" asp-for="Fecha" class="form-control" id="datepicker" />
+                </div>
             </div>
-            <div class="col-md-6">
-                <input type="date" asp-for="Fecha" class="form-control"  id="datepicker" />
-            </div>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="Descripcion" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Descripcion" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    @Html.TextAreaFor(m => m.Descripcion, new { rows = "3", cols = "56", @class = "text-area" })
+                </div>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
-            <div class="col-md-6">
-                @Html.TextAreaFor(m => m.Descripcion, new { rows = "3", cols = "56", @class = "text-area" })
-            </div>
-            <span asp-validation-for="Descripcion" class="text-danger"></span>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-md-2">
-                <label asp-for="RespuestaOfrecida" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="RespuestaOfrecida" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    @Html.TextAreaFor(m => m.RespuestaOfrecida, new { rows = "3", cols = "56", @class = "text-area" })
+                </div>
+                <span asp-validation-for="RespuestaOfrecida" class="text-danger"></span>
             </div>
-            <div class="col-md-6">
-                @Html.TextAreaFor(m => m.RespuestaOfrecida, new { rows = "3", cols = "56", @class = "text-area" })
-            </div>
-            <span asp-validation-for="RespuestaOfrecida" class="text-danger"></span>
-        </div>
 
             <div class="form-group row">
                 <div class="col-5 offset-3">
@@ -102,40 +104,42 @@
             </div>
         </div>
 
-</form> 
-<script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
-<script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </form>
 
-<script src="~/js/Datepair.js"></script>
-<script src="~/js/datepair.min.js"></script>
-<script src="~/js/jquery.datepair.js"></script>
-<script src="~/js/jquery.datepair.min.js"></script>
-<script src="~/js/moment.min.js"></script>
-<script src="~/js/jquery.timepicker.js"></script>
-<script src="~/js/jquery.timepicker.min.js"></script>
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<script src="~/js/jquery-ui.js"></script>
-<script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/Datepair.js"></script>
+    <script src="~/js/datepair.min.js"></script>
+    <script src="~/js/jquery.datepair.js"></script>
+    <script src="~/js/jquery.datepair.min.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/jquery.timepicker.js"></script>
+    <script src="~/js/jquery.timepicker.min.js"></script>
 
-<script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
 
-    $(function () {
-        $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
-        $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
-        //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
-        $('#timepicker .time').timepicker({
-            'showDuration': true,
-            'timeFormat': 'g:ia'
+    <script>
+
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+            $('#timepicker .time').timepicker({
+                'showDuration': true,
+                'timeFormat': 'g:ia'
+            });
+            $('#timepicker .time').timepicker({
+                'minTime': '7:30 AM',
+                'maxTime': '5:00 PM',
+                'step': '30'
+            });
+
+            var timepickerEl = document.getElementById('timepicker');
+            var timeOnlyDatepair = new Datepair(timepickerEl);
+
         });
-        $('#timepicker .time').timepicker({
-            'minTime': '7:30 AM',
-            'maxTime': '5:00 PM',
-            'step': '30'
-        });
-
-        var timepickerEl = document.getElementById('timepicker');
-        var timeOnlyDatepair = new Datepair(timepickerEl);
-
-    });
-</script>
+    </script>
+}

@@ -21,7 +21,7 @@
                 </ol>
             </div>
         </div>
-        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.Guest) || User.IsInRole(SD.FrontDeskUser))
+        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA))
         {
             <div class="row">
                 <div class="col-md-12">
@@ -32,9 +32,11 @@
                                     <div class="col-6">
                                         <h2 class="text-info">Lista de Establecimientos</h2>
                                     </div>
-                                    <div class="col-6 text-right">
-                                        <partial name="_CreateButtonPartial" />
-                                    </div>
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    
                                 </div>
                                 @*//Vista del filtro*@
                                 @*<div class="row">
@@ -45,30 +47,32 @@
                                 <div>
                                     @if (Model.Count() > 0)
                                     {
-                                        <table class="table table-hover .table-responsive">
-                                            <tr class="table-secondary">
-                                                <th>@Html.DisplayNameFor(m => m.Id)</th>
-                                                <th>@Html.DisplayNameFor(m => m.Name)</th>
-                                                <th>@Html.DisplayNameFor(m => m.CIIUName)</th>
-                                                <th>@Html.DisplayNameFor(m => m.Description)</th>
-                                                <th>@Html.DisplayNameFor(m => m.WorkingHours)</th>
-                                                <th>@Html.DisplayNameFor(m => m.EstablishmentTypeName)</th>
+                                    <table class="table table-hover .table-responsive">
+                                        <div class="col-1 text-right">
+                                            <partial name="_CreateButtonPartial" />
+                                        </div>
+                                        <tr class="table-secondary">
+                                            <th>@Html.DisplayNameFor(m => m.Id)</th>
+                                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                            <th>@Html.DisplayNameFor(m => m.CIIUName)</th>
+                                            <th>@Html.DisplayNameFor(m => m.Description)</th>
+                                            <th>@Html.DisplayNameFor(m => m.WorkingHours)</th>
+                                            <th>@Html.DisplayNameFor(m => m.EstablishmentTypeName)</th>
+                                            <th>Operaciones</th>
+                                        </tr>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(m => item.Id)</td>
+                                                <td>@Html.DisplayFor(m => item.Name)</td>
+                                                <td>@Html.DisplayFor(m => item.CIIUName)</td>
+                                                <td>@Html.DisplayFor(m => item.Description)</td>
+                                                <td>@Html.DisplayFor(m => item.WorkingHours)</td>
+                                                <td>@Html.DisplayFor(m => item.EstablishmentTypeName)</td>
+                                                <a> <partial name="_TableButtonPartial" model="item.Id" /></a>
                                             </tr>
-                                            @foreach (var item in Model)
-                                            {
-                                                <tr>
-                                                    <td>@Html.DisplayFor(m => item.Id)</td>
-                                                    <td>@Html.DisplayFor(m => item.Name)</td>
-                                                    <td>@Html.DisplayFor(m => item.CIIUName)</td>
-                                                    <td>@Html.DisplayFor(m => item.Description)</td>
-                                                    <td>@Html.DisplayFor(m => item.WorkingHours)</td>
-                                                    <td>@Html.DisplayFor(m => item.EstablishmentTypeName)</td>
-                                                    <td>
-                                                        <partial name="_TableButtonPartial" model="item.Id" />
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </table>
+                                        }
+                                    </table>
                                     }
                                     else
                                     {

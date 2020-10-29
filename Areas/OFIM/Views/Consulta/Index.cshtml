@@ -1,61 +1,65 @@
-﻿@model IEnumerable<ConsultaViewModel>
+﻿@using SYGESTMunicipal.Utility
+@model IEnumerable<ConsultaViewModel>
 @using SYGESTMunicipal.Areas.OFIM.Models.ViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
 }
-<br />
-<br />
-<div class="border backgroundWhite">
-    <div class="row">
-        <div class="col-6">
-            <h2 class="text-info">Consulta</h2>
-        </div>
-        <div class="col-6 text-right">
-            <partial name="_CreateButtonPartial" />
-        </div>
-    </div>
-   
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
     <br />
+    <br />
+    <div class="border backgroundWhite">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-info">Consulta</h2>
+            </div>
+            <div class="col-6 text-right">
+                <partial name="_CreateButtonPartial" />
+            </div>
+        </div>
 
-    <div>
-        @if (Model.Count() > 0)
-        {
-        <table class="table table-hover .table-responsive" id="TbConsulta">
-            <thead class="thead-dark">
-                <tr class="table-secondary" style="text-align:center;">
+        <br />
 
-                    <th>@Html.DisplayNameFor(m => m.Motivo)</th>
-                    <th>@Html.DisplayNameFor(m => m.Fecha)</th>
-                    <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
-                    <th>@Html.DisplayNameFor(m => m.TipoConsultaId)</th>
+        <div>
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-hover .table-responsive" id="TbConsulta">
+                    <thead class="thead-dark">
+                        <tr class="table-secondary" style="text-align:center;">
+
+                            <th>@Html.DisplayNameFor(m => m.Motivo)</th>
+                            <th>@Html.DisplayNameFor(m => m.Fecha)</th>
+                            <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
+                            <th>@Html.DisplayNameFor(m => m.TipoConsultaId)</th>
 
 
 
-                    <th>Operaciones</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody style="text-align:center;">
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(m => item.Motivo)</td>
-                        <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
-                        <td>@Html.DisplayFor(m => item.PersonName)</td>
-                        <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
-                        <td>
-                            <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
-                        </td>
+                            <th>Operaciones</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center;">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Motivo)</td>
+                                <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
+                                <td>@Html.DisplayFor(m => item.PersonName)</td>
+                                <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
+                                <td>
+                                    <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
+                                </td>
 
-                    </tr>
-                }
-        </table>
-        }
-        else
-        {
-            <h3>No existen consultas...</h3>
-        }
+                            </tr>
+                        }
+                </table>
+            }
+            else
+            {
+                <h3>No existen consultas...</h3>
+            }
+        </div>
     </div>
-</div>
+}
