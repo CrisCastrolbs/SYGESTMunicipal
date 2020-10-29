@@ -2265,3 +2265,15 @@ section {
    -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
     }
+
+.google-maps {
+    position: relative;
+    padding-bottom: 75%;
+    overflow: hidden;
+}
+
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
