@@ -43,7 +43,7 @@
             }
             <img src="@imgsrc" style="height: 100%; width:110%" />
         </div>
-        <div class="col-lg-6 pt-3 pt-lg-0 content">
+        <div class="col-lg-6 pt-4 pt-lg-0 content">
             <div class="container">
                 <br />
                 <br />
@@ -55,16 +55,16 @@
             <br />
             <fieldset disabled>
                 <div class="form-group row">
-                    <div class="col-md-3">
-                        <h5><label asp-for="Name" class="custom-label">Nombre: </label></h5>
+                    <div class="col-md-3 text-right" >
+                        <h5><label asp-for="Name" class="custom-label">     Nombre: </label></h5>
 </div>
                     <div class="col-md-7">
                         <input asp-for="Name" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-3">
-                        <h5><label asp-for="Description" class="custom-label">Descripción: </label></h5>
+                    <div class="col-md-3 text-right" >
+                        <h5><label asp-for="Description" class="custom-label">     Descripción: </label></h5>
                     </div>
                     <div class="col-md-9">
                         <textarea asp-for="Description" readonly rows="4" cols="50"
@@ -73,8 +73,8 @@
                     
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-3">
-                        <h5><label asp-for="Date" class="col-form-label">Fecha: </label></h5>
+                    <div class="col-md-3 text-right">
+                        <h5><label asp-for="Date" class="col-form-label">     Fecha: </label></h5>
 </div>
                     <div class="col-md-7">
                         <input asp-for="Date" readonly type="datetime" class="form-control" />
