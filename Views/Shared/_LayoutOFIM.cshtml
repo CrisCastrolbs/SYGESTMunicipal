@@ -125,135 +125,137 @@
                         <li class="nav-item active">
                             <a class="nav-link" asp-area="OFIM" asp-controller="Home" asp-action="Index">OFIM</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="OFIM" asp-controller="Consulta" asp-action="Index">Registro Atención</a>
-                        </li>
-
                         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
                         {
-                            <li class="nav-item dropdown text-white-50">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    Registro Atención
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="PersonaOFIM" asp-area="OFIM">Registrar Personas</a>
-
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="TipoConsulta" asp-area="OFIM">Tipo Consulta</a>
-
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Consulta" asp-area="OFIM">Registrar Consulta</a>
-
-                                    @*<a class="dropdown-item" asp-action="Index"
-                                        asp-controller="Home" asp-area="OFIM">Dar un Seguimiento</a>*@
-
-                                </div>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="OFIM" asp-controller="Consulta" asp-action="Index">Registro Atención</a>
                             </li>
                         }
+                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+                            {
+                                <li class="nav-item dropdown text-white-50">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Registro Atención
+                                    </a>
 
-                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
-                        {
-                            <li class="nav-item dropdown text-white-50">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    Red de Atención
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Registrar Personas</a>
-
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Organizaciones</a>
-
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Casos Violencia Doméstica</a>
-
-                                </div>
-                            </li>
-                        }
-
-                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
-                        {
-                            <li class="nav-item dropdown text-white-50">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    Actividades
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Fechas Conmemorativas</a>
-
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Actividades</a>
-
-                                </div>
-                            </li>
-                        }
-
-                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
-                        {
-                            <li class="nav-item dropdown text-white-50">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    Talleres
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-
-                                    @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
-                                    {
+                                    <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Registro de Capacitadores</a>
-                                    }
-
-                                    @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
-                                    {
-                                        <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Registro de Taller</a>
-
-                                    }
-
-                                    @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
-                                    {
+                                           asp-controller="PersonaOFIM" asp-area="OFIM">Registrar Personas</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Inscripción a Talleres</a>
-                                    }
+                                           asp-controller="TipoConsulta" asp-area="OFIM">Tipo Consulta</a>
 
-                                </div>
-                            </li>
-                        }
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Consulta" asp-area="OFIM">Registrar Consulta</a>
 
-                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
-                        {
+                                        @*<a class="dropdown-item" asp-action="Index"
+                        asp-controller="Home" asp-area="OFIM">Dar un Seguimiento</a>*@
 
-                            <li class="nav-item dropdown text-white-50">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    Empresariedad
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Registro de Personas</a>
+                                    </div>
+                                </li>
+                            }
 
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Empresas</a>
+                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+                            {
+                                <li class="nav-item dropdown text-white-50">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Red de Atención
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Registrar Personas</a>
 
-                                    <a class="dropdown-item" asp-action="Index"
-                                       asp-controller="Home" asp-area="OFIM">Productos</a>
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Organizaciones</a>
 
-                                </div>
-                            </li>
-                        }
-                        <partial name="_LoginPartial" />
-                    </ul>
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Casos Violencia Doméstica</a>
+
+                                    </div>
+                                </li>
+                            }
+
+                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
+                            {
+                                <li class="nav-item dropdown text-white-50">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Actividades
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Fechas Conmemorativas</a>
+
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Actividades</a>
+
+                                    </div>
+                                </li>
+                            }
+
+                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
+                            {
+                                <li class="nav-item dropdown text-white-50">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Talleres
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
+
+                                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+                                        {
+                                            <a class="dropdown-item" asp-action="Index"
+                                               asp-controller="Home" asp-area="OFIM">Registro de Capacitadores</a>
+                                        }
+
+                                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+                                        {
+                                            <a class="dropdown-item" asp-action="Index"
+                                               asp-controller="Home" asp-area="OFIM">Registro de Taller</a>
+
+                                        }
+
+                                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
+                                        {
+
+                                            <a class="dropdown-item" asp-action="Index"
+                                               asp-controller="Home" asp-area="OFIM">Inscripción a Talleres</a>
+                                        }
+
+                                    </div>
+                                </li>
+                            }
+
+                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+                            {
+
+                                <li class="nav-item dropdown text-white-50">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        Empresariedad
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Registro de Personas</a>
+
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Empresas</a>
+
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM">Productos</a>
+
+                                    </div>
+                                </li>
+                            }
+                            <partial name="_LoginPartial" />
+                        </ul>
                 </div>
             </div>
         </nav>
