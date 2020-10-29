@@ -9,7 +9,7 @@
 {
 
     <div class="row">
-        <div class="col-md-12 col-lg-12">
+        <div class="col-md-12">
             <h3 class="text-light" style="text-align:center;
               background-color:darkslategray;">
                 Lista de Personas
@@ -19,7 +19,7 @@
     <br />
     <form asp-controller="PersonaOFIM" asp-action="Index" method="post">
         <div class="row">
-            <div class="col-md-2 col-lg-2 text-right">
+            <div class="col-md-2">
                 <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
                    style="width:100%; height:90%;padding:6px;">
                     Agregar Persona
@@ -40,22 +40,22 @@
     {
         <table class="table table-hover .table-responsive" id="TbPersonas">
             <thead class="thead-dark">
-                <tr class="table-secondary" style="text-align:left;">
+                <tr class="table-secondary" style="text-align:center;">
                     <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
                     <th>@Html.DisplayNameFor(m => m.PersonName)</th>
 
                     <th>@Html.DisplayNameFor(m => m.Address)</th>
 
-                    <th>@Html.DisplayNameFor(m => m.District)</th>
+                   @* <th>@Html.DisplayNameFor(m => m.District)</th>*@
                     <th>@Html.DisplayNameFor(m => m.MobilePhoneNumber)</th>
-                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                    @*<th>@Html.DisplayNameFor(m => m.Email)</th>*@
 
 
 
                     <th>Operaciones</th>
                 </tr>
             </thead>
-            <tbody style="text-align:left;">
+            <tbody style="text-align:center;">
                 @foreach (var item in Model)
                 {
                     <tr>
@@ -63,9 +63,9 @@
                         <td>@Html.DisplayFor(m => item.PersonName)</td>
 
                         <td>@Html.DisplayFor(m => item.Address)</td>
-                        <td>@Html.DisplayFor(m => item.District)</td>
+                        @*<td>@Html.DisplayFor(m => item.District)</td>*@
                         <td>@Html.DisplayFor(m => item.MobilePhoneNumber)</td>
-                        <td>@Html.DisplayFor(m => item.Email)</td>
+                        @*<td>@Html.DisplayFor(m => item.Email)</td>*@
 
                         @*<td>@Html.DisplayFor(model => item.FechaCita, "{0:dd/MM/yyyy}")*@
                         <td>
