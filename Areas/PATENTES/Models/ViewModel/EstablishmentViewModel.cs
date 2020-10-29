@@ -73,7 +73,7 @@ namespace SYGESTMunicipal.Areas.PATENTES.Models.ViewModel
         [Display(Name = "Tipo De Establecimiento")]
         public int EstablishmentTypeId { get; set; }
 
-        [Display(Name = "Nombre de establecimiento")]
+        [Display(Name = "Tipo de Establecimiento")]
         public string EstablishmentTypeName { get; set; }
 
 

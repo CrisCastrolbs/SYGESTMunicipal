@@ -14,7 +14,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Debe digitar el Peso")]
-        [Display(Name = "Peso en Toneladas ")]
+        [Display(Name = "Peso (Kg)")]
         public float Weight { get; set; }
 
         [Required(ErrorMessage = "Debe digitar el nombre del lugar")]
@@ -23,7 +23,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Models
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha de Ingreso")]
-        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy h:mm tt}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EntryDate { get; set; }
 
 

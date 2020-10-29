@@ -14,12 +14,12 @@ namespace SYGESTMunicipal.Areas.OFGA.Models
         public int SolidWasteId { get; set; }
 
         [Required(ErrorMessage = "Debe digitar el Peso")]
-        [Display(Name = "Peso en Toneladas ")]
+        [Display(Name = "Peso (Toneladas)")]
         public float Weight { get; set; }
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha de Ingreso")]
-        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy h:mm tt}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EntryDate { get; set; }
 
 

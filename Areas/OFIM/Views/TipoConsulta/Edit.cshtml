@@ -1,52 +1,54 @@
-﻿@model SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
     List<SelectListItem> Lista = ViewBag.ListaConsulta;
 }
-
-<div class="row">
-    <div class="col-md-12 col-lg-12">
-        <h3 class="text-light" style="text-align:center;
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light" style="text-align:center;
                               background-color:darkslategray;width:100%;">
-            Editar un tipo Consulta
-        </h3>
+                Editar un tipo Consulta
+            </h3>
+        </div>
     </div>
-</div>
-<br />
-<form asp-action="Edit" asp-controller="TipoConsulta" method="post" id="viewEditar">
-    <div class="container-fluid">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group row">
-            <div class="col-md-2 col-lg-2">
-                <label asp-for="TipoConsultaId" class="col-form-label"></label>
+    <br />
+    <form asp-action="Edit" asp-controller="TipoConsulta" method="post" id="viewEditar">
+        <div class="container-fluid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="TipoConsultaId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="TipoConsultaId" readonly class="form-control" />
+                </div>
             </div>
-            <div class="col-md-6 col-lg-6">
-                <input asp-for="TipoConsultaId" readonly class="form-control" />
-            </div>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-md-2 col-lg-2">
-                <label asp-for="NombreTipoConsulta" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="NombreTipoConsulta" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="NombreTipoConsulta" class="form-control" />
+                </div>
+                <span asp-validation-for="NombreTipoConsulta" class="text-danger"></span>
             </div>
-            <div class="col-md-6 col-lg-6">
-                <input asp-for="NombreTipoConsulta" class="form-control" />
-            </div>
-            <span asp-validation-for="NombreTipoConsulta" class="text-danger"></span>
-        </div>
 
 
-        <div class="form-group row">
-            <div class="col-md-2 col-lg-2">
-                <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="PersonaOFIMId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="PersonaOFIMId" class="form-control"
+                            asp-items="@Lista"></select>
+                </div>
+                <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
             </div>
-            <div class="col-md-6 col-lg-6">
-                <select asp-for="PersonaOFIMId" class="form-control"
-                        asp-items="@Lista"></select>
-            </div>
-            <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
-        </div>
 
             <div class="form-group row">
                 <div class="col-5 offset-3">
@@ -54,8 +56,8 @@
                 </div>
             </div>
         </div>
-</form>
-
+    </form>
+}
 
 
 

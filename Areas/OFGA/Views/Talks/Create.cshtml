@@ -42,10 +42,10 @@
 
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for="Name" class="col-form-label"></label></h5>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input asp-for="Name" class="form-control" /> @*agregar datos*@
                             </div>
                             <span asp-validation-for="Name" class=" text-danger"></span>
@@ -53,10 +53,10 @@
 
 
                         <div class="form-group row">
-                            <div class="col-md-2 col-lg-2">
+                            <div class="col-md-2">
                                 <h5><label asp-for="Description" class="col-form-label">Descripción</label></h5>
                             </div>
-                            <div class="col-md-9 col-lg-9">
+                            <div class="col-md-9">
                                 <textarea asp-for="Description" rows="4" cols="50"
                                           class="form-control"> </textarea>
                             </div>
@@ -64,36 +64,36 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label>Fecha:</label></h5>
                             </div>
-                            <div class="col-8">
+                            <div class="col-md-8">
                                 <input type="date" asp-for="Date" class="form-control" />
                             </div>
                             <span asp-validation-for="Date" class="text-danger"></span>
                         </div>
 
                         <div class=" form-group row">
-                            <div class=" col-2">
+                            <div class=" col-md-2">
                                 <h5><label asp-for=" Picture" class="col-form-label"></label></h5>
                             </div>
-                            <div class="col-8">
+                            <div class="col-md-8">
                                 <input type="file" id="projectImage" name="files"
                                        multiple class="form-control" />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-2">
+                            <div class="col-md-2">
                                 <h5><label asp-for="IsActive" class="col-form-label"></label></h5>
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input type="checkbox" asp-for="IsActive" class="form-control" />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-5 offset-4">
+                            <div class="col-md-5 offset-4">
                                 <partial name="_CreateAndBackToListButton" />
                             </div>
                         </div>

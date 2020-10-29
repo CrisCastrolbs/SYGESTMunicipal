@@ -9497,3 +9497,14 @@ background: #3c312e; }
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
 
+.google-maps {
+    position: relative;
+    padding-bottom: 75%;
+    overflow: hidden;
+}
+
+.google-maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

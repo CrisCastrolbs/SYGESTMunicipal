@@ -33,9 +33,8 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
                                select new PersonOFGA
                                {
                                    PersonOFGAId = personOFGA.PersonOFGAId,
-                                   Name = personOFGA.Name,
-                                   LastName1 = personOFGA.LastName1,
-                                   LastName2 = personOFGA.LastName2,
+                                   Name = personOFGA.Name +" " + personOFGA.LastName1 +" " + personOFGA.LastName2,
+                                   
                                    Address = personOFGA.Address,
                                    Province = personOFGA.Province,
                                    Canton = personOFGA.Canton,
