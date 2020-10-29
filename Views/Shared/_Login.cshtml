@@ -1,4 +1,4 @@
-﻿
+﻿@using SYGESTMunicipal.Utility
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +25,7 @@
     <header>
         <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
             <div class="container">
-              
+
                 <div class="navbar-translate">
                     <a class="navbar-brand" asp-area="Home" asp-controller="Home" asp-action="Index" rel="tooltip" data-original-title="Regresar a Sygest">
                         Bienvenido
@@ -40,22 +40,24 @@
 
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
 
-                            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" target="_blank" data-original-title="Iniciar Sesión" rel="nofollow">
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" asp-area="Identity" asp-page="/Account/Login" target="_blank" data-original-title="Iniciar Sesión" rel="nofollow">
                                 <i class="fa fa-sign-in"></i>
                             </a>
+
                         </li>
                         <li class="nav-item">
 
                             <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="http://www.munihojancha.com/" target="_blank" data-original-title="Nuestro Sitio web" rel="nofollow">
-                                <i class="fa fa-link"></i>
+                                <i class="fa fa-external-link"></i>
                             </a>
                         </li>
                         <li class="nav-item">
 
                             <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="mailto:%69%6efo%40muniho%6aan%63%68a.%63om" target="_blank" data-original-title="Contáctanos" rel="nofollow">
-                                <i class="fa fa-mail-reply"></i>
+                                <i class="fa fa-envelope-open-o"></i>
+                                
                             </a>
 
                         </li>
@@ -75,8 +77,39 @@
                                 <i class="fa fa-location-arrow"></i>
                             </a>
                         </li>
+                        @if (User.IsInRole(SD.ManagerUser) || (User.IsInRole(SD.Guest) || (User.IsInRole(SD.AdminOFGA) || (User.IsInRole(SD.AdminOFIM) || (User.IsInRole(SD.AdminOFPA) || (User.IsInRole(SD.CollManager) || (User.IsInRole(SD.FrontDeskUser))))))))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" rel="tooltip" id="profile" asp-page="./Index" style="color:white;text-shadow: 2px 2px 5px #000" data-placement="bottom" asp-area="Identity"   data-original-title="Mi Perfil">
+                                    <i class="fa fa-user-circle "></i>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" rel="tooltip"  id="email" asp-page="./Email" style="color:white;text-shadow: 2px 2px 5px #000" data-placement="bottom" asp-area="Identity"   data-original-title="Cambiar Email">
+                                    <i class="fa fa-envelope-o"></i>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" rel="tooltip" id="change-password" asp-page="./ChangePassword" style="color:white;text-shadow: 2px 2px 5px #000" data-placement="bottom" asp-area="Identity"  data-original-title="Cambiar Contraseña">
+                                    <i class="fa fa-lock"></i>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" rel="tooltip"  id="personal-data" asp-page="./PersonalData" data-placement="bottom" asp-area="Identity" data-original-title="Datos Personales" >
+                                    <i class="fa fa-download"></i>
+                                </a>
+                            </li>
+
+                           
+                               
+
+                        }
                     </ul>
                 </div>
+
             </div>
         </nav>
 
@@ -86,7 +119,7 @@
             @RenderBody()
         </main>
     </div>
- 
+
 
 
     <!--   Core JS Files   -->
@@ -102,7 +135,7 @@
     <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
     <script src="~/login/assets/js/material-kit.js?v=2.0.7" type="text/javascript"></script>
     @section Scripts {
-       
+
     }
 
 </body>
