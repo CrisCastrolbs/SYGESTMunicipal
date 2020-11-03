@@ -43,7 +43,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"No se Pudo Cargar l Autentificación de Usuario por Dos Factores.");
             }
 
             ReturnUrl = returnUrl;
@@ -61,7 +61,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
             var user = await _signInManager.GetTwoFactorAuthenticationUserAsync();
             if (user == null)
             {
-                throw new InvalidOperationException($"Unable to load two-factor authentication user.");
+                throw new InvalidOperationException($"No se Pudo Cargar l Autentificación de Usuario por Dos Factores.");
             }
 
             var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
@@ -70,18 +70,18 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User with ID '{UserId}' logged in with a recovery code.", user.Id);
+                _logger.LogInformation("El Usuario con el Id '{UserId}' Inició Sesión con un Código de Verificación.", user.Id);
                 return LocalRedirect(returnUrl ?? Url.Content("~/"));
             }
             if (result.IsLockedOut)
             {
-                _logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+                _logger.LogWarning("Cuenta de Usuario con el Id '{UserId}' Bloqueada.", user.Id);
                 return RedirectToPage("./Lockout");
             }
             else
             {
-                _logger.LogWarning("Invalid recovery code entered for user with ID '{UserId}' ", user.Id);
-                ModelState.AddModelError(string.Empty, "Invalid recovery code entered.");
+                _logger.LogWarning("Código de Verificación Inválido para el Usuario con el Id'{UserId}' ", user.Id);
+                ModelState.AddModelError(string.Empty, "Código de Verificación Ingresado es Inválido.");
                 return Page();
             }
         }

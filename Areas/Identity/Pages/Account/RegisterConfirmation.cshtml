@@ -8,17 +8,15 @@
 @{
     if (@Model.DisplayConfirmAccountLink)
     {
-    <p>
-
-        Esta aplicación actualmente no tiene un remitente de correo electrónico real registrado, consulte <a href="https://aka.ms/aspaccountconf">estos documentos</a> para saber cómo configurar un remitente de correo electrónico real.
-        Normalmente esto se enviaría por correo electrónico: <a id="confirm-link" href="@Model.EmailConfirmationUrl"> Haga clic aquí para confirmar su cuenta</a>
-    </p>
+<p>
+    Actualmente Esta Aplicación No Tiene un Email Sender Registrado, Vea Estos Documentos <a href="https://aka.ms/aspaccountconf"></a> para Saber Cómo Configurar un Email Sender Real.
+    Normalmente esto debseria Ser Enviado a : <a id="confirm-link" href="@Model.EmailConfirmationUrl">Presione Aquí para Confirmar la Cuenta</a>
+</p>
     }
     else
     {
 <p>
-
-    Por favor revise su correo electrónico para confirmar su cuenta.
+        Por Favor Revise su Email para Confirmar su Contraseña.
 </p>
     }
 }

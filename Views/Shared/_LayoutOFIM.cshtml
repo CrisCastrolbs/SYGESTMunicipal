@@ -125,12 +125,12 @@
                         <li class="nav-item active">
                             <a class="nav-link" asp-area="OFIM" asp-controller="Home" asp-action="Index">OFIM</a>
                         </li>
-                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+                        @*@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="OFIM" asp-controller="Consulta" asp-action="Index">Registro Atención</a>
                             </li>
-                        }
+                        }*@
                             @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
                             {
                                 <li class="nav-item dropdown text-white-50">

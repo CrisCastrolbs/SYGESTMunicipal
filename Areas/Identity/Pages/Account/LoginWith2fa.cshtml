@@ -1,7 +1,7 @@
 ﻿@page
 @model LoginWith2faModel
 @{
-    ViewData["Title"] = "Two-factor authentication";
+    ViewData["Title"] = "/*Two-factor authentication*/  autenticación de dos Factores";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -33,9 +33,8 @@
     </div>
 </div>
 <p>
-
-    ¿No tienes acceso a tu dispositivo de autenticación? Usted puede
-    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl">iniciar sesión con un código de recuperación</a>.
+   No Tiene Acceso a su Dispositivo de Autentificación? Puedes
+    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl"> Iniciar Sesión con el Código de Verificación</a>.
 </p>
 
 @section Scripts {

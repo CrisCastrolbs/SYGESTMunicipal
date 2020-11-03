@@ -58,8 +58,8 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Restablecer  Contraseña",
+                    $"Por Favor Restablezca su Contraeña <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Presionando  Aquí</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

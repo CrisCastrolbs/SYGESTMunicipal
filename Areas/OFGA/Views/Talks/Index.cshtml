@@ -56,15 +56,17 @@
                 <tbody style="text-align:center;">
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>@Html.DisplayFor(m => item.Name)</td>
-                            <td>@Html.DisplayFor(m => item.Description)</td>
-                            <td>@Html.DisplayFor(m => item.Date)</td>
-                            <td>@Html.DisplayFor(m => item.IsActive)</td>
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.Name)</td>
+                        <td>@Html.DisplayFor(m => item.Description)</td>
+                        <td>@Html.DisplayFor(m => item.Date)</td>
+                        <td>@Html.DisplayFor(m => item.IsActive)</td>
+                        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
+                        {
                             <td>
                                 <partial name="_TableButtonPartial" model="item.Id" />
                             </td>
-
+                        }
                         </tr>
                     }
                 </tbody>
