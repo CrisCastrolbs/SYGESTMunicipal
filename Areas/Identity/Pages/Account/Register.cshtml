@@ -42,7 +42,7 @@
                                             <i class="material-icons">account_circle</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.Name" class="form-control" placeholder="Nombre..." />
+                                    <input asp-for="Input.Name" class="form-control" required placeholder="Nombre..." />
                                     <span asp-validation-for="Input.Name" class="text-danger"></span>
                                 </div>
 
@@ -52,8 +52,8 @@
                                             <i class="material-icons">text_snippet</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.LastName1" class="form-control" placeholder="Primer Apellido..." />
-                                    <span asp-validation-for="Input.LastName1" class="text-danger"></span>
+                                    <input asp-for="Input.LastName1" class="form-control" required placeholder="Primer Apellido..." />
+                                    <span asp-validation-for="Input.LastName1" class="text-danger" ></span>
                                 </div>
 
                                 <div class="input-group">
@@ -62,7 +62,7 @@
                                             <i class="material-icons">text_snippet</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.LastName2" class="form-control" placeholder="Segundo Apellido..." />
+                                    <input asp-for="Input.LastName2" class="form-control" required placeholder="Segundo Apellido..." />
                                     <span asp-validation-for="Input.LastName2" class="text-danger"></span>
                                 </div>
 
@@ -72,7 +72,7 @@
                                             <i class="material-icons">attach_email</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.Email" class="form-control" placeholder="Email..." />
+                                    <input asp-for="Input.Email" class="form-control" required placeholder="Email..." />
                                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                                 </div>
 
@@ -82,7 +82,7 @@
                                             <i class="material-icons">local_phone</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Teléfono..." />
+                                    <input asp-for="Input.PhoneNumber" class="form-control" required placeholder="Teléfono..." />
                                     <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                                 </div>
 
@@ -92,7 +92,7 @@
                                             <i class="material-icons">follow_the_signs</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.Address" class="form-control" placeholder="Dirección..." />
+                                    <input asp-for="Input.Address" class="form-control" required placeholder="Dirección..." />
                                     <span asp-validation-for="Input.Address" class="text-danger"></span>
                                 </div>
                                 <br />
@@ -102,7 +102,7 @@
                                             <i class="material-icons">place</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.District" class="form-control" placeholder="Distrito..." />
+                                    <input asp-for="Input.District" class="form-control" required placeholder="Distrito..." />
                                     <span asp-validation-for="Input.District" class="text-danger"></span>
                                 </div> 
 
@@ -113,7 +113,7 @@
                                             <i class="material-icons">location_city</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.Canton" class="form-control" placeholder="Cantón..." />
+                                    <input asp-for="Input.Canton" class="form-control" required placeholder="Cantón..." />
                                     <span asp-validation-for="Input.Canton" class="text-danger"></span>
                                 </div>
 
@@ -123,7 +123,7 @@
                                             <i class="material-icons">map</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.Province" class="form-control" placeholder="Provincia..." />
+                                    <input asp-for="Input.Province" class="form-control" required placeholder="Provincia..." />
                                     <span asp-validation-for="Input.Province" class="text-danger"></span>
                                 </div>
 
@@ -133,7 +133,7 @@
                                             <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.Password" class="form-control" placeholder="Contraseña..." />
+                                    <input asp-for="Input.Password" class="form-control" required placeholder="Contraseña..." />
                                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                                 </div>
 
@@ -143,7 +143,7 @@
                                             <i class="material-icons">verified_user</i>
                                         </span>
                                     </div>
-                                    <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirmar Contraseña..." />
+                                    <input asp-for="Input.ConfirmPassword" class="form-control" required placeholder="Confirmar Contraseña..." />
                                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                 </div>
 

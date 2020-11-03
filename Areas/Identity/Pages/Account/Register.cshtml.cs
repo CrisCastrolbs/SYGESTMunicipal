@@ -57,11 +57,11 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "La clave debe contener almenos 6 caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Contraseña")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Confirmar Contraseña")]
             [Compare("Password", ErrorMessage = "La Contraseña y la Confirmación de la Contraseña No Coinciden.")]
             public string ConfirmPassword { get; set; }
 
