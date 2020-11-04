@@ -8008,7 +8008,7 @@ body {
     font-size: 16px;
     line-height: 1.8;
     font-weight: 400;
-    color: #2b1e19;
+    color: #111;
 }
   body.menu-show {
     overflow: hidden;
@@ -8752,9 +8752,10 @@ background: #3c312e; }
   padding-bottom: 0 !important; }
 
 .ftco-footer {
-  font-size: 16px;
-  background: #252525;
-  padding: 5em 0 3em 0; }
+    font-size: 16px;
+    background: #1c1f18;
+    padding: 5em 0 3em 0;
+}
   .ftco-footer .logo {
     font-size: 34px !important;
     text-transform: uppercase;
@@ -8766,7 +8767,7 @@ background: #3c312e; }
         color: #95C93D; }
   .ftco-footer .ftco-footer-widget h2 {
     font-weight: normal;
-    color: #fff;
+    color: #95C93D;
     margin-bottom: 40px;
     font-size: 20px;
     font-weight: 400; }

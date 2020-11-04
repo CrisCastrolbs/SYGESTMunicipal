@@ -119,7 +119,6 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
     <None Include="wwwroot\login\assets\css\material-kit.css.map" />
-    <None Include="wwwroot\login\assets\img\arrow-left.cur" />
     <None Include="wwwroot\login\assets\img\arrow-right.cur" />
     <None Include="wwwroot\login\assets\js\core\bootstrap-material-design.min.js" />
     <None Include="wwwroot\login\assets\js\core\jquery.min.js" />

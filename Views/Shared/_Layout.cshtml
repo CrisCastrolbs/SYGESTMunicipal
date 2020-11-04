@@ -68,13 +68,13 @@
                         <div class="social-media">
                             <p class="mb-0 d-flex">
                                 @* LINKS DE LAS REDES SOCIALES *@
-                                <a href="https://www.facebook.com/MUNICIPALIDAD-DE-HOJANCHA-218380324851885/" class="d-flex align-items-center justify-content-center">
+                                <a href="https://www.facebook.com/MUNICIPALIDAD-DE-HOJANCHA-218380324851885/" class="d-flex align-items-center justify-content-center" target="_blank">
                                     <span class="fa fa-facebook">
                                         <i class="sr-only">Facebook</i>
                                     </span>
                                 </a>
 
-                                <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="d-flex align-items-center justify-content-center">
+                                <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="d-flex align-items-center justify-content-center" target="_blank">
                                     <span class="fa fa-instagram">
                                         <i class="sr-only">Instagram</i>
                                     </span>
@@ -98,7 +98,7 @@
             @* LOGO EN EL NAV *@
             <div class="logo-img">
                 <a asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/images/LogoMunicipal.png" alt="">
+                    <img src="~/images/LogoMuni2.png" alt="">
                 </a>
 
             </div>
@@ -209,14 +209,14 @@
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
 
                             <li class="ftco-animate">
-                                <a href="https://www.facebook.com/MUNICIPALIDAD-DE-HOJANCHA-218380324851885/" class="d-flex align-items-center justify-content-center">
+                                <a href="https://www.facebook.com/MUNICIPALIDAD-DE-HOJANCHA-218380324851885/" class="d-flex align-items-center justify-content-center" target="_blank">
                                     <span class="fa fa-facebook">
                                         <i class="sr-only">Facebook</i>
                                     </span>
                                 </a>
                             </li>
                             <li class="ftco-animate">
-                                <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="d-flex align-items-center justify-content-center">
+                                <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="d-flex align-items-center justify-content-center" target="_blank">
                                     <span class="fa fa-instagram">
                                         <i class="sr-only">Instagram</i>
                                     </span>
@@ -260,8 +260,8 @@
                                 <li>
 
                                     <i class="icon icon-map-marker"></i>
-                                    <a href="https://www.google.com/maps/place/Municipalidad+de+Hojancha/10.0585518,-85.4189673,18z/data=!4m5!3m4!1s0x8f9fbab7c3d45245:0xb2000651b89c1e5b!8m2!3d10.0587462!4d-85.4178777?hl=es">
-                                        Úbicanos: Costado Norte del Parque
+                                    <a href="https://www.google.com/maps/place/Municipalidad+de+Hojancha/10.0585518,-85.4189673,18z/data=!4m5!3m4!1s0x8f9fbab7c3d45245:0xb2000651b89c1e5b!8m2!3d10.0587462!4d-85.4178777?hl=es" target="_blank">
+                                        Costado Norte del Parque
                                     </a>
                                 </li>
 
@@ -269,20 +269,20 @@
 
                                     <i class="icon icon-phone"> </i>
                                     <a href="tel:+506 2659 9116">
-                                        Llámanos: 2659 9116
+                                        2659 9116
                                     </a>
 
                                 <li>
                                     <i class="icon icon-web"></i>
-                                    <a href="http://www.munihojancha.com/">
-                                        Página Web: munihojancha.com
+                                    <a href="http://www.munihojancha.com/" target="_blank">
+                                        munihojancha.com
                                     </a>
                                 </li>
 
                                 <li>
-                                    <i class="icon icon-envelope"></i>
-                                    <a href="mailto:%69%6efo%40muniho%6aan%63%68a.%63om">
-                                        Contáctanos: info@munihojancha.com
+                                    <i class="icon icon-envelope" > </i>  
+                                    <a href= "mailto:%69%6efo%40muniho%6aan%63%68a.%63om">  
+                                        info@munihojancha.com
                                     </a>
                                 </li>
 
@@ -294,7 +294,7 @@
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">Horario de Atención</h2>
                         <div class="opening-hours">
-                            <h4>Abierto los Días:</h4>
+                            <h4 class="subheading" style="color:#fff;">Abierto los Días:</h4>
                             <p class="pl-3">
                                 <span>Lunes – Viernes : 7:30 am a 3:30 pm</span>
 
@@ -303,9 +303,9 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12 text-center">
-
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy; 2020 - Municipalidad de Hojancha -
@@ -358,12 +358,10 @@
     </script>
 
     @* SCRIPT*@
-
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/jquery-ui.js"></script>
-    @RenderSection("Scripts", required: false);
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
