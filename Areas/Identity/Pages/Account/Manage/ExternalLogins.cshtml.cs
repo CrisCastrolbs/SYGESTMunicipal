@@ -36,7 +36,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID 'user.Id'.");
+                return NotFound($"No se Puede Cargar el Usuario con el Id 'user.Id'.");
             }
 
             CurrentLogins = await _userManager.GetLoginsAsync(user);
@@ -52,18 +52,18 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID 'user.Id'.");
+                return NotFound($"No se Puede Cargar el Usuario con el Id 'user.Id'.");
             }
 
             var result = await _userManager.RemoveLoginAsync(user, loginProvider, providerKey);
             if (!result.Succeeded)
             {
-                StatusMessage = "The external login was not removed.";
+                StatusMessage = "El Inicio de Sesión Externo Fue Removido.";
                 return RedirectToPage();
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "The external login was removed.";
+            StatusMessage = "El Inicio de Sesión Externo Fue Removido.";
             return RedirectToPage();
         }
 
@@ -83,7 +83,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID 'user.Id'.");
+                return NotFound($"No se Puede Cargar el Usuario con el Id  'user.Id'.");
             }
 
             var info = await _signInManager.GetExternalLoginInfoAsync(user.Id);
@@ -102,7 +102,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            StatusMessage = "The external login was added.";
+            StatusMessage = "El Inicio de Sesión Externo se Agregó.";
             return RedirectToPage();
         }
     }

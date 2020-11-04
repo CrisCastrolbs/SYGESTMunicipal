@@ -46,7 +46,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                              orderby ciiu.PersonName
                              select new SelectListItem
                              {
-                                 Text = ciiu.PersonName,
+                                 Text = ciiu.PersonName + " " + ciiu.LatName1,
                                  Value = ciiu.PersonaOFIMId.ToString()
                              }
                                    ).ToList();

@@ -22,65 +22,64 @@
                 <li>Puntos de Recuperación</li>
             </ol>
         </div>
-    </section><!-- End Breadcrumbs -->
 
-    
-            <form asp-controller="RecoverableMaterialRecovery" asp-action="Index" method="post">
+        @*<form asp-controller="RecoverableMaterialRecovery" asp-action="Index" method="post">
                 <div class="row">
-                    <div class="col-md-2">
-                        <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
-                           style="width:100%; height:90%;padding:6px;">
-                            Agregar
-                        </a>
-                    </div>
-                    @*<div class="col-md-2 col-lg-2 text-right">
-                            <a asp-controller="" asp-action="Index"
-                               class="btn btn-info fa fa-arrow-circle-left"
-                               style="width:100%; height:90%;padding:6px;">
-                                Regresar al menú
-                            </a>
-                        </div>*@
+
                 </div>
                 <div class="col-md-12" style="color:black;"><hr /></div>
-            </form>
+            </form>*@
+    </section><!-- End Breadcrumbs -->
 
 
-            @if (Model.Count() > 0)
-            {
-                <table class="table table-hover .table-responsive" id="TbSolidWaste">
-                    <thead class="thead-dark">
-                        <tr class="table-secondary" style="text-align:center;">
-                            <th>@Html.DisplayNameFor(m => m.Id)</th>
-                            <th>@Html.DisplayNameFor(m => m.Weight)</th>
-                            <th>@Html.DisplayNameFor(m => m.PlaceName)</th>
-                            <th>@Html.DisplayNameFor(m => m.EntryDate)</th>
 
-                            <th>Operaciones</th>
+    <div class="border backgroundWhite">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-info">Lista Materiales Recuperados</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                @*//CREAR UNA VISTA PARCIAL DEL BOTON CREAR*@
+                <partial name="_CreateButtonPartial" />
+            </div>
+        </div>
+
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-hover .table-responsive" id="TbSolidWaste">
+                <thead class="thead-dark">
+                    <tr class="table-secondary" style="text-align:center;">
+                        <th>@Html.DisplayNameFor(m => m.Id)</th>
+                        <th>@Html.DisplayNameFor(m => m.Weight)</th>
+                        <th>@Html.DisplayNameFor(m => m.PlaceName)</th>
+                        <th>@Html.DisplayNameFor(m => m.EntryDate)</th>
+
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center;">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Id)</td>
+                            <td>@Html.DisplayFor(m => item.Weight)</td>
+                            <td>@Html.DisplayFor(m => item.PlaceName)</td>
+                            <td>@Html.DisplayFor(m => item.EntryDate)</td>
+
+                            <a>
+                                <partial name="_TableButtonPartial" model="item.Id" />
+
+                            </a>
                         </tr>
-                    </thead>
-                    <tbody style="text-align:center;">
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(m => item.Id)</td>
-                                <td>@Html.DisplayFor(m => item.Weight)</td>
-                                <td>@Html.DisplayFor(m => item.PlaceName)</td>
-                                <td>@Html.DisplayFor(m => item.EntryDate)</td>
-
-                                <a>
-                                    <partial name="_TableButtonPartial" model="item.Id" />
-
-                                </a>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            }
-            else
-            {
-                <h5 style="color:red;">No se encontraron registros!...</h5>
-            }
-
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h5 style="color:red;">No se encontraron registros!...</h5>
+        }
+     </div>
 </main>
 
     <script src="~/js/sweetalert2.js"></script>

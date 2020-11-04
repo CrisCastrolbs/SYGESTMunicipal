@@ -13,15 +13,17 @@ namespace SYGESTMunicipal.Areas.OFIM.Models.ViewModel
         [Key]
         [Display(Name = "Consulta ID")]
         public int ConsultaId { get; set; }
-        [DisplayName("Nombre Motivo")]
+        [DisplayName("Motivo")]
         public string Motivo { get; set; }
-        
+        [Display(Name = "Nombre Persona")]
         public string PersonaOFIMId { get; set; }
+
+
         [Display(Name = "Nombre Persona")]
         public string PersonName { get; set; }
-
-        public int TipoConsultaId { get; set; }
         [Display(Name = "Tipo de Consulta")]
+        public int TipoConsultaId { get; set; }
+        
         public string NombreTipoConsulta { get; set; }
 
         [DataType(DataType.DateTime)]

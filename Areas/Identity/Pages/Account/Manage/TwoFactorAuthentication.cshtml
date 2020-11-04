@@ -12,22 +12,22 @@
     if (Model.RecoveryCodesLeft == 0)
     {
         <div class="alert alert-danger">
-            <strong>You have no recovery codes left.</strong>
+            <strong>No le Quedan Códigos de Verificación.</strong>
             <p>You must <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a> before you can log in with a recovery code.</p>
         </div>
     }
     else if (Model.RecoveryCodesLeft == 1)
     {
         <div class="alert alert-danger">
-            <strong>You have 1 recovery code left.</strong>
-            <p>You can <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+            <strong>Le Queda un Código de Verificación.</strong>
+            <p>You can <a asp-page="./GenerateRecoveryCodes">generar un nuevo conjunto de códigos de recuperación</a>.</p>
         </div>
     }
     else if (Model.RecoveryCodesLeft <= 3)
     {
         <div class="alert alert-warning">
-            <strong>You have @Model.RecoveryCodesLeft recovery codes left.</strong>
-            <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+            <strong>Tienes @Model.RecoveryCodesLeft Códigos de Verificacipon Restantes.</strong>
+            <p>Debería <a asp-page="./GenerateRecoveryCodes">Generar un Nuevo Conjunto de Códigos de Recuperación</a>.</p>
         </div>
     }
 

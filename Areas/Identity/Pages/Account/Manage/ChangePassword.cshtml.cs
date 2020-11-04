@@ -35,18 +35,18 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Current password")]
+            [Display(Name = "Contraseña Actual")]
             public string OldPassword { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "La Contraseña Debe Tener al Menos {0} y Máximo {1} Caracteres de Largo.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "New password")]
+            [Display(Name = "Nueva Contraseña")]
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+            [Display(Name = "Confirmar Contraseña Nueva")]
+            [Compare("NewPassword", ErrorMessage = "La Nueva Contraseña y la Confirmación de Contraseña No Coinciden.")]
             public string ConfirmPassword { get; set; }
         }
 
