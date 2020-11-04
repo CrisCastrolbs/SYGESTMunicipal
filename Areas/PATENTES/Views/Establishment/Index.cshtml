@@ -93,30 +93,24 @@
         }
         else
         {
-            @*@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.Guest) || User.IsInRole(SD.FrontDeskUser))
+            if (User.IsInRole(SD.Guest) || User.IsInRole(SD.FrontDeskUser))
             {
-                <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Create"> Agregar Registro de Persona</a>
+                <h5 style="color:red;">Gracias por hacer uso de nuestros servicios!...</h5>
+                <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index" style="color:white;text-shadow: 2px 2px 5px #000"> Volver a la Página Principal</a>
             }
             else
-            {*@
+            {
+                <a class="dropdown-item" asp-action="Index"
+                   asp-controller="Home" asp-area="Patentes" style="color:white;text-shadow: 2px 2px 5px #000">Oficina de Patentes</a>
+                <h3 style="color:white;text-shadow: 2px 2px 5px #000"> Para realizar la solicitud de una Patente, debe registrarse o iniciar sesión primeramente.</h3>
+                <h3 style="color:white;text-shadow: 2px 2px 5px #000"> Inicie Sesión <a asp-area="Identity" asp-page="/Account/Login" class="btn-get-started scrollto">Aquí</a></h3>
 
-            <a class="dropdown-item" asp-action="Index"
-               asp-controller="Home" asp-area="Patentes" style="color:white;text-shadow: 2px 2px 5px #000">Oficina de Patentes</a>
-            <h3 style="color:white;text-shadow: 2px 2px 5px #000"> Para realizar la solicitud de una Patente, debe registrarse o iniciar sesión primeramente.</h3>
-            <h3 style="color:white;text-shadow: 2px 2px 5px #000"> Inicie Sesión <a asp-area="Identity" asp-page="/Account/Login" class="btn-get-started scrollto">Aquí</a></h3>
+                <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index" style="color:white;text-shadow: 2px 2px 5px #000">           Volver a la Página Principal</a>
 
-            <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index" style="color:white;text-shadow: 2px 2px 5px #000">           Volver a la Página Principal</a>
+
+            }
         }
-        @*}*@
-        }
 
-        @*else
-        {
-
-
-        <h5 style="color:red;">Gracias por hacer uso de nuestros servicios!...</h5>
-        <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">                   Volver a la Página Principal</a>
-        }*@
 
         <br />
         <br />
