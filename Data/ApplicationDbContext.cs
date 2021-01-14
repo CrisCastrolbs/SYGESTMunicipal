@@ -25,6 +25,9 @@ namespace SYGESTMunicipal.Data
         public DbSet<Consulta> Consulta { get; set; }
         public DbSet<Seguimiento> Seguimiento { get; set; }
         public DbSet<PersonaOFIM> PersonaOFIM { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Eje> Eje { get; set; }
+        public DbSet<Actividad> Actividad { get; set; }
         public DbSet<ActivityType> ActivityType { get; set; }
         public DbSet<Applicant> Applicant { get; set; }
         public DbSet<CIIU> CIIU { get; set; }
