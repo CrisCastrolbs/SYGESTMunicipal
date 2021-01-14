@@ -1,0 +1,63 @@
+﻿@using SYGESTMunicipal.Utility
+@using SYGESTMunicipal.Areas.OFIM.Models
+@model IEnumerable<Eje>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <br />
+    <br />
+    <div class="<border backgroundWhite">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-info">Lista de Ejes de Acción</h2>
+            </div>
+            <div class="col-6 text-right">
+                <partial name="_CreateButtonPartial" />
+            </div>
+        </div>
+        <br />
+        <div>
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-hover .table-responsive" id="TbEje">
+                    <thead class="thead-dark">
+                        <tr class="table-secondary" style="text-align:center;">
+
+                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                            <th>@Html.DisplayNameFor(m => m.Category.Name)</th>
+
+
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center;">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>@Html.DisplayFor(m => item.Name)</td>
+                                <td>@Html.DisplayFor(m => item.Category.Name)</td>
+
+
+                                <a>
+                                    <partial name="_TableButtonPartialDelete" model="item.Id" />
+                                </a>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h3 style="color:red;">No existen Ejes registrados!...</h3>
+            }
+        </div>
+    </div>
+
+}

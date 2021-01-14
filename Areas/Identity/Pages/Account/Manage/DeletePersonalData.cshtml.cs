@@ -41,7 +41,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"No se pudo cargar el usuario con ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"No se Puede Cargar el Usuario con este Id '{_userManager.GetUserId(User)}'.");
             }
 
             RequirePassword = await _userManager.HasPasswordAsync(user);
@@ -53,7 +53,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"No se pudo cargar el usuario con ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"No se Puede Cargar el Usuario con este Id '{_userManager.GetUserId(User)}'.");
             }
 
             RequirePassword = await _userManager.HasPasswordAsync(user);
@@ -61,7 +61,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             {
                 if (!await _userManager.CheckPasswordAsync(user, Input.Password))
                 {
-                    ModelState.AddModelError(string.Empty, "Incorrect password.");
+                    ModelState.AddModelError(string.Empty, "Contraseña Incorrecta.");
                     return Page();
                 }
             }
@@ -70,12 +70,12 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var userId = await _userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Se produjo un error inesperado al eliminar el usuario con ID '{userId}'.");
+                throw new InvalidOperationException($"Ocurrió un Error Inesperado al Eliminar el Usuario con el Id '{userId}'.");
             }
 
             await _signInManager.SignOutAsync();
 
-            _logger.LogInformation("El usuario con ID '{UserId}' se borró a sí mismo.", userId);
+            _logger.LogInformation("El Usuario con el Id '{UserId}' se Eliminó Por Si Mismo.", userId);
 
             return Redirect("~/");
         }

@@ -27,7 +27,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
 
         }
-
+        [Display(Name = "Nombre de Usuario")]
         public string Username { get; set; }
         public string Email { get; set; }
 

@@ -168,12 +168,10 @@ namespace SYGESTMunicipal.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -210,12 +208,10 @@ namespace SYGESTMunicipal.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -416,6 +412,57 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.ToTable("Talks");
                 });
 
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Actividad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EjeId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("EjeId");
+
+                    b.ToTable("Actividad");
+                });
+
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Consulta", b =>
                 {
                     b.Property<int>("ConsultaId")
@@ -429,10 +476,10 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("HoraFin")
+                    b.Property<DateTime?>("HoraFin")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("HoraInicio")
+                    b.Property<DateTime?>("HoraInicio")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Motivo")
@@ -454,6 +501,27 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.HasIndex("TipoConsultaId");
 
                     b.ToTable("Consulta");
+                });
+
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Eje", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("Eje");
                 });
 
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.EstadoCivil", b =>
@@ -900,16 +968,28 @@ namespace SYGESTMunicipal.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("City")
+                    b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Country")
+                    b.Property<string>("Canton")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdPassport")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StreetAddress")
+                    b.Property<string>("Province")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
@@ -982,6 +1062,21 @@ namespace SYGESTMunicipal.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Actividad", b =>
+                {
+                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Eje", "Eje")
+                        .WithMany()
+                        .HasForeignKey("EjeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Consulta", b =>
                 {
                     b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.PersonaOFIM", "PersonaOFIM")
@@ -991,6 +1086,15 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta", "TipoConsulta")
                         .WithMany()
                         .HasForeignKey("TipoConsultaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Eje", b =>
+                {
+                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

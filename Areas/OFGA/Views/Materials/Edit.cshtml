@@ -55,7 +55,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Name" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Name" class="form-control" />
                             </div>
@@ -66,7 +66,7 @@
                         <div class="form-group row">
                             <div class="col-md-2">
                                 <h5><label asp-for="Date" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-8">
                                 <input asp-for="Date" type="text" id="datepicker" class="form-control" />
                             </div>
@@ -75,7 +75,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Weight" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Weight" class="form-control" />
                             </div>
@@ -85,7 +85,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Color" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Color" class="form-control" />
                             </div>
@@ -95,7 +95,7 @@
                         <div class="form-group row">
                             <div class="col-md-2">
                                 <h5><label asp-for="MaterialTypeId" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-8">
                                 <select asp-for="MaterialTypeId" class="form-control"
                                         asp-items="@Lista"></select>
@@ -109,21 +109,22 @@
                         </div>
                     </div>
                 </form>
-    </div>
             </div>
         </div>
+    </div>
 </main>
-    @section Scripts{
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
 
 
 
-        <script src="~/js/DPickerSpanish.js"></script>
-        <script>
-            $(function () {
-                $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
-                $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
-                //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
-            });</script>
-    }
+    <script src="~/js/DPickerSpanish.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+        });</script>
+}
+
 

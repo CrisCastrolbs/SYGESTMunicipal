@@ -15,11 +15,12 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
         public int ConsultaId { get; set; }
         [DisplayName("Nombre Motivo")]
         public string Motivo { get; set; }
-
+        [Display(Name = "Persona")]
         public string PersonaOFIMId { get; set; }
         [ForeignKey("PersonaOFIMId")]
         public virtual PersonaOFIM PersonaOFIM { get; set; }
 
+        [Display(Name = "Tipo Consulta")]
         public int TipoConsultaId { get; set; }
         [ForeignKey("TipoConsultaId")]
         public virtual TipoConsulta TipoConsulta { get; set; }

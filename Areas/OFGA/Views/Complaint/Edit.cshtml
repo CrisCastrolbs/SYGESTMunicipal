@@ -87,12 +87,39 @@
     </div>
 </main>
 
+<script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
+<script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<script src="~/js/DPickerSpanish.js"></script>
+<script src="~/js/Datepair.js"></script>
+<script src="~/js/datepair.min.js"></script>
+<script src="~/js/jquery.datepair.js"></script>
+<script src="~/js/jquery.datepair.min.js"></script>
+<script src="~/js/moment.min.js"></script>
+<script src="~/js/jquery.timepicker.js"></script>
+<script src="~/js/jquery.timepicker.min.js"></script>
+
+<script src="~/js/jquery-ui.js"></script>
+<script src="~/js/jquery-ui.min.js"></script>
+
 <script>
-        $(function () {
-            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
-            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
-            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
-        });</script>
-}
+
+    $(function () {
+        $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+        $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+        //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+        $('#timepicker .time').timepicker({
+            'showDuration': true,
+            'timeFormat': 'g:ia'
+        });
+        $('#timepicker .time').timepicker({
+            'minTime': '7:30 AM',
+            'maxTime': '5:00 PM',
+            'step': '30'
+        });
+
+        var timepickerEl = document.getElementById('timepicker');
+        var timeOnlyDatepair = new Datepair(timepickerEl);
+
+    });
+</script>

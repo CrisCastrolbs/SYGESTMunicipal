@@ -48,9 +48,9 @@
                                 <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
                                 <td>@Html.DisplayFor(m => item.PersonName)</td>
                                 <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
-                                <td>
+                                <a>
                                     <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
-                                </td>
+                                </a>
 
                             </tr>
                         }

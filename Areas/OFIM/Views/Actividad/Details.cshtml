@@ -1,0 +1,102 @@
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.ActividadViewModel
+@using SYGESTMunicipal.Extensions
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+                Detalles de las Actividades
+            </h3>
+        </div>
+    </div>
+    <br />
+
+    <form asp-action="Details" asp-controller="Actividad" method="post" enctype="multipart/form-data">
+        <div class="container-fluid">
+            <input type="hidden" asp-for="Actividad.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Actividad.Name" readonly class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Descripcion" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    @Html.TextAreaFor(model => model.Actividad.Descripcion,
+                    new { disabled = "disabled", cols = "46" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Fecha" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Actividad.Fecha" readonly type="datetime" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Imagen" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    @{
+                        var base64 = Convert.ToBase64String(Model.Actividad.Imagen);
+                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+                    <img src="@imgsrc" style="width:50%; border-radius:5px;border: 1px solid #bbb9b9;" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.IsActive" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input type="checkbox" asp-for="Actividad.IsActive" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.CategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Actividad.Category.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.EjeId" name="LblProductId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Actividad.Eje.Name" readonly class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 offset-2">
+                    <partial name="_DetailsAndBackToListButton" model="Model.Actividad.Id" />
+                </div>
+            </div>
+        </div>
+    </form>
+}

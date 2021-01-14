@@ -14,7 +14,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
 {
     [Area("OFGA")]
     //[Authorize(Roles = SD.ManagerUser)]
- 
+
     public class MaterialsController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -27,21 +27,21 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
         public IActionResult Index()
         {
             listaMateriales = (from materials in _db.Materials
-                           join materialType in _db.MaterialType
-                           on materials.MaterialTypeId equals 
-                           materialType.MaterialTypeId
-                           select new MaterialsViewModel
-                           {
+                               join materialType in _db.MaterialType
+                               on materials.MaterialTypeId equals
+                               materialType.MaterialTypeId
+                               select new MaterialsViewModel
+                               {
 
-                               Id = materials.Id,
-                               Name = materials.Name,
-                               Date = materials.Date,
-                               Weight = materials.Weight,
-                               Color = materials.Color,
-                               
-                               MaterialTypeId = materials.MaterialTypeId,
-                              
-                           }).ToList();
+                                   Id = materials.Id,
+                                   Name = materials.Name,
+                                   Date = materials.Date,
+                                   Weight = materials.Weight,
+                                   Color = materials.Color,
+
+                                   MaterialTypeId = materials.MaterialTypeId,
+
+                               }).ToList();
             lista = listaMateriales;
             return View(listaMateriales);
         }
@@ -49,12 +49,12 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
         {
             List<SelectListItem> listaMaterial = new List<SelectListItem>();
             listaMaterial = (from ciiu in _db.MaterialType
-                         orderby ciiu.MaterialTypeName
-                         select new SelectListItem
-                         {
-                             Text = ciiu.MaterialTypeName,
-                             Value = ciiu.MaterialTypeId.ToString()
-                         }
+                             orderby ciiu.MaterialTypeName
+                             select new SelectListItem
+                             {
+                                 Text = ciiu.MaterialTypeName,
+                                 Value = ciiu.MaterialTypeId.ToString()
+                             }
                                    ).ToList();
             ViewBag.ListaTMaterial = listaMaterial;
         }
@@ -87,7 +87,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
                     _materials.Weight = materials.Weight;
                     _materials.Color = materials.Color;
                     _materials.MaterialTypeId = materials.MaterialTypeId;
-                    
+
                     _db.Materials.Add(_materials);
                     _db.SaveChanges();
                 }
@@ -103,8 +103,8 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             cargarMaterialType();
             int recCount = _db.Materials.Count(e => e.Id == id);
             Materials _materials = (from p in _db.Materials
-                                            where p.Id == id
-                                            select p).DefaultIfEmpty().Single();
+                                    where p.Id == id
+                                    select p).DefaultIfEmpty().Single();
             return View(_materials);
         }
         [HttpPost]
@@ -115,7 +115,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    
+
                     return View(materials);
                 }
                 else
@@ -168,3 +168,4 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
         }
     }
 }
+

@@ -1,0 +1,53 @@
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.EjeAndCategoryViewModel
+@using SYGESTMunicipal.Extensions
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+                Eliminar Ejes
+            </h3>
+        </div>
+    </div>
+    <br />
+    <form asp-action="Delete">
+        <div class="border backgroundWhite">
+            <input type="hidden" asp-for="Eje.CategoryID" />
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Eje.Category.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <select manifest="ddlCategory" asp-for="Eje.CategoryID" disabled
+                            asp-items="Model.CategoryList.ToSelectListItem(Model.Eje.CategoryID)"
+                            class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Eje.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Eje.Name" readonly class="form-control" />
+                </div>
+                <span asp-validation-for="Eje.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 offset-2">
+                    <partial name="_DeleteAndBackToListButton" model="Model.Eje.Id" />
+                </div>
+            </div>
+        </div>
+    </form>
+}

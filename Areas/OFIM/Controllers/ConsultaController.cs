@@ -15,7 +15,7 @@ using SYGESTMunicipal.Data;
 namespace SYGESTMunicipal.Areas.OFIM.Controllers
 {
     [Area("OFIM")]
-//    [Authorize(Roles = SD.ManagerUser)]
+    //    [Authorize(Roles = SD.ManagerUser)]
     public class ConsultaController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -30,28 +30,28 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         {
             listaConsulta = (from consulta in _db.Consulta
 
-                                  join personaOFIM in _db.PersonaOFIM
-                                  on consulta.PersonaOFIMId equals
-                                  personaOFIM.PersonaOFIMId
+                             join personaOFIM in _db.PersonaOFIM
+                             on consulta.PersonaOFIMId equals
+                             personaOFIM.PersonaOFIMId
 
-                                  join tipoConsulta in _db.TipoConsulta
-                                  on consulta.TipoConsultaId equals
-                                  tipoConsulta.TipoConsultaId
+                             join tipoConsulta in _db.TipoConsulta
+                             on consulta.TipoConsultaId equals
+                             tipoConsulta.TipoConsultaId
 
-                                  select new ConsultaViewModel
-                                  {
-                                      ConsultaId = consulta.ConsultaId,
-                                      Motivo = consulta.Motivo,
-                                      PersonaOFIMId = personaOFIM.PersonaOFIMId,
-                                      PersonName = personaOFIM.PersonName, 
-                                      TipoConsultaId = consulta.TipoConsultaId,
-                                      NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
-                                      Fecha = consulta.Fecha,
-                                      HoraInicio = consulta.HoraInicio.Value,
-                                      HoraFin = consulta.HoraFin.Value,
-                                      Descripcion = consulta.Descripcion,
-                                      RespuestaOfrecida = consulta.RespuestaOfrecida
-                                  }).ToList();
+                             select new ConsultaViewModel
+                             {
+                                 ConsultaId = consulta.ConsultaId,
+                                 Motivo = consulta.Motivo,
+                                 PersonaOFIMId = personaOFIM.PersonaOFIMId,
+                                 PersonName = personaOFIM.PersonName,
+                                 TipoConsultaId = consulta.TipoConsultaId,
+                                 NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
+                                 Fecha = consulta.Fecha,
+                                 HoraInicio = consulta.HoraInicio.Value,
+                                 HoraFin = consulta.HoraFin.Value,
+                                 Descripcion = consulta.Descripcion,
+                                 RespuestaOfrecida = consulta.RespuestaOfrecida
+                             }).ToList();
             ViewBag.Controlador = "Consulta";
             ViewBag.Accion = "Index";
             return View(listaConsulta);
@@ -61,12 +61,12 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         {
             List<SelectListItem> listaPersonaOFIM = new List<SelectListItem>();
             listaPersonaOFIM = (from personaOFIM in _db.PersonaOFIM
-                         orderby personaOFIM.PersonName
-                         select new SelectListItem
-                         {
-                             Text = personaOFIM.PersonName,
-                             Value = personaOFIM.PersonaOFIMId.ToString()
-                         }
+                                orderby personaOFIM.PersonName
+                                select new SelectListItem
+                                {
+                                    Text = personaOFIM.PersonName + " " + personaOFIM.LatName1,
+                                    Value = personaOFIM.PersonaOFIMId.ToString()
+                                }
                                    ).ToList();
             ViewBag.ListaPersonaOFIM = listaPersonaOFIM;
         }
@@ -75,12 +75,12 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         {
             List<SelectListItem> listaTipoConsulta = new List<SelectListItem>();
             listaTipoConsulta = (from tipoConsulta in _db.TipoConsulta
-                         orderby tipoConsulta.NombreTipoConsulta
-                         select new SelectListItem
-                         {
-                             Text = tipoConsulta.NombreTipoConsulta,
-                             Value = tipoConsulta.TipoConsultaId.ToString()
-                         }
+                                 orderby tipoConsulta.NombreTipoConsulta
+                                 select new SelectListItem
+                                 {
+                                     Text = tipoConsulta.NombreTipoConsulta,
+                                     Value = tipoConsulta.TipoConsultaId.ToString()
+                                 }
                                    ).ToList();
             ViewBag.ListaTipoConsulta = listaTipoConsulta;
         }
@@ -134,8 +134,8 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             cargarTipoConsulta();
             int recCount = _db.Consulta.Count(e => e.ConsultaId == id);
             Consulta _consulta = (from p in _db.Consulta
-                                            where p.ConsultaId == id
-                                            select p).DefaultIfEmpty().Single();
+                                  where p.ConsultaId == id
+                                  select p).DefaultIfEmpty().Single();
             return View(_consulta);
         }
         [HttpPost]
@@ -203,3 +203,4 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
 
     }
 }
+

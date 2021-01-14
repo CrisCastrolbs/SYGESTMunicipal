@@ -1,6 +1,6 @@
-﻿
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.IndexViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
 }
 
@@ -87,7 +87,7 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-md-6 d-flex">
-                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="        background-image: url('images/Empresariedad.jpg');">
+                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image: url('images/Empresariedad.jpg');">
                     <a href="https://www.youtube.com/watch?v=S1yBzwy-I-c" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
                         <span class="icon-play"></span>
                     </a>
@@ -251,3 +251,51 @@
     </div>
 </section>
 @*Fin Sección 3 *@
+<section class="ftco-section ftco-bg-dark-main">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">Nuestra Agenda</span>
+                <h2 style="color:white">ACTIVIDADES DISPONIBLES</h2>
+            </div>
+        </div>
+        <ul id="menu-filters" class="menu-filter-list list-inline text-center">
+            <li class="active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Mostrar Todo</li>
+            @foreach (var item in Model.Category)
+            {
+                <li class="ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
+            }
+        </ul>
+        @foreach (var category in Model.Category)
+        {
+            <div class="row" id="menu-wrapper">
+                <partial name="_ThumbnailAreaPartial"
+                         model="@Model.Actividad.Where(u=>u.Category.Name.Equals(category.Name))" />
+            </div>
+        }
+    </div>
+</section>
+        @section Scripts{
+            <script src="https://code.jquery.com/jquery-3.5.0.js"
+                    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+                    crossorigin="anonymous">
+            </script>
+            <script>
+                //load data from server, using HTTP Post request
+                var posts = $('.post');
+                (function ($) {
+                    $("#menu-filters li").click(function () {
+                        $("#menu-filters li").removeClass('active btn btn-secondary');
+                        $(this).addClass('active btn btn-secondary');
+                        var selectedFilter = $(this).data("filter");
+                        $(".menu-restaurant").fadeOut();
+                        setTimeout(function () {
+                            $(selectedFilter).slideDown();
+                        }, 100);
+                    });
+                })(jQuery);
+            </script>
+        }
+
+        @*https://getbootstrap.com/docs/4.0/components/carousel/
+            https://www.w3schools.com/bootstrap/bootstrap_filters.asp*@

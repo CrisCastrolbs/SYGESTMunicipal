@@ -119,8 +119,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
                 if (!ModelState.IsValid)
                 {
                     CargarPersonOFGA();
-                    ViewBag.EntryDate = complaint.Date.ToString("yyyy-MM-dd");
-                    _Fecha = ViewBag.EntryDate;
+                 
                     return View(complaint);
                 }
                 else

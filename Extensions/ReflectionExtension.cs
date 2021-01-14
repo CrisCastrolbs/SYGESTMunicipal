@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SYGESTMunicipal.Extensions
+﻿namespace SYGESTMunicipal.Data
 {
     public static class ReflectionExtension
     {

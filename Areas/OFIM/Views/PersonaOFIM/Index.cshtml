@@ -9,21 +9,18 @@
 {
 
     <div class="row">
-        <div class="col-md-12">
-            <h3 class="text-light" style="text-align:center;
-              background-color:darkslategray;">
-                Lista de Personas
-            </h3>
+        <div class="col-6">
+            <h2 class="text-info">Lista de Personas</h2>
+        </div>
+        <div class="col-6 text-right">
+            <partial name="_CreateButtonPartial" />
         </div>
     </div>
     <br />
     <form asp-controller="PersonaOFIM" asp-action="Index" method="post">
         <div class="row">
             <div class="col-md-2">
-                <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
-                   style="width:100%; height:90%;padding:6px;">
-                    Agregar Persona
-                </a>
+               
             </div>
             @*<div class="col-md-2 col-lg-2 text-right">
                     <a asp-controller="" asp-action="Index"
@@ -46,7 +43,7 @@
 
                     <th>@Html.DisplayNameFor(m => m.Address)</th>
 
-                   @* <th>@Html.DisplayNameFor(m => m.District)</th>*@
+                    @* <th>@Html.DisplayNameFor(m => m.District)</th>*@
                     <th>@Html.DisplayNameFor(m => m.MobilePhoneNumber)</th>
                     @*<th>@Html.DisplayNameFor(m => m.Email)</th>*@
 

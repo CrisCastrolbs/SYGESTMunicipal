@@ -33,7 +33,7 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"No se Puede Cargar el Usuario con el Id '{_userManager.GetUserId(User)}'.");
             }
 
             return Page();
@@ -44,15 +44,15 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"No se Puede Cargar el Usuario con el Id '{_userManager.GetUserId(User)}'.");
             }
 
             await _userManager.SetTwoFactorEnabledAsync(user, false);
             await _userManager.ResetAuthenticatorKeyAsync(user);
-            _logger.LogInformation("User with ID '{UserId}' has reset their authentication app key.", user.Id);
+            _logger.LogInformation("El Usuario con el Id '{UserId}' ha restablecido su clave de aplicación de autenticación.", user.Id);
             
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your authenticator app key has been reset, you will need to configure your authenticator app using the new key.";
+            StatusMessage = "Su clave de la aplicación de autenticación se ha restablecido, deberá configurar su aplicación de autenticación con la nueva clave.";
 
             return RedirectToPage("./EnableAuthenticator");
         }
