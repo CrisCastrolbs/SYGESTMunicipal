@@ -18,6 +18,16 @@
     <Compile Remove="Data\Migrations\20201012221436_AddConsultaToDatabase.Designer.cs" />
     <Compile Remove="Data\Migrations\20201014213228_AddConsultaToDatabase.cs" />
     <Compile Remove="Data\Migrations\20201014213228_AddConsultaToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210106195836_addCategoriaToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210106195836_addCategoriaToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210107164036_addEjeToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210107164036_addEjeToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210107165417_addEjeToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210107165417_addEjeToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210107171526_addEjeToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210107171526_addEjeToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210109194148_addActividadToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210109194148_addActividadToDatabase.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
