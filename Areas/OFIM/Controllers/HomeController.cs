@@ -21,5 +21,10 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         {
             return View();
         }
+
+        public IActionResult IndexServicio()
+        {
+            return View();
+        }
     }
 }

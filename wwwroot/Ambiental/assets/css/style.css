@@ -398,20 +398,20 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
 }
 
-#hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 11px 20px;
-  border-radius: 50px;
-  transition: 0.5s;
-  margin: 10px;
-  border: 4px solid #94c045;
-  text-transform: uppercase;
-  color: #fff;
-}
+    #hero .btn-get-started {
+        font-family: "Raleway", sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 11px 20px;
+        border-radius: 50px;
+        transition: 0.5s;
+        margin: 10px;
+        border: 4px solid #94c045;
+        text-transform: uppercase;
+        color: #94c045;
+    }
 
 #hero .btn-get-started:hover {
   background: #263192;
