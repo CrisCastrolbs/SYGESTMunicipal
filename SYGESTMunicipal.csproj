@@ -18,6 +18,10 @@
     <Compile Remove="Data\Migrations\20201012221436_AddConsultaToDatabase.Designer.cs" />
     <Compile Remove="Data\Migrations\20201014213228_AddConsultaToDatabase.cs" />
     <Compile Remove="Data\Migrations\20201014213228_AddConsultaToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210109190604_AddCategoryToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210109190604_AddCategoryToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210112223456_AddPruebaToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210112223456_AddPruebaToDatabase.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

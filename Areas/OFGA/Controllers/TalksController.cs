@@ -120,11 +120,8 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
                 }
                 talksFromDb.Name = talks.Name;
                 talksFromDb.Description = talks.Description;
-
                 talksFromDb.Date = talks.Date;
-
                 talksFromDb.IsActive = talks.IsActive;
-
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -153,8 +150,8 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
         //POST DELETE
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var coupons = await _db.Talks.SingleOrDefaultAsync(m => m.Id == id);
-            _db.Talks.Remove(coupons);
+            var talks = await _db.Talks.SingleOrDefaultAsync(m => m.Id == id);
+            _db.Talks.Remove(talks);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

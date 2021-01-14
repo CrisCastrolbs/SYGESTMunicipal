@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SYGESTMunicipal.Data;
 
 namespace SYGESTMunicipal.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210109190729_AddCategoryToDatabase")]
+    partial class AddCategoryToDatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -412,41 +414,6 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.ToTable("Talks");
                 });
 
-            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Actividad", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EjeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<byte[]>("Imagen")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("EjeId");
-
-                    b.ToTable("Actividad");
-                });
-
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -501,27 +468,6 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.HasIndex("TipoConsultaId");
 
                     b.ToTable("Consulta");
-                });
-
-            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Eje", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryID");
-
-                    b.ToTable("Eje");
                 });
 
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.EstadoCivil", b =>
@@ -1062,21 +1008,6 @@ namespace SYGESTMunicipal.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Actividad", b =>
-                {
-                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Eje", "Eje")
-                        .WithMany()
-                        .HasForeignKey("EjeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Consulta", b =>
                 {
                     b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.PersonaOFIM", "PersonaOFIM")
@@ -1086,15 +1017,6 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta", "TipoConsulta")
                         .WithMany()
                         .HasForeignKey("TipoConsultaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Eje", b =>
-                {
-                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

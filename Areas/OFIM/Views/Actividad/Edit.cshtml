@@ -1,0 +1,155 @@
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.ActividadViewModel
+@using SYGESTMunicipal.Extensions
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+                Editar una Actividad
+            </h3>
+        </div>
+    </div>
+    <br />
+
+    <form asp-action="Edit" asp-controller="Actividad" method="post" enctype="multipart/form-data" id="viewEditar">
+        <div class="container-fluid">
+
+            <input type="hidden" asp-for="Actividad.Id" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Actividad.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Actividad.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Descripcion" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    @Html.TextAreaFor(m => m.Actividad.Descripcion, new { rows = "3", cols = "56", @class = "text-area" })
+                </div>
+                <span asp-validation-for="Actividad.Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Fecha" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Actividad.Fecha" type="text" id="datepicker" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.Imagen" class="custom-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input type="file" id="projectImage" name="files" multiple class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.IsActive" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input type="checkbox" asp-for="Actividad.IsActive" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.CategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="@Model.Actividad.CategoryId" id="CategoryId"
+                            asp-items="Model.Category.ToSelectListItem(Model.Actividad.CategoryId)"
+                            class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Actividad.EjeId" name="LblEjeId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <select asp-for="@Model.Actividad.EjeId" name="EjeId" id="EjeId"
+                            asp-items="@(new SelectList(string.Empty,"Id","Name"))"
+                            class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <partial name="_EditAndBackToListButton" model="Model.Actividad.Id" />
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
+    <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="~/js/Datepair.js"></script>
+    <script src="~/js/datepair.min.js"></script>
+    <script src="~/js/jquery.datepair.js"></script>
+    <script src="~/js/jquery.datepair.min.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/jquery.timepicker.js"></script>
+    <script src="~/js/jquery.timepicker.min.js"></script>
+
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd/MM/yy 0:00' }).val();
+           
+
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript">
+     $(document).ready(function () {
+         GetEjes();
+         $('#CategoryId').change(function () {
+             GetEjes();
+         });
+     });
+    function GetEjes() {
+         var url = '@Url.Content("~/")' + "OFIM/Eje/GetEjes/";
+         var ddlsource = '#CategoryId';
+         $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
+             var items = '';
+             $('#EjeId').empty();
+             $.each(data, function (i, eje) {
+                 items += "<option value='" + eje.value + "'>" + eje.text +
+                     "</option>";
+             });
+             $('#EjeId').html(items);
+         })
+     }
+    </script>
+
+}
