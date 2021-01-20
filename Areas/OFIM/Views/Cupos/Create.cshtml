@@ -1,0 +1,115 @@
+﻿@model SYGESTMunicipal.Areas.OFIM.Models.Cupos
+@using SYGESTMunicipal.Utility
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+    List<SelectListItem> Lista = ViewBag.ListaActividades;
+}
+
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+                Abrir Cupos para Inscripción a Actividades
+            </h3>
+        </div>
+    </div>
+    <br />
+
+    <form asp-action="Create" asp-controller="Cupos" method="post" id="viewAgregar">
+        <div class="container-fluid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Descripcion" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    @Html.TextAreaFor(m => m.Descripcion, new { rows = "3", cols = "56", @class = "text-area" })
+                </div>
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="CupoMax" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="CupoMax" class="form-control" />
+                </div>
+                <span asp-validation-for="CupoMax" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="IsActive" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input type="checkbox" asp-for="IsActive" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="ActividadId" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <select asp-for="ActividadId" class="form-control"
+                            asp-items="@Lista"></select>
+                </div>
+                <span asp-validation-for="ActividadId" class="text-danger"></span>
+                @if (Model != null && ViewBag.Error != "")
+                {
+                    <p class="text-danger">@ViewBag.Error</p>
+                }
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-4 colo-lg-4 text-right">
+                    <input type="button" value="Agregar" id="btnAgregar"
+                           class="btn btn-success" style="width: 80%;"
+                           onclick="abrirModal()" />
+                </div>
+                <div class="col-md-4 colo-lg-4 text-right">
+                    <a asp-action="Index" class="btn btn-info"
+                       style="width: 80%;">
+                        Regresar a la lista
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+}
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Agregar Cupo', '¿Desea agregar el cupo?').then((result) => {
+            if (result.value) {
+                var viewAgregar = document.getElementById("viewAgregar");
+                viewAgregar.submit();
+                Swal.fire(
+                    'Agregado!',
+                    'El cupo fue agregado!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'El cupo no fue agregado!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>
+

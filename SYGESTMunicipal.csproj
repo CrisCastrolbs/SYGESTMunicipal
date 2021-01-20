@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\OFGA\Data\**" />
+    <Compile Remove="Areas\OFIM\Data\**" />
+    <Content Remove="Areas\OFGA\Data\**" />
+    <Content Remove="Areas\OFIM\Data\**" />
+    <EmbeddedResource Remove="Areas\OFGA\Data\**" />
+    <EmbeddedResource Remove="Areas\OFIM\Data\**" />
+    <None Remove="Areas\OFGA\Data\**" />
+    <None Remove="Areas\OFIM\Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Data\Migrations\20201012205716_AddPersonaOFIMToDatabase.cs" />
     <Compile Remove="Data\Migrations\20201012205716_AddPersonaOFIMToDatabase.Designer.cs" />
     <Compile Remove="Data\Migrations\20201012205845_AddPersonaOFIMToDatabase.cs" />
@@ -22,6 +33,12 @@
     <Compile Remove="Data\Migrations\20210109190604_AddCategoryToDatabase.Designer.cs" />
     <Compile Remove="Data\Migrations\20210112223456_AddPruebaToDatabase.cs" />
     <Compile Remove="Data\Migrations\20210112223456_AddPruebaToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210116120443_AddCuposToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210116120443_AddCuposToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210116175301_AddCuposToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210116175301_AddCuposToDatabase.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210116175608_AddCuposToDatabase.cs" />
+    <Compile Remove="Data\Migrations\20210116175608_AddCuposToDatabase.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,8 +59,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Home\Data\" />
     <Folder Include="Areas\Home\Models\" />
-    <Folder Include="Areas\OFGA\Data\" />
-    <Folder Include="Areas\OFIM\Data\" />
     <Folder Include="Areas\PATENTES\Data\" />
     <Folder Include="wwwroot\Ambiental\assets\img\clients\" />
   </ItemGroup>

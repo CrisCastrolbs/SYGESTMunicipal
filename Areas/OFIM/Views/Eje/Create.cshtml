@@ -22,7 +22,7 @@
     <form asp-action="Create" asp-controller="Eje" id="viewAgregar">
         <div class="container-fluid">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <partial name="_StatusMessage" model="Model.StatusMessage" />
             <div class="form-group row">
                 <div class="col-md-2">
                     <label asp-for="Eje.Name" class="col-form-label"></label>

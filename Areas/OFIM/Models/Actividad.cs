@@ -30,5 +30,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
         public int EjeId { get; set; }
         [ForeignKey("EjeId")]
         public virtual Eje Eje { get; set; }
+
+        public virtual ICollection<Cupos> Cupos { get; set; }
     }
 }

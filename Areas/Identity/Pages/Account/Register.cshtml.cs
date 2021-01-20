@@ -137,6 +137,10 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.FrontDeskUser));
                     }
+                    if (!await _roleManager.RoleExistsAsync(SD.RedUser))
+                    {
+                        await _roleManager.CreateAsync(new IdentityRole(SD.RedUser));
+                    }
                     if (!await _roleManager.RoleExistsAsync(SD.AdminOFIM))
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.AdminOFIM));
@@ -153,49 +157,57 @@ namespace SYGESTMunicipal.Areas.Identity.Pages.Account
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.CollManager));
                     }
-                          if (role == SD.CollManager)
+                    if (role == SD.CollManager)
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.CollManager);
+                    }
+                    else
+                  if (role == SD.FrontDeskUser)
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.FrontDeskUser);
+                    }
+                    else
+                    {
+                        if (role == SD.RedUser)
                         {
-                            await _userManager.AddToRoleAsync(user, SD.CollManager);
-                        }
-                        else              
-                        if (role == SD.FrontDeskUser)
-                        {
-                            await _userManager.AddToRoleAsync(user, SD.FrontDeskUser);
+                            await _userManager.AddToRoleAsync(user, SD.RedUser);
                         }
                         else
                         {
                             if (role == SD.AdminOFIM)
-                            {
-                                await _userManager.AddToRoleAsync(user, SD.AdminOFIM);
-                            }
-                            else
-                            {
-                                if (role == SD.AdminOFGA)
+                        {
+                            await _userManager.AddToRoleAsync(user, SD.AdminOFIM);
+                        }
+                        else
+                        {
+                            if (role == SD.AdminOFGA)
                             {
                                 await _userManager.AddToRoleAsync(user, SD.AdminOFGA);
                             }
+                            else
+                            {
+                                if (role == SD.AdminOFPA)
+                                {
+                                    await _userManager.AddToRoleAsync(user, SD.AdminOFPA);
+                                }
                                 else
                                 {
-                                    if (role == SD.AdminOFPA)
+                                    if (role == SD.ManagerUser)
                                     {
-                                        await _userManager.AddToRoleAsync(user, SD.AdminOFPA);
+                                        await _userManager.AddToRoleAsync(user, SD.ManagerUser);
                                     }
                                     else
                                     {
-                                        if (role == SD.ManagerUser)
-                                        {
-                                            await _userManager.AddToRoleAsync(user, SD.ManagerUser);
-                                        }
-                                        else
-                                    {
-                                         await _userManager.AddToRoleAsync(user, SD.Guest);
-                                         await _signInManager.SignInAsync(user, isPersistent: false);
-                                         return LocalRedirect(returnUrl);
+                                        await _userManager.AddToRoleAsync(user, SD.Guest);
+                                        await _signInManager.SignInAsync(user, isPersistent: false);
+                                        return LocalRedirect(returnUrl);
                                     }
                                 }
                             }
                         }
                     }
+                }
+                
         
                     _logger.LogInformation("Usuario creado con una nueva cuenta con contraseña.");
 

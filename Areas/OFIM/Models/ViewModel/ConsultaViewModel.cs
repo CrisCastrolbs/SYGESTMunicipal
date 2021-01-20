@@ -23,8 +23,6 @@ namespace SYGESTMunicipal.Areas.OFIM.Models.ViewModel
         public string PersonName { get; set; }
         [Display(Name = "Tipo de Consulta")]
         public int TipoConsultaId { get; set; }
-        
-        public string NombreTipoConsulta { get; set; }
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha")]
