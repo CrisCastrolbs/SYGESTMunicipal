@@ -28,7 +28,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         }
         public IActionResult Index()
         {
-            listaConsulta = (from consulta in _db.Consulta
+            listaConsulta = (from consulta in _db.Consulta 
 
                              join personaOFIM in _db.PersonaOFIM
                              on consulta.PersonaOFIMId equals
@@ -36,7 +36,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
 
                              join tipoConsulta in _db.TipoConsulta
                              on consulta.TipoConsultaId equals
-                             tipoConsulta.TipoConsultaId
+                             tipoConsulta.TipoConsultaId 
 
                              select new ConsultaViewModel
                              {

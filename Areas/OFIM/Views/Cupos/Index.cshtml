@@ -1,0 +1,168 @@
+﻿@model IEnumerable<CupoAndActividadViewModel>
+@using SYGESTMunicipal.Areas.OFIM.Models.ViewModel
+@using SYGESTMunicipal.Utility
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <br />
+    <br />
+    <div class="border backgroundWhite">
+
+        <div class="row">
+            <div class="col-6">
+                <h3 class="text-info">
+                    Lista de Cupos por Actividades
+                </h3>
+            </div>
+            <div class="col-6 text-right">
+                <p>
+                    <a asp-action="Create" class="btn btn-info">
+                        <i class="fas fa-plus"></i>
+                        &nbsp; Crear Nuevo
+                    </a>
+                </p>
+            </div>
+
+        </div>
+       
+
+        <br />
+        <form asp-controller="Cupos" asp-action="Index" method="post">
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Listar por Actividad:</label>
+                </div>
+                <div class="col-md-2 text-right">
+                    <input type="text" class="form-control" name="nombre" id="nombre"
+                           value="@ViewBag.Actividad" />
+                </div>  <br />
+
+                <div class="col-md-1 text-right">
+                    <input type="button" value="Generar PDF" class="btn btn-outline-primary" onclick="ExportarPDF()" />
+                </div>
+                <div class="col-md-2 text-right">
+                    <input type="button" value="Generar Excel" class="btn btn-outline-secondary" onclick="ExportarExcel()" />
+                </div>
+
+                <div class="col-md-2 text-right">
+                    <a asp-action="Index" asp-controller="Home" asp-area="OFIM"
+                       class="btn btn-info fa fa-arrow-circle-left"
+                       style="width:100%; height:90%;padding:6px;">
+                        Regresar
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-12" style="color:black;"><hr /></div>
+        </form>
+
+        <div>
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-hover .table-responsive" id="TbCupos" name="tbCupos">
+                    <thead class="thead-dark">
+                        <tr class="table-secondary" style="text-align:left;font-size:14px;">
+                            <th>@Html.DisplayNameFor(m => m.Id)</th>
+                            <th>@Html.DisplayNameFor(m => m.CupoMax)</th>
+                            <th>@Html.DisplayNameFor(m => m.IsActive)</th>
+                            <th>@Html.DisplayNameFor(m => m.Actividad)</th>
+                            <th>Operaciones </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:left;font-size:12px;">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Id)</td>
+                                <td>@Html.DisplayFor(m => item.CupoMax)</td>
+                                <td>@Html.DisplayFor(m => item.IsActive)</td>
+                                <td>@Html.DisplayFor(m => item.Actividad)</td>
+                                <td>
+                                    <i class="fa fa-trash btn btn-danger" aria-hidden="true"
+                                       onclick="EliminarMedico(@item.Id)"></i>
+                                    <a class="fa fa-info-circle btn btn-primary" aria-hidden="true"
+                                       asp-controller="Medico" asp-action="Details"
+                                       asp-route-id="@item.Id"></a>
+
+                                    <a class="fa fa-pencil btn btn-info" aria-hidden="true"
+                                       asp-controller="Medico" asp-action="Edit"
+                                       asp-route-id="@item.Id"></a>
+                                </td>
+                            </tr>
+                        }
+                </table>
+            }
+            else
+            {
+                <h3>No existen actividades registradas...</h3>
+            }
+
+            <form asp-action="Delete" asp-controller="Cupos" method="post" id="viewEliminar">
+                <input type="hidden" id="txtId" name="Id" />
+            </form>
+            <form asp-action="Edit" asp-controller="Cupos" method="post" id="viewEditar">
+                <input type="hidden" id="txtId" name="Id" />
+            </form>
+            <form asp-action="exportar" target="_blank" asp-controller="Cupos" asp-route-id="tbDatos"
+                  method="post" id="viewExportarPDF">
+                <input type="hidden" id="txtBuscar" name="txtBuscar" />
+            </form>
+
+        </div>
+    </div>
+}
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#tbDatos').DataTable(
+            {
+                "filter": false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            })
+    })
+    function EliminarCupo(Id) {
+        document.getElementById("txtId").value = MedicoId;
+        verModal('Eliminar Cupo',
+            '¿Desea eliminar el cupo para la actividad '
+            + Id + '?').then((result) => {
+                if (result.value) {
+                    var viewEliminar = document.getElementById("viewEliminar");
+                    viewEliminar.submit();
+                    Swal.fire(
+                        'Eliminación!',
+                        'El cupo' + Id + 'fue eliminado!.',
+                        'success'
+                    )
+                }
+                else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Cancelado',
+                        'El cupo no fue eliminado!!!:)',
+                        'error'
+                    )
+                }
+            })
+    }
+    function Buscar() {
+        var Name = document.getElementById("Name").value;
+        var url = "Cupos/BuscarCuposActividad/?nombreActividad=" + Name;
+        var tbody = document.getElementById("tbDatos");
+        var campos = new Array("Id", "cupoMax", "actividad", "especialidad");
+        pintarPantallaConsulta(url, campos, tbody);
+    }
+    function ExportarPDF() {
+        var aux = document.getElementById("viewExportarPDF");
+        aux.submit();
+    }
+    
+</script>
+
+

@@ -1,21 +1,27 @@
 ﻿@using SYGESTMunicipal.Utility
 <!DOCTYPE html>
 <html lang="es">
-<head>
+
+<head class="ftco-bg-dark-main">
     <title>@ViewData["Title"] - OFIM</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    @*inicio*@
+    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
+    <link href="~/lib/ej.responsive.css" rel="stylesheet" />
+    <script src="~/js/ej.web.all.min.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossorigin="anonymous" />
 
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="~/js/jquery-ui.js"></script>
     <link href="~/css/jquery-ui.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
-   
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-          crossorigin="anonymous" />
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -33,11 +39,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
-    <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
-    <link href="~/lib/ej.responsive.css" rel="stylesheet" />
-    <script src="~/js/ej.web.all.min.js"></script>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-   
+
+
     <script src="~/js/jquery.timepicker.js"></script>
     <link href="~/css/jquery.timepicker.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" rel="stylesheet" />
@@ -54,51 +57,9 @@
 
 <body>
     <header>
-        <div class="container pt-3 pb-2">
-            <div class="container pt-3 pb-2">
-                <div class="row justify-content-between">
-                    <div class="col-md-8 order-md-last">
-                        <div class="row">
-                            <div class="col-md-6 text-center">
-                                <a class="navbar-brand" style="color:#8c552e" asp-area="" asp-controller="Home" asp-action="Index">
-                                    SYGEST<span>Municipal</span>
-                                </a>
-                            </div>
-                            @*<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
-                                <form action="#" class="searchform order-lg-last">
-                                    <div class="form-group d-flex">
-                                        <input type="text" class="form-control pl-3" placeholder="Search">
-                                        <button type="submit" placeholder="" class="form-control search">
-                                            <span class="fa fa-search"></span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>*@
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg">
-                        <div class="social-media">
-                            <p class="mb-0 d-flex">
-                                @* LINKS DE LAS REDES SOCIALES *@
-                                <a href="https://www.facebook.com/MUNICIPALIDAD-DE-HOJANCHA-218380324851885/" class="d-flex align-items-center justify-content-center" target="_blank">
-                                    <span class="fa fa-facebook">
-                                        <i class="sr-only">Facebook</i>
-                                    </span>
-                                </a>
-                                <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="d-flex align-items-center justify-content-center" target="_blank">
-                                    <span class="fa fa-instagram">
-                                        <i class="sr-only">Instagram</i>
-                                    </span>
-                                </a>
-                                @* FIN LINKS DE LAS REDES SOCIALES *@
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
+       
+        <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" 
+             id="ftco-navbar">
             <div class="container-fluid" style="padding-right: 25px">
 
                 @* LOGO Muni *@
@@ -142,13 +103,13 @@
 
                                     <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="PersonaOFIM" asp-area="OFIM">Registrar Personas</a>
+                                           asp-controller="PersonaOFIM" asp-area="OFIM" style="font-size:15px">Registrar Personas</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="TipoConsulta" asp-area="OFIM">Tipo Consulta</a>
+                                           asp-controller="TipoConsulta" asp-area="OFIM" style="font-size:15px">Tipo Consulta</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Consulta" asp-area="OFIM">Registrar Consulta</a>
+                                           asp-controller="Consulta" asp-area="OFIM" style="font-size:15px">Registrar Consulta</a>
 
                                         @*<a class="dropdown-item" asp-action="Index"
                         asp-controller="Home" asp-area="OFIM">Dar un Seguimiento</a>*@
@@ -157,7 +118,7 @@
                                 </li>
                             }
 
-                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+                            @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.RedUser))
                             {
                                 <li class="nav-item dropdown text-white-50">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
@@ -166,14 +127,14 @@
                                         Red de Atención
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                                        <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Registrar Personas</a>
+                                        @*<a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Home" asp-area="OFIM" style="font-size:15px">Registrar Personas</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Organizaciones</a>
+                                           asp-controller="Home" asp-area="OFIM" style="font-size:15px">Organizaciones</a>*@
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Casos Violencia Doméstica</a>
+                                           asp-controller="Consulta" asp-area="OFIM" style="font-size:15px">Casos Violencia Doméstica</a>
 
                                     </div>
                                 </li>
@@ -184,18 +145,19 @@
                                 <li class="nav-item dropdown text-white-50">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
                                        role="button" data-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false">
+                                       aria-expanded="false" >
                                         Actividades
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
-                                        <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Category" asp-area="OFIM">Categorias</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Eje" asp-area="OFIM">Ejes</a>
+                                           asp-controller="Eje" asp-area="OFIM" style="font-size:15px">Ejes de Acción</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Actividad" asp-area="OFIM">Actividades</a>
+                                           asp-controller="Actividad" asp-area="OFIM" style="font-size:15px">Actividades</a>
+
+                                        <a class="dropdown-item" asp-action="Index"
+                                           asp-controller="Cupos" asp-area="OFIM" style="font-size:15px">Cupos de Inscripción</a>
 
                                     </div>
                                 </li>
@@ -214,13 +176,13 @@
                                         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
                                         {
                                             <a class="dropdown-item" asp-action="Index"
-                                               asp-controller="Home" asp-area="OFIM">Registro de Capacitadores</a>
+                                               asp-controller="Home" asp-area="OFIM" style="font-size:15px">Registro de Capacitadores</a>
                                         }
 
                                         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
                                         {
                                             <a class="dropdown-item" asp-action="Index"
-                                               asp-controller="Home" asp-area="OFIM">Registro de Taller</a>
+                                               asp-controller="Home" asp-area="OFIM" style="font-size:15px">Registro de Taller</a>
 
                                         }
 
@@ -228,7 +190,7 @@
                                         {
 
                                             <a class="dropdown-item" asp-action="Index"
-                                               asp-controller="Home" asp-area="OFIM">Inscripción a Talleres</a>
+                                               asp-controller="Home" asp-area="OFIM" style="font-size:15px">Inscripción a Talleres</a>
                                         }
 
                                     </div>
@@ -246,13 +208,13 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Registro de Personas</a>
+                                           asp-controller="Home" asp-area="OFIM" style="font-size:15px">Registro de Personas</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Empresas</a>
+                                           asp-controller="Home" asp-area="OFIM" style="font-size:15px">Empresas</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Productos</a>
+                                           asp-controller="Home" asp-area="OFIM" style="font-size:15px">Productos</a>
 
                                     </div>
                                 </li>
