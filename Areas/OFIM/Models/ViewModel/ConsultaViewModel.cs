@@ -46,6 +46,9 @@ namespace SYGESTMunicipal.Areas.OFIM.Models.ViewModel
 
         [DisplayName("Respuesta Ofrecida")]
         public string RespuestaOfrecida { get; set; }
+
+        [DisplayName("Remitir")]
+        public bool Remitir { get; set; }
         public int SelectedOption { get; set; }
 
         public string msgError { get; set; }

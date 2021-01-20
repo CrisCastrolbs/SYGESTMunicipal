@@ -50,6 +50,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                  HoraInicio = consulta.HoraInicio.Value,
                                  HoraFin = consulta.HoraFin.Value,
                                  Descripcion = consulta.Descripcion,
+                                 Remitir = consulta.Remitir,
                                  RespuestaOfrecida = consulta.RespuestaOfrecida
                              }).ToList();
             ViewBag.Controlador = "Consulta";
@@ -116,6 +117,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                     _consulta.HoraInicio = consulta.HoraInicio;
                     _consulta.HoraFin = consulta.HoraFin;
                     _consulta.Descripcion = consulta.Descripcion;
+                    _consulta.Remitir = consulta.Remitir;
                     _consulta.RespuestaOfrecida = consulta.RespuestaOfrecida;
                     _db.Consulta.Add(_consulta);
                     _db.SaveChanges();
@@ -199,6 +201,12 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             _db.Consulta.Remove(consulta);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Registro()
+        {
+            
+            return View();
         }
 
     }

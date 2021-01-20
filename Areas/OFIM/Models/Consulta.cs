@@ -45,5 +45,8 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
 
         [DisplayName("Respuesta Ofrecida")]
         public string RespuestaOfrecida { get; set; }
+
+        [DisplayName("Remitir")]
+        public bool Remitir { get; set; }
     }
 }
