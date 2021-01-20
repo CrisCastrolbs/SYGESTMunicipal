@@ -44,6 +44,7 @@ namespace SYGESTMunicipal.Data
         public DbSet<Complaint> Complaint { get; set; }
         public DbSet<RecoverableMaterialRecovery> RecoverableMaterialRecovery { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        
 
 
 
