@@ -7893,10 +7893,11 @@ a.text-secondary:hover, a.text-secondary:focus {
   color: #494f54 !important; }
 
 .text-success {
-  color: #28a745 !important; }
+  color: #95C93D !important; }
 
 a.text-success:hover, a.text-success:focus {
-  color: #19692c !important; }
+    color: #95C93D !important;
+}
 
 .text-info {
   color: #17a2b8 !important; }
@@ -8919,7 +8920,7 @@ background: #3c312e; }
     display: block;
     margin-bottom: 5px;
     font-weight: 700;
-    color: #577b1a;
+    color: #95C93D;
 }
 
 .heading-section h2 {

@@ -137,7 +137,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
                                        role="button" data-toggle="dropdown" aria-haspopup="true"
                                        aria-expanded="false">
-                                        Registro Atención
+                                        Registro <br /> Atención
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
@@ -163,7 +163,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
                                        role="button" data-toggle="dropdown" aria-haspopup="true"
                                        aria-expanded="false">
-                                        Red de Atención
+                                        Red de <br /> Atención
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
                                         <a class="dropdown-item" asp-action="Index"
@@ -246,18 +246,16 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Registro de Personas</a>
+                                           asp-controller="Home" asp-area="OFIM">Registrar Empresa</a>
 
                                         <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Empresas</a>
-
-                                        <a class="dropdown-item" asp-action="Index"
-                                           asp-controller="Home" asp-area="OFIM">Productos</a>
+                                           asp-controller="Home" asp-area="OFIM">Registrar Producto</a>
 
                                     </div>
                                 </li>
+
                             }
-                            @*<partial name="_LoginPartial" />*@
+                            <partial name="_LoginPartial" />
                         </ul>
                 </div>
             </div>

@@ -52,7 +52,7 @@
                     <label>Nombre: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input asp-for="PersonName" class="form-control" required/>
+                    <input asp-for="PersonName" class="form-control" required />
                 </div>
                 <span asp-validation-for="PersonName" class="text-danger"></span>
             </div>
@@ -61,7 +61,7 @@
                     <label>Primer Apellido: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input asp-for="LatName1" class="form-control" required/>
+                    <input asp-for="LatName1" class="form-control" required />
                 </div>
                 <span asp-validation-for="LatName1" class="text-danger"></span>
             </div>
@@ -71,7 +71,7 @@
                     <label>Segundo Apellido: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input asp-for="LatName2" class="form-control" required/>
+                    <input asp-for="LatName2" class="form-control" required />
                 </div>
                 <span asp-validation-for="LatName2" class="text-danger"></span>
             </div>
@@ -92,7 +92,7 @@
                     <label>Provincia: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input asp-for="Province" id="provincia" class="form-control"  />
+                    <input asp-for="Province" id="provincia" class="form-control" />
                     <datalist id="provincia">
                         <option> Guanacaste</option>
                         <option> Alajuela</option>
@@ -101,7 +101,7 @@
                     </datalist>
                 </div>
                 <span asp-validation-for="Province" class="text-danger"></span>
-               
+
             </div>
 
             <div class="form-group row">
@@ -139,7 +139,7 @@
                     <label>Teléfono Móvil: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input asp-for="MobilePhoneNumber" class="form-control" required/>
+                    <input asp-for="MobilePhoneNumber" class="form-control" required />
                 </div>
                 <span asp-validation-for="MobilePhoneNumber" class="text-danger"></span>
             </div>
@@ -159,7 +159,7 @@
                     <label>Sexo: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input asp-for="Sex" class="form-control" required/>
+                    <input asp-for="Sex" class="form-control" required />
                 </div>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
@@ -169,7 +169,7 @@
                     <label>Fecha Nacimiento: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input type="date" asp-for="DateBirth" class="form-control" required/>
+                    <input type="date" asp-for="DateBirth" class="form-control" required />
                 </div>
                 <span asp-validation-for="DateBirth" class="text-danger"></span>
             </div>
@@ -189,7 +189,7 @@
                     <label>Cantidad Hijos: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-4">
-                    <input asp-for="ChildNumber" class="form-control" required/>
+                    <input asp-for="ChildNumber" class="form-control" required />
                 </div>
                 <span asp-validation-for="ChildNumber" class="text-danger"></span>
             </div>
@@ -276,10 +276,48 @@
 
 
             <div class="form-group row">
-                <div class="col-5 offset-3">
-                    <partial name="_CreateAndBackToListButton" />
+                <div class="col-md-offset-5 text-md-right">
+                    <input type="button" value="Agregar" id="btnAgregar"
+                           class="btn btn-info" @*style="width: 80%;"*@
+                           onclick="abrirModal()" />
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="col-md-2 text-md-center">
+                    <a asp-action="Index" type="button"
+                       class="btn btn-success">
+                        Regresar
+                    </a>
+
+
                 </div>
             </div>
         </div>
     </form>
 }
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Agregar Persona', '¿Realmente Desea Agregar A Esta Persona?').then((result) => {
+            if (result.value) {
+                var viewAgregar = document.getElementById("viewAgregar");
+                viewAgregar.submit();
+                Swal.fire(
+                    'La persona fue agregada!',
+                    'exitosamente!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'La persona no ha sido agregada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

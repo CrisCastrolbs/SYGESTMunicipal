@@ -98,8 +98,21 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-5 offset-3">
-                    <partial name="_CreateAndBackToListButton" />
+                <div class="col-md-offset-5 text-md-right">
+                    <input type="button" value="Agregar" id="btnAgregar"
+                           class="btn btn-info" @*style="width: 80%;"*@
+                           onclick="abrirModal()" />
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="col-md-2 text-md-center">
+                    <a asp-action="Index" type="button"
+                       class="btn btn-success">
+                        Regresar
+                    </a>
+
+
                 </div>
             </div>
         </div>
@@ -143,3 +156,30 @@
         });
     </script>
 }
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Agregar Consulta', '¿Realmente Desea Agregar Esta Consulta?').then((result) => {
+            if (result.value) {
+                var viewAgregar = document.getElementById("viewAgregar");
+                viewAgregar.submit();
+                Swal.fire(
+                    'La consulta fue agregada!',
+                    'exitosamente!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'La consulta no ha sido agregada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>
+
+
