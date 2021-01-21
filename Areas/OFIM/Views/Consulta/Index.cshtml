@@ -32,6 +32,7 @@
                             <th>@Html.DisplayNameFor(m => m.Fecha)</th>
                             <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
                             <th>@Html.DisplayNameFor(m => m.TipoConsultaId)</th>
+                            <th>@Html.DisplayNameFor(m => m.Remitir)</th>
 
 
 
@@ -43,16 +44,17 @@
                     <tbody style="text-align:center;">
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@Html.DisplayFor(m => item.Motivo)</td>
-                                <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
-                                <td>@Html.DisplayFor(m => item.PersonName)</td>
-                                <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
-                                <a>
-                                    <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
-                                </a>
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Motivo)</td>
+                            <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
+                            <td>@Html.DisplayFor(m => item.PersonName)</td>
+                            <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
+                            <th>@Html.DisplayNameFor(m => m.Remitir)</th>
+                            <a>
+                                <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
+                            </a>
 
-                            </tr>
+                        </tr>
                         }
                 </table>
             }
@@ -63,3 +65,4 @@
         </div>
     </div>
 }
+

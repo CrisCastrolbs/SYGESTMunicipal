@@ -14,5 +14,6 @@ namespace SYGESTMunicipal.Utility
         public const string CollManager = "CollManager";
         public const string ManagerUser = "Manager";
         public const string FrontDeskUser = "FrontDeskUse";
+        public const string RedUser = "RedUser";
     }
 }

@@ -23,8 +23,6 @@ namespace SYGESTMunicipal.Areas.OFIM.Models.ViewModel
         public string PersonName { get; set; }
         [Display(Name = "Tipo de Consulta")]
         public int TipoConsultaId { get; set; }
-        
-        public string NombreTipoConsulta { get; set; }
 
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha")]
@@ -46,6 +44,9 @@ namespace SYGESTMunicipal.Areas.OFIM.Models.ViewModel
 
         [DisplayName("Respuesta Ofrecida")]
         public string RespuestaOfrecida { get; set; }
+
+        [DisplayName("Remitir")]
+        public bool Remitir { get; set; }
         public int SelectedOption { get; set; }
 
         public string msgError { get; set; }

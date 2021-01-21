@@ -28,6 +28,7 @@ namespace SYGESTMunicipal.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<Eje> Eje { get; set; }
         public DbSet<Actividad> Actividad { get; set; }
+        public DbSet<Cupos> Cupos { get; set; }
         public DbSet<ActivityType> ActivityType { get; set; }
         public DbSet<Applicant> Applicant { get; set; }
         public DbSet<CIIU> CIIU { get; set; }
@@ -43,6 +44,7 @@ namespace SYGESTMunicipal.Data
         public DbSet<Complaint> Complaint { get; set; }
         public DbSet<RecoverableMaterialRecovery> RecoverableMaterialRecovery { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        
 
 
 
