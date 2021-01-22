@@ -143,36 +143,31 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             return View(oComplaint);
         }
 
-
-
-
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int Id)
         {
-            if (id == null)
-            {
-                return NotFound();
-
-            }
-            var complaint = await _db.Complaint.FindAsync(id);
-            if (complaint == null)
-            {
-                return NotFound();
-
-            }
-            return View(complaint);
+            CargarPersonOFGA();
+            Complaint oComplaint = _db.Complaint
+                 .Where(m => m.Id == Id).First();
+            return View(oComplaint);
         }
-
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
+        public IActionResult Deleted(int Id)
         {
-            var complaint = await _db.Complaint.FindAsync(id);
-            if (complaint == null)
+            string Error = "";
+            try
             {
-                return View();
+                Complaint oComplaint = _db.Complaint
+                    .Where(c => c.Id == Id).First();
+                if (oComplaint != null)
+                {
+                    _db.Complaint.Remove(oComplaint);
+                    _db.SaveChanges();
+                }
             }
-            _db.Complaint.Remove(complaint);
-            await _db.SaveChangesAsync();
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
             return RedirectToAction(nameof(Index));
         }
     }

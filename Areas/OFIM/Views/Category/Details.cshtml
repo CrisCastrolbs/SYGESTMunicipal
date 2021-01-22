@@ -1,10 +1,10 @@
 ﻿@using SYGESTMunicipal.Utility
-@model SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta
+@model SYGESTMunicipal.Areas.OFIM.Models.Category
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
-    List<SelectListItem> Lista = ViewBag.ListaConsulta;
+
 }
 
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
@@ -13,32 +13,21 @@
         <div class="col-md-12 col-lg-12">
             <h3 class="text-light"
                 style="text-align:center;background-color:darkslategray;">
-                Detalles del tipo de Consulta
+                Detalles de Categorias
             </h3>
         </div>
     </div>
     <br />
-    <form asp-action="Details" asp-controller="TipoConsulta" method="post">
+    <form asp-action="Details" asp-controller="Category" method="post">
         <div class="container-fluid">
 
             <div class="form-group row">
                 <div class="col-md-2">
-                    <label asp-for="NombreTipoConsulta" class="col-form-label"></label>
+                    <label asp-for="Name" class="col-form-label">Nombre</label>
                 </div>
                 <div class="col-md-6">
-                    <input asp-for="NombreTipoConsulta" readonly="readonly"
+                    <input asp-for="Name" readonly="readonly"
                            class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-md-2">
-                    <label asp-for="PersonaOFIMId" class="col-form-label"></label>
-                </div>
-                <div class="col-md-6">
-                    <select asp-for="PersonaOFIMId" readonly="readonly"
-                            class="form-control"
-                            asp-items="@Lista"></select>
                 </div>
             </div>
 

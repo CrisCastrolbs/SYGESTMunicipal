@@ -1,47 +1,38 @@
 ﻿@using SYGESTMunicipal.Utility
-@model SYGESTMunicipal.Areas.OFIM.Models.TipoConsulta
+@model SYGESTMunicipal.Areas.OFIM.Models.Category
+
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
-    List<SelectListItem> Lista = ViewBag.ListaConsulta;
+
 }
+
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
 {
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <h3 class="text-light" style="text-align:center;
                               background-color:darkslategray;width:100%;">
-                Agregar un Tipo Consulta
+                Agregar una Categoria
             </h3>
         </div>
     </div>
     <br />
 
-    <form asp-action="Create" asp-controller="TipoConsulta" method="post" id="viewAgregar">
+    <form asp-action="Create" asp-controller="Category" method="post" id="viewAgregar">
         <div class="container-fluid">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group row">
                 <div class="col-md-2">
-                    <label asp-for="NombreTipoConsulta" class="col-form-label"></label>
+                    <label asp-for="Name" class="col-form-label">Nombre</label>
                 </div>
                 <div class="col-md-6">
-                    <input asp-for="NombreTipoConsulta" class="form-control" />
+                    <input asp-for="Name" class="form-control" />
                 </div>
-                <span asp-validation-for="NombreTipoConsulta" class="text-danger"></span>
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
-
-            <div class="form-group row">
-                <div class="col-md-2">
-                    <label asp-for="PersonaOFIMId" class="col-form-label"></label>
-                </div>
-                <div class="col-md-6">
-                    <select asp-for="PersonaOFIMId" class="form-control"
-                            asp-items="@Lista"></select>
-                </div>
-                <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
-            </div>
 
             <div class="form-group row">
                 <div class="col-md-offset-5 text-md-right">
@@ -69,12 +60,12 @@
 <script src="~/js/Utilitarios.js"></script>
 <script>
     function abrirModal() {
-        verModal('Agregar Tipo De Consulta', '¿Realmente Desea Agregar Este Tipo de Consulta?').then((result) => {
+        verModal('Agregar Categoría', '¿Realmente Desea Agregar Esta Categoría?').then((result) => {
             if (result.value) {
                 var viewAgregar = document.getElementById("viewAgregar");
                 viewAgregar.submit();
                 Swal.fire(
-                    'El tipo de consulta fue agregado!',
+                    'La categoría fue agregada!',
                     'exitosamente!.',
                     'success'
                 )
@@ -82,7 +73,7 @@
             else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire(
                     'Cancelado',
-                    'El tipo de consulta no ha sido agregado!!!:)',
+                    'La categoría no ha sido agregada!!!:)',
                     'error'
                 )
             }

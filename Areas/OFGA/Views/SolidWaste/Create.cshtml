@@ -43,7 +43,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Weight" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Weight" class="form-control" />
                             </div>
@@ -53,21 +53,60 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="EntryDate" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-8">
                                 <input type="date" asp-for="EntryDate" class="form-control" />
                             </div>
                             <span asp-validation-for="EntryDate" class=" text-danger"></span>
                         </div>
 
-                        <div class=" form-group row">
-                            <div class=" col-md-5 offset-2">
-                                <partial name="_CreateAndBackToListButton" />
+                        <div class="form-group row">
+                            <div class="col-md-offset-5 text-md-right">
+                                <input type="button" value="Agregar" id="btnAgregar"
+                                       class="btn btn-info" @*style="width: 80%;"*@
+                                       onclick="abrirModal()" />
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div class="col-md-2 text-md-center">
+                                <a asp-action="Index" type="button"
+                                   class="btn btn-success">
+                                    Regresar
+                                </a>
+
+
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>
-     </div>
- </div>
+        </div>
+    </div>
 </main>
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Agregar Residuos Ordinarios', '¿Realmente Desea Agregar Este Residuo Ordinario?').then((result) => {
+            if (result.value) {
+                var viewAgregar = document.getElementById("viewAgregar");
+                viewAgregar.submit();
+                Swal.fire(
+                    'El residuo ordinario fue agregado!',
+                    'exitosamente!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'El residuo ordinario no ha sido agregado!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

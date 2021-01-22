@@ -1,53 +1,44 @@
 ﻿@using SYGESTMunicipal.Utility
-@model SYGESTMunicipal.Areas.OFIM.Models.PersonaOFIM
+@model SYGESTMunicipal.Areas.OFIM.Models.Category
+
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+
 }
+
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
 {
-    <br />
-    <h2 class="text-info">Eliminar</h2>
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+                Eliminar Categorias
+            </h3>
+        </div>
+    </div>
     <br />
     <form method="post" asp-action="Delete">
         <div class="border backgroundWhite">
-            <div class=" form-group row">
-                <div class=" col-2">
-                    <label asp-for="PersonaOFIMId" class="col-form-label"></label>
-                </div>
-                <div class="col-5">
-                    <input asp-for="PersonaOFIMId" class="form-control" />
-                </div>
-            </div>
-            @*Name*@
             <div class="form-group row">
-                <div class="col-md-4 text-right">
-                    <label>Nombre:</label>
+                <div class="col-md-2">
+                    <label asp-for="Id" class="col-form-label"></label>
                 </div>
-                <div class="col-md-4">
-                    <input asp-for="PersonName" class="form-control" />
+                <div class="col-md-5">
+                    <input asp-for="Id" readonly class=" form-control" />
                 </div>
-
-            </div>
-            <div class="form-group row">
-                <div class="col-md-4 text-right">
-                    <label>Primer Apellido:</label>
-                </div>
-                <div class="col-md-4">
-                    <input asp-for="LatName1" class="form-control" />
-                </div>
-
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
-                    <label>Segundo Apellido:</label>
+                <div class="col-md-2">
+                    <label asp-for="Name" class="col-form-label">Nombre</label>
                 </div>
-                <div class="col-md-4">
-                    <input asp-for="LatName2" class="form-control" />
+                <div class="col-md-5">
+                    <input asp-for="Name" readonly class=" form-control" />
                 </div>
-
             </div>
+
+
             <div class="form-group row">
                 <div class="col-md-5 colo-lg-4 text-right">
                     <input onclick="abrirModal()" type="submit" value="Eliminar" id="btnEliminar"
@@ -62,7 +53,6 @@
                        class="btn btn-success">Regresar </a>
                 </div>
             </div>
-
         </div>
     </form>
 }
@@ -71,20 +61,20 @@
 <script src="~/js/Utilitarios.js"></script>
 <script>
     function abrirModal() {
-        verModal('Eliminar Persona', '¿Desea Eliminar Esta Persona?').then((result) => {
+        verModal('Eliminar Categoría', '¿Desea Eliminar Esta Categoría?').then((result) => {
             if (result.value) {
                 var viewEliminar = document.getElementById("viewEliminar");
                 viewEliminar.submit();
                 Swal.fire(
                     'Eliminado!',
-                    'La persona fue eliminada!.',
+                    'La categoría fue eliminada!.',
                     'success'
                 )
             }
             else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire(
                     'Cancelado',
-                    'La persona no ha sido eliminada!!!:)',
+                    'La categoría no ha sido eliminada!!!:)',
                     'error'
                 )
             }

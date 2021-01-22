@@ -75,14 +75,15 @@
             <!--<div class="nav search-row" id="top_menu">-->
             <!--  search form start -->
             <!--<ul class="nav top-menu">
-                <li>
-                    <form class="navbar-form">
-                        <input class="form-control" placeholder="Search" type="text">
-                    </form>
-                </li>
-            </ul>-->
+        <li>
+            <form class="navbar-form">
+                <input class="form-control" placeholder="Search" type="text">
+            </form>
+        </li>
+    </ul>-->
             <!--  search form end -->
             <!--</div>-->
+           
         </header>
         <!--header end-->
         <!--sidebar start-->
@@ -90,12 +91,16 @@
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu">
+
                     <li class="sidebar-menu">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">SyGest Municipal</a>
                     </li>
+
                     <li class="sidebar-menu active">
                         <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">Oficina de Patentes</a>
                     </li>
+
+                    <partial name="_LoginPartialPatentes" />
 
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
@@ -107,13 +112,10 @@
                         <ul class="sub">
 
 
-
-
-
                             @if (User.IsInRole(SD.FrontDeskUser) || User.IsInRole(SD.Guest))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Create">Establecimiento</a>
+                                    <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Create"> Establecimiento</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Create"> Persona</a>
@@ -125,7 +127,7 @@
                                     <a class="nav-link" asp-area="PATENTES" asp-controller="PersonPatentes" asp-action="Index"> Persona</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Index">Establecimiento</a>
+                                    <a class="nav-link" asp-area="PATENTES" asp-controller="Establishment" asp-action="Index"> Establecimiento</a>
                                 </li>
                             }
                         </ul>
@@ -135,30 +137,31 @@
 
 
 
-                    @*<li class="sub-menu">
-                            <a href="javascript:;" class="">
-                                <i class="icon_globe"></i>
-                                <span>Servicios</span>
-                                <span class="menu-arrow arrow_carrot-right"></span>
-                            </a>
-                            <ul class="sub">
-                                @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.FrontDeskUser))
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">Solicitud de Patentes</a>
-                                    </li>
-                                }
 
-                            </ul>
-                        </li>*@
+                    @*<li class="sub-menu">
+            <a href="javascript:;" class="">
+                <i class="icon_globe"></i>
+                <span>Servicios</span>
+                <span class="menu-arrow arrow_carrot-right"></span>
+            </a>
+            <ul class="sub">
+                @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFPA) || User.IsInRole(SD.FrontDeskUser))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">Solicitud de Patentes</a>
+                    </li>
+                }
+
+            </ul>
+        </li>*@
 
 
                     @*<li class="nav-item">
-                            <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Register">Registrarse</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
-                        </li>*@
+            <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Register">Registrarse</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
+        </li>*@
                 </ul>
 
                 <!-- sidebar menu end-->
