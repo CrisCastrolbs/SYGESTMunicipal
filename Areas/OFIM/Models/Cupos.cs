@@ -9,6 +9,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
 {
     public partial class Cupos
     {
+        [Key]
         public int Id { get; set; }
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
@@ -16,7 +17,6 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
         [Display(Name = "Está Activo ")]
         public bool IsActive { get; set; }
         public int ActividadId { get; set; }
-        [NotMapped]
         [ForeignKey("ActividadId")]
         public virtual Actividad Actividad { get; set; }
 

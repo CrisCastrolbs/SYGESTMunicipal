@@ -1,5 +1,5 @@
-﻿@model IEnumerable<CupoAndActividadViewModel>
-@using SYGESTMunicipal.Areas.OFIM.Models.ViewModel
+﻿@model IEnumerable<Cupos>
+@using SYGESTMunicipal.Areas.OFIM.Models
 @using SYGESTMunicipal.Utility
 @{
     ViewData["Title"] = "Index";
@@ -30,7 +30,7 @@
         </div>
        
 
-        <br />
+        @*<br />
         <form asp-controller="Cupos" asp-action="Index" method="post">
             <div class="row">
                 <div class="col-md-3">
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="col-md-12" style="color:black;"><hr /></div>
-        </form>
+        </form>*@
 
         <div>
             @if (Model.Count() > 0)
@@ -68,7 +68,7 @@
                             <th>@Html.DisplayNameFor(m => m.Id)</th>
                             <th>@Html.DisplayNameFor(m => m.CupoMax)</th>
                             <th>@Html.DisplayNameFor(m => m.IsActive)</th>
-                            <th>@Html.DisplayNameFor(m => m.Actividad)</th>
+                            <th>@Html.DisplayNameFor(m => m.Actividad.Name)</th>
                             <th>Operaciones </th>
                             <th></th>
                             <th></th>
@@ -81,7 +81,7 @@
                                 <td>@Html.DisplayFor(m => item.Id)</td>
                                 <td>@Html.DisplayFor(m => item.CupoMax)</td>
                                 <td>@Html.DisplayFor(m => item.IsActive)</td>
-                                <td>@Html.DisplayFor(m => item.Actividad)</td>
+                                <td>@Html.DisplayFor(m => item.Actividad.Name)</td>
                                 <td>
                                     <i class="fa fa-trash btn btn-danger" aria-hidden="true"
                                        onclick="EliminarMedico(@item.Id)"></i>
@@ -116,53 +116,6 @@
         </div>
     </div>
 }
-<script src="~/js/sweetalert2.js"></script>
-<script src="~/js/Utilitarios.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#tbDatos').DataTable(
-            {
-                "filter": false,
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                }
-            })
-    })
-    function EliminarCupo(Id) {
-        document.getElementById("txtId").value = MedicoId;
-        verModal('Eliminar Cupo',
-            '¿Desea eliminar el cupo para la actividad '
-            + Id + '?').then((result) => {
-                if (result.value) {
-                    var viewEliminar = document.getElementById("viewEliminar");
-                    viewEliminar.submit();
-                    Swal.fire(
-                        'Eliminación!',
-                        'El cupo' + Id + 'fue eliminado!.',
-                        'success'
-                    )
-                }
-                else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire(
-                        'Cancelado',
-                        'El cupo no fue eliminado!!!:)',
-                        'error'
-                    )
-                }
-            })
-    }
-    function Buscar() {
-        var Name = document.getElementById("Name").value;
-        var url = "Cupos/BuscarCuposActividad/?nombreActividad=" + Name;
-        var tbody = document.getElementById("tbDatos");
-        var campos = new Array("Id", "cupoMax", "actividad", "especialidad");
-        pintarPantallaConsulta(url, campos, tbody);
-    }
-    function ExportarPDF() {
-        var aux = document.getElementById("viewExportarPDF");
-        aux.submit();
-    }
-    
-</script>
+
 
 
