@@ -50,8 +50,8 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                  HoraInicio = consulta.HoraInicio.Value,
                                  HoraFin = consulta.HoraFin.Value,
                                  Descripcion = consulta.Descripcion,
-                                 Remitir = consulta.Remitir,
-                                 RespuestaOfrecida = consulta.RespuestaOfrecida
+                                 RespuestaOfrecida = consulta.RespuestaOfrecida,
+                                 Remitir = consulta.Remitir
                              }).ToList();
             ViewBag.Controlador = "Consulta";
             ViewBag.Accion = "Index";
