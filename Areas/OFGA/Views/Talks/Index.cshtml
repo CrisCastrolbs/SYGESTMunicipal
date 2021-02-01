@@ -27,11 +27,27 @@
     </section><!-- End Breadcrumbs -->
 
     <div class="border backgroundWhite">
+        <br />
         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
         {
-            <div class="col-md-offset-11">
-                <partial name="_CreateButtonPartial" />
+             <form asp-controller="Talks" asp-action="Index" method="post">
+            <div class="row">
+                <div class="col-lg-2 text-right">
+                    <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
+                       style="width:80%; height:100%;padding:12px;">
+                        Agregar
+                    </a>
+                </div>
+                @*<div class="col-md-2 col-lg-2 text-right">
+                        <a asp-controller="" asp-action="Index"
+                           class="btn btn-info fa fa-arrow-circle-left"
+                           style="width:100%; height:90%;padding:6px;">
+                            Regresar al menú
+                        </a>
+                    </div>*@
             </div>
+            <div class="col-md-12 divisor"><hr></div>
+        </form>
         }
         @*//Vista del filtro*@
         @*<div class="row">
@@ -71,7 +87,7 @@
                                 {
 
                                     <div class="col-md-6 text-right">
-                                        <a><partial name="_TableButtonPartial" model="item.Id" /></a>
+                                        <a><partial name="_TableButtonPartialDelete" model="item.Id" /></a>
                                     </div>
                                 }
                             </tr>

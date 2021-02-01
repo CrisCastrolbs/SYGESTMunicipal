@@ -8,63 +8,64 @@
 
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
 {
-<br />
-<br />
-<div class="border backgroundWhite">
-
-    <div class="row">
-        <div class="col-6">
-            <h2 class="text-info">Consulta</h2>
-        </div>
-        <div class="col-6 text-right">
-            <partial name="_CreateButtonPartial" />
-        </div>
-    </div>
-
     <br />
+    <br />
+    <br />
+    <div class="border backgroundWhite">
 
-    <div>
-        @if (Model.Count() > 0)
-        {
-            <table class="table table-hover .table-responsive" id="TbConsulta">
-                <thead class="thead-dark">
-                    <tr class="table-secondary" style="text-align:center;">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-info">Agregar Actividades</h2>
+            </div>
+            <div class="col-md-6 text-right">
+                <partial name="_CreateButtonPartial" />
+            </div>
+        </div>
 
-                        <th>@Html.DisplayNameFor(m => m.Name)</th>
-                        <th>@Html.DisplayNameFor(m => m.Fecha)</th>
-                        <th>@Html.DisplayNameFor(m => m.IsActive)</th>
-                        <th>@Html.DisplayNameFor(m => m.CategoryId)</th>
-                        <th>@Html.DisplayNameFor(m => m.EjeId)</th>
+        <br />
+
+        <div>
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-hover .table-responsive" id="TbConsulta">
+                    <thead class="thead-dark">
+                        <tr class="table-secondary" style="text-align:center;">
+
+                            <th>@Html.DisplayNameFor(m => m.Name)</th>
+                            <th>@Html.DisplayNameFor(m => m.Fecha)</th>
+                            <th>@Html.DisplayNameFor(m => m.IsActive)</th>
+                            <th>@Html.DisplayNameFor(m => m.CategoryId)</th>
+                            <th>@Html.DisplayNameFor(m => m.EjeId)</th>
 
 
 
-                        <th>Operaciones</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody style="text-align:center;">
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(m => item.Name)</td>
-                            <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy h:mm tt}")</td>
-                            <td>@Html.DisplayFor(m => item.IsActive)</td>
-                            <td>@Html.DisplayFor(m => item.Category.Name)</td>
-                            <td>@Html.DisplayFor(m => item.Eje.Name)</td>
-                            <a>
-                                <partial name="_TableButtonPartialDelete" model="item.Id" />
-                            </a>
-
+                            <th>Operaciones</th>
+                            <th></th>
+                            <th></th>
                         </tr>
-                    }
-            </table>
-        }
-        else
-        {
-            <h3>No existen actividades registradas...</h3>
-        }
+                    </thead>
+                    <tbody style="text-align:center;">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Name)</td>
+                                <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy h:mm tt}")</td>
+                                <td>@Html.DisplayFor(m => item.IsActive)</td>
+                                <td>@Html.DisplayFor(m => item.Category.Name)</td>
+                                <td>@Html.DisplayFor(m => item.Eje.Name)</td>
+                                <a>
+                                    <partial name="_TableButtonPartialDelete" model="item.Id" />
+                                </a>
+
+                            </tr>
+                        }
+                </table>
+            }
+            else
+            {
+                <h3>No existen actividades registradas...</h3>
+            }
+        </div>
     </div>
-</div>
 }
 

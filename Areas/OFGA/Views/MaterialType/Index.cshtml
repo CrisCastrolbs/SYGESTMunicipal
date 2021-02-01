@@ -23,59 +23,60 @@
             </ol>
         </div>
     </section><!-- End Breadcrumbs -->
-    
-    <div class="border backgroundWhite">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-info">Lista de tipo de materiales</h2>
-            </div>
-            <div class="col-md-6 text-right">
-                <partial name="_CreateButtonPartial" />
-            </div>
-        </div>
-        @*//Vista del filtro*@
-        @*<div class="row">
-            <div class="col-12 text-right">
-                <partial name="_Filter" />
-            </div>
-        </div>*@
 
+    <div class="border backgroundWhite">
         <br />
-        <div>
-            
+        <form asp-controller="MaterialType" asp-action="Index" method="post">
+            <div class="row">
+                <div class="col-lg-2 text-right">
+                    <a asp-action="Create" class="btn btn-info fa fa-plus-circle"
+                       style="width:80%; height:100%;padding:12px;">
+                        Agregar
+                    </a>
+                </div>
+                @*<div class="col-md-2 col-lg-2 text-right">
+                <a asp-controller="" asp-action="Index"
+                   class="btn btn-info fa fa-arrow-circle-left"
+                   style="width:100%; height:90%;padding:6px;">
+                    Regresar al menú
+                </a>
+            </div>*@
+            </div>
+            <div class="col-md-12" style="color:black;"><hr /></div>
+        </form>
+
             @if (Model.Count() > 0)
             {
-            <table class="table table-hover .table-responsive" id="TbSolidWaste">
-                <thead class="thead-dark">
-                    <tr class="table-secondary" style="text-align:center;">
-                        
-                        <th>@Html.DisplayNameFor(m => m.MaterialTypeName)</th>
-                        <th>@Html.DisplayNameFor(m => m.Description)</th>
+                <table class="table table-hover .table-responsive" id="TbSolidWaste">
+                    <thead class="thead-dark">
+                        <tr class="table-secondary" style="text-align:center;">
 
-                        <th>Operaciones</th>
-                    </tr>
-                </thead>
-                <tbody style="text-align:center;">
-                    @foreach (var item in Model)
-                    {
-                    <tr>
-                        
-                        <td>@Html.DisplayFor(m => item.MaterialTypeName)</td>
-                        <td>@Html.DisplayFor(m => item.Description)</td>
+                            <th>@Html.DisplayNameFor(m => m.MaterialTypeName)</th>
+                            <th>@Html.DisplayNameFor(m => m.Description)</th>
 
-                        <div class="col-md-6 text-right">
-                            <a><partial name="_TableButtonPartial" model="item.MaterialTypeId" /></a>
-                        </div>
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:center;">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
 
-                    </tr>
-                    }
-                </tbody>
-            </table>
+                                <td>@Html.DisplayFor(m => item.MaterialTypeName)</td>
+                                <td>@Html.DisplayFor(m => item.Description)</td>
+
+                                <div class="col-md-6 text-right">
+                                    <a><partial name="_TableButtonPartialDelete" model="item.MaterialTypeId" /></a>
+                                </div>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             }
             else
             {
-            <h5 style="color:red;">No se encontraron registros!...</h5>
+                <h5 style="color:red;">No se encontraron registros!...</h5>
             }
         </div>
-    </div>
-    </main>
+</main>

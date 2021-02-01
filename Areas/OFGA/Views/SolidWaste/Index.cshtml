@@ -22,61 +22,62 @@
         </div>
     </section><!-- End Breadcrumbs -->
 
-
-     <form asp-controller="SolidWaste" asp-action="Index" method="post">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
-                               style="width:100%; height:100%;padding:11px;">
-                                Agregar Desecho Ordinario
-                            </a>
-                        </div>
-                        @*<div class="col-md-2 col-lg-2 text-right">
-                    <a asp-controller="" asp-action="Index"
-                       class="btn btn-info fa fa-arrow-circle-left"
-                       style="width:100%; height:90%;padding:6px;">
-                        Regresar al menú
+    <div class="border backgroundWhite">
+        <br />
+        <form asp-controller="SolidWaste" asp-action="Index" method="post">
+            <div class="row">
+                <div class="col-lg-2 text-right">
+                    <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
+                        style="width:80%; height:100%;padding:12px;">
+                        Agregar
                     </a>
-                </div>*@
-                    </div>
-                    <div class="col-md-12" style="color:black;"><hr /></div>
-                </form>
+                </div>
+                @*<div class="col-md-2 col-lg-2 text-right">
+                        <a asp-controller="" asp-action="Index"
+                           class="btn btn-info fa fa-arrow-circle-left"
+                           style="width:100%; height:90%;padding:6px;">
+                            Regresar al menú
+                        </a>
+                    </div>*@
+            </div>
+            <div class="col-md-12" style="color:black;"><hr /></div>
+        </form>
 
 
-                @if (Model.Count() > 0)
-                {
-                    <table class="table table-hover .table-responsive" id="TbSolidWaste">
-                        <thead class="thead-dark">
-                            <tr class="table-secondary" style="text-align:center;">
-                                <th>@Html.DisplayNameFor(m => m.SolidWasteId)</th>
-                                <th>@Html.DisplayNameFor(m => m.Weight)</th>
-                                <th>@Html.DisplayNameFor(m => m.EntryDate)</th>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-hover .table-responsive" id="TbSolidWaste">
+                <thead class="thead-dark">
+                    <tr class="table-secondary" style="text-align:center;">
+                        <th>@Html.DisplayNameFor(m => m.SolidWasteId)</th>
+                        <th>@Html.DisplayNameFor(m => m.Weight)</th>
+                        <th>@Html.DisplayNameFor(m => m.EntryDate)</th>
 
-                                <th>Operaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody style="text-align:center;">
-                            @foreach (var item in Model)
-                            {
-                            <tr>
-                                <td>@Html.DisplayFor(m => item.SolidWasteId)</td>
-                                <td>@Html.DisplayFor(m => item.Weight)</td>
-                                <td>@Html.DisplayFor(m => item.EntryDate)</td>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center;">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.SolidWasteId)</td>
+                            <td>@Html.DisplayFor(m => item.Weight)</td>
+                            <td>@Html.DisplayFor(m => item.EntryDate)</td>
 
-                                <div class="col-md-6">
-                                    <a><partial name="_TableButtonPartial" model="item.SolidWasteId" /></a>
-                                </div>
+                            <div class="col-md-6">
+                                <a><partial name="_TableButtonPartialDelete" model="item.SolidWasteId" /></a>
+                            </div>
 
-                            </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-                else
-                {
-                    <h5 style="color:red;">No se encontraron registros!...</h5>
-                }
-
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h5 style="color:red;">No se encontraron registros!...</h5>
+        }
+        </div>
 </main><!-- End #main -->
 
 <script src="~/js/sweetalert2.js"></script>
