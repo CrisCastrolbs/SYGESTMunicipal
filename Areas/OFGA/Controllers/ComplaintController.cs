@@ -23,7 +23,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
         List<PersonOFGAComplaintViewModel> listaComplaint = new List<PersonOFGAComplaintViewModel>();
         static List<PersonOFGAComplaintViewModel> lista = new List<PersonOFGAComplaintViewModel>();
 
-        static private string _Fecha;
+        //static private string _Fecha;
         public ComplaintController(ApplicationDbContext db)
         {
             _db = db;

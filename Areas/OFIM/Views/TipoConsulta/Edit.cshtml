@@ -4,6 +4,8 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
     List<SelectListItem> Lista = ViewBag.ListaConsulta;
+    String Error = @ViewBag.msgError;
+
 }
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
 {
@@ -19,6 +21,7 @@
     <form asp-action="Edit" asp-controller="TipoConsulta" method="post" id="viewEditar">
         <div class="container-fluid">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
             <div class="form-group row">
                 <div class="col-md-2">
                     <label asp-for="TipoConsultaId" class="col-form-label"></label>
@@ -36,6 +39,10 @@
                     <input asp-for="NombreTipoConsulta" class="form-control" />
                 </div>
                 <span asp-validation-for="NombreTipoConsulta" class="text-danger"></span>
+                @if (@Error != null && @Error != "")
+                {
+                    <p class="text-danger">@Error</p>
+                }
             </div>
 
 
@@ -44,7 +51,7 @@
                     <label asp-for="PersonaOFIMId" class="col-form-label"></label>
                 </div>
                 <div class="col-md-6">
-                    <select asp-for="PersonaOFIMId" class="form-control"
+                    <select asp-for="PersonaOFIMId" class="form-control" value="@ViewBag.ID"
                             asp-items="@Lista"></select>
                 </div>
                 <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
