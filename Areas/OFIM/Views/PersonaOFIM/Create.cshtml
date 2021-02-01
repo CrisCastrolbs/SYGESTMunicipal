@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <h3 class="text-light" style="text-align:center;
-                              background-color:darkslategray;width:100%;">
+                              background-color:#dc3545;width:100%;">
                 Registrar persona
             </h3>
         </div>
@@ -28,10 +28,10 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Cédula o Pasaporte: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="PersonaOFIMId" class="form-control" required />
                 </div>
                 <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
@@ -40,7 +40,7 @@
                     <p class="text-danger">@ViewBag.Error</p>
                 }
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 @if (ViewBag.Error != "")
                 {
                     <p class="text-danger">@ViewBag.Error</p>
@@ -48,39 +48,39 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Nombre: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="PersonName" class="form-control" required />
                 </div>
                 <span asp-validation-for="PersonName" class="text-danger"></span>
             </div>
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Primer Apellido: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="LatName1" class="form-control" required />
                 </div>
                 <span asp-validation-for="LatName1" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Segundo Apellido: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="LatName2" class="form-control" required />
                 </div>
                 <span asp-validation-for="LatName2" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Dirección: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <textarea asp-for="Address" rows="4" cols="50"
                               class="form-control" placeholder="Digite la dirección exacta aquí" required> </textarea>
                 </div>
@@ -88,10 +88,10 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Provincia: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="Province" id="provincia" class="form-control" />
                     <datalist id="provincia">
                         <option> Guanacaste</option>
@@ -105,100 +105,100 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Cantón: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="Canton" class="form-control" required />
                 </div>
                 <span asp-validation-for="Canton" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Distrito: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="District" class="form-control" required />
                 </div>
                 <span asp-validation-for="District" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Teléfono Fijo:</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="TelephoneNumber" class="form-control" />
                 </div>
                 <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Teléfono Móvil: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="MobilePhoneNumber" class="form-control" required />
                 </div>
                 <span asp-validation-for="MobilePhoneNumber" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Email:</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="Email" class="form-control" />
                 </div>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Sexo: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="Sex" class="form-control" required />
                 </div>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Fecha Nacimiento: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input type="date" asp-for="DateBirth" class="form-control" required />
                 </div>
                 <span asp-validation-for="DateBirth" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Nombre Cónyuge:</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="CoupleName" class="form-control" />
                 </div>
                 <span asp-validation-for="CoupleName" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Cantidad Hijos: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <input asp-for="ChildNumber" class="form-control" required />
                 </div>
                 <span asp-validation-for="ChildNumber" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Discapacidades:</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <textarea asp-for="Disability" rows="4" cols="50"
                               class="form-control" placeholder="Describa las discapacidades"> </textarea>
                 </div>
@@ -206,10 +206,10 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Padecimientos:</label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <textarea asp-for="MedicalCondition" rows="4" cols="50"
                               class="form-control" placeholder="Digite la dirección exacta aquí"> </textarea>
                 </div>
@@ -217,10 +217,10 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Estado Civil: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <select asp-for="EstadoCivilId" class="form-control" required
                             asp-items="@Lista"></select>
                 </div>
@@ -228,10 +228,10 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Ocupación: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <select asp-for="OcupacionId" class="form-control" required
                             asp-items="@Lista1"></select>
                 </div>
@@ -239,10 +239,10 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Nacionalidad: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <select asp-for="NacionalidadId" class="form-control" required
                             asp-items="@Lista2"></select>
                 </div>
@@ -250,10 +250,10 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Nivel Académico: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <select asp-for="NivelAcademicoId" class="form-control" required
                             asp-items="@Lista3"></select>
                 </div>
@@ -261,36 +261,27 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4 text-right">
+                <div class=" col-md-2 text-right">
                     <label>Seguro: <span class="required">*</span></label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <select asp-for="SeguroId" class="form-control" required
                             asp-items="@Lista4"></select>
                 </div>
                 <span asp-validation-for="SeguroId" class="text-danger"></span>
             </div>
-
-            <br />
-            <br />
-
-
             <div class="form-group row">
-                <div class="col-md-offset-5 text-md-right">
+                <div class="col-md-3 text-md-right">
                     <input type="button" value="Agregar" id="btnAgregar"
                            class="btn btn-info" @*style="width: 80%;"*@
                            onclick="abrirModal()" />
                 </div>
-                <br />
-                <br />
-                <br />
-                <div class="col-md-2 text-md-center">
+
+                <div class="col-md-1 text-md-center">
                     <a asp-action="Index" type="button"
                        class="btn btn-success">
                         Regresar
                     </a>
-
-
                 </div>
             </div>
         </div>

@@ -23,12 +23,14 @@
         </div>
     </section><!-- End Breadcrumbs -->
 
-  
+    <div class="border backgroundWhite">
+        <br />
+       
             <form asp-controller="PersonOFGA" asp-action="Index" method="post">
                 <div class="row">
-                    <div class="col-md-2">
-                        <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
-                           style="width:100%; height:90%;padding:6px;">
+                    <div class="col-lg-2 text-right">
+                        <a asp-action="Create" class="btn btn-info fa fa-plus-circle"
+                           style="width:80%; height:100%;padding:12px;">
                             Agregar Persona
                         </a>
                     </div>
@@ -48,7 +50,7 @@
             {
                 <table class="table table-hover .table-responsive" id="TbPersonOFGA">
                     <thead class="thead-dark">
-                        <tr class="table-secondary">
+                        <tr class="table-secondary" style="text-align:center;">
                             <th>@Html.DisplayNameFor(m => m.PersonOFGAId)</th>
                             <th>@Html.DisplayNameFor(m => m.Name)</th>
                             <th>@Html.DisplayNameFor(m => m.CellphoneNumber)</th>
@@ -56,7 +58,7 @@
                             <th>Operaciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align:center;">
                         @foreach (var item in Model)
                         {
                             <tr>
@@ -78,8 +80,8 @@
             {
                 <h5 style="color:red;">No se encontraron registros!...</h5>
             }
-     
-</main>
+</div>
+    </main>
 
     <script src="~/js/sweetalert2.js"></script>
     <script src="~/js/Utilitarios.js"></script>

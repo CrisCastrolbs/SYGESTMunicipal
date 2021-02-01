@@ -1,0 +1,204 @@
+﻿@using SYGESTMunicipal.Utility
+@model SYGESTMunicipal.Areas.OFIM.Models.ViewModel.EmpresaAndClasificacionViewModel
+@using SYGESTMunicipal.Extensions
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
+}
+
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+{
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light" style="text-align:center;
+                              background-color:darkslategray;width:100%;">
+                Agregar un Eje
+            </h3>
+        </div>
+    </div>
+    <br />
+
+    <form asp-action="Create" asp-controller="Empresa" method="post" enctype="multipart/form-data" id="viewAgregar">
+        <div class="container-fluid">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Empresa.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Empresa.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.Manager" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Empresa.Manager" class="form-control" />
+                </div>
+                <span asp-validation-for="Empresa.Manager" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.Description" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Empresa.Description" class="form-control" />
+                </div>
+                <span asp-validation-for="Empresa.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.Direction" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Empresa.Direction" class="form-control" />
+                </div>
+                <span asp-validation-for="Empresa.Direction" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.WebPage" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Empresa.WebPage" class="form-control" />
+                </div>
+                <span asp-validation-for="Empresa.WebPage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.Telephone" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Empresa.Telephone" class="form-control" />
+                </div>
+                <span asp-validation-for="Empresa.Telephone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.Email" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Empresa.Email" class="form-control" />
+                </div>
+                <span asp-validation-for="Empresa.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.Imagen" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input type="file" id="projectImage" name="files" multiple class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Empresa.ClasificacionID" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <select id="ddlCategorylist" asp-for="Empresa.ClasificacionID" asp-items="Model.Clasificacion.ToSelectListItem(Model.Empresa.ClasificacionID)" class="form-control"></select>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <div class="form-group row">
+                        <div class="col-md-offset-5 text-md-right">
+                            <input type="button" value="Agregar" id="btnAgregar"
+                                   class="btn btn-info" @*style="width: 80%;"*@
+                                   onclick="abrirModal()" />
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="col-md-2 text-md-center">
+                            <a asp-action="Index" type="button"
+                               class="btn btn-success">
+                                Regresar
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @*<div class="col-3 offset-1">
+            @if (Model.EjeList.Count() > 0)
+            {
+                <p> Eje Existente para esta Categoria: </p>
+                <div id="EjeList">
+                    <ul class="list-group"></ul>
+                </div>
+            }
+        </div>*@
+}
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function updateEjeList() {
+            var ejeSelected = document.getElementById("ddlCategorylist").value;
+            $list = $('#EjeList');
+            $.ajax({
+                url: '/OFIM/Eje/GetEjes/' + ejeSelected,
+                type: 'GET',
+                dataType: 'text',
+                success: function (data) {
+                    results = JSON.parse(data);
+                    $list.html('');
+                    $list.append(' <ul class="list-group"> ');
+                    for (i in results) {
+                        $list.append('<li class="list-group-item">' + results[i].text + '</li>');
+                    }
+                    $list.append('</ul>');
+                }
+            });
+        }
+        $(document).ready(function () {
+            updateEjeList();
+        });
+        $("#ddlCategorylist").on("change", function () {
+            updateEjeList();
+        });
+    </script>
+
+    <script src="~/js/sweetalert2.js"></script>
+    <script src="~/js/Utilitarios.js"></script>
+    <script>
+        function abrirModal() {
+            verModal('Agregar', '¿Realmente Desea agregar esta empresa?').then((result) => {
+                if (result.value) {
+                    var viewAgregar = document.getElementById("viewAgregar");
+                    viewAgregar.submit();
+                    Swal.fire(
+                        'Agregado!',
+                        'La empresa fue agregada exitosamente.',
+                        'success'
+                    )
+                }
+                else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Cancelado',
+                        'La emprea no fue agregada!',
+                        'error'
+                    )
+                }
+            })
+        }
+    </script>
+}

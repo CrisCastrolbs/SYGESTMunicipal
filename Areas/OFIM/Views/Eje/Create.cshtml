@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <h3 class="text-light" style="text-align:center;
-                              background-color:darkslategray;width:100%;">
+                              background-color:#dc3545;width:100%;">
                 Agregar un Eje
             </h3>
         </div>
@@ -45,35 +45,40 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-offset-5 text-md-right">
+                <div class="col-md-3 text-md-right">
                     <input type="button" value="Agregar" id="btnAgregar"
                            class="btn btn-info" @*style="width: 80%;"*@
                            onclick="abrirModal()" />
                 </div>
-                <br />
-                <br />
-                <br />
-                <div class="col-md-2 text-md-center">
-                    <a asp-action="Index" type="button"
-                       class="btn btn-success">
-                        Regresar
-                    </a>
-
-
-                </div>
             </div>
         </div>
     </form>
-    <div class="col-3 offset-1">
+    <br />
+    <br />
+    <div class="col-6 offset-2 text-center">
         @if (Model.EjeList.Count() > 0)
         {
-            <p> Eje Existente para esta Categoria: </p>
+            <p><h4> Eje Existente para esta Categoria</h4></p>
             <div id="EjeList">
                 <ul class="list-group"></ul>
             </div>
         }
     </div>
+    <br />
+    <div class="col-md-3 text-md-right">
+        <a asp-action="Index" type="button"
+           class="btn btn-success">
+            Regresar
+        </a>
+
+
+    </div>
 }
+
+<br />
+<br />
+<br />
+<br />
 
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

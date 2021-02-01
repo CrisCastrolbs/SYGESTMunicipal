@@ -1,6 +1,6 @@
 ﻿@using SYGESTMunicipal.Utility
 @using SYGESTMunicipal.Areas.OFIM.Models
-@model IEnumerable<Actividad>
+@model IEnumerable<Empresa>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
@@ -10,15 +10,19 @@
 {
     <br />
     <br />
-    <br />
     <div class="border backgroundWhite">
 
         <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-info">Agregar Actividades</h2>
+            <div class="col-6">
+                <h2 class="text-info">Empresas</h2>
             </div>
-            <div class="col-md-6 text-right">
-                <partial name="_CreateButtonPartial" />
+            <div class="col-6 text-right">
+                <p>
+                    <a asp-action="Create" class="btn btn-info">
+                        <i class="fas fa-plus"></i>
+                        &nbsp; Crear Nuevo
+                    </a>
+                </p>
             </div>
         </div>
 
@@ -32,10 +36,10 @@
                         <tr class="table-secondary" style="text-align:center;">
 
                             <th>@Html.DisplayNameFor(m => m.Name)</th>
-                            <th>@Html.DisplayNameFor(m => m.Fecha)</th>
-                            <th>@Html.DisplayNameFor(m => m.IsActive)</th>
-                            <th>@Html.DisplayNameFor(m => m.CategoryId)</th>
-                            <th>@Html.DisplayNameFor(m => m.EjeId)</th>
+                            <th>@Html.DisplayNameFor(m => m.Manager)</th>
+
+                            <th>@Html.DisplayNameFor(m => m.ClasificacionID)</th>
+
 
 
 
@@ -49,10 +53,10 @@
                         {
                             <tr>
                                 <td>@Html.DisplayFor(m => item.Name)</td>
-                                <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy h:mm tt}")</td>
-                                <td>@Html.DisplayFor(m => item.IsActive)</td>
-                                <td>@Html.DisplayFor(m => item.Category.Name)</td>
-                                <td>@Html.DisplayFor(m => item.Eje.Name)</td>
+
+                                <td>@Html.DisplayFor(m => item.Manager)</td>
+                                <td>@Html.DisplayFor(m => item.Clasificacion.Name)</td>
+
                                 <a>
                                     <partial name="_TableButtonPartialDelete" model="item.Id" />
                                 </a>
@@ -63,7 +67,7 @@
             }
             else
             {
-                <h3>No existen actividades registradas...</h3>
+                <h3>No existen registros...</h3>
             }
         </div>
     </div>
