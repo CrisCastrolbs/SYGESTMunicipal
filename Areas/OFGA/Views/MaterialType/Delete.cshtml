@@ -23,43 +23,78 @@
             </ol>
         </div>
     </section><!-- End Breadcrumbs -->
-    <br />
-    <br />
-    <h2 class="text-info">Eliminar a este tipo de material?</h2>
-    <br />
-    <form method="post" asp-action="Delete">
-        <div class="border backgroundWhite">
-            <div class="form-group row">
-                <div class="col-md-2">
-                    <label asp-for="MaterialTypeId" class="col-form-label"></label>
-                </div>
-                <div class="col-md-5">
-                    <input asp-for="MaterialTypeId" class=" form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-2">
-                    <label asp-for="MaterialTypeName" class="col-form-label"></label>
-                </div>
-                <div class="col-md-5">
-                    <input asp-for="MaterialTypeName" class=" form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-5 colo-lg-4 text-right">
-                    <input onclick="abrirModal()" type="submit" value="Eliminar" id="btnEliminar"
-                           class="btn btn-danger" @*style="width: 80%;"*@
-                           asp-route-id="@Model" />
-                </div>
-                <br />
-                <br />
-                <br />
-                <div class="col-md-5">
-                    <a asp-action="Index" type="button"
-                       class="btn btn-success">Regresar </a>
-                </div>
-            </div>
 
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+                Eliminar Registro
+            </h3>
         </div>
-    </form>
-    </main>
+    </div>
+    <br />
+    <!-- ======= About Section ======= -->
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="contact-wrap w-100 p-md-5 p-4">
+                <form method="post" asp-action="Delete" id="viewEliminar">
+                    <div class="backgroundWhite">
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <h5><label asp-for="MaterialTypeId" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="MaterialTypeId" class=" form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <h5><label asp-for="MaterialTypeName" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="MaterialTypeName" class=" form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 text-md-right">
+                                <input type="button" value="Eliminar" id="btnEliminar"
+                                       class="fa fa-trash btn btn-danger"
+                                       onclick="abrirModal()" />
+                            </div>
+                            <div class="col-md-2 text-md-center">
+                                <a asp-action="Index" type="button"
+                                   class="btn btn-success">Regresar </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Eliminar Categoría De Materiales', '¿Desea Eliminar Esta Categoría?').then((result) => {
+            if (result.value) {
+                var viewEliminar = document.getElementById("viewEliminar");
+                viewEliminar.submit();
+                Swal.fire(
+                    'Eliminado!',
+                    'La categoría de materiales fue eliminada!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'La categoría no ha sido eliminada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

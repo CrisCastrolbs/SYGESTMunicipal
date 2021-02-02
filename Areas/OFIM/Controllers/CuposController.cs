@@ -15,183 +15,156 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
     public class CuposController : Controller
     {
         private readonly ApplicationDbContext _db;
-        [TempData]
-        public string StatusMessage { get; set; }
+        List<CuposActividad> listaCupos = new List<CuposActividad>();
+        static List<CuposActividad> lista = new List<CuposActividad>();
         public CuposController(ApplicationDbContext db)
         {
             _db = db;
         }
-        public async Task<IActionResult> Index()
+
+        public IActionResult Index()
         {
-            var cupos =
-                await _db.Cupos.Include(s => s.Actividad).ToListAsync();
-            return View(cupos);
+            listaCupos = (from cupos in _db.Cupos
+                          join actividad in _db.Actividad
+                          on cupos.ActividadId equals
+                          actividad.Id
+                          select new CuposActividad
+                          {
+                              Id = cupos.Id,
+                              Descripcion = cupos.Descripcion.Length > 50 ?
+                                               cupos.Descripcion.Substring(0, 50)
+                                               + "..." : cupos.Descripcion,
+                              CupoMax = cupos.CupoMax,
+                              IsActive = cupos.IsActive,
+                              ActividadId = cupos.ActividadId,
+                              Actividad = actividad.Name
+                          }).ToList();
+            lista = listaCupos;
+            return View(listaCupos);
         }
-        //GET - CREATE
-        public async Task<IActionResult> Create()
+
+        private void cargarActividades()
         {
-            CupoAndActividadViewModel model = new CupoAndActividadViewModel()
-            {
-                ActividadList = await _db.Actividad.ToListAsync(),
-                Cupos = new Models.Cupos(),
-                CuposList =
-                     await _db.Cupos.OrderBy(p => p.CupoMax.ToString()).Select(p => p.CupoMax.ToString()).Distinct().ToListAsync()
-            };
-            return View(model);
+            List<SelectListItem> listaActividades = new List<SelectListItem>();
+            listaActividades = (from actividad in _db.Actividad
+                                orderby actividad.Name
+                                select new SelectListItem
+                                {
+                                    Text = actividad.Category.Name + " " + actividad.Name,
+                                    Value = actividad.Id.ToString()
+                                }
+                                   ).ToList();
+            ViewBag.ListaActividades = listaActividades;
         }
-        //POST - CREATE
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            cargarActividades();
+            return View();
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CupoAndActividadViewModel model)
+        public IActionResult Create(Cupos cupos)
         {
-            if (ModelState.IsValid)
+            string Error = "";
+            try
             {
-                var CuposExist = _db.Cupos.Include(s => s.Actividad).Where(s => s.ActividadId
-                                      == model.Cupos.ActividadId
-                                      && s.ActividadId == model.Cupos.ActividadId);
+                
+                if (ModelState.IsValid)
+                {
+                    var CuposExist = _db.Cupos.Include(s => s.Actividad).Where(s => s.ActividadId
+                                         == cupos.ActividadId
+                                         && s.ActividadId == cupos.ActividadId);
+                    if (CuposExist.Count() >= 1)
+                    {
+                        ViewBag.msgError = "Error: Este cupo ya ha sido ingresado para la Actividad " + CuposExist.First().Actividad.Name +
+                           " Por favor, use la existente, o cree otra diferente";
+                        cargarActividades();
+                        return View(cupos);
+                    }
+                    else
+                    {
+                        Cupos _cupos = new Cupos();
+                        _cupos.Id = cupos.Id;
+                        _cupos.Descripcion = cupos.Descripcion;
+                        _cupos.CupoMax = cupos.CupoMax;
+                        _cupos.IsActive = cupos.IsActive;
+                        _cupos.ActividadId = cupos.ActividadId;
 
-                //Where(s => s.ActividadId == model.Cupos.ActividadId);
-                if (CuposExist.Count() >=1)
-                {
-                    StatusMessage = "Error: La Actividad " + CuposExist.First().Actividad.Name +
-                          " Ya posee cupos abiertos ";
-                }
-                else
-                {
-                    _db.Cupos.Add(model.Cupos);
-                    await _db.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                        _db.Cupos.Add(_cupos);
+                        _db.SaveChanges();
+                    }
                 }
             }
-            CupoAndActividadViewModel modelVM = new CupoAndActividadViewModel()
+            catch (Exception ex)
             {
-                ActividadList = await _db.Actividad.ToListAsync(),
-                Cupos = model.Cupos,
-                CuposList = await _db.Cupos.OrderBy(p => p.CupoMax.ToString()).Select(p => p.CupoMax.ToString()).ToListAsync(),
-               
-                StatusMessage = StatusMessage
-            };
-            return View(modelVM);
-        }
-        //GET - EDIT
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
+                Error = ex.Message;
             }
-            var cupos = await _db.Cupos.SingleOrDefaultAsync(m => m.Id == id);
-            if (cupos == null)
-            {
-                return NotFound();
-            }
-            CupoAndActividadViewModel model = new CupoAndActividadViewModel()
-            {
-                ActividadList = await _db.Actividad.ToListAsync(),
-                Cupos = cupos,
-                CuposList =
-                await _db.Cupos.OrderBy(p => p.CupoMax.ToString()).Select(p => p.CupoMax.ToString()).Distinct().ToListAsync()
-
-
-            };
-            return View(model);
-        }
-        //POST - EDIT
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, CupoAndActividadViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-               var CuposExist = _db.Cupos.Include(s => s.Actividad).Where(s => s.ActividadId
-                                   == model.Cupos.ActividadId
-                                   && s.ActividadId == model.Cupos.ActividadId);
-                if (CuposExist.Count() > 0)
-                {
-                    StatusMessage = "Error: La Actividad " + CuposExist.First().Actividad.Name +
-                          " Ya posee cupos abiertos ";
-                }
-                else
-                {
-                    var CuposFromDB = await _db.Cupos.FindAsync(id);
-                    CuposFromDB.CupoMax = model.Cupos.CupoMax;
-                    await _db.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            CupoAndActividadViewModel modelVM = new CupoAndActividadViewModel()
-            {
-                ActividadList = await _db.Actividad.ToListAsync(),
-                Cupos = model.Cupos,
-                CuposList = await _db.Cupos.OrderBy(p => p.CupoMax.ToString()).Select(p => p.CupoMax.ToString()).ToListAsync(),
-                StatusMessage = StatusMessage
-            };
-            return View(modelVM);
-        }
-        //GET - DELETE
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var cupos = await _db.Cupos.SingleOrDefaultAsync(m => m.Id == id);
-            if (cupos == null)
-            {
-                return NotFound();
-            }
-            CupoAndActividadViewModel model = new CupoAndActividadViewModel()
-            {
-                ActividadList = await _db.Actividad.ToListAsync(),
-                Cupos = cupos,
-                CuposList = await _db.Cupos.OrderBy(p => p.CupoMax.ToString()).Select(p => p.CupoMax.ToString()).Distinct().ToListAsync()
-            };
-            return View(model);
-        }
-        //POST - DELETE
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
-        {
-            var ejeDelete = await _db.Cupos.FindAsync(id);
-            if (ejeDelete == null)
-            {
-                return View();
-            }
-            _db.Cupos.Remove(ejeDelete);
-            await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        //GET - DETAILS
-        public async Task<IActionResult> Details(int? id)
+
+        [HttpGet]
+        public IActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var cupos = await _db.Cupos.SingleOrDefaultAsync(m => m.Id == id);
-            if (cupos == null)
-            {
-                return NotFound();
-            }
-            CupoAndActividadViewModel model = new CupoAndActividadViewModel()
-            {
-                ActividadList = await _db.Actividad.ToListAsync(),
-                Cupos = cupos,
-                CuposList =
-              await _db.Cupos.OrderBy(p => p.CupoMax.ToString()).Select(p => p.CupoMax.ToString()).Distinct().ToListAsync()
-            };
-            return View(model);
-        }
-        [ActionName("GetCupos")]
-        public async Task<IActionResult> GetCupos(int id)
-        {
-            List<Cupos> cupos = new List<Cupos>();
-            cupos = await (from Cupos in _db.Cupos
-                          where Cupos.ActividadId == id
-                          select Cupos).ToListAsync();
-            return Json(new SelectList(cupos, "Id", "Name"));
+            cargarActividades();
+            int recCount = _db.Cupos.Count(e => e.Id == id);
+            Cupos _cupos = (from p in _db.Cupos
+                            where p.Id == id
+                            select p).DefaultIfEmpty().Single();
+            return View(_cupos);
         }
 
+        [HttpPost]
+        public IActionResult Edit(Cupos cupos)
+        {
+            string error = "";
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    cargarActividades();
+                    return View(cupos);
+                }
+                else
+                {
+                    _db.Cupos.Update(cupos);
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult Details(int id)
+        {
+            cargarActividades();
+            Cupos oCupos = _db.Cupos
+                 .Where(m => m.Id == id).First();
+            return View(oCupos);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int? Id)
+        {
+            string Error = "";
+            try
+            {
+                Cupos oCupos = _db.Cupos
+                               .Where(m => m.Id == Id).First();
+                _db.Cupos.Remove(oCupos);
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
+            return RedirectToAction(nameof(Index));
+        }
     }
+
 }

@@ -4,13 +4,14 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
     List<SelectListItem> Lista = ViewBag.ListaConsulta;
+    String Error = @ViewBag.msgError;
 }
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
 {
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <h3 class="text-light" style="text-align:center;
-                              background-color:darkslategray;width:100%;">
+                              background-color:#dc3545;width:100%;">
                 Agregar un Tipo Consulta
             </h3>
         </div>
@@ -29,6 +30,10 @@
                     <input asp-for="NombreTipoConsulta" class="form-control" />
                 </div>
                 <span asp-validation-for="NombreTipoConsulta" class="text-danger"></span>
+                @if (@Error != null && @Error != "")
+                {
+                    <p class="text-danger">@Error</p>
+                }
             </div>
 
 
@@ -37,28 +42,23 @@
                     <label asp-for="PersonaOFIMId" class="col-form-label"></label>
                 </div>
                 <div class="col-md-6">
-                    <select asp-for="PersonaOFIMId" class="form-control"
+                    <select asp-for="PersonaOFIMId" class="form-control" value="@ViewBag.ID"
                             asp-items="@Lista"></select>
                 </div>
                 <span asp-validation-for="PersonaOFIMId" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-offset-5 text-md-right">
+                <div class="col-md-3 text-md-right">
                     <input type="button" value="Agregar" id="btnAgregar"
                            class="btn btn-info" @*style="width: 80%;"*@
                            onclick="abrirModal()" />
                 </div>
-                <br />
-                <br />
-                <br />
-                <div class="col-md-2 text-md-center">
+                <div class="col-md-1 text-md-center">
                     <a asp-action="Index" type="button"
                        class="btn btn-success">
                         Regresar
                     </a>
-
-
                 </div>
             </div>
         </div>

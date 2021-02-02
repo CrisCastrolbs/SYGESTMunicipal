@@ -32,5 +32,10 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
         public virtual Eje Eje { get; set; }
 
         public virtual ICollection<Cupos> Cupos { get; set; }
+        public Actividad()
+        {
+            Cupos = new HashSet<Cupos>();
+        }
     }
+
 }
