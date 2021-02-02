@@ -24,6 +24,9 @@ namespace SYGESTMunicipal.Areas.OFIM.Models.ViewModel
         [Display(Name = "Tipo de Consulta")]
         public int TipoConsultaId { get; set; }
 
+        [Display(Name = "Nombre Tipo Consulta")]
+        public string NombreTipoConsulta { get; set; }
+
         [DataType(DataType.DateTime)]
         [Display(Name = "Fecha")]
         [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy h:mm tt}", ApplyFormatInEditMode = true)]

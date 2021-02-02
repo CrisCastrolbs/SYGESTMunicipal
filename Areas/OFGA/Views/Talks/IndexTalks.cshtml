@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SYGESTMunicipal.Areas.OFGA.Models.Talks>
+@using SYGESTMunicipal.Utility
+@{
+    ViewData["Title"] = "IndexTalks";
+    Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
+}
+
+
+
+<main id="main">
+
+
+    <div class="container">
+        <ol>
+            <li><a asp-area="OFGA" asp-controller="Home" asp-action="IndexTalks"></a></li>
+            
+        </ol>
+    </div>
+
+
+    @*Charlas*@
+
+
+    <section class="ftco-section ftco-bg-dark-main">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <span class="subheading">Nuestra Agenda</span>
+                    <h2 style="color:white">CHARLAS DISPONIBLES</h2>
+                </div>
+            </div>
+            <ul id="menu-filters" class="menu-filter-list list-inline text-center">
+                <li class="active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Mostrar Todo</li>
+
+
+
+                @foreach (var item in @Model)
+                {
+
+
+                 <li class="ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
+
+                }
+
+
+            </ul>
+
+                @foreach (var item in @Model)
+                {
+
+                   
+                    <div class="row" id="menu-wrapper">
+                        <partial name="_ThumbnailAreaPartialTalks"
+                                 model="@Model.Where(u=>u.IsActive== true).ToList()" />
+                    </div>
+
+                }
+            
+        </div>
+    </section>
+    @section Scripts{
+        <script src="https://code.jquery.com/jquery-3.5.0.js"
+                integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+                crossorigin="anonymous">
+        </script>
+        <script>
+            //load data from server, using HTTP Post request
+            var posts = $('.post');
+            (function ($) {
+                $("#menu-filters li").click(function () {
+                    $("#menu-filters li").removeClass('active btn btn-secondary');
+                    $(this).addClass('active btn btn-secondary');
+                    var selectedFilter = $(this).data("filter");
+                    $(".menu-restaurant").fadeOut();
+                    setTimeout(function () {
+                        $(selectedFilter).slideDown();
+                    }, 100);
+                });
+            })(jQuery);
+        </script>
+    }
+
+    @*https://getbootstrap.com/docs/4.0/components/carousel/
+        https://www.w3schools.com/bootstrap/bootstrap_filters.asp*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main><!-- End #main -->

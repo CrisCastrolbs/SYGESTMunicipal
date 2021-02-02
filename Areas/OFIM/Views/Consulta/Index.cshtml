@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
 }
-@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.RedUser))
 {
     <br />
     <br />

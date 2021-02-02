@@ -28,5 +28,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Models
         public byte[] Picture { get; set; }
         [Display(Name = "Vigente")]
         public bool IsActive { get; set; }
+
+      
     }
 }
