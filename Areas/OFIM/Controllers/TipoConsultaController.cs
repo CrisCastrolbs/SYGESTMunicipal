@@ -12,7 +12,6 @@ using SYGESTMunicipal.Data;
 namespace SYGESTMunicipal.Areas.OFIM.Controllers
 {
     [Area("OFIM")]
-    //[Authorize(Roles = SD.ManagerUser)]
     public class TipoConsultaController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -42,12 +41,12 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         private void cargarPersonaOFIM()
         {
             List<SelectListItem> listaTipoConsulta = new List<SelectListItem>();
-            listaTipoConsulta = (from ciiu in _db.PersonaOFIM
-                             orderby ciiu.PersonName
+            listaTipoConsulta = (from personaOFIM in _db.PersonaOFIM
+                             orderby personaOFIM.PersonName
                              select new SelectListItem
                              {
-                                 Text = ciiu.PersonName + " " + ciiu.LatName1,
-                                 Value = ciiu.PersonaOFIMId.ToString()
+                                 Text = personaOFIM.PersonName + " " + personaOFIM.LatName1,
+                                 Value = personaOFIM.PersonaOFIMId.ToString()
                              }
                                    ).ToList();
             ViewBag.ListaConsulta = listaTipoConsulta;
@@ -60,6 +59,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         [HttpPost]
         public IActionResult Create(TipoConsultaAndPersonaViewModel tipoConsulta)
         {
+            string Error = "";
             int nVeces = 0;
             try
             {
@@ -72,7 +72,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                          && s.PersonaOFIMId == tipoConsulta.PersonaOFIMId);
                     if (TipoConExist.Count() > 0 || nVeces >= 1)
                     {
-                        ViewBag.Error = "Error: Este tipo consulta ya ha sido creada para la Persona " + TipoConExist.First().PersonaOFIM.PersonName +
+                        ViewBag.msgError = "Error: Este tipo consulta ya ha sido creada para la Persona " + TipoConExist.First().PersonaOFIM.PersonName +
                            " Por favor, use la existente, o cree otra diferente";
                         cargarPersonaOFIM();
                         return View(tipoConsulta);
@@ -91,7 +91,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.Error = ex.Message;
+                Error = ex.Message;
             }
             return RedirectToAction(nameof(Index));
         }

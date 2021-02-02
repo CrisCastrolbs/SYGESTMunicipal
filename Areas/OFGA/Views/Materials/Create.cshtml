@@ -33,7 +33,7 @@
             </h3>
         </div>
     </div>
-   
+
     <div class="row no-gutters">
         <div class="col-md-7">
             <div class="contact-wrap w-100 p-md-5 p-4">
@@ -44,19 +44,19 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         @*Id*@
                         @*<div class=" form-group row">
-                    <div class=" col-2">
-                        <label asp-for="Id" class="col-form-label"></label>
-                    </div>
-                    <div class="col-5">
-                        <input asp-for="Id" class="form-control" />
-                    </div>
-                    <span asp-validation-for="Id" class=" text-danger"></span>
-                </div>*@
+                                <div class=" col-2">
+                                    <label asp-for="Id" class="col-form-label"></label>
+                                </div>
+                                <div class="col-5">
+                                    <input asp-for="Id" class="form-control" />
+                                </div>
+                                <span asp-validation-for="Id" class=" text-danger"></span>
+                            </div>*@
                         @*Name*@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Name" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Name" class="form-control" />
                             </div>
@@ -67,7 +67,7 @@
                         <div class="form-group row">
                             <div class=" col-md-2">
                                 <h5><label>Fecha:</label></h5>
-</div>
+                            </div>
                             <div class="col-md-8">
                                 <input type="date" asp-for="Date" class="form-control" />
                             </div>
@@ -77,7 +77,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Weight" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Weight" class="form-control" />
                             </div>
@@ -87,7 +87,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Color" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Color" class="form-control" />
                             </div>
@@ -97,7 +97,7 @@
                         <div class="form-group row">
                             <div class="col-md-2">
                                 <h5><label asp-for="MaterialTypeId" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-8">
                                 <select asp-for="MaterialTypeId" class="form-control"
                                         asp-items="@Lista"></select>
@@ -105,28 +105,65 @@
                             <span asp-validation-for="MaterialTypeId" class="text-danger"></span>
                         </div>
                         @*End Create Register Date Field*@
-                        <div class=" form-group row">
-                            <div class=" col-md-5">
-                                <partial name="_CreateAndBackToListButton" />
+
+                        <div class="form-group row">
+                            <div class="col-md-4 text-md-right">
+                                <input type="button" value="Agregar" id="btnAgregar"
+                                       class="btn btn-info" @*style="width: 80%;"*@
+                                       onclick="abrirModal()" />
+                            </div>
+                            <div class="col-md-2 text-md-center">
+                                <a asp-action="Index" type="button"
+                                   class="btn btn-success">
+                                    Regresar
+                                </a>
+
+
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+        </div>
     </div>
-</div>
 </main>
-    
-    @section Scripts{
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
 
 
 
-        <script src="~/js/DPickerSpanish.js"></script>
-        <script>
-            $(function () {
-                $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
-                $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
-                //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
-            });</script>
+    <script src="~/js/DPickerSpanish.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+            $("#datepicker").datepicker({ minDate: 0, maxDate: "+1W" });
+            //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
+        });</script>
+}
+
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Agregar Materiales', '¿Realmente Desea Agregar Estos Materiales?').then((result) => {
+            if (result.value) {
+                var viewAgregar = document.getElementById("viewAgregar");
+                viewAgregar.submit();
+                Swal.fire(
+                    'Los materiales fueron agregados!',
+                    'exitosamente!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'Los materiales no fueron agregados!!!:)',
+                    'error'
+                )
+            }
+        })
     }
+</script>

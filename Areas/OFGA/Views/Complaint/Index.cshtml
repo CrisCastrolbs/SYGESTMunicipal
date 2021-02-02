@@ -25,73 +25,75 @@
         </div>
     </section><!-- End Breadcrumbs -->
 
-    @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
-    {
-        <form asp-controller="Complaint" asp-action="Index" method="post">
-            <div class="row">
-                <div class="col-md-3">
-                    <a asp-action="Create" class="btn btn-success fa fa-plus-circle"
-                       style="width:100%; height:100%;padding:11px;">
-                        Añadir Denuncia
-                    </a>
-                </div>
-                @*<div class="col-md-2 col-lg-2 text-right">
-                        <a asp-controller="" asp-action="Index"
-                           class="btn btn-info fa fa-arrow-circle-left"
-                           style="width:100%; height:90%;padding:6px;">
-                            Regresar al menú
-                        </a>
-                    </div>*@
-            </div>
-            <div class="col-md-12" style="color:black;"><hr /></div>
-        </form>
-
-        @if (Model.Count() > 0)
+    <div class="border backgroundWhite">
+        <br />
+        @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFGA))
         {
-            <table class="table table-hover .table-responsive" id="TbComplaint">
-                <thead class="thead-dark">
-                    <tr class="table-secondary">
+            <form asp-controller="Complaint" asp-action="Index" method="post">
+                <div class="row">
+                    <div class="col-lg-2 text-right">
+                        <a asp-action="Create" class="btn btn-info fa fa-plus-circle"
+                           style="width:80%; height:100%;padding:12px;">
+                            Agregar
+                        </a>
+                    </div>
+                    @*<div class="col-md-2 col-lg-2 text-right">
+                            <a asp-controller="" asp-action="Index"
+                               class="btn btn-info fa fa-arrow-circle-left"
+                               style="width:100%; height:90%;padding:6px;">
+                                Regresar al menú
+                            </a>
+                        </div>*@
+                </div>
+                <div class="col-md-12 divisor"><hr></div>
+            </form>
 
-                        <th>@Html.DisplayNameFor(m => m.Id)</th>
-                        <th>@Html.DisplayNameFor(m => m.Description)</th>
-                        <th>@Html.DisplayNameFor(m => m.Date)</th>
-                        <th>@Html.DisplayNameFor(m => m.PersonOFGAId)</th>
+            @if (Model.Count() > 0)
+            {
+                <table class="table table-hover .table-responsive" id="TbComplaint">
+                    <thead class="thead-dark">
+                        <tr class="table-secondary" style="text-align:center;">
 
-                        <th>Operaciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(m => item.Id)</td>
-                            <td>@Html.DisplayFor(m => item.Description)</td>
-                            <td>@Html.DisplayFor(m => item.Date, "{0:dd/MM/yyyy}")</td>
-                            <td>@Html.DisplayFor(m => item.PersonOFGA)</td>
+                            <th>@Html.DisplayNameFor(m => m.Id)</th>
+                            <th>@Html.DisplayNameFor(m => m.Description)</th>
+                            <th>@Html.DisplayNameFor(m => m.Date)</th>
+                            <th>@Html.DisplayNameFor(m => m.PersonOFGAId)</th>
 
-                            <div class="col-lg-6 text-right">
-                                <partial name="_TableButtonPartial" model="item.Id" />
-
-                            </div>
+                            <th>Operaciones</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody style="text-align:center;">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Id)</td>
+                                <td>@Html.DisplayFor(m => item.Description)</td>
+                                <td>@Html.DisplayFor(m => item.Date, "{0:dd/MM/yyyy}")</td>
+                                <td>@Html.DisplayFor(m => item.PersonOFGA)</td>
+
+                                <div class="col-lg-6 text-right">
+                                    <partial name="_TableButtonPartialDelete" model="item.Id" />
+
+                                </div>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h5 style="color:red;">No se encontraron registros!...</h5>
+            }
         }
+
         else
         {
-            <h5 style="color:red;">No se encontraron registros!...</h5>
+
+
+            <h5 style="color:red;">Gracias por hacernos saber su denuncia!...</h5>
+            <a class="nav-link" asp-area="OFGA" asp-controller="Home" asp-action="Index">  Volver a la Página Principal</a>
         }
-    }
-
-    else
-    {
-
-        
-        <h5 style="color:red;">Gracias por hacernos saber su denuncia!...</h5>
-        <a class="nav-link" asp-area="OFGA" asp-controller="Home" asp-action="Index">                   Volver a la Página Principal</a>
-    }
-
+    </div>
 </main>
 
 <script src="~/js/sweetalert2.js"></script>

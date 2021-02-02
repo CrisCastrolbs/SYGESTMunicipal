@@ -44,15 +44,45 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-5 offset-2">
-                    <partial name="_DeleteAndBackToListButton" model="Model.ConsultaId" />
+                <div class="col-md-5 colo-lg-4 text-right">
+                    <input onclick="abrirModal()" type="submit" value="Eliminar" id="btnEliminar"
+                           class="btn btn-danger" @*style="width: 80%;"*@
+                           asp-route-id="@Model" />
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="col-md-5">
+                    <a asp-action="Index" type="button"
+                       class="btn btn-success">Regresar </a>
                 </div>
             </div>
+
         </div>
     </form>
 }
 
-else
-{
-<h3 style="color:red;text-shadow: 2px 2px 5px #000"> No cuenta con los permisos necesarios para eliminar este registro.</h3>
-}
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Eliminar Consulta', '¿Desea Eliminar Esta Consulta?').then((result) => {
+            if (result.value) {
+                var viewEliminar = document.getElementById("viewEliminar");
+                viewEliminar.submit();
+                Swal.fire(
+                    'Eliminado!',
+                    'La consulta fue eliminada!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'La consulta no ha sido eliminada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

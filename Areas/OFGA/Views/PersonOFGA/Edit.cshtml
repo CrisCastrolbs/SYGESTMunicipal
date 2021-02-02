@@ -38,10 +38,10 @@
             <div class="contact-wrap w-100 p-md-5 p-4">
                 <form method="post" asp-action="Edit" id="viewEditar">
                     <div class="backgroundWhite">
-                         <div class=" form-group row">
+                        <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="PersonOFGAId" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="PersonOFGAId" class="form-control" />
                             </div>
@@ -51,7 +51,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Name" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Name" class="form-control" />
                             </div>
@@ -61,7 +61,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="LastName1" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="LastName1" class="form-control" />
                             </div>
@@ -71,7 +71,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="LastName2" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="LastName2" class="form-control" />
                             </div>
@@ -81,7 +81,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Address" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <textarea asp-for="Address" rows="4" cols="50"
                                           class="form-control"> </textarea>
@@ -92,7 +92,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Province" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Province" class="form-control" />
                             </div>
@@ -102,7 +102,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Canton" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Canton" class="form-control" />
                             </div>
@@ -112,7 +112,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="District" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="District" class="form-control" />
                             </div>
@@ -123,7 +123,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="TelephoneNumber" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="TelephoneNumber" class="form-control" />
                             </div>
@@ -133,7 +133,7 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="CellphoneNumber" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="CellphoneNumber" class="form-control" />
                             </div>
@@ -144,22 +144,53 @@
                         <div class=" form-group row">
                             <div class=" col-md-2">
                                 <h5><label asp-for="Email" class="col-form-label"></label></h5>
-</div>
+                            </div>
                             <div class="col-md-9">
                                 <input asp-for="Email" class="form-control" />
                             </div>
                             <span asp-validation-for="Email" class=" text-danger"></span>
                         </div>
-                        <div class="form-grouprow">
-                            <div class="col-md-5 offset-2">
-                                <partial name="_EditAndBackToListButtonString" model="Model.PersonOFGAId" />
+                        <div class="form-group row">
+                            <div class="col-md-4 text-md-right">
+                                <input type="button" value="Editar" id="btnEditar"
+                                       class="btn btn-info" @*style="width: 80%;"*@
+                                       onclick="abrirModal()" />
+                            </div>
+                            <div class="col-md-2 text-md-center">
+                                <a asp-action="Index" type="button"
+                                   class="btn btn-success">Regresar </a>
                             </div>
                         </div>
                     </div>
-                    
+
                 </form>
-                
+
             </div>
         </div>
-        </div>
+    </div>
 </main>
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Modificar', '¿Realmente Desea modificar?').then((result) => {
+            if (result.value) {
+                var viewEditar = document.getElementById("viewEditar");
+                viewEditar.submit();
+                Swal.fire(
+                    'Modificado!',
+                    'Operación con éxito!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'Operación Fracasada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

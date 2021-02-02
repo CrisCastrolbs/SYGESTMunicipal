@@ -10,13 +10,24 @@
         </li>
 
         <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="btn-get-started scrollto">Cerrar sesión</button>
-            </form>
+            <div class="hero-container" data-aos="fade-up">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "OFGA" })">
+                    <button type="submit" class="btn-get-started scrollto">Cerrar sesión</button>
+                </form>
+            </div>
         </li>
+
+
     }
     else
     {
+        @* LOGO  *@
+        <li class="logo-img">
+            <a asp-area="OFGA" asp-controller="Home" asp-action="Index">
+                <img src="~/Ambiental/assets/img/hr (1).png" alt="">
+            </a>
+        </li>
+        @* LOGO  *@
         <li class="nav-item">
             <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
         </li>

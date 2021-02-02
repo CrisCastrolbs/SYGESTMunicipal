@@ -466,6 +466,21 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Clasificacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clasificacion");
+                });
+
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Consulta", b =>
                 {
                     b.Property<int>("ConsultaId")
@@ -530,6 +545,8 @@ namespace SYGESTMunicipal.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ActividadId");
+
                     b.ToTable("Cupos");
                 });
 
@@ -552,6 +569,52 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Eje");
+                });
+
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Empresa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClasificacionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Direction")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Manager")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telephone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WebPage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClasificacionID");
+
+                    b.ToTable("Empresa");
                 });
 
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.EstadoCivil", b =>
@@ -702,6 +765,38 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.HasIndex("SeguroId");
 
                     b.ToTable("PersonaOFIM");
+                });
+
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Producto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ClasificacionID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClasificacionID");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Producto");
                 });
 
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Seguimiento", b =>
@@ -1120,11 +1215,29 @@ namespace SYGESTMunicipal.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Cupos", b =>
+                {
+                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Actividad", "Actividad")
+                        .WithMany("Cupos")
+                        .HasForeignKey("ActividadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Eje", b =>
                 {
                     b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Empresa", b =>
+                {
+                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Clasificacion", "Clasificacion")
+                        .WithMany()
+                        .HasForeignKey("ClasificacionID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1158,6 +1271,21 @@ namespace SYGESTMunicipal.Data.Migrations
                     b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Seguro", "Seguro")
                         .WithMany("PersonaOFIM")
                         .HasForeignKey("SeguroId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SYGESTMunicipal.Areas.OFIM.Models.Producto", b =>
+                {
+                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Clasificacion", "Clasificacion")
+                        .WithMany()
+                        .HasForeignKey("ClasificacionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SYGESTMunicipal.Areas.OFIM.Models.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -25,11 +25,11 @@
         <div class="col-md-12 col-lg-12">
             <h3 class="text-light"
                 style="text-align:center;background-color:darkslategray;">
-               Agregar
+                Agregar
             </h3>
         </div>
     </div>
-  <!-- ======= About Section ======= -->
+    <!-- ======= About Section ======= -->
     <div class="row no-gutters">
         <div class="col-md-7">
             <div class="contact-wrap w-100 p-md-5 p-4">
@@ -93,15 +93,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-5 offset-4">
-                                <partial name="_CreateAndBackToListButton" />
+                            <div class="col-md-6 text-md-center">
+                                <input type="button" value="Agregar" id="btnAgregar"
+                                       class="btn btn-info" @*style="width: 80%;"*@
+                                       onclick="abrirModal()" />
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <div class="col-md-5 text-md-center">
+                                <a asp-action="Index" type="button"
+                                   class="btn btn-success">
+                                    Regresar
+                                </a>
+
+
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+        </div>
     </div>
-</div>
 </main>
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
@@ -116,3 +129,28 @@
             //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
         });</script>
 }
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Agregar Charla', '¿Realmente Desea Agregar Esta Charla?').then((result) => {
+            if (result.value) {
+                var viewAgregar = document.getElementById("viewAgregar");
+                viewAgregar.submit();
+                Swal.fire(
+                    'La charla fue agregada!',
+                    'exitosamente!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'La charla no ha sido agregada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

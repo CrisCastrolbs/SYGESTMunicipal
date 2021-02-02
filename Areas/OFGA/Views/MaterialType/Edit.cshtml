@@ -71,9 +71,15 @@
                         </div>
 
 
-                        <div class="form-grouprow">
-                            <div class="col-md-5 offset-2">
-                                <partial name="_EditAndBackToListButton" model="Model.MaterialTypeId" />
+                        <div class="form-group row">
+                            <div class="col-md-4 text-md-right">
+                                <input type="button" value="Editar" id="btnEditar"
+                                       class="btn btn-info" @*style="width: 80%;"*@
+                                       onclick="abrirModal()" />
+                            </div>
+                            <div class="col-md-2 text-md-center">
+                                <a asp-action="Index" type="button"
+                                   class="btn btn-success">Regresar </a>
                             </div>
                         </div>
                     </div>
@@ -82,3 +88,28 @@
         </div>
     </div>
 </main>
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Modificar', '¿Realmente Desea modificar?').then((result) => {
+            if (result.value) {
+                var viewEditar = document.getElementById("viewEditar");
+                viewEditar.submit();
+                Swal.fire(
+                    'Modificado!',
+                    'Operación con éxito!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'Operación Fracasada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

@@ -107,17 +107,17 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-2">
-                    <label asp-for="Remitir" class="col-form-label"></label>
+                <div class="col-md-5">
+                    <input type="button" value="Editar" id="btnEditar"
+                           class="btn btn-info" @*style="width: 80%;"*@
+                           onclick="abrirModal()" />
                 </div>
-                <div class="col-md-6">
-                    <input type="checkbox" asp-for="Remitir" class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <div class="col-5 offset-3">
-                    <partial name="_EditAndBackToListButton" model="Model.ConsultaId" />
+                <br />
+                <br />
+                <br />
+                <div class="col-md-5">
+                    <a asp-action="Index" type="button"
+                       class="btn btn-success">Regresar </a>
                 </div>
             </div>
         </div>
@@ -159,8 +159,29 @@
         });
     </script>
 }
-else
-{
-    <h3 style="color:red;text-shadow: 2px 2px 5px #000">    No cuenta con los permisos necesarios para editar este registro.</h3>
-}
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Modificar', '¿Realmente Desea modificar?').then((result) => {
+            if (result.value) {
+                var viewEditar = document.getElementById("viewEditar");
+                viewEditar.submit();
+                Swal.fire(
+                    'Modificado!',
+                    'Operación con éxito!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'Operación Fracasada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>
 

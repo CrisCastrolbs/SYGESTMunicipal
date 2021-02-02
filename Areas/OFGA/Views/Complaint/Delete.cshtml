@@ -1,5 +1,5 @@
 ﻿
-@model SYGESTMunicipal.Areas.OFGA.Models.ViewModel.PersonOFGAComplaintViewModel
+@model SYGESTMunicipal.Areas.OFGA.Models.Complaint
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_LayoutOFGA.cshtml";
@@ -8,43 +8,121 @@
 
 
 
-<br />
-<h2 class="text-info">Eliminar Registro</h2>
-<br />
-<form method="post" asp-action="Delete">
-    <div class="border backgroundWhite">
-        <div class="form-group row">
-            <div class="col-md-2">
-                <h5><label asp-for="Id" class="col-form-label"></label></h5>
-</div>
-            <div class="col-md-5">
-                <input asp-for="Id" class=" form-control" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <h5><label asp-for="Description" class="col-form-label"></label></h5>
-</div>
-            <div class="col-md-6">
-                <textarea asp-for="Description" rows="4" cols="50"
-                          class="form-control"> </textarea>
-            </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-2">
-                <h5><label asp-for="Date" class="col-form-label"></label></h5>
-</div>
-            <div class="col-md-5">
-                <input asp-for="Date" readonly type="datetime" class=" form-control" />
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Eliminar Registro</h2>
+
+                </div>
             </div>
         </div>
 
-        <div class="form-group row">
-            <div class="col-md-5">
-                <partial name="_DeleteAndBackToListButton" model="Model.Id" />
+        <div class="container">
+            <ol>
+                <li><a asp-area="OFGA" asp-controller="Complaint" asp-action="Index">Complaint</a></li>
+                <li>Eliminar Registro</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:darkslategray;">
+                Eliminar Registro
+            </h3>
+        </div>
+    </div>
+    <br />
+    <!-- ======= About Section ======= -->
+    <div class="row no-gutters">
+        <div class="col-md-7">
+            <div class="contact-wrap w-100 p-md-5 p-4">
+                <form method="post" asp-action="Delete" id="viewEliminar">
+                    <div class="backgroundWhite">
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <h5><label asp-for="Id" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="Id" readonly class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <h5><label asp-for="Description" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-9">
+                                <textarea asp-for="Description" readonly rows="4" cols="50"
+                                          class="form-control"> </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <h5><label asp-for="Date" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="Date" readonly type="datetime" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-2">
+                                <h5><label asp-for="PersonOFGAId" class="col-form-label"></label></h5>
+                            </div>
+                            <div class="col-md-8">
+                                <select asp-for="PersonOFGAId" readonly="readonly"
+                                        class="form-control"
+                                        asp-items="@Lista"></select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-4 text-md-right">
+                                <input type="button" value="Eliminar" id="btnEliminar"
+                                       class="fa fa-trash btn btn-danger"
+                                       onclick="abrirModal()" />
+                            </div>
+                            <div class="col-md-2 text-md-center">
+                                <a asp-action="Index" type="button"
+                                   class="btn btn-success">Regresar </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+</main>
 
-
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Eliminar Denuncia', '¿Desea eliminar esta denuncia?').then((result) => {
+            if (result.value) {
+                var viewEliminar = document.getElementById("viewEliminar");
+                viewEliminar.submit();
+                Swal.fire(
+                    'Eliminado!',
+                    'La denuncia fue eliminada!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'La denuncia no fue eliminada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

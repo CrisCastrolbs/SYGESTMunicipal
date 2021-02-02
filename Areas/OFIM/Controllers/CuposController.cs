@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,63 +15,139 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
     public class CuposController : Controller
     {
         private readonly ApplicationDbContext _db;
-        List<CupoAndActividadViewModel> listaCupos = new List<CupoAndActividadViewModel>();
-        static List<CupoAndActividadViewModel> lista = new List<CupoAndActividadViewModel>();
-
+        List<CuposActividad> listaCupos = new List<CuposActividad>();
+        static List<CuposActividad> lista = new List<CuposActividad>();
         public CuposController(ApplicationDbContext db)
         {
             _db = db;
         }
 
-        public List<CupoAndActividadViewModel> BuscarCuposActividad(string nombreActividad)
-        {
-            List<CupoAndActividadViewModel> listaCupoActividad = new List<CupoAndActividadViewModel>();
-            if (nombreActividad == null || nombreActividad.Length == 0)
-            {
-                listaCupos = (from cupos in _db.Cupos
-                               join actividad in _db.Actividad
-                               on cupos.ActividadId equals actividad.Id
-                              select new CupoAndActividadViewModel
-                               {
-                                   Id = cupos.Id,
-                                   Descripcion = cupos.Descripcion.Length > 50 ?
-                                               cupos.Descripcion.Substring(0, 50)
-                                               + "..." : cupos.Descripcion,
-                                   CupoMax = cupos.CupoMax,
-                                   IsActive = cupos.IsActive,
-                                   Actividad = actividad.Name
-                               }).ToList();
-                ViewBag.Actividad = "";
-            }
-            else
-            {
-                listaCupos = (from cupos in _db.Cupos
-                               join actividad in _db.Actividad
-                               on cupos.ActividadId equals actividad.Id
-                               where actividad.Name.Contains(nombreActividad)
-                               select new CupoAndActividadViewModel
-                               {
-                                   Id = cupos.Id,
-                                   Descripcion = cupos.Descripcion.Length > 50 ?
-                                               cupos.Descripcion.Substring(0, 50)
-                                               + "..." : cupos.Descripcion,
-                                   CupoMax = cupos.CupoMax,
-                                   IsActive = cupos.IsActive,
-                                   Actividad = actividad.Name
-                               }).ToList();
-                ViewBag.Actividad = nombreActividad;
-            }
-            lista = listaCupos;
-            return listaCupos;
-        }
-
         public IActionResult Index()
         {
-            listaCupos = BuscarCuposActividad("");
+            listaCupos = (from cupos in _db.Cupos
+                          join actividad in _db.Actividad
+                          on cupos.ActividadId equals
+                          actividad.Id
+                          select new CuposActividad
+                          {
+                              Id = cupos.Id,
+                              Descripcion = cupos.Descripcion.Length > 50 ?
+                                               cupos.Descripcion.Substring(0, 50)
+                                               + "..." : cupos.Descripcion,
+                              CupoMax = cupos.CupoMax,
+                              IsActive = cupos.IsActive,
+                              ActividadId = cupos.ActividadId,
+                              Actividad = actividad.Name
+                          }).ToList();
+            lista = listaCupos;
             return View(listaCupos);
-            
-
         }
+
+        private void cargarActividades()
+        {
+            List<SelectListItem> listaActividades = new List<SelectListItem>();
+            listaActividades = (from actividad in _db.Actividad
+                                orderby actividad.Name
+                                select new SelectListItem
+                                {
+                                    Text = actividad.Category.Name + " " + actividad.Name,
+                                    Value = actividad.Id.ToString()
+                                }
+                                   ).ToList();
+            ViewBag.ListaActividades = listaActividades;
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            cargarActividades();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Cupos cupos)
+        {
+            string Error = "";
+            try
+            {
+                
+                if (ModelState.IsValid)
+                {
+                    var CuposExist = _db.Cupos.Include(s => s.Actividad).Where(s => s.ActividadId
+                                         == cupos.ActividadId
+                                         && s.ActividadId == cupos.ActividadId);
+                    if (CuposExist.Count() >= 1)
+                    {
+                        ViewBag.msgError = "Error: Este cupo ya ha sido ingresado para la Actividad " + CuposExist.First().Actividad.Name +
+                           " Por favor, use la existente, o cree otra diferente";
+                        cargarActividades();
+                        return View(cupos);
+                    }
+                    else
+                    {
+                        Cupos _cupos = new Cupos();
+                        _cupos.Id = cupos.Id;
+                        _cupos.Descripcion = cupos.Descripcion;
+                        _cupos.CupoMax = cupos.CupoMax;
+                        _cupos.IsActive = cupos.IsActive;
+                        _cupos.ActividadId = cupos.ActividadId;
+
+                        _db.Cupos.Add(_cupos);
+                        _db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            cargarActividades();
+            int recCount = _db.Cupos.Count(e => e.Id == id);
+            Cupos _cupos = (from p in _db.Cupos
+                            where p.Id == id
+                            select p).DefaultIfEmpty().Single();
+            return View(_cupos);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Cupos cupos)
+        {
+            string error = "";
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    cargarActividades();
+                    return View(cupos);
+                }
+                else
+                {
+                    _db.Cupos.Update(cupos);
+                    _db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public IActionResult Details(int id)
+        {
+            cargarActividades();
+            Cupos oCupos = _db.Cupos
+                 .Where(m => m.Id == id).First();
+            return View(oCupos);
+        }
+
         [HttpPost]
         public IActionResult Delete(int? Id)
         {
@@ -80,7 +155,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             try
             {
                 Cupos oCupos = _db.Cupos
-                     .Where(m => m.Id == Id).First();
+                               .Where(m => m.Id == Id).First();
                 _db.Cupos.Remove(oCupos);
                 _db.SaveChanges();
             }
@@ -90,102 +165,6 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-        private void cargarActividades()
-        {
-            List<SelectListItem> listaActividades = new List<SelectListItem>();
-            listaActividades = (from actividad in _db.Actividad
-                                   orderby actividad.Name
-                                   select new SelectListItem
-                                   {
-                                       Text = actividad.Name,
-                                       Value = actividad.Id.ToString()
-                                   }
-                                   ).ToList();
-            ViewBag.ListaActividades = listaActividades;
-        }
-        public IActionResult Create()
-        {
-            cargarActividades();
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Create(Cupos cupos)
-        {
-            int CupoExist = 0;
-            string Error = "";
-            try
-            {
-               
-                CupoExist = _db.Cupos.Include(s => s.Actividad).Where(s => s.ActividadId == cupos.ActividadId).Count();
-
-                if (!ModelState.IsValid || CupoExist >= 1)
-                {
-                    if (CupoExist > 1) ViewBag.msgError = "Error!: " +
-                            "Este Cupo ya ha sido creado para la actividad ";
-                    cargarActividades();
-                    return View(cupos);
-                }
-                else
-                {
-                    Cupos _cupos = new Cupos();
-                    _cupos.Id = cupos.Id;
-                    _cupos.Descripcion = cupos.Descripcion;
-                    _cupos.CupoMax = cupos.CupoMax;
-                    _cupos.IsActive = cupos.IsActive;
-
-                    _cupos.ActividadId = cupos.ActividadId;
-                    _db.Cupos.Add(cupos);
-                    _db.SaveChanges();
-                }
-            }
-            catch (Exception ex)
-            {
-                Error = ex.Message;
-            }
-            return RedirectToAction(nameof(Index));
-        }
-
-
-
-        //public IActionResult Edit(string id)
-        //{
-        //    cargarEspecialidades();
-        //    int recCount = _db.Medico.Count(e => e.MedicoId == id);
-        //    Medico _medico = (from p in _db.Medico
-        //                      where p.MedicoId.Trim() == id.Trim()
-        //                      select p).DefaultIfEmpty().Single();
-        //    return View(_medico);
-        //}
-        //[HttpPost]
-        //public IActionResult Edit(Medico medico)
-        //{
-        //    string error = "";
-        //    try
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            cargarEspecialidades();
-        //            return View(medico);
-        //        }
-        //        else
-        //        {
-        //            _db.Medico.Update(medico);
-        //            _db.SaveChanges();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        error = ex.Message;
-        //    }
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //public IActionResult Details(int id)
-        //{
-        //    cargarEspecialidades();
-        //    Medico oMedico = _db.Medico
-        //         .Where(m => m.MedicoId == id.ToString()).First();
-        //    return View(oMedico);
-        //}
     }
+
 }

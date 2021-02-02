@@ -52,8 +52,8 @@
                                         <br>
                                         <h5 class="text-black-50">Datos Generales</h5>
                                         <br>
-                               
-                                    
+
+
                                         <div class=" form-group row">
                                             <label asp-for="Name" class="col-form-label col-lg-2">Nombre</label>
                                             <div class="col-lg-9">
@@ -61,7 +61,7 @@
                                             </div>
                                             <span asp-validation-for="Name" class=" text-danger"></span>
                                         </div>
-                                       
+
                                         <div class=" form-group row">
                                             <label asp-for="CIIUId" class="col-form-label col-lg-2">Código CIIUI</label>
                                             <div class="col-lg-9">
@@ -70,7 +70,7 @@
                                             </div>
                                             <span asp-validation-for="CIIUId" class=" text-danger"></span>
                                         </div>
-                                      
+
                                         <div class=" form-group row">
                                             <label asp-for="Description" class="col-form-label col-lg-2">Descripción de Actividad</label>
                                             <div class="col-lg-9">
@@ -78,7 +78,7 @@
                                             </div>
                                             <span asp-validation-for="Description" class=" text-danger"></span>
                                         </div>
-                                     
+
                                         <div class=" form-group row">
                                             <label asp-for="NFarm" class="col-form-label col-lg-2">Nº Finca</label>
                                             <div class="col-lg-9">
@@ -86,7 +86,7 @@
                                             </div>
                                             <span asp-validation-for="NFarm" class=" text-danger"></span>
                                         </div>
-                                     
+
                                         <div class=" form-group row">
                                             <label asp-for="DesignNum" class="col-form-label col-lg-2">Nº Plano</label>
                                             <div class="col-lg-9">
@@ -94,7 +94,7 @@
                                             </div>
                                             <span asp-validation-for="DesignNum" class=" text-danger"></span>
                                         </div>
-                                     
+
                                         <div class=" form-group row">
                                             <label asp-for="WorkingHours" class="col-form-label col-lg-2">Horario de Trabajo</label>
                                             <div class="col-lg-9">
@@ -154,8 +154,8 @@
 
 
                                         @*<br>
-        <h5 class="text-black-50">Persona Fisica</h5>
-        <br>*@
+                                            <h5 class="text-black-50">Persona Fisica</h5>
+                                            <br>*@
 
 
                                         <div class=" form-group row">
@@ -176,9 +176,18 @@
                                             <span asp-validation-for="ActivityTypeId" class=" text-danger"></span>
                                         </div>
 
-                                        <div class=" form-group row">
-                                            <div class="col-lg-offset-2 col-lg-6">
-                                                <partial name="_EditAndBackToListButton" model="Model.Id" />
+                                        <div class="form-group row">
+                                            <div class="col-md-5">
+                                                <input type="button" value="Editar" id="btnEditar"
+                                                       class="btn btn-info" @*style="width: 80%;"*@
+                                                       onclick="abrirModal()" />
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <div class="col-md-5">
+                                                <a asp-action="Index" type="button"
+                                                   class="btn btn-success">Regresar </a>
                                             </div>
                                         </div>
                                     </div>
@@ -196,3 +205,28 @@
     <!--main content end-->
 
 }
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Modificar', '¿Realmente Desea modificar?').then((result) => {
+            if (result.value) {
+                var viewEditar = document.getElementById("viewEditar");
+                viewEditar.submit();
+                Swal.fire(
+                    'Modificado!',
+                    'Operación con éxito!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'Operación Fracasada!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>

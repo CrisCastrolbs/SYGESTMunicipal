@@ -11,8 +11,14 @@
 }
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
 {
-    <br />
-    <h2 class="text-info" Editar una Persona></h2>
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:#dc3545;">
+                Editar Una Persona
+            </h3>
+        </div>
+    </div>
     <br />
     <form asp-action="Edit" asp-controller="PersonaOFIM" method="post" id="viewEditar">
         <div class="container-fluid">
@@ -245,17 +251,22 @@
                 <span asp-validation-for="SeguroId" class="text-danger"></span>
             </div>
 
-            <br />
-            <br />
 
             @*End Create Register Date Field*@
-            <div class=" form-group row">
-                <div class=" col-5 offset-2">
-                    <partial name="_EditAndBackToListButtonString" model="Model.PersonaOFIMId" />
+            <div class="form-group row">
+                <div class="col-md-3 text-md-right">
+                    <input type="button" value="Editar" id="btnEditar"
+                           class="btn btn-info" @*style="width: 80%;"*@
+                           onclick="abrirModal()" />
+                </div>
+                <div class="col-md-1 text-md-center">
+                    <a asp-action="Index" type="button"
+                       class="btn btn-success">Regresar </a>
                 </div>
             </div>
         </div>
     </form>
+
     <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.js"></script>
     <script src="https://www.jonthornton.com/jquery-timepicker/jquery.timepicker.css"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -275,3 +286,28 @@
             //$("#timepicker").timepicker({ minTime: '11:00 AM', maxTime: '9:00 PM', step: '30' })
         });</script>
 }
+
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+<script>
+    function abrirModal() {
+        verModal('Modificar Datos de Persona', '¿Realmente Desea Modificar Los Datos?').then((result) => {
+            if (result.value) {
+                var viewEditar = document.getElementById("viewEditar");
+                viewEditar.submit();
+                Swal.fire(
+                    'Modificado!',
+                    'Datos de persona modificados!.',
+                    'success'
+                )
+            }
+            else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelado',
+                    'Los datos no han sido modificados!!!:)',
+                    'error'
+                )
+            }
+        })
+    }
+</script>
