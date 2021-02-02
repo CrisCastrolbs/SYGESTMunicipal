@@ -211,7 +211,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> GetEjes(int id)
+        public async Task<IActionResult> GetEmpresa(int id)
         {
             List<Empresa> empresa = new List<Empresa>();
             empresa = await (from Empresa in _db.Empresa

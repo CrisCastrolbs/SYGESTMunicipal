@@ -7,7 +7,7 @@
     List<SelectListItem> Lista2 = ViewBag.ListaPersonaOFIM;
 }
 
-@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
+@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.RedUser))
 {
     <div class="row">
         <div class="col-md-12 col-lg-12">
@@ -99,7 +99,7 @@
                     <label asp-for="Remitir" readonly class="col-form-label"></label>
                 </div>
                 <div class="col-md-6">
-                    <input type="checkbox" asp-for="Remitir" class="form-control" />
+                    <input type="checkbox" asp-for="Remitir"  readonly class="form-control" />
                 </div>
             </div>
 

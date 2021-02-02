@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SYGESTMunicipal.Utility;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,33 +29,72 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         }
         public IActionResult Index()
         {
-            listaConsulta = (from consulta in _db.Consulta 
+            if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM) || User.IsInRole(SD.RedUser))
+            {
+                listaConsulta = (from consulta in _db.Consulta
 
-                             join personaOFIM in _db.PersonaOFIM
-                             on consulta.PersonaOFIMId equals
-                             personaOFIM.PersonaOFIMId
+                                 join personaOFIM in _db.PersonaOFIM
+                                 on consulta.PersonaOFIMId equals
+                                 personaOFIM.PersonaOFIMId
 
-                             join tipoConsulta in _db.TipoConsulta
-                             on consulta.TipoConsultaId equals
-                             tipoConsulta.TipoConsultaId 
+                                 join tipoConsulta in _db.TipoConsulta
+                                 on consulta.TipoConsultaId equals
+                                 tipoConsulta.TipoConsultaId
 
-                             select new ConsultaViewModel
-                             {
-                                 ConsultaId = consulta.ConsultaId,
-                                 Motivo = consulta.Motivo,
-                                 PersonaOFIMId = personaOFIM.PersonaOFIMId,
-                                 PersonName = personaOFIM.PersonName,
-                                 TipoConsultaId = consulta.TipoConsultaId,
-                                 NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
-                                 Fecha = consulta.Fecha,
-                                 HoraInicio = consulta.HoraInicio.Value,
-                                 HoraFin = consulta.HoraFin.Value,
-                                 Descripcion = consulta.Descripcion,
-                                 RespuestaOfrecida = consulta.RespuestaOfrecida,
-                                 Remitir = consulta.Remitir
-                             }).ToList();
-            ViewBag.Controlador = "Consulta";
-            ViewBag.Accion = "Index";
+                                 select new ConsultaViewModel
+                                 {
+                                     ConsultaId = consulta.ConsultaId,
+                                     Motivo = consulta.Motivo,
+                                     PersonaOFIMId = personaOFIM.PersonaOFIMId,
+                                     PersonName = personaOFIM.PersonName,
+                                     TipoConsultaId = consulta.TipoConsultaId,
+                                     NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
+                                     Fecha = consulta.Fecha,
+                                     HoraInicio = consulta.HoraInicio.Value,
+                                     HoraFin = consulta.HoraFin.Value,
+                                     Descripcion = consulta.Descripcion,
+                                     RespuestaOfrecida = consulta.RespuestaOfrecida,
+                                     //IsActive = consulta.IsActive
+                                 }).ToList();
+                ViewBag.Controlador = "Consulta";
+                ViewBag.Accion = "Index";
+
+
+                if (User.IsInRole(SD.RedUser))
+                {
+                    listaConsulta = (from consulta in _db.Consulta
+                                     where consulta.Remitir == true
+
+                                     join personaOFIM in _db.PersonaOFIM
+                                     on consulta.PersonaOFIMId equals
+                                     personaOFIM.PersonaOFIMId
+
+                                     join tipoConsulta in _db.TipoConsulta
+                                     on consulta.TipoConsultaId equals
+                                     tipoConsulta.TipoConsultaId
+
+                                     select new ConsultaViewModel
+                                     {
+                                         ConsultaId = consulta.ConsultaId,
+                                         Motivo = consulta.Motivo,
+                                         PersonaOFIMId = personaOFIM.PersonaOFIMId,
+                                         PersonName = personaOFIM.PersonName,
+                                         TipoConsultaId = consulta.TipoConsultaId,
+                                         Remitir = consulta.Remitir,
+                                         NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
+                                         Fecha = consulta.Fecha,
+                                         HoraInicio = consulta.HoraInicio.Value,
+                                         HoraFin = consulta.HoraFin.Value,
+                                         Descripcion = consulta.Descripcion,
+                                         RespuestaOfrecida = consulta.RespuestaOfrecida,
+
+                                     }).ToList();
+                    ViewBag.Controlador = "Consulta";
+                    ViewBag.Accion = "Index";
+
+                }
+            }
+             
             return View(listaConsulta);
         }
 
@@ -203,11 +243,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Registro()
-        {
-            
-            return View();
-        }
+       
 
     }
 }

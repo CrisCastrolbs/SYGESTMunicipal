@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SYGESTMunicipal.Areas.OFGA.Models;
+using SYGESTMunicipal.Areas.OFGA.Models.ViewModel;
 using SYGESTMunicipal.Data;
 using SYGESTMunicipal.Utility;
 
@@ -170,6 +171,13 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             }
             return View(talks);
         }
+
+
+        public async Task<IActionResult> IndexTalks()
+        {
+            return View(await _db.Talks.ToListAsync());
+        }
+
 
     }
 }
