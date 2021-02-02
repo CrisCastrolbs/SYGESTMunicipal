@@ -46,6 +46,7 @@ namespace SYGESTMunicipal.Data
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Clasificacion> Clasificacion { get; set; }
         public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<Producto> Producto { get; set; }
 
 
 
