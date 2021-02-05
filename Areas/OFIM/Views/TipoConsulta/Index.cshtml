@@ -16,8 +16,13 @@
             <div class="col-md-6">
                 <h2 class="text-info">Lista de Tipo Consulta</h2>
             </div>
-            <div class="col-md-6 text-right">
-                <partial name="_CreateButtonPartial" />
+            <div class="col-6 text-right">
+                <p>
+                    <a asp-action="Create" class="btn btn-info">
+                        <i class="fas fa-plus"></i>
+                        &nbsp; Crear Nuevo
+                    </a>
+                </p>
             </div>
         </div>
 
@@ -46,9 +51,19 @@
                                 <td>@Html.DisplayFor(m => item.PersonaOFIM)</td>
 
 
-                                <a>
-                                    <partial name="_TableButtonPartialDelete" model="item.TipoConsultaId" />
-                                </a>
+                                <td style="width:300px">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn btn-primary text-white" asp-action="Edit" asp-route-Id="@Model">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-success text-white" asp-action="Details" asp-route-Id="@Model">
+                                            <i class="fas fa-list-alt"></i>
+                                        </a>
+                                        <a class="btn btn-danger text-white" asp-action="Delete" asp-route-Id="@Model">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </td>
 
                             </tr>
                         }

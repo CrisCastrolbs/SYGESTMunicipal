@@ -10,13 +10,14 @@
 {
     <br />
     <br />
+    <br />
     <div class="border backgroundWhite">
 
         <div class="row">
-            <div class="col-6">
-                <h3 class="text-info">
+            <div class="col-md-6">
+                <h2 class="text-info">
                     Lista de Cupos por Actividades
-                </h3>
+                </h2>
             </div>
             <div class="col-6 text-right">
                 <p>
@@ -64,7 +65,7 @@
             {
                 <table class="table table-hover .table-responsive" id="tbDatos" name="tbDatos">
                     <thead class="thead-dark">
-                        <tr class="table-secondary" style="text-align:left;font-size:14px;">
+                        <tr class="table-secondary" style="text-align:center;">
                             <th>@Html.DisplayNameFor(m => m.Id)</th>
                             <th>@Html.DisplayNameFor(m => m.CupoMax)</th>
                             <th>@Html.DisplayNameFor(m => m.IsActive)</th>
@@ -74,28 +75,30 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody style="text-align:left;font-size:12px;">
+                    <tbody style="text-align:center;">
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>@Html.DisplayFor(m => item.Id)</td>
-                            <td>@Html.DisplayFor(m => item.CupoMax)</td>
-                            <td>@Html.DisplayFor(m => item.IsActive)</td>
-                            <td>@Html.DisplayFor(m => item.Actividad)</td>
-                            <td>
-                                <i class="fa fa-trash btn btn-danger" aria-hidden="true"
-                                   onclick="EliminarCupos(@item.Id)"></i>
-                                <a class="fa fa-info-circle btn btn-primary" aria-hidden="true"
-                                   asp-controller="Cupos" asp-action="Details"
-                                   asp-route-id="@item.Id"></a>
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Id)</td>
+                                <td>@Html.DisplayFor(m => item.CupoMax)</td>
+                                <td>@Html.DisplayFor(m => item.IsActive)</td>
+                                <td>@Html.DisplayFor(m => item.Actividad)</td>
+                                <td>
 
-                                <a class="fa fa-pencil btn btn-info" aria-hidden="true"
-                                   asp-controller="Cupos" asp-action="Edit"
-                                   asp-route-id="@item.Id"></a>
-                            </td>
-                        </tr>
+                                    <a class="fa fa-pencil btn btn-info" aria-hidden="true"
+                                       asp-controller="Cupos" asp-action="Edit"
+                                       asp-route-id="@item.Id"></a>
+
+                                    <a class="fa fa-info-circle btn btn-primary" aria-hidden="true"
+                                       asp-controller="Cupos" asp-action="Details"
+                                       asp-route-id="@item.Id"></a>
+
+                                    <i class="fa fa-trash btn btn-danger" aria-hidden="true"
+                                       onclick="EliminarCupos(@item.Id)"></i>
+                                </td>
+                            </tr>
                         }
-                </table>
+</table>
             }
             else
             {
@@ -116,43 +119,43 @@
         </div>
     </div>
 }
-    <script src="~/js/sweetalert2.js"></script>
-    <script src="~/js/Utilitarios.js"></script>
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#tbDatos').DataTable(
-                {
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                    }
-                });
-        })
+<script>
+    $(document).ready(function () {
+        $('#tbDatos').DataTable(
+            {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+    })
 
-        function EliminarCupos(Id) {
-            document.getElementById("txtCupoId").value = Id;
-            verModal('Eliminar Cupo',
-                '¿Desea eliminar el cupo '
-                + Id + '?').then((result) => {
-                    if (result.value) {
-                        var viewEliminar = document.getElementById("viewEliminar");
-                        viewEliminar.submit();
-                        Swal.fire(
-                            'Eliminación!',
-                            'El Cupo ' + Id + 'fue eliminado!.',
-                            'success'
-                        )
-                    }
-                    else if (result.dismiss === Swal.DismissReason.cancel) {
-                        Swal.fire(
-                            'Cancelado',
-                            'El Cupo no fue eliminado!!!:)',
-                            'error'
-                        )
-                    }
-                })
-        }
+    function EliminarCupos(Id) {
+        document.getElementById("txtCupoId").value = Id;
+        verModal('Eliminar Cupo',
+            '¿Desea eliminar el cupo '
+            + Id + '?').then((result) => {
+                if (result.value) {
+                    var viewEliminar = document.getElementById("viewEliminar");
+                    viewEliminar.submit();
+                    Swal.fire(
+                        'Eliminación!',
+                        'El Cupo ' + Id + 'fue eliminado!.',
+                        'success'
+                    )
+                }
+                else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Cancelado',
+                        'El Cupo no fue eliminado!!!:)',
+                        'error'
+                    )
+                }
+            })
+    }
 
-    </script>
+</script>
 
 

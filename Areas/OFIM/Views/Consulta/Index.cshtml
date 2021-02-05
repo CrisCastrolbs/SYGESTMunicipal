@@ -9,18 +9,22 @@
 {
     <br />
     <br />
+    <br />
     <div class="border backgroundWhite">
         <div class="row">
-            <div class="col-6">
-                <h2 class="text-info">Consulta</h2>
+            <div class="col-md-6">
+                <h2 class="text-info">Registrar Consulta</h2>
             </div>
-            <div class="col-6 text-right">
-                <partial name="_CreateButtonPartial" />
+            <div class="col-md-6 text-right">
+                <p>
+                    <a asp-action="Create" class="btn btn-info">
+                        <i class="fas fa-plus"></i>
+                        &nbsp; Crear Nuevo
+                    </a>
+                </p>
             </div>
         </div>
-
         <br />
-
         <div>
             @if (Model.Count() > 0)
             {
@@ -44,23 +48,23 @@
                     <tbody style="text-align:center;">
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>@Html.DisplayFor(m => item.Motivo)</td>
-                            <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
-                            <td>@Html.DisplayFor(m => item.PersonName)</td>
-                            <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
-                            <th>@Html.DisplayNameFor(m => m.Remitir)</th>
-                            <a>
-                                <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
-                            </a>
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Motivo)</td>
+                                <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
+                                <td>@Html.DisplayFor(m => item.PersonName)</td>
+                                <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
+                                <th>@Html.DisplayNameFor(m => m.Remitir)</th>
+                                <a>
+                                    <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
+                                </a>
 
-                        </tr>
+                            </tr>
                         }
                 </table>
             }
             else
             {
-                <h3>No existen consultas...</h3>
+                <h3>No Existen Consultas...</h3>
             }
         </div>
     </div>
