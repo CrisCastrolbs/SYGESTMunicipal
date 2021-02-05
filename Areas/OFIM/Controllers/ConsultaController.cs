@@ -161,7 +161,13 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                     _consulta.RespuestaOfrecida = consulta.RespuestaOfrecida;
                     _db.Consulta.Add(_consulta);
                     _db.SaveChanges();
-                }
+
+                    if (User.IsInRole(SD.RedUser))
+                    {
+                        consulta.Remitir = true;
+
+                    }
+                    }
             }
             catch (Exception ex)
             {
