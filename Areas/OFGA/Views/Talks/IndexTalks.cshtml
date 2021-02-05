@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SYGESTMunicipal.Areas.OFGA.Models.Talks>
+
 @using SYGESTMunicipal.Utility
 @{
     ViewData["Title"] = "IndexTalks";
@@ -12,8 +13,8 @@
 
     <div class="container">
         <ol>
-            <li><a asp-area="OFGA" asp-controller="Home" asp-action="IndexTalks"></a></li>
-            
+            <li><a asp-area="OFGA" asp-controller="Talks" asp-action="IndexTalks"></a></li>
+
         </ol>
     </div>
 
@@ -29,33 +30,113 @@
                     <h2 style="color:white">CHARLAS DISPONIBLES</h2>
                 </div>
             </div>
-            <ul id="menu-filters" class="menu-filter-list list-inline text-center">
-                <li class="active btn btn-secondary ml-1 mr-1" data-filter=".menu-restaurant">Mostrar Todo</li>
 
+            <div class="breadcrumb-hero text-md-center">
+                <h2>Charlas Disponibles</h2>
+            </div>
 
+            @foreach (var item in Model)
+            {
+                <div class="backgroundWhite row">
 
-                @foreach (var item in @Model)
-                {
+                    <div class="col-md-4 border align-self-baseline">
 
-
-                 <li class="ml-1 mr-1" data-filter=".@item.Name.Replace(" ",string.Empty)">@item.Name</li>
-
-                }
-
-
-            </ul>
-
-                @foreach (var item in @Model)
-                {
-
-                   
-                    <div class="row" id="menu-wrapper">
-                        <partial name="_ThumbnailAreaPartialTalks"
-                                 model="@Model.Where(u=>u.IsActive== true).ToList()" />
+                        @{
+                            var base64 = Convert.ToBase64String(item.Picture);
+                            var imgsrc = string.Format("data:image/jpg;base64, {0}", base64);
+                        }
+                        <img src="@imgsrc" style="height: 100%; width:110%" />
                     </div>
+                    <div class="col-xl-6 pt-4 pt-lg-0 content">
+                        <div class="container">
+                            <br />
+                            <br />
 
-                }
-            
+                        </div>
+                        <br />
+                        <br />
+                        <fieldset disabled>
+                            <div class="form-group row col-md-7 text-right">
+                                <h5>
+                                    <div class="col-md-7 text-right" style="color:green;text-shadow: 2px 2px 5px #000">
+
+                                        <th>@Html.DisplayNameFor(m => m.Name):</th>
+                                    </div>
+                                </h5>
+
+                                <h6>
+                                    <div class="col-md-7" style="color:white;text-shadow: 2px 2px 5px #000">
+
+                                        <td>@Html.DisplayFor(m => item.Name)</td>
+                                    </div>
+                                </h6>
+                            </div>
+
+                            <div class="form-group row col-md-7 text-right">
+                                <h5>
+                                    <div class="col-md-7 text-right" style="color:green;text-shadow: 2px 2px 5px #000">
+
+                                        <th>@Html.DisplayNameFor(m => m.Description):</th>
+                                    </div>
+                                </h5>
+                                <h6>
+                                    <div class="col-md-8" style="color:white;text-shadow: 2px 2px 5px #000">
+
+                                        <td>@Html.DisplayFor(m => item.Description)</td>
+                                    </div>
+                                </h6>
+                            </div>
+
+                            <div class="form-group row col-md-7 text-right">
+                                <h5>
+                                    <div class="col-md-7 text-right" style="color:green;text-shadow: 2px 2px 5px #000">
+
+                                        <th>@Html.DisplayNameFor(m => m.Date):</th>
+                                    </div>
+                                </h5>
+                                <div class="col-md-7" style="color:white;text-shadow: 2px 2px 5px #000">
+                                    <td>@Html.DisplayFor(m => item.Date)</td>
+                                </div>
+                            </div>
+
+                            @*<div class="form-group row">
+            <div class="col-md-3 text-right">
+                <h5><label asp-for="Description" class="custom-label">Descripción: </label></h5>
+            </div>
+            <div class="col-md-9">
+                <textarea asp-for="Description" readonly rows="4" cols="50"
+                          class="form-control"> </textarea>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3 text-right">
+                <h5><label asp-for="Date" class="col-form-label">     Fecha: </label></h5>
+            </div>
+            <div class="col-md-7">
+                <input asp-for="Date" readonly type="datetime" class="form-control" />
+            </div>
+        </div>*@
+                        </fieldset>
+                        <br />
+                        <div class="form-group row">
+                            @*<div class="col-md-8 text-md-center">
+                            <a asp-action="Index" type="button"
+                               class="btn btn-success">Regresar </a>
+                        </div>*@
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+            }
+
+
+
+
         </div>
     </section>
     @section Scripts{
