@@ -117,7 +117,7 @@
     function EliminarActividad(Id) {
         document.getElementById("txtActividadId").value = Id;
         verModal('Eliminar Actividad',
-            '¿Desea eliminar el actividad '
+            '¿Desea eliminar la actividad '
             + Id + '?').then((result) => {
                 if (result.value) {
                     var viewEliminar = document.getElementById("viewEliminar");

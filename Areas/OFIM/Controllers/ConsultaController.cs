@@ -46,7 +46,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                      ConsultaId = consulta.ConsultaId,
                                      Motivo = consulta.Motivo,
                                      PersonaOFIMId = personaOFIM.PersonaOFIMId,
-                                     PersonName = personaOFIM.PersonName,
+                                     PersonName = personaOFIM.PersonName + " " + personaOFIM.LatName1,
                                      TipoConsultaId = consulta.TipoConsultaId,
                                      NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
                                      Fecha = consulta.Fecha,
@@ -54,7 +54,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                      HoraFin = consulta.HoraFin.Value,
                                      Descripcion = consulta.Descripcion,
                                      RespuestaOfrecida = consulta.RespuestaOfrecida,
-                                     //IsActive = consulta.IsActive
+                                      Remitir = consulta.Remitir,
                                  }).ToList();
                 ViewBag.Controlador = "Consulta";
                 ViewBag.Accion = "Index";
@@ -78,16 +78,15 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                          ConsultaId = consulta.ConsultaId,
                                          Motivo = consulta.Motivo,
                                          PersonaOFIMId = personaOFIM.PersonaOFIMId,
-                                         PersonName = personaOFIM.PersonName,
+                                         PersonName = personaOFIM.PersonName + " " + personaOFIM.LatName1,
                                          TipoConsultaId = consulta.TipoConsultaId,
-                                         Remitir = consulta.Remitir,
                                          NombreTipoConsulta = tipoConsulta.NombreTipoConsulta,
                                          Fecha = consulta.Fecha,
                                          HoraInicio = consulta.HoraInicio.Value,
                                          HoraFin = consulta.HoraFin.Value,
                                          Descripcion = consulta.Descripcion,
                                          RespuestaOfrecida = consulta.RespuestaOfrecida,
-
+                                         Remitir = consulta.Remitir,
                                      }).ToList();
                     ViewBag.Controlador = "Consulta";
                     ViewBag.Accion = "Index";
@@ -105,7 +104,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                 orderby personaOFIM.PersonName
                                 select new SelectListItem
                                 {
-                                    Text = personaOFIM.PersonName + " " + personaOFIM.LatName1,
+                                    Text = personaOFIM.PersonaOFIMId + " - " + personaOFIM.PersonName + " " + personaOFIM.LatName1,
                                     Value = personaOFIM.PersonaOFIMId.ToString()
                                 }
                                    ).ToList();
@@ -174,30 +173,30 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int? ConsultaId)
         {
             cargarPersonaOFIM();
             cargarTipoConsulta();
-            int recCount = _db.Consulta.Count(e => e.ConsultaId == id);
-            Consulta _consulta = (from p in _db.Consulta
-                                  where p.ConsultaId == id
-                                  select p).DefaultIfEmpty().Single();
-            return View(_consulta);
+            Consulta oConsulta = (from c in _db.Consulta
+                                  where c.ConsultaId == ConsultaId
+                                  select c).DefaultIfEmpty().Single();
+
+            return View(oConsulta);
         }
         [HttpPost]
         public IActionResult Edit(Consulta consulta)
         {
-            string error = "";
+            string error;
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    cargarPersonaOFIM();
-                    cargarTipoConsulta();
+                    
                     return View(consulta);
                 }
                 else
                 {
+                    
                     _db.Consulta.Update(consulta);
                     _db.SaveChanges();
                 }
@@ -209,45 +208,36 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Details(int ConsultaId)
         {
             cargarPersonaOFIM();
             cargarTipoConsulta();
             Consulta oConsulta = _db.Consulta
-                       .Where(e => e.ConsultaId == id).First();
+                       .Where(e => e.ConsultaId == ConsultaId).First();
             return View(oConsulta);
         }
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
 
-            }
-            var consulta = await _db.Consulta.FindAsync(id);
-            if (consulta == null)
-            {
-                return NotFound();
-
-            }
-            return View(consulta);
-        }
-        //POST - DELETE    //si se realiza una operacion es un POST
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
+        [HttpPost]
+        public IActionResult Delete(int? Id)
         {
-            var consulta = await _db.Consulta.FindAsync(id);
-            if (consulta == null)
+            string Error = "";
+            try
             {
-                return View();
+                Consulta oConsulta = _db.Consulta
+                      .Where(c => c.ConsultaId == Id).First();
+               
+                    _db.Consulta.Remove(oConsulta);
+                    _db.SaveChanges();
+                
             }
-            _db.Consulta.Remove(consulta);
-            await _db.SaveChangesAsync();
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
             return RedirectToAction(nameof(Index));
         }
 
-       
+
 
     }
 }
