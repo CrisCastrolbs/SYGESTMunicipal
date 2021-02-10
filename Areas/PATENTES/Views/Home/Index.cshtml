@@ -1,564 +1,256 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutPATENTES.cshtml";
+    Layout = "~/Views/Shared/_LayoutOPatentes.cshtml";
 }
 
-<!--main content start-->
-<section id="main-content">
-    <section class="wrapper">
-        <!--overview start-->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="logo-img">
-                    <a asp-area="PATENTES" asp-controller="Home" asp-action="Index">
-                        <img src="~/images/LogoMuni2.png" alt="">
-                    </a>
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+        <h1>Oficina de Patentes</h1>
+        <h2>Municipalidad de Hojancha</h2>
+        @*<a asp-area="Identity" asp-page="/Account/Login" class="btn-get-started scrollto">Inicio de Sesión</a>*@
+        <br />
+        <h2><partial name="_LoginPartialOFGA"></h2>
+    </div>
+</section><!-- End Hero -->
 
+<main id="main">
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <h3 class="text-light"
+                style="text-align:center;background-color:#263182;">
+                Objetivo de la Oficina de Patentes
+            </h3>
+        </div>
+    </div>
+    <br />
+    <br />
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+            <br />
+            <div class="row">
+                <div class="col-lg-6 video-box align-self-baseline">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <img src="~/Patentes/assets/img/gallery-1.jpg" class="img-fluid" alt="">
                 </div>
-                <ol class="breadcrumb">
+                <div class="col-lg-6 pt-3 pt-lg-0 content">
+                    <h3>Oficina de Patentes.</h3>
+                    <p class="font-italic">
+                        Establecida para Contribuir al desarrollo económico del cantón.
+                    </p>
+                    <ul>
+                        <li>
+                            <i class="bx bx-check-double"></i>Para que las personas físicas o jurídicas que se dediquen al ejercicio de actividades comerciales, puedan contar con la patente que los autorice para tal activida.
+                        </li>
+
+                        <li><i class="bx bx-check-double"></i> Estas actividades estarán obligadas a pagarle a la Municipalidad un impuesto de patentes que les dará facultad para ejercer esas actividades. </li>
+
+                        <li>
+                            <i class="bx bx-check-double"></i> Esto de conformidad con los artículos 3, 4 y 15 de la ley de patentes.
+                        </li>
+
+                    </ul>
+                    <p>
+                        Garantizando con esto que los productos o servicios ofrecidos a la comunidad cumplan con las leyes pertinentes tanto de salubridad, ambiente, pago de impuestos, entre otras.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- End About Section -->
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div id="inicio_Servicios" class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2> Pasos para la solicitud de Patentes</h2>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Services Section ======= -->
+    <section class="services  section-bg ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                        <div class="icon"><i class="las la-file-alt" style="color: #d6ff22;"></i></div>
+                        <h4 class="title">Paso #1</h4>
+                        <p class="description">Registrarse.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="las la-book" style="color:#3fcdc7;"></i></div>
+                        <h4 class="title">Paso #2</h4>
+                        <p class="description">Completar el formulario solicitado de patentes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                        <div class="icon"><i class="las la-file-alt" style="color: #3fcdc7;"></i></div>
+                        <h4 class="title">Paso #3</h4>
+                        <p class="description">Preparar la documentación solicitada en el formulario de patentes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="las la-book" style="color: #d6ff22;"></i></div>
+                        <h4 class="title">Paso #4</h4>
+                        <p class="description">Adjuntar los documentos solicitados en los campos correspondientes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <div class="icon"><i class="las la-file-alt" style="color: #d6ff22;"></i></div>
+                        <h4 class="title">Paso #5</h4>
+                        <p class="description">Descargar el comprobante que se le mostrará, cuando haya llenado todos los campos del formulario.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="las la-book" style="color: #3fcdc7;"></i></div>
+                        <h4 class="title">Paso #6</h4>
+                        <p class="description">Imprimir el comprobante y llevarlo presencialmente a la Municipalidad de Hojancha.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Services Section -->
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div id="requerimientos" class="breadcrumb-hero">
+            <div class="container">
+                <div class="breadcrumb-hero">
+                    <h2>Requerimiento para Solicitud de Patentes por Primera Vez</h2>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <br />
+    <!-- ======= Work Process Section ======= -->
+    <section id="work-process" class="work-process">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-up">
+                <h2>Lista de Requisitos para Resolución de Ubicación. </h2>
+            </div>
+
+            <div class="row content">
+                <div class="col-md-5" data-aos="fade-right">
+                    <img src="/Patentes/assets/img/work-process-1.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-7 pt-4" data-aos="fade-left">
+                    <h3>Requisitos Necesarios.</h3>
+                    <ul>
+                        <li><i class="icofont-check"></i> Formulario único y declaración firmada debidamente llenos.</li>
+                        <li>
+                            <i class="icofont-check"></i> Presentar la cédula de identidad en caso de ser costarricense o DIMEX (Documento de Identidad Migratoria para Extranjeros)
+                            en sus diversos estatus migratorios que le permitan laboral, en caso de ser extranjero(a).
+                        </li>
+                        <li>
+                            <i class="icofont-check"></i> Presentar certificación de personería jurídica, con una fecha de emisión máxima de 3 meses (La certificaciones digitales, expedidas por el registro público,
+                            tendrán una vigencia de 15 días hábiles).
+                        </li>
+                        <li><i class="icofont-check"></i> Plano catastrado (Se revisa internamente en la Municipalidad, pero si el mismo no se encuentra en la base de datos, el solicitante tendrá que presentarlo físicamente).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row content">
+                <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+                    <img src="/Patentes/assets/img/work-process-2.png" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-7 pt-4" data-aos="fade-left">
+                    <h3>Listados de Requisitos para Licencia Comercial.</h3>
+                    <ul>
+                        <li><i class="icofont-check"></i> Presentar póliza de riesgos de trabajo (Emitida por entidad aseguradora o exoneracón).</li>
+                        <li>
+                            <i class="icofont-check"></i> Inscribirse como contribuyente ante el Ministerio de Hacienda (para la actividad solicitada).
+                        </li>
+                        <li>
+                            <i class="icofont-check"></i> Contrato de arrendamiento ( en caso de que no exista contrato por escrito, se deberá presentar una nota de autorizacón del propietario del inmueble, cuya firma deberá estar debidamente autenticada).
+                        </li>
+                        <li><i class="icofont-check"></i> Timbres fiscales ( cien colones en timbres fiscales o pago del entero).</li>
+                        <li>
+                            <i class="icofont-check"></i> Comprobante de pago o exoneración, según corresponda ( A favor del Servicio Nacional de Salud Animal del MAG o a favor del Ministerio de Salud, según corresponda o bien, el comprobante de exoneración
+                            del pago, extendido por el IMAS.
+                        </li>
+                        <li><i class="icofont-check"></i> Regente o asesor médico veterinario, aprobado por el Colegio de Médicos Veterinarios (cuando aplique).</li>
+                        <li><i class="icofont-check"></i> Presentar autorización por concepto de Derechos de Autor ACAM (cuando aplique).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row content">
+            <div class="col-md-5" data-aos="fade-right">
+                <img src="/Patentes/assets/img/work-process-3.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-7 pt-5" data-aos="fade-left">
+                <h3>Lista de Requisitos que el Usuario No Debe presentar, pero Sí su Cumplimento.</h3>
+                <ul>
                     <li>
-                        <i class="fa fa-home"></i>
-                        @*<div class="nav-item">
-                    <a class="nav-link" asp-area="PATENTES" asp-controller="Home" asp-action="Index">Inicio</a>
-                </div>*@
+                        <i class="icofont-check"></i> Estar al día con los pagos de:<br />
+                        Caja Costarricense de Seguro Social y FODESAF.
                     </li>
-                    <li><i class="icon_document_alt"></i>Oficina de Patentes</li>
-                </ol>
+                    <li>
+                        <i class="icofont-check"></i> No estar moroso con la Ley N° 9028 (El Ministerio de Salud revisa en el sistema que el solicitante no se encuentre moroso en el registro de infractores de la Ley General de Control de Tabaco y sus Efectos
+                        Nocivos en la Salud).
+                    </li>
+                    <li>
+                        <i class="icofont-check"></i> Estidio registral de la propiedad (la Municipalidad revias internamente el estudio registral de la propiedad a efectos de verificar que coincida la información que ahí consta con la información aportada en el formulario y
+                        contrato de arrendamiento. Al no ser una certificación, no se cobrará al usuario).
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-md-5 order-1 order-md-2" data-aos="fade-left">
+                <img src="/Patentes/assets/img/work-process-4.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-7 pt-5 order-2 order-md-1" data-aos="fade-right">
+                <h3>Requisitos para Renovación<br /> del Permiso Sanitario de Funcionamiento</h3>
+                <ul>
+                    <li>
+                        <i class="icofont-check"></i>Formulario único y declaración jurada llenos.
+                    </li>
+                    <li>
+                        <i class="icofont-check"></i>Presentar comprobante de pago a favor del Ministerio de Salud.
+                    </li>
+                    <li>
+                        <i class="icofont-check"></i>Certificación de verificación de las instalaciones electricas vigentes (cuando aplique).
+                    </li>
+                    <li>
+                        <i class="icofont-check"></i>Presentar otros requisitos ( en caso de que hubiera vencido o cambiado el hecho generador).
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <!-- principal -->
-        <div class="row">
-            <!-- profile-widget -->
-            <div class="col-lg-12">
-                <div class="profile-widget profile-widget-info">
-                    <div class="panel-body">
-                        <div class="col-lg-2 col-sm-2">
-                            <h4>Luis Agüero Valverde</h4>
-                            <div class="follow-ava">
-                                <img src="~/Patentes/img/Luis.jpg" alt="">
-                            </div>
-                            <p>Coordinador<br> Oficina de Patentes</p>
-                        </div>
-                        <div class="col-lg-4 col-sm-4 follow-info">
-                            <h2>Bienvenidos al Departamento de Patentes.</h2>
-
-                        </div>
-
-                        <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                            <ul>
-                                <li class="active">
-                                    <i class="fa fa-comments fa-2x"></i>
-                                    <br>
-                                    Las personas físicas o jurídicas que se dediquen al
-                                    ejercicio de actividades lucrativas en el cantón de Hojancha.
-                                    <br>
-                                    <br>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                            <ul>
-                                <li class="active">
-
-                                    <i class="fa fa-comments fa-2x"> </i><br>
-                                    Estas actividades estarán obligadas a pagarle a la Municipalidad un impuesto de patentes que las
-                                    faculte para ejercer esas actividades.
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="col-lg-2 col-sm-6 follow-info weather-category">
-                            <ul>
-                                <li class="active">
-                                    <i class="fa fa-comments fa-2x"></i><br><br><br>
-                                    De conformidad con los artículos 3, 4 y 15 de esta ley.
-                                    <br>
-                                    <br>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <div class="row content">
+            <div class="col-md-5" data-aos="fade-right">
+                <img src="/Patentes/assets/img/work-process-3.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-7 pt-5" data-aos="fade-left">
+                <h3>Lista de Requisitos para Actualización de Registros de Certificado Veterinario de Operación.</h3>
+                <ul>
+                    <li>
+                        <i class="icofont-check"></i>Formulario único y Declaración Jurada debidamente llenos.</li>
+                    <li>
+                        <i class="icofont-check"></i>Presentar comprobante de pago a favor del Servicio Nacional de Salud Animal del MAG.</li>
+                    <li>
+                        <i class="icofont-check"></i>Presentar otros requisitos ( en caso de que hubiera vencido o cambiado el hecho generador).</li>
+                </ul>
             </div>
         </div>
-        <!-- page start-->
-
-        <div class="row">
-            <div class="col-lg-12">
-                <section class="panel">
-                    <header class="panel-heading tab-bg-info">
-                        <ul class="nav nav-tabs">
-                            <li class="active">
-                                <a data-toggle="tab" href="#recent-activity">
-                                    <i class="icon-home"></i>
-                                    Pasos para la solicitud de patentes
-                                </a>
-                            </li>
-                            <li>
-                                <a data-toggle="tab" href="#profile">
-                                    <i class="icon-user"></i>
-                                    Contáctenos
-                                </a>
-                            </li>
-                            <li class="">
-                                <a data-toggle="tab" href="#edit-profile">
-                                    <i class="icon-envelope"></i>
-                                    Información
-                                </a>
-                            </li>
-                        </ul>
-                    </header>
-
-                    <!--Pasos-->
-                    <div class="panel-body">
-                        <div class="tab-content">
-                            <div id="recent-activity" class="tab-pane active">
-                                <div class="profile-activity">
-                                    
-                                    <div class="act-time">
-                                        <div class="activity-body act-in">
-                                            <span class="arrow"></span>
-                                            <div class="text">
-                                                <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                <p class="attribution"><a style="color:teal;font-size: 20px">Paso #1</a></p>
-                                                <p>Registrarse</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="act-time">
-                                        <div class="activity-body act-in">
-                                            <span class="arrow"></span>
-                                            <div class="text">
-                                                <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                <p class="attribution"><a style="color:teal;font-size: 20px">Paso #2</a></p>
-                                                <p>Completar el formulario Solicitud de Patentes</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="act-time">
-                                        <div class="activity-body act-in">
-                                            <span class="arrow"></span>
-                                            <div class="text">
-                                                <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                <p class="attribution"><a style="color:teal;font-size: 20px">Paso #3</a></p>
-                                                <p>Preparar la documentación solicitada</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="act-time">
-                                        <div class="activity-body act-in">
-                                            <span class="arrow"></span>
-                                            <div class="text">
-                                                <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                <p class="attribution"><a style="color:teal;font-size: 20px">Paso #4</a></p>
-                                                <p>
-                                                    Adjuntar los documentos solicitados
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="act-time">
-                                        <div class="activity-body act-in">
-                                            <span class="arrow"></span>
-                                            <div class="text">
-                                                <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                <p class="attribution"><a style="color:teal;font-size: 20px">Paso #5</a></p>
-                                                <p>
-                                                    Descargar el comprobante de Solicitud
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- Contacto -->
-                            <div id="profile" class="tab-pane">
-                                <section class="panel">
-                                    <div class="bio-graph-heading">
-                                        <h2 class="subheading" style="color:white;font-size: 30px"> Hola, Bienvenidos.</h2>
-                                    </div>
-                                    <div class="panel-body bio-graph-info">
-                                        <h1 style="color:black;text-shadow: 1px 1px 4px #000">Contáctenos</h1>
-                                        <div class="row">
-                                            <div class="bio-row">
-                                                <p  style="color:black;font-size: 20px">
-                                                <span style="color:teal;font-size: 20px">
-                                                    Dirección:</span>Costado del Parque </p>
-                                            </div>
-                                            <div class="bio-row" >
-                                                <p  style="color:black;font-size: 20px"><span style="color:teal;font-size: 20px">Correo:</span>info@munihojancha.com</p>
-                                            </div>
-                                            <div class="bio-row"  >
-                                                <p  style="color:black;font-size: 20px"><span style="color:teal;font-size: 20px">Teléfonos:</span>2659 9116</p>
-                                            </div>
-                                            <div class="bio-row" >
-                                                <p  style="color:black;font-size: 20px"><span  style="color:teal;font-size: 20px">Horario de Atención:</span>Lunes a Viernes de 7:30 am a 3:30 pm</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <!-- Información -->
-                            <div id="edit-profile" class="tab-pane">
-                            <section class="panel">
-                                <div class="panel-body bio-graph-info">
-
-
-                                    <h3 style="color:black;text-shadow: 1px 1px 4px #000">Para Solicitar una Patente por Primera Vez</h3>
-                                    <h1 style="color:black;text-shadow: 1px 1px 4px #000"> Listado de requisitos, para RESOLUCIÓN DE UBICACIÓN</h1>
-                                    <div class="profile-activity">
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <h1 class="attribution">
-                                                        <a style="color:teal;font-size: 20px" ;> Formulario único y declaración jurada debidamente llenos</a>
-                                                    </h1>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution">
-                                                        <a style="color:teal;font-size: 20px">
-                                                            Presentar la cédula de identidad en caso de ser costarricense, o DIMEX
-
-                                                        </a>
-                                                    </p>
-                                                    <p>
-                                                        (Documento de Identidad Migratoria para Extranjeros), en sus diversos estatus
-                                                        migratorios que le permitan laborar, en caso de ser extranjero.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Presentar certificación de personería jurídica con una fecha de emisión máxima de tres meses.                                </a></p>
-                                                    <p>
-                                                        Las certificaciones digitales expedidas por el Registro
-                                                        Público, tendrán una vigencia de quince días hábiles.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Plano catastrado</a></p>
-                                                    <p>
-                                                        (se revisa internamente en la municipalidad, pero si el mismo
-                                                        no se encuentra en la base de datos el solicitante deberá presentarlo
-                                                        físicamente)
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <h1 style="color:black;text-shadow: 1px 1px 4px #000"> Listado de requisitos, para LICENCIA COMERCIAL</h1>
-                                    <div class="profile-activity">
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Presentar Póliza de Riesgos de Trabajo</a></p>
-                                                    <p>
-                                                        Emitida por entidad aseguradora o
-                                                        exoneración
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Inscribirse como contribuyente ante el Ministerio de Hacienda</a></p>
-                                                    <p>
-                                                        (para la
-                                                        actividad solicitada)
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Contrato de Arrendamiento</a></p>
-                                                    <p>
-                                                        En caso de que no exista contrato por escrito se
-                                                        deberá presentar una nota de autorización del propietario del inmueble cuya
-                                                        firma deberá estar debidamente autenticada
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Timbres Fiscales</a></p>
-                                                    <p>
-                                                        Cien colones en timbres fiscales o pago del entero
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Comprobante de Pago o Exoneración, según Corresponda</a></p>
-                                                    <p>
-                                                        a favor del Servicio Nacional de Salud Animal
-                                                        del MAG o a favor del Ministerio de Salud, según corresponda, o bien, el
-                                                        comprobante de exoneración del pago extendido por el IMAS
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution">
-                                                        <a style="color:teal;font-size: 20px">
-                                                            Regente o asesor médico veterinario aprobado por el Colegio de Médicos
-                                                            Veterinarios
-                                                        </a>
-                                                    </p>
-                                                    <p>
-                                                        (cuando aplique)
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution">
-                                                        <a style="color:teal;font-size: 20px">
-                                                            Presentar Autorización por concepto de derechos de autor ACAM
-                                                        </a>
-                                                    </p>
-                                                    <p>
-                                                        (cuando aplique)
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <h1 style="color:black;text-shadow: 1px 1px 4px #000"> Lista de Requisitos que el usuario no debe presentarlos, pero si su cumplimiento</h1>
-                                    <div class="profile-activity">
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Estar al día con los pagos de:</a></p>
-                                                    <p>
-                                                        Caja
-                                                        Costarricense de Seguro Social y FODESAF
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px"> Estar al día con los pagos</a></p>
-                                                    <p>
-                                                        Tanto el solicitante y el dueño del inmueble donde se va a desarrollar la
-                                                        actividad, estén al día en el pago de impuestos y servicios municipales
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">No estar moroso con la Ley N° 9028</a></p>
-                                                    <p>
-                                                        Ministerio de Salud: revisa en el sistema que el solicitante no se encuentre
-                                                        moroso en el Registro de Infractores,  de “Ley General del Control
-                                                        del Tabaco y sus Efectos Nocivos en la Salud".
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Estudio registral de la propiedad</a></p>
-                                                    <p>
-                                                        La Municipalidad revisará internamente el estudio registral de la propiedad a efectos de
-                                                        verificar que coincida la información que ahí consta con la información aportada en el
-                                                        formulario y contrato de arrendamiento. Al no ser una certificación no se cobrará al usuario
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <h3 style="color:black;text-shadow: 1px 1px 4px #000">Para renovación del Permiso Sanitario de Funcionamiento:</h3>
-                                    <h1 style="color:black;text-shadow: 1px 1px 4px #000">
-                                        Listado de requisitos, para  RENOVACIÓN del Permiso
-                                        Sanitario de Funcionamiento
-                                    </h1>
-
-                                    <div class="profile-activity">
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Formulario único y declaración jurada debidamente llenos</a></p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Presentar comprobante de pago a favor del </a></p>
-                                                    <p>Ministerio de Salud</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Certificado de verificación de las instalaciones eléctricas vigentes</a></p>
-                                                    <p>
-                                                        (cuando
-                                                        aplique)
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Presentar otros requisitos</a></p>
-                                                    <p>
-                                                        en caso de que hubiera vencido o cambiado el hecho
-                                                        generador
-
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <h3 style="color:black;text-shadow: 1px 1px 4px #000">Para actualización de Registro del Certificado Veterinario de Operación:</h3>
-                                    <h1 style="color:black;text-shadow: 1px 1px 4px #000">
-                                        Listado de requisitos, para  ACTUALIZACIÓN de Registro de
-                                        Certificado Veterinario de Operación
-                                    </h1>
-
-                                    <div class="profile-activity">
-
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Formulario único y declaración jurada debidamente llenos</a></p>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Presentar comprobante de pago a favor de</a></p>
-                                                    <p>
-                                                        Servicio Nacional de Salud Animal
-                                                        del MAG.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="act-time">
-                                            <div class="activity-body act-in">
-                                                <span class="arrow"></span>
-                                                <div class="text">
-                                                    <a style="color:teal;font-size: 20px" class="activity-img"><img class="avatar" src="~/Patentes/img/informacion.png" alt=""></a>
-                                                    <p class="attribution"><a style="color:teal;font-size: 20px">Presentar otros requisitos</a></p>
-                                                    <p>
-                                                        en caso de que hubiera vencido o cambiado el hecho
-                                                        generador
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-
-
-                                </div>
-                            </section>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-      </section>
-</section>
-<!--main content end-->
-<!-- container section start -->
+    </section><!-- End Work Process Section -->
+</main><!-- End #main -->
