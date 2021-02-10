@@ -785,7 +785,7 @@ section {
 
 .services .description {
   font-size: 14px;
-  margin-left: 40px;
+  margin-left: 60px;
   line-height: 24px;
   margin-bottom: 0;
 }
@@ -2240,7 +2240,9 @@ section {
     background: #263182 !important;
     z-index: 3;
     padding: 0;
+
 }
+
 
 .ftco-navbar-light .navbar-nav > .nav-item.active > a {
     color: #95C93D;
@@ -2277,3 +2279,4 @@ section {
     top: 0;
     left: 0;
 }
+

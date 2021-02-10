@@ -10,60 +10,129 @@
 {
     <br />
     <br />
+    <br />
     <div class="border backgroundWhite">
         <div class="row">
-            <div class="col-6">
-                <h2 class="text-info">Consulta</h2>
+            <div class="col-md-6">
+                <h2 class="text-info">Registrar Consulta</h2>
             </div>
-            <div class="col-6 text-right">
-                <partial name="_CreateButtonPartial" />
+            <div class="col-md-6 text-right">
+                <p>
+                    <a asp-action="Create" class="btn btn-info">
+                        <i class="fas fa-plus"></i>
+                        &nbsp; Crear Nuevo
+                    </a>
+                </p>
             </div>
         </div>
-
         <br />
-
         <div>
             @if (Model.Count() > 0)
             {
-                <table class="table table-hover .table-responsive" id="TbConsulta">
-                    <thead class="thead-dark">
-                        <tr class="table-secondary" style="text-align:center;">
+            <table class="table table-hover .table-responsive" id="tbDatos" name="tbDatos">
+                <thead class="thead-dark">
+                    <tr class="table-secondary" style="text-align:center;">
 
-                            <th>@Html.DisplayNameFor(m => m.Motivo)</th>
-                            <th>@Html.DisplayNameFor(m => m.Fecha)</th>
-                            <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
-                            <th>@Html.DisplayNameFor(m => m.TipoConsultaId)</th>
-                            <th>@Html.DisplayNameFor(m => m.Remitir)</th>
+                        <th>@Html.DisplayNameFor(m => m.Motivo)</th>
+                        <th>@Html.DisplayNameFor(m => m.Fecha)</th>
+                        <th>@Html.DisplayNameFor(m => m.PersonaOFIMId)</th>
+                        <th>@Html.DisplayNameFor(m => m.TipoConsultaId)</th>
+                        <th>@Html.DisplayNameFor(m => m.Remitir)</th>
 
 
 
-                            <th>Operaciones</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody style="text-align:center;">
-                        @foreach (var item in Model)
-                        {
+                        <th>Operaciones</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center;">
+                    @foreach (var item in Model)
+                    {
                         <tr>
                             <td>@Html.DisplayFor(m => item.Motivo)</td>
                             <td>@Html.DisplayFor(m => item.Fecha, "{0:dd/MM/yyyy}")</td>
                             <td>@Html.DisplayFor(m => item.PersonName)</td>
                             <td>@Html.DisplayFor(m => item.NombreTipoConsulta)</td>
-                            <th>@Html.DisplayNameFor(m => m.Remitir)</th>
-                            <a>
-                                <partial name="_TableButtonPartialDelete" model="item.ConsultaId" />
-                            </a>
+                            <td>@Html.DisplayFor(m => item.Remitir)</td>
+                            <td style="width:300px">
+                                <div class="btn-group" role="group">
+                                    <a class="btn btn-primary text-white"
+                                       asp-controller="Consulta"
+                                       asp-action="Edit" asp-route-id="@item.ConsultaId">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-success text-white"
+                                       asp-controller="Consulta"
+                                       asp-action="Details" asp-route-id="@item.ConsultaId">
+                                        <i class="fas fa-list-alt"></i>
+                                    </a>
+                                    <i class="fa fa-trash btn btn-danger" aria-hidden="true"
+                                       onclick="EliminarConsulta(@item.ConsultaId)"></i>
+
+                                </div>
+                            </td>
 
                         </tr>
-                        }
-                </table>
+                    }
+            </table>
             }
             else
             {
-                <h3>No existen consultas...</h3>
+                <h3>No Existen Consultas...</h3>
             }
+
+            <form asp-action="Delete" asp-controller="Consulta" method="post" id="viewEliminar">
+                <input type="hidden" id="txtConsultaId" name="Id" />
+            </form>
+            <form asp-action="Edit" asp-controller="Consulta" method="post" id="viewEditar">
+                <input type="hidden" id="txtConsultaId" name="Id" />
+            </form>
+
+            <form asp-action="exportar" target="_blank" asp-controller="Consulta" asp-route-id="tbDatos"
+                  method="post" id="viewExportarPDF">
+                <input type="hidden" id="txtBuscar" name="txtBuscar" />
+            </form>
+
         </div>
     </div>
 }
 
+<script src="~/js/sweetalert2.js"></script>
+<script src="~/js/Utilitarios.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#tbDatos').DataTable(
+            {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                }
+            });
+    })
+
+    function EliminarConsulta(Id) {
+        document.getElementById("txtConsultaId").value = Id;
+        verModal('Eliminar Consulta',
+            '¿Desea eliminar la consulta '
+            + Id + '?').then((result) => {
+                if (result.value) {
+                    var viewEliminar = document.getElementById("viewEliminar");
+                    viewEliminar.submit();
+                    Swal.fire(
+                        'Eliminación!',
+                        'La Consulta ' + Id + ' fue eliminada!.',
+                        'success'
+                    )
+                }
+                else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Cancelado',
+                        'La Consulta no fue eliminada!!!:)',
+                        'error'
+                    )
+                }
+            })
+    }
+
+</script>
