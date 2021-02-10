@@ -166,36 +166,21 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
         }
 
         //GET - DELETE
-        public async Task<IActionResult> Delete(int? id)
+      
+       public async Task<IActionResult> Delete(int? Id)
         {
-            if (id == null)
+            string Error = "";
+            try
             {
-                return NotFound();
-            }
+                var actividadDelete = await _db.Actividad.Include(m => m.Category).Include(m => m.Eje).SingleOrDefaultAsync(m => m.Id == Id);
 
-            ActividadVM.Actividad = await _db.Actividad.Include(m => m.Category).Include(m => m.Eje).SingleOrDefaultAsync(m => m.Id == id);
-            ActividadVM.Eje = await _db.Eje.Where(s => s.CategoryID == ActividadVM.Actividad.CategoryId).ToListAsync();
-            if (ActividadVM.Actividad == null)
+                _db.Actividad.Remove(actividadDelete);
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
             {
-                return NotFound();
+                Error = ex.Message;
             }
-            return View(ActividadVM);
-        }
-
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> DeletePOST(int? id)
-        {
-            var actividadDelete = await _db.Actividad.FindAsync(id);
-            if (actividadDelete == null)
-            {
-                return View();
-            }
-            _db.Actividad.Remove(actividadDelete);
-            await _db.SaveChangesAsync();
-
             return RedirectToAction(nameof(Index));
         }
 
