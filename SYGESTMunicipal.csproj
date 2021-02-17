@@ -60,7 +60,6 @@
     <Folder Include="Areas\Home\Data\" />
     <Folder Include="Areas\Home\Models\" />
     <Folder Include="Areas\PATENTES\Data\" />
-    <Folder Include="wwwroot\Ambiental\assets\img\clients\" />
   </ItemGroup>
 
   <ItemGroup>
