@@ -20,8 +20,19 @@
     <br />
 
     <form asp-action="Details" asp-controller="Eje">
-        <div class="container-fluid">
+        <div class="border backgroundWhite">
             <input type="hidden" asp-for="Eje.CategoryID" />
+
+            <div class="form-group row">
+                <div class="col-md-2">
+                    <label asp-for="Eje.Id" class="col-form-label"></label>
+                </div>
+                <div class="col-md-6">
+                    <input asp-for="Eje.Id" readonly class="form-control" />
+                </div>
+                <span asp-validation-for="Eje.Id" class="text-danger"></span>
+               
+            </div>
 
             <div class="form-group row">
                 <div class="col-md-2">
@@ -41,10 +52,12 @@
                 <div class="col-md-6">
                     <input asp-for="Eje.Name" readonly class="form-control" />
                 </div>
+                <span asp-validation-for="Eje.Name" class="text-danger"></span>
             </div>
 
             <div class="form-group row">
-                <div class="col-md-5 text-center">
+
+                <div class="col-md-1 text-md-center">
                     <a asp-action="Index" type="button"
                        class="btn btn-success">Regresar </a>
                 </div>
@@ -52,4 +65,5 @@
 
         </div>
     </form>
+   
 }

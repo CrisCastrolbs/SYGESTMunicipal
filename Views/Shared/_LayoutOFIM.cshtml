@@ -12,7 +12,7 @@
     <link href="~/css/jquery-ui.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
-   
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
           crossorigin="anonymous" />
@@ -37,7 +37,8 @@
     <link href="~/lib/ej.responsive.css" rel="stylesheet" />
     <script src="~/js/ej.web.all.min.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-   
+    <link href="~/css/Paginador.css" rel="stylesheet" />
+
     <script src="~/js/jquery.timepicker.js"></script>
     <link href="~/css/jquery.timepicker.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" rel="stylesheet" />
@@ -65,15 +66,15 @@
                                 </a>
                             </div>
                             @*<div class="col-md-6 d-md-flex justify-content-end mb-md-0 mb-3">
-                                <form action="#" class="searchform order-lg-last">
-                                    <div class="form-group d-flex">
-                                        <input type="text" class="form-control pl-3" placeholder="Search">
-                                        <button type="submit" placeholder="" class="form-control search">
-                                            <span class="fa fa-search"></span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>*@
+                                    <form action="#" class="searchform order-lg-last">
+                                        <div class="form-group d-flex">
+                                            <input type="text" class="form-control pl-3" placeholder="Search">
+                                            <button type="submit" placeholder="" class="form-control search">
+                                                <span class="fa fa-search"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>*@
                         </div>
                     </div>
 
@@ -126,11 +127,11 @@
                             <a class="nav-link" asp-area="OFIM" asp-controller="Home" asp-action="Index">OFIM</a>
                         </li>
                         @*@if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
-        {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="OFIM" asp-controller="Consulta" asp-action="Index">Registro Atención</a>
-            </li>
-        }*@
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="OFIM" asp-controller="Consulta" asp-action="Index">Registro Atención</a>
+                                </li>
+                            }*@
                         @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
                         {
                             <li class="nav-item dropdown text-white-50">
@@ -151,15 +152,15 @@
                                        asp-controller="Consulta" asp-area="OFIM">Registrar Consulta</a>
 
                                     @*<a class="dropdown-item" asp-action="Index"
-                    asp-controller="Home" asp-area="OFIM">Dar un Seguimiento</a>*@
+                                        asp-controller="Home" asp-area="OFIM">Dar un Seguimiento</a>*@
 
                                 </div>
                             </li>
                         }
 
-                     
 
-                        @if (User.IsInRole(SD.RedUser) )
+
+                        @if (User.IsInRole(SD.RedUser))
                         {
                             <li class="nav-item dropdown text-white-50">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
@@ -331,7 +332,7 @@
 
                                     <i class="icon icon-map-marker"></i>
                                     <a href="https://www.google.com/maps/place/Municipalidad+de+Hojancha/10.0585518,-85.4189673,18z/data=!4m5!3m4!1s0x8f9fbab7c3d45245:0xb2000651b89c1e5b!8m2!3d10.0587462!4d-85.4178777?hl=es" target="_blank">
-                                         Costado Norte del Parque
+                                        Costado Norte del Parque
                                     </a>
                                 </li>
 
@@ -352,9 +353,9 @@
                                 <li>
                                     <i class="icon icon-envelope"></i>
                                     <a href="mailto:ofim@munihojancha.com">
-                                         ofim@munihojancha.com
+                                        ofim@munihojancha.com
                                     </a>
-                                    
+
                                 </li>
 
                             </ul>
@@ -437,8 +438,10 @@
     <script src="~/js/jquery.timepicker.js"></script>
     <script src="~/js/jquery.datepair.js"></script>
     <script src="~/js/Datepair.js"></script>
+    <script src="~/js/Paginador.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 
-    @RenderSection("Scripts", required: false);
+    @RenderSection("Scripts", required: false)
 
 </body>
 </html>

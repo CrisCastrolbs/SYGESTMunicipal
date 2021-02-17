@@ -127,7 +127,7 @@ namespace SYGESTMunicipal.Areas.PATENTES.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Details(string? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
