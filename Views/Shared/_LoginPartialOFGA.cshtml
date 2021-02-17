@@ -11,7 +11,7 @@
 
         <li class="nav-item">
             <div class="hero-container" data-aos="fade-up">
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "OFGA" })">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "PATENTES" })">
                     <button type="submit" class="btn-get-started scrollto">Cerrar sesión</button>
                 </form>
             </div>
@@ -23,7 +23,7 @@
     {
         @* LOGO  *@
         <li class="logo-img">
-            <a asp-area="OFGA" asp-controller="Home" asp-action="Index">
+            <a asp-area="Identity" asp-page="/Account/Manage/Index">
                 <img src="~/Ambiental/assets/img/hr (1).png" alt="">
             </a>
         </li>

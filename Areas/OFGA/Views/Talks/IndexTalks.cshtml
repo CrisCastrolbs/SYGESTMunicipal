@@ -11,158 +11,165 @@
 <main id="main">
 
 
-    <div class="container">
-        <ol>
-            <li><a asp-area="OFGA" asp-controller="Talks" asp-action="IndexTalks"></a></li>
-
-        </ol>
-    </div>
-
 
     @*Charlas*@
 
 
-    <section class="ftco-section ftco-bg-dark-main">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section text-center ftco-animate">
-                    <span class="subheading">Nuestra Agenda</span>
-                    <h2 style="color:white">CHARLAS DISPONIBLES</h2>
-                </div>
+    <ul id="breadcrumbs" class="breadcrumbs" >
+        <div class="breadcrumb-hero">
+
+            <div class="breadcrumb-hero text-md-center" style="color:white">
+                <h2 style="color:white">CHARLAS DISPONIBLES</h2>
+                <br />
+                <br />
             </div>
 
-            <div class="breadcrumb-hero text-md-center">
-                <h2>Charlas Disponibles</h2>
-            </div>
+            
 
             @foreach (var item in Model)
             {
-                <div class="backgroundWhite row">
 
-                    <div class="col-md-4 border align-self-baseline">
 
-                        @{
-                            var base64 = Convert.ToBase64String(item.Picture);
-                            var imgsrc = string.Format("data:image/jpg;base64, {0}", base64);
-                        }
-                        <img src="@imgsrc" style="height: 100%; width:110%" />
-                    </div>
-                    <div class="col-xl-6 pt-4 pt-lg-0 content">
-                        <div class="container">
+
+
+                <ul class="ftco-section" style="text-align:center;background-color:darkslategray;">
+                    @*<div class="breadcrumb-hero">*@
+                    <div class="container">
+
+                        <br />
+                        @*<br />
+                        <br />
+                        <br />*@
+
+
+                    <div class="row  border">
+
+                        @*<span class="border border-white">*@
+
+                        <br />
+                        <br />
+
+
+
+                        <div class="col-lg-5 video-box align-self-baseline">
+
+
+                            <br />
+                            @{
+                                var base64 = Convert.ToBase64String(item.Picture);
+                                var imgsrc = string.Format("data:image/jpg;base64, {0}", base64);
+                            }
+                            <img src="@imgsrc" style="height: 100%; width:110%" />
                             <br />
                             <br />
-
                         </div>
-                        <br />
-                        <br />
-                        <fieldset disabled>
-                            <div class="form-group row col-md-7 text-right">
-                                <h5>
-                                    <div class="col-md-7 text-right" style="color:green;text-shadow: 2px 2px 5px #000">
 
-                                        <th>@Html.DisplayNameFor(m => m.Name):</th>
+
+                        <div class="col-lg-6 pt-3 pt-lg-0 content">
+
+
+                            <br />
+                            <ul>
+                                <div class="form-group row col-md text-md-left">
+                                    <h4>
+                                        <div class="col-md text-right" style="color:White;text-shadow: 2px 2px 5px #000">
+
+                                            <th>@Html.DisplayNameFor(m => m.Name):</th>
+                                        </div>
+                                    </h4>
+
+                                    <div class="col-md" style="color:darkgray;text-shadow: 2px 2px 5px #000">
+                                        <h5 style="color:darkgray">@Html.DisplayFor(m => item.Name)</h5>
                                     </div>
-                                </h5>
-
-                                <h6>
-                                    <div class="col-md-7" style="color:white;text-shadow: 2px 2px 5px #000">
-
-                                        <td>@Html.DisplayFor(m => item.Name)</td>
-                                    </div>
-                                </h6>
-                            </div>
-
-                            <div class="form-group row col-md-7 text-right">
-                                <h5>
-                                    <div class="col-md-7 text-right" style="color:green;text-shadow: 2px 2px 5px #000">
-
-                                        <th>@Html.DisplayNameFor(m => m.Description):</th>
-                                    </div>
-                                </h5>
-                                <h6>
-                                    <div class="col-md-8" style="color:white;text-shadow: 2px 2px 5px #000">
-
-                                        <td>@Html.DisplayFor(m => item.Description)</td>
-                                    </div>
-                                </h6>
-                            </div>
-
-                            <div class="form-group row col-md-7 text-right">
-                                <h5>
-                                    <div class="col-md-7 text-right" style="color:green;text-shadow: 2px 2px 5px #000">
-
-                                        <th>@Html.DisplayNameFor(m => m.Date):</th>
-                                    </div>
-                                </h5>
-                                <div class="col-md-7" style="color:white;text-shadow: 2px 2px 5px #000">
-                                    <td>@Html.DisplayFor(m => item.Date)</td>
                                 </div>
-                            </div>
 
-                            @*<div class="form-group row">
-            <div class="col-md-3 text-right">
-                <h5><label asp-for="Description" class="custom-label">Descripción: </label></h5>
-            </div>
-            <div class="col-md-9">
-                <textarea asp-for="Description" readonly rows="4" cols="50"
-                          class="form-control"> </textarea>
-            </div>
+                                <div class="form-group row col-lg-12 text-left">
+                                    <h4>
+                                        <div class="col-md text-right" style="color:White;text-shadow: 2px 2px 5px #000">
 
-        </div>
-        <div class="form-group row">
-            <div class="col-md-3 text-right">
-                <h5><label asp-for="Date" class="col-form-label">     Fecha: </label></h5>
-            </div>
-            <div class="col-md-7">
-                <input asp-for="Date" readonly type="datetime" class="form-control" />
-            </div>
-        </div>*@
-                        </fieldset>
-                        <br />
-                        <div class="form-group row">
-                            @*<div class="col-md-8 text-md-center">
-                            <a asp-action="Index" type="button"
-                               class="btn btn-success">Regresar </a>
-                        </div>*@
+                                            <th>@Html.DisplayNameFor(m => m.Description):</th>
+                                        </div>
+                                    </h4>
+
+
+                                    <div class="col-lg-12" style="color:darkgray;text-shadow: 2px 2px 5px #000">
+                                        <h5 style="color:darkgray">@Html.DisplayFor(m => item.Description)</h5>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row col-md-7 text-left">
+                                    <h4>
+                                        <div class="col-md-7 text-right" style="color:White;text-shadow: 2px 2px 5px #000">
+
+                                            <th>@Html.DisplayNameFor(m => m.Date):</th>
+                                        </div>
+                                    </h4>
+
+                                    <div class="col-md-7" style="color:darkgray;text-shadow: 2px 2px 5px #000">
+                                        <h5 style="color:darkgray">@Html.DisplayFor(m => item.Date)</h5>
+                                    </div>
+
+                                </div>
+
+
+                            </ul>
+                            
+
+
                         </div>
+                        @*</span>*@
+                        
+                        
+                    </div>
+
+
+                        <br />
+
 
                     </div>
-                </div>
-                <br />
-                <br />
-                <br />
-                <br />
+                    @*</div>*@
+                </ul>
+                <section id="breadcrumbs" class="breadcrumbs">
+                    <div class="breadcrumb-hero col-md-12">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </section>
             }
 
-
+                            
 
 
         </div>
-    </section>
-    @section Scripts{
-        <script src="https://code.jquery.com/jquery-3.5.0.js"
-                integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
-                crossorigin="anonymous">
-        </script>
-        <script>
-            //load data from server, using HTTP Post request
-            var posts = $('.post');
-            (function ($) {
-                $("#menu-filters li").click(function () {
-                    $("#menu-filters li").removeClass('active btn btn-secondary');
-                    $(this).addClass('active btn btn-secondary');
-                    var selectedFilter = $(this).data("filter");
-                    $(".menu-restaurant").fadeOut();
-                    setTimeout(function () {
-                        $(selectedFilter).slideDown();
-                    }, 100);
-                });
-            })(jQuery);
-        </script>
-    }
+                </section>
+                @section Scripts{
+                    <script src="https://code.jquery.com/jquery-3.5.0.js"
+                            integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+                            crossorigin="anonymous">
+                    </script>
+                    <script>
+                        //load data from server, using HTTP Post request
+                        var posts = $('.post');
+                        (function ($) {
+                            $("#menu-filters li").click(function () {
+                                $("#menu-filters li").removeClass('active btn btn-secondary');
+                                $(this).addClass('active btn btn-secondary');
+                                var selectedFilter = $(this).data("filter");
+                                $(".menu-restaurant").fadeOut();
+                                setTimeout(function () {
+                                    $(selectedFilter).slideDown();
+                                }, 100);
+                            });
+                        })(jQuery);
+                    </script>
+                }
 
-    @*https://getbootstrap.com/docs/4.0/components/carousel/
-        https://www.w3schools.com/bootstrap/bootstrap_filters.asp*@
+                @*https://getbootstrap.com/docs/4.0/components/carousel/
+            https://www.w3schools.com/bootstrap/bootstrap_filters.asp*@
 
 
 

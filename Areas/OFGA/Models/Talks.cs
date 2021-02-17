@@ -23,7 +23,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Models
 
         [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Fecha ")]
+        [Display(Name = "Fecha")]
         public DateTime? Date { get; set; }
         public byte[] Picture { get; set; }
         [Display(Name = "Vigente")]

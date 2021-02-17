@@ -92,13 +92,22 @@
                     <label>Provincia: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-6">
-                    <input asp-for="Province" id="provincia" class="form-control" />
+                    @*<input asp-for="Province" id="provincia" class="form-control" />*@
                     <datalist id="provincia">
                         <option> Guanacaste</option>
                         <option> Alajuela</option>
                         <option> Heredia</option>
                         <option> Cartago</option>
                     </datalist>
+                    <select id="Province">
+                        <option>Guanacaste</option>
+                        <option>San José</option>
+                        <option>Limon</option>
+                        <option>Puntarenas</option>
+                        <option>Alajuela</option>
+                        <option>Cartago</option>
+                        <option>Heredia</option>
+                        </select>
                 </div>
                 <span asp-validation-for="Province" class="text-danger"></span>
 
@@ -109,7 +118,20 @@
                     <label>Cantón: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-6">
-                    <input asp-for="Canton" class="form-control" required />
+                    @*<input asp-for="Canton" class="form-control" required />*@
+                    <select id="Canton">
+                        <option>Hojancha</option>
+                        <option>Nicoya</option>
+                        <option>Santa Cruz</option>
+                        <option>Liberia</option>
+                        <option>Bagaces</option>
+                        <option>Abangares</option>
+                        <option>Cañas</option>
+                        <option>Carrillo</option>
+                        <option>La Cruz</option>
+                        <option>Nandayure</option>
+                        <option>Tilarán</option>
+                    </select>
                 </div>
                 <span asp-validation-for="Canton" class="text-danger"></span>
             </div>
@@ -119,7 +141,20 @@
                     <label>Distrito: <span class="required">*</span></label>
                 </div>
                 <div class="col-md-6">
-                    <input asp-for="District" class="form-control" required />
+                    @*<input asp-for="District" class="form-control" required />*@
+                    <select id="Distric">
+                        <option>Hojancha</option>
+                        <option>Puerto Carrillo</option>
+                        <option>Huacas</option>
+                        <option>Monterromo</option>
+                        <option>Matambú</option>
+                        <option>Nicoya</option>
+                        <option>Mansión</option>
+                        <option>San Antonio</option>
+                        <option>Belen</option>
+                        <option>Nosara</option>
+                        <option>Quebrada Honda</option>
+                    </select>
                 </div>
                 <span asp-validation-for="District" class="text-danger"></span>
             </div>
