@@ -7,78 +7,89 @@
     Layout = "~/Views/Shared/_LayoutOFIM.cshtml";
 }
 
+@*Rol Del Usuario*@
+
 @if (User.IsInRole(SD.ManagerUser) || User.IsInRole(SD.AdminOFIM))
 {
-    <div class="row">
-        <div class="col-md-12 col-lg-12">
-            <h3 class="text-light" style="text-align:center;
-                              background-color:#dc3545;width:100%;">
-                Agregar un Eje
-            </h3>
+    //Titulo de la pestaña de la Página
+    <head>
+        <title>Añadir Ejes</title>
+    </head>
+    //
+
+    //Titulo del contenedor de la vista
+    <fieldset>
+        <legend class="text-center header">Agregar un Nuevo Eje</legend>
+    </fieldset>
+    //
+
+
+    <div class="border backgroundWhite row">
+        <div class="col-md-6 border-right offset-1">
+
+            <form asp-action="Create" asp-controller="Eje" id="viewAgregar">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label asp-for="Eje.Name" class="col-form-label"></label>
+                    </div>
+                    <div class="col-md-6">
+                        <input asp-for="Eje.Name" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Eje.Name" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label asp-for="Eje.CategoryID" class="col-form-label"></label>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="ddlCategorylist" asp-for="Eje.CategoryID"
+                                asp-items="Model.CategoryList.ToSelectListItem(Model.Eje.CategoryID)" class="form-control"></select>
+                    </div>
+                </div>
+
+                @* Botones *@
+                <div class="form-group row">
+                    <div class="col-md-3 text-md-right">
+                        <input type="button" value="Agregar" id="btnAgregar"
+                               class="btn btn-info"
+                               onclick="abrirModal()" />
+                    </div>
+
+                    <div class="col-md-3 text-md-right">
+                        <a asp-action="Index" type="button"
+                           class="btn btn-success">
+                            Regresar
+                        </a>
+                    </div>
+                </div>
+                @* Fin Botones *@
+
+            </form>
+
         </div>
-    </div>
-    <br />
 
-    <form asp-action="Create" asp-controller="Eje" id="viewAgregar">
-        <div class="container-fluid">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <partial name="_StatusMessage" model="Model.StatusMessage" />
-            <div class="form-group row">
-                <div class="col-md-2">
-                    <label asp-for="Eje.Name" class="col-form-label"></label>
-                </div>
-                <div class="col-md-6">
-                    <input asp-for="Eje.Name" class="form-control" />
-                </div>
-                <span asp-validation-for="Eje.Name" class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group row">
-                <div class="col-md-2">
-                    <label asp-for="Eje.CategoryID" class="col-form-label"></label>
-                </div>
-                <div class="col-md-6">
-                    <select id="ddlCategorylist" asp-for="Eje.CategoryID" asp-items="Model.CategoryList.ToSelectListItem(Model.Eje.CategoryID)" class="form-control"></select>
-                </div>
-
-            </div>
-
-            <div class="form-group row">
-                <div class="col-md-3 text-md-right">
-                    <input type="button" value="Agregar" id="btnAgregar"
-                           class="btn btn-info" @*style="width: 80%;"*@
-                           onclick="abrirModal()" />
-                </div>
-            </div>
-        </div>
-    </form>
-    <br />
-    <br />
-    <div class="col-6 offset-2 text-center">
-        @if (Model.EjeList.Count() > 0)
-        {
+        @* Lista Existente para cada categoria  *@
+        <div class="col-md-3 offset-1">
             <p><h4> Eje Existente para esta Categoria</h4></p>
-            <div id="EjeList">
-                <ul class="list-group"></ul>
-            </div>
-        }
-    </div>
-    <br />
-    <div class="col-md-3 text-md-right">
-        <a asp-action="Index" type="button"
-           class="btn btn-success">
-            Regresar
-        </a>
-
+            @if (Model.EjeList.Count() >= 0)
+            {
+                <div id="EjeList">
+                    <ul class="list-group"></ul>
+                </div>
+            }
+        </div>
 
     </div>
 }
 
-<br />
-<br />
-<br />
-<br />
 
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -109,6 +120,7 @@
             updateEjeList();
         });
     </script>
+
 }
 
 <script src="~/js/sweetalert2.js"></script>

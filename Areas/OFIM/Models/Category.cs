@@ -15,6 +15,7 @@ namespace SYGESTMunicipal.Areas.OFIM.Models
         [DisplayName("Nombre Categoria")]
         [Required(ErrorMessage = "Debe digitar el Nombre de la Categoria")]
         public string Name { get; set; }
-        
+
+        public virtual ICollection<Eje> Eje { get; set; }
     }
 }

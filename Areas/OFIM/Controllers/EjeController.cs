@@ -15,17 +15,58 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
     public class EjeController : Controller
     {
         private readonly ApplicationDbContext _db;
-        [TempData]
+        
+        List<EjeCategory> listaEje = new List<EjeCategory>();
+        static List<EjeCategory> lista = new List<EjeCategory>();
+
+       
         public string StatusMessage { get; set; }
+        
+
         public EjeController(ApplicationDbContext db)
         {
             _db = db;
         }
-        public async Task<IActionResult> Index()
+
+        public List<EjeCategory> BuscarEjeCategory(string nombreCategory)
         {
-            var eje =
-                await _db.Eje.Include(s => s.Category).ToListAsync();
-            return View(eje);
+            List<EjeCategory> listaEjeCategory = new List<EjeCategory>();
+            if (nombreCategory == null || nombreCategory.Length == 0)
+            {
+                listaEje = (from Eje in _db.Eje
+                               join category in _db.Category
+                               on Eje.CategoryID equals category.Id
+                               select new EjeCategory
+                               {
+                                   Id = Eje.Id,
+                                   Name = Eje.Name,
+                                   Category = category.Name
+                               }).ToList();
+                ViewBag.Category = "";
+            }
+            else
+            {
+                listaEje = (from Eje in _db.Eje
+                               join category in _db.Category
+                               on Eje.CategoryID equals category.Id
+                               where category.Name.Contains(nombreCategory)
+                               select new EjeCategory
+                               {
+                                   Id = Eje.Id,
+                                   Name = Eje.Name,
+                                   Category = category.Name
+                               }).ToList();
+                ViewBag.Category = nombreCategory;
+            }
+            lista = listaEje;
+            return listaEje;
+        }
+
+
+        public IActionResult Index()
+        {
+            listaEje = BuscarEjeCategory("");
+            return View(listaEje);
         }
         //GET - CREATE
         public async Task<IActionResult> Create()
@@ -107,8 +148,8 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                 }
                 else
                 {
-                    var ProdCatFromDB = await _db.Eje.FindAsync(id);
-                    ProdCatFromDB.Name = model.Eje.Name;
+                    var EjeFromDB = await _db.Eje.FindAsync(id);
+                    EjeFromDB.Name = model.Eje.Name;
                     await _db.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -122,14 +163,22 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             };
             return View(modelVM);
         }
+
         //GET - DELETE
-        public async Task<IActionResult> Delete(int? id)
+      
+        
+
+
+
+
+        //GET - DETAILS
+        public async Task<IActionResult> Details(int? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
-            var eje = await _db.Eje.SingleOrDefaultAsync(m => m.Id == id);
+            var eje = await _db.Eje.SingleOrDefaultAsync(m => m.Id == Id);
             if (eje == null)
             {
                 return NotFound();
@@ -142,41 +191,34 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
             };
             return View(model);
         }
-        //POST - DELETE
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int? id)
+
+
+        public IActionResult Delete(int Id)
         {
-            var ejeDelete = await _db.Eje.FindAsync(id);
-            if (ejeDelete == null)
-            {
-                return View();
-            }
-            _db.Eje.Remove(ejeDelete);
-            await _db.SaveChangesAsync();
+            if (ModelState.IsValid)
+                {
+                    var EjeExist = _db.Actividad.Include(s => s.Eje).Where(s => s.EjeId == Id
+                                      && s.EjeId == Id);
+
+
+                    if (EjeExist.Count() > 0)
+                    {
+                        StatusMessage = "Error: Este Eje está siendo usado por la actividad " + EjeExist.First().Id +
+                                " Primero debe editar o eliminar la actividad para poder eliminar este eje";
+                    }
+                    else
+                    {
+                        Eje oEje = _db.Eje.Where(e => e.Id == Id).First();
+                        _db.Eje.Remove(oEje);
+                        _db.SaveChanges();
+                        StatusMessage = StatusMessage;
+                    }
+                }
+           
             return RedirectToAction(nameof(Index));
         }
-        //GET - DETAILS
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var eje = await _db.Eje.SingleOrDefaultAsync(m => m.Id == id);
-            if (eje == null)
-            {
-                return NotFound();
-            }
-            EjeAndCategoryViewModel model = new EjeAndCategoryViewModel()
-            {
-                CategoryList = await _db.Category.ToListAsync(),
-                Eje = eje,
-                EjeList =
-              await _db.Eje.OrderBy(p => p.Name).Select(p => p.Name).Distinct().ToListAsync()
-            };
-            return View(model);
-        }
+
+
         [ActionName("GetEjes")]
         public async Task<IActionResult> GetEjes(int id)
         {
@@ -185,6 +227,16 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                               where Eje.CategoryID == id
                               select Eje).ToListAsync();
             return Json(new SelectList(ejes, "Id", "Name"));
+        }
+
+        public FileResult exportar()
+        {
+            Utilitarios util = new Utilitarios();
+            string[] cabeceras = { "Id Eje", "Nombre", "Category" };
+            string[] nombrePropiedades = { "Id", "Name", "Category" };
+            string titulo = "Reporte de Ejes";
+            byte[] buffer = util.ExportarPDFDatos(nombrePropiedades, lista, titulo);
+            return File(buffer, "application/pdf");
         }
 
     }

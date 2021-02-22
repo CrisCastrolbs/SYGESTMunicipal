@@ -72,7 +72,8 @@ namespace SYGESTMunicipal.Areas.OFIM.Controllers
                                          && s.PersonaOFIMId == tipoConsulta.PersonaOFIMId);
                     if (TipoConExist.Count() > 0 || nVeces >= 1)
                     {
-                        ViewBag.msgError = "Error: Este tipo consulta ya ha sido creada para la Persona " + TipoConExist.First().PersonaOFIM.PersonName +
+                        ViewBag.msgError = "Error: Este tipo consulta ya ha sido " +
+                            "creada para la Persona " + TipoConExist.First().PersonaOFIM.PersonName +
                            " Por favor, use la existente, o cree otra diferente";
                         cargarPersonaOFIM();
                         return View(tipoConsulta);
