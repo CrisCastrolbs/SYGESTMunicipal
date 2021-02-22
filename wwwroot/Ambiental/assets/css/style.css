@@ -14,11 +14,11 @@ body {
 }
 
 a {
-    color: #263192;
+    color: #95C93D;
 }
 
     a:hover {
-        color: #95C93D;
+        color: #263192;
         text-decoration: none;
     }
 
@@ -1229,11 +1229,11 @@ section {
     .faq .faq-item {
         margin: 20px 0;
         padding: 25px 0;
-        border-bottom: 5px solid #8c552e;
+        border-bottom: 5px solid #263182;
     }
 
         .faq .faq-item i {
-            color: #8c552e;
+            color: #95C93D;
             font-size: 20px;
             float: left;
             line-height: 0;

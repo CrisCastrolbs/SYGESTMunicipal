@@ -26,12 +26,12 @@
             <div class="row text-center">
 
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-                    <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="box featured" data-aos="fade-left" data-aos-delay="100">
                         <h3>Basura orgánica</h3>
                         <div class="container">
                             <div class="logo-img">
                                 <a>
-                                    <img src="~/Ambiental/assets/img/organico.jpg" />
+                                    <img src="~/Ambiental/assets/img/organico.jpg" class="img-fluid" />
                                 </a>
                             </div>
                         </div>
@@ -40,12 +40,12 @@
 
 
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-                    <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="box featured" data-aos="fade-left" data-aos-delay="100">
                         <h3>Aluminio</h3>
                         <div class="container">
                             <div class="logo-img">
                                 <a>
-                                    <img src="~/Ambiental/assets/img/Aluminio.jpg" />
+                                    <img src="~/Ambiental/assets/img/Aluminio.jpg" class="img-fluid" />
                                 </a>
                             </div>
                         </div>
@@ -53,12 +53,12 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-                    <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="box featured" data-aos="fade-left" data-aos-delay="100">
                         <h3>Residuos Ordinarios</h3>
                         <div class="container">
                             <div class="logo-img">
                                 <a>
-                                    <img src="~/Ambiental/assets/img/Ordinaria.jpg" />
+                                    <img src="~/Ambiental/assets/img/Ordinaria.jpg" class="img-fluid" />
                                 </a>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-                    <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="box featured" data-aos="fade-right" data-aos-delay="100">
                         <h3>Vidrio</h3>
                         <div class="container">
                             <div class="logo-img">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-                    <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="box featured" data-aos="fade-right" data-aos-delay="100">
                         <h3>Papel y cartón</h3>
                         <div class="container">
                             <div class="logo-img">
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
-                    <div class="box featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="box featured" data-aos="fade-right" data-aos-delay="100">
                         <h3>Envases</h3>
                         <div class="container">
                             <div class="logo-img">
@@ -138,6 +138,9 @@
                         <li data-filter="*" class="filter-active">Todo</li>
                         <li data-filter=".filter-app">Centro de Acopio</li>
                         <li data-filter=".filter-card">Charlas</li>
+                        <li data-filter=".filter">Guardianes de la Naturaleza</li>
+                        <li data-filter=".filter-complaint">Denuncias</li>
+                        <li data-filter=".filter-basura">Recolección de Basura</li>
                         <li data-filter=".filter-web">Ecoins</li>
                     </ul>
                 </div>
@@ -172,6 +175,52 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter">
+                    <div class="portfolio-wrap">
+                        <img src="~/Ambiental/assets/img/portafolio/movimientoguardianes.jpg" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <div class="portfolio-links">
+                                <a href="~/Ambiental/assets/img/portafolio/movimientoguardianes.jpg" data-gall="portfolioGallery" class="venobox" title="GUARDIANES DE LA NATURALEZA"><i class="bx bx-plus"></i></a>
+                                <div class="btn-wrap">
+                                    <a class="btn-buy" asp-area="OFGA" asp-controller="Home" asp-action="Ecoins">Detalles</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-complaint">
+                    <div class="portfolio-wrap">
+                        <img src="~/Ambiental/assets/img/portafolio/Info.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <div class="portfolio-links">
+                                <a href="~/Ambiental/assets/img/portafolio/Info.png" data-gall="portfolioGallery" class="venobox" title="DENUNCIAS"><i class="bx bx-plus"></i></a>
+                                <div class="btn-wrap">
+                                    <a class="btn-buy" asp-area="OFGA" asp-controller="Home" asp-action="Ecoins">Detalles</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-basura">
+                    <div class="portfolio-wrap">
+                        <img src="~/Ambiental/assets/img/portafolio/Info.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <div class="portfolio-links">
+                                <a href="~/Ambiental/assets/img/portafolio/Info.png" data-gall="portfolioGallery" class="venobox" title="RECOLECCIÓN DE BASURA"><i class="bx bx-plus"></i></a>
+                                <div class="btn-wrap">
+                                    <a class="btn-buy" asp-area="OFGA" asp-controller="Home" asp-action="Ecoins">Detalles</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="col-lg-4 col-md-6 portfolio-item filter-web">
                     <div class="portfolio-wrap">

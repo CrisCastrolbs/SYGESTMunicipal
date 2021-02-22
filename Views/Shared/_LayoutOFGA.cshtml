@@ -204,8 +204,15 @@
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
-                <div class="row">
+                @* LOGO  *@
+                <div class="col-md-2 text-lef logo-img">
+                    <a asp-area="Home" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/LogoMuni2.png" alt="">
+                    </a>
+                </div>
+                @* LOGO  *@
 
+                <div class="row">
                     <div class="col-lg-3 col-md-6 footer-info">
                         <h3>Municipalidad de Hojancha</h3>
                         <p>Siempre pensando en la comodidad para usted, ofrece sus servicios en línea y al alcalce de sus manos.</p>
@@ -231,12 +238,12 @@
                             <strong>Ubicación: </strong> Costado Norte del Parque<br>
                             Hojancha, Guanacaste, Costa Rica <br><br>
                             <strong>Teléfono:</strong> 26599116 Ext.223<br>
-                            <strong>Email:</strong> info@munihojancha.com<br>
+                            <strong>Email:</strong> gestionambiental@munihojancha.com<br>
                         </p>
 
                         <div class="social-links">
 
-                            
+
                             <a href="https://www.facebook.com/Gesti%C3%B3n-Ambiental-Municipalidad-de-Hojancha-100103898665715" class="facebook" target="_blank"><i class="icofont-facebook"></i></a>
                             <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="instagram" target="_blank"><i class="icofont-instagram"></i></a>
 
@@ -258,7 +265,7 @@
 
                 </div>
             </div>
-        </div>
+            </div>
         @*sdfghjklkjhgfdsa*@
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate-3.0.1.min.js"></script>
