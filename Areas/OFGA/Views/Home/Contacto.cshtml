@@ -5,7 +5,37 @@
 }
 
 <main id="main">
+    @*<button onclick="findMe()">Mostrar Ubicación</button>
+    <div id="map"></div>
 
+    <script>
+        function findMe() {
+            var output = document.getElementById('map');
+
+            if (navigator.geolocation) {
+                output.innerHTML = "<p> Tu navegador soporta geolocalización</p>";
+            } else {
+                output.innerHTML = "<p> Tu navegador no soporta geolocalización</p>";
+            }
+
+            function localizacion(posicion) {
+                var latitude = posicion.coords.latitude;
+                var longitude = posicion.coords.longitude;
+
+                output.innerHTML = "<p>No se pudo obtener tu ubicación.</p>";
+            }
+            function error() {
+
+                output.innerHTML = "<p> Latitude: " + latitude + "<br>Longitud: " + longitude + "</p>";
+
+            }
+            navigator.geolocation.getCurrentPosition(localizacion, error);
+
+        }
+
+
+    </script>*@
+   
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="breadcrumb-hero">
