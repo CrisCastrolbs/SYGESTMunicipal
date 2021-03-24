@@ -44,7 +44,14 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
         }
 
 
+        public IActionResult GuardianesNaturaleza()
+        {
+            return View();
+        }
 
-
+        public IActionResult RecoleccionBasura()
+        {
+            return View();
+        }
     }
 }

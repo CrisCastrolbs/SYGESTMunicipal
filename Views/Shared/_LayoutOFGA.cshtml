@@ -39,16 +39,17 @@
     <link href="~/Ambiental/assets/vendor/aos/aos.css" rel="stylesheet">
 
 
-    <link href="~/css/style.css" rel="stylesheet"/>
+    <link href="~/css/style.css" rel="stylesheet" />
     <!-- Template Main CSS File -->
     <link href="~/Ambiental/assets/css/style.css" rel="stylesheet">
     <link href="~/lib/syncfusion-javascript/Content/ej/web/bootstrap-theme/ej.web.all.min.css" rel="stylesheet" />
-    <link href="~/lib/ej.responsive.css" rel="stylesheet"/>
+    <link href="~/lib/ej.responsive.css" rel="stylesheet" />
     <script src="~/js/ej.web.all.min.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
           crossorigin="anonymous" />
+
     <!-- =======================================================
     * Template Name: Serenity - v2.1.0
     * Template URL: https://bootstrapmade.com/serenity-bootstrap-corporate-template/
@@ -91,7 +92,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink"
                                role="button" data-toggle="dropdown" aria-haspopup="true"
                                aria-expanded="false">
-                               Servicios
+                                Servicios
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navabarDropDownMenuLink">
@@ -200,63 +201,66 @@
     </div>
     <br />
     <br />
+
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
-                <div class="row">
+                @* LOGO  *@
+                <div class="col-md-2 text-lef logo-img">
+                    <a asp-area="Home" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/LogoMuni2.png" alt="">
+                    </a>
+                </div>
+                @* LOGO  *@
+            <div class="row">
 
-                    <div class="col-lg-3 col-md-6 footer-info">
-                        <h3>Municipalidad de Hojancha</h3>
-                        <p>Siempre pensando en la comodidad para usted, ofrece sus servicios en línea y al alcalce de sus manos.</p>
-                    </div>
+                <div class="col-lg-3 col-md-6 footer-info">
+                    <h3>Municipalidad de Hojancha</h3>
+                    <p>Siempre pensando en la comodidad para usted, ofrece sus servicios en línea y al alcalce de sus manos.</p>
+                </div>
 
-                    <div class="col-lg-3 col-md-6 footer-links">
+                <div class="col-lg-3 col-md-6 footer-links">
 
-                        <h4>Servicios</h4>
-                        <ul>
+                    <h4>Servicios</h4>
+                    <ul>
 
-                            <li><a asp-area="PATENTES" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de Patentes</a></li>
-                            <li><a asp-area="OFGA" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de Gestión Ambiental</a></li>
-                            <li><a asp-area="OFIM" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de La Mujer</a></li>
-                        </ul>
-                    </div>
+                        <li><a asp-area="PATENTES" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de Patentes</a></li>
+                        <li><a asp-area="OFGA" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de Gestión Ambiental</a></li>
+                        <li><a asp-area="OFIM" asp-controller="Home" asp-action="Index" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Oficina de La Mujer</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>Información del contacto</h4>
+                    <p>
+                        <strong>Ubicación: </strong> Costado Norte del Parque<br>
+                        Hojancha, Guanacaste, Costa Rica <br><br>
+                        <strong>Teléfono: </strong> 26599116 Ext.223<br>
+                        <strong>Email:</strong>gestionambiental@munihojancha.com<br>
+                    </p>
+
+                    <div class="social-links">
 
 
+                        <a href="https://www.facebook.com/Gesti%C3%B3n-Ambiental-Municipalidad-de-Hojancha-100103898665715" class="facebook" target="_blank"><i class="icofont-facebook"></i></a>
+                        <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="instagram" target="_blank"><i class="icofont-instagram"></i></a>
 
-
-                    <div class="col-lg-3 col-md-6 footer-contact">
-                        <h4>Información del contacto</h4>
-                        <p>
-                            <strong>Ubicación: </strong> Costado Norte del Parque<br>
-                            Hojancha, Guanacaste, Costa Rica <br><br>
-                            <strong>Teléfono:</strong> 26599116 Ext.223<br>
-                            <strong>Email:</strong> info@munihojancha.com<br>
-                        </p>
-
-                        <div class="social-links">
-
-                            
-                            <a href="https://www.facebook.com/Gesti%C3%B3n-Ambiental-Municipalidad-de-Hojancha-100103898665715" class="facebook" target="_blank"><i class="icofont-facebook"></i></a>
-                            <a href="https://www.instagram.com/explore/locations/256658138352395/municipalidad-hojancha/" class="instagram" target="_blank"><i class="icofont-instagram"></i></a>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 footer-newsletter">
-                        <h4>Horario de Atención</h4>
-                        <div class="opening-hours">
-                            <h4>Abierto los Días:</h4>
-                            <p class="ftco-footer-widget mb-4">
-                                <span>Lunes – Viernes: 7:30 am a 3:30 pm</span>
-
-                            </p>
-                        </div>
-                        @RenderBody()
                     </div>
 
                 </div>
+                <div class="col-lg-3 col-md-6 footer-newsletter">
+                    <h4>Horario de Atención</h4>
+                    <div class="opening-hours">
+                        <h4>Abierto los Días:</h4>
+                        <p class="ftco-footer-widget mb-4">
+                            <span>Lunes – Viernes: 7:30 am a 3:30 pm</span>
+                        </p>
+                    </div>
+
+                    @RenderBody()
+
+                </div>
+            </div>
             </div>
         </div>
         @*sdfghjklkjhgfdsa*@
@@ -284,19 +288,19 @@
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="~/Ambiental/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/php-email-form/validate.js"></script>
-    <script src="~/Ambiental/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/counterup/counterup.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/venobox/venobox.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="~/Ambiental/assets/vendor/aos/aos.js"></script>
+    <script src="~/Patentes/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Patentes/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Patentes/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/Patentes/assets/vendor/php-email-form/validate.js"></script>
+    <script src="~/Patentes/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="~/Patentes/assets/vendor/counterup/counterup.min.js"></script>
+    <script src="~/Patentes/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="~/Patentes/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/Patentes/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Patentes/assets/vendor/aos/aos.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="~/Ambiental/assets/js/main.js"></script>
+    <script src="~/Patentes/assets/js/main.js"></script>
     <script src="~/js/jquery-ui.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     @RenderSection("Scripts", required: false);
