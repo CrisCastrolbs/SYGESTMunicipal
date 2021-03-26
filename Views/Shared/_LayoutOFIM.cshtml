@@ -442,6 +442,18 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 
     @RenderSection("Scripts", required: false)
+   
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tbDatos').dataTable({
+                "paging": false,
+                "searching": false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 </body>
 </html>
