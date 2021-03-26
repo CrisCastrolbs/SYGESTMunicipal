@@ -172,28 +172,33 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
             return View(talks);
         }
 
-            
+
         public async Task<IActionResult> IndexTalks()
         {
-            listaTalks = (from especialidad in _db.Talks
-                          select new Talks 
+            listaTalks = (from talks in _db.Talks
+                          where talks.IsActive == true
+                          select new Talks
                           {
-                              
 
-                              Id = especialidad.Id,
-                              Name = especialidad.Name,
-                              Description = especialidad.Description.Substring(0, 85) + "...",
-                              Date = especialidad.Date,
-                              Picture = especialidad.Picture,
-                              IsActive = especialidad.IsActive
+                              Id = talks.Id,
+                              Name = talks.Name,
+                              Description = talks.Description.Substring(0, 85) + "...",
+                              Date = talks.Date,
+                              Picture = talks.Picture,
+                              IsActive = talks.IsActive
+
 
                           }).ToList();
-            lista = listaTalks;
-      
-            return View(await _db.Talks.ToListAsync());
-     
-        }
 
+            lista = listaTalks;
+
+            //return View(await _db.Talks.ToListAsync());
+
+
+            return View(listaTalks);
+
+
+        }
 
 
     }
