@@ -170,6 +170,7 @@ namespace SYGESTMunicipal.Areas.OFGA.Controllers
                 return NotFound();
             }
             return View(talks);
+
         }
 
 
